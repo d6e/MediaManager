@@ -1,6 +1,7 @@
 #ifndef HISTORY_H
 #define HISTORY_H
 #include event.h
+#include <list>
 
 /*
 History objects hold a list of event objects which can be displayed.
@@ -17,7 +18,7 @@ public:
     void displayAll() const;  //Iterates through displays all event objects
     // void display() const;  //display one event 
 private:
-    list eventList;  //list of event objects
-    eventList sort(eventList&);
+    std::list<Event> eventList;  //list of event objects
+    // sort(const std::list<Event>&, std::list<Event>&);  //first parameter is list in, second is list out
 };
 #endif
