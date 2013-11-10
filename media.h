@@ -1,5 +1,5 @@
-#ifndef MOVIE_H
-#define MOVIE_H
+#ifndef MEDIA_H
+#define MEDIA_H
 #include <map>
 #include <string>
 #include <iostream>
