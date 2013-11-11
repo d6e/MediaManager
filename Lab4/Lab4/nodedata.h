@@ -18,7 +18,13 @@ public:
          // data is set equal to parameter
    NodeData(const NodeData &);    // copy constructor
    NodeData& operator=(const NodeData &);
-   bool setData(istream&);                
+   bool setData(istream&);     
+   virtual bool operator==(const NodeData &) const = 0;
+   virtual bool operator!=(const NodeData &) const = 0;
+   virtual bool operator<(const NodeData &) const = 0;
+   virtual bool operator>(const NodeData &) const = 0;
+   virtual bool operator<=(const NodeData &) const = 0;
+   virtual  bool operator>=(const NodeData &) const = 0;          
 private:
    virtual const Media* data = 0;          
 };
@@ -28,15 +34,15 @@ public:
    virtual MediaData();
    virtual ~MediaData();
    MediaData(const Media *);
-   string genre();
+   string dataType() const;
    void incrementCount(int);
 
-   bool operator==(const NodeData &) const;
-   bool operator!=(const NodeData &) const;
-   bool operator<(const NodeData &) const;
-   bool operator>(const NodeData &) const;
-   bool operator<=(const NodeData &) const;
-   bool operator>=(const NodeData &) const;
+   virtual bool operator==(const MediaData &) const;
+   virtual bool operator!=(const MediaData &) const;
+   virtual bool operator<(const MediaData &) const;
+   virtual bool operator>(const MediaData &) const;
+   virtual bool operator<=(const MediaData &) const;
+   virtual bool operator>=(const MediaData &) const;
 private:
    virtual const Media* data;          
    int count;

@@ -28,22 +28,18 @@ public:
 	bool isEmpty() const; // true if tree is empty, otherwise false 
 	void makeEmpty(); // empties the tree, calls makeEmpty() helper 
 	CollectionTree& operator=(const CollectionTree &);    // BinTree Assignment operator
-	bool operator==(const CollectionTree &) const; // BinTree Equality operator
-	bool operator!=(const CollectionTree &) const; // BinTree Inequality operator
 	bool insert(NodeData*);					// Insert node method
 	void bstreeToArray(NodeData* []); //converts bstree to an arary
 	void arrayToBSTree(NodeData* []); //converts array to bstree
 	int getDepth(const NodeData &) const; // gets the depth of the tree
 	bool retrieve(string[]) const; // retrieves a node
-	string genre();
+	string dataType() const;	   //returns type of data stored in the tree. Calls dataType() for the root node.
  
 private:
 	Node* root;						// root node of the binary tree 
 	void copyNode(Node&, Node &);  // copy constructor helper method
 	int getDepth(const Node &, const NodeData &, int) const; //getDepth helper 
 	int maximum(const int, const int); //determines the higher of two integers
-	bool isEqual(const Node&,const Node&)const;      // helper for operator==
-	bool isNotEqual(const Node&,const Node&)const;   // helper for operator==
 	void makeEmpty(Node*); 				 // helper for makeEmpty() 
 	bool insert(NodeData*,Node*,Node*,bool); // helper for displaySideways() 
 	void convertArrayToTree(NodeData*[], int); // arrayToBSTree helper
