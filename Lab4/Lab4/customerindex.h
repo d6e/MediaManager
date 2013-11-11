@@ -7,7 +7,7 @@ The customerindex class is used to hold customer objects.
 */
 class CustomerIndex {
 private:
-    Hash custHash;
+    HashTable custHT;
 public:
     CustomerIndex();
     Error addTransaction(custID, String);
