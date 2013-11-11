@@ -1,5 +1,7 @@
 #ifndef EVENT_H
 #define EVENT_H
+#include "error.h"
+#include <string>
 
 /*
 An event object holds the data for a transaction. It parses the string passed 

@@ -19,6 +19,7 @@ public:
     History(Event&);
     ~History();
     void displayAll() const;  //Iterates through displays all event objects
+    void addTransaction(String);  // Creates a new event and adds it to eventList
 
 };
 #endif
