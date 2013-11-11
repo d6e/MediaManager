@@ -1,10 +1,10 @@
-#pragma once
+#ifndef COMEDY_H
+#define COMEDY_H
 #include "media.h"
-class Comedy :
-	public Media
-{
+class Comedy : public Media {
 public:
 	Comedy(void);
 	~Comedy(void);
 };
 
+#endif
