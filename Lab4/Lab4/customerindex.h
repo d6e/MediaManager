@@ -13,7 +13,6 @@ public:
     Error addTransaction(custID, String);
     bool customerExists(iD);
     Error displayHistory(iD)const;
-
 };
 
 #endif
