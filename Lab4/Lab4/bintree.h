@@ -52,7 +52,7 @@ private:
    int* BinTreePtr;
    
    /*
-    * size of te tree
+    * size of the tree
     */
    int size;
 };
