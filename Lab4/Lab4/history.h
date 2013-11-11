@@ -1,6 +1,6 @@
 #ifndef HISTORY_H
 #define HISTORY_H
-#include event.h
+#include "event.h"
 #include <list>
 
 /*
@@ -11,14 +11,14 @@ the list. When any sort of customer transaction is made, add an event object
 to the list and the list is expanded. 
 */
 class History {
+private:
+    std::list<Event> eventList;  //list of event objects
+
 public:
     History();
     History(Event&);
     ~History();
     void displayAll() const;  //Iterates through displays all event objects
-    // void display() const;  //display one event 
-private:
-    std::list<Event> eventList;  //list of event objects
-    // sort(const std::list<Event>&, std::list<Event>&);  //first parameter is list in, second is list out
+
 };
 #endif

@@ -5,10 +5,12 @@
 An event object holds the data for a transaction.
 */
 class Event {
+private:
+    String borrowedOrReturned;
 public:
     void display() const;  // Display the data from one event object
-private:
-
+    Event();
+    ~Event();
 };
 
 
