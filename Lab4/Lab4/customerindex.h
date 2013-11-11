@@ -1,6 +1,8 @@
 #ifndef CUSTOMERINDEX_H
 #define CUSTOMERINDEX_H
 #include "customer.h"
+#include "error.h"
+#include <string>
 
 /*
 The customerindex class is used to hold customer objects.   
@@ -11,8 +13,8 @@ private:
 public:
     CustomerIndex();
     Error addTransaction(custID, String);
-    bool customerExists(iD);
-    Error displayHistory(iD)const;
+    bool customerExists(custID);
+    Error displayHistory(custID) const;
 };
 
 #endif

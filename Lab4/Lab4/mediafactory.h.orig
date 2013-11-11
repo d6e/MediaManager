@@ -2,22 +2,29 @@
 #define MEDIAFACTORY_H
 #include "factory.h"
 #include "media.h"
+<<<<<<< HEAD
+#include <iostream>
+#include <fstream>
+#include <typeinfo>
+class MediaFactory :
+	public Factory
+{
+
+public:
+	MediaFactory();
+	~MediaFactory();
+	Media *createMedia(string,ifstream&);	//parses input to create movies
+	Media *createMedia(const Movie& m);		//used in place of a copy constructor for Media
+=======
 #include <string>
 
-#include "mediafactory.h"
-
-
-class MediaFactory
-{
-private:
-    Media* mediaTemplates[];
+class MediaFactory : public Factory {
 public:
-    MediaFactory();    //fills mediatemplates with instances of each instantiatable Media object
-    ~MediaFactory();
-    Media *createMedia(string,ifstream&);    //parses input to create Media objects
-    Media *createMedia(const Media& m);        //used in place of a copy constructor for Media
+	MediaFactory(void);
+	~MediaFactory(void);
+    Media* createMedia(String);
+>>>>>>> a925336a4d241d7eb74836a3e8f13ecc7ae8e618
 };
-
 /*
 class MovieFactory{
 private:
@@ -54,6 +61,7 @@ public:
             createdMovie -> addData(dataTypeNames[i],currentData);
 		}
 
+<<<<<<< HEAD
 		string lastData;
 		getline(inputFile, lastData);
 		createdMovie -> addData(dataTypeNames[dataTypeCount-1],lastData);
@@ -79,3 +87,6 @@ public:
     }
 };
 */
+=======
+#endif
+>>>>>>> a925336a4d241d7eb74836a3e8f13ecc7ae8e618
