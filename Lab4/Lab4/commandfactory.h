@@ -1,10 +1,23 @@
 #ifndef COMMANDFACTORY_H
 #define COMMANDFACTORY_H
-class CommandFactory
-{
+#include "customerindex.h"
+#include "mediacollection.h"
+#include "command.h"
+#include <string>
+
+/*
+
+*/
+
+class CommandFactory {
+private:
+    CustomerIndex cIndex;
+    MediaCollection mCollect;
 public:
-	CommandFactory(void);
-	~CommandFactory(void);
+    CommandFactory();
+	CommandFactory(CustomerIndex, MediaCollection);
+	~CommandFactory();
+    Command* create(String);
 };
 
 #endif
