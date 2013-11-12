@@ -2,22 +2,12 @@
 #define MEDIACOLLECTION_H
 #include "error.h"
 #include "media.h"
+#include "medianode.h"
 #include "collectiontree.h"
 #include "mediacollection.h"
 #include <string>
 
-class ListNode{
-	friend class MediaCollection;
-	friend ostream & operator<<(ostream &, const MediaCollection &);
-public:
-	ListNode();
-	~ListNode();
-	string dataType() const;	//gives the node's dataType using the tree's dataType
-	bool isEmpty() const;
-private:
-	CollectionTree* mediaData;
-	ListNode* next;
-};
+
 
 class MediaCollection{
 	friend ostream & operator<<(ostream &, const MediaCollection &);
@@ -28,12 +18,11 @@ public:
 	//to the inserted Media's dataType() and inseting when it finds a match.
 	//(this means media type and genre must match.) if no match is found, a new
 	//ListNode is created and the Media is inserted into its tree.
-	void insert(Media *);	
+	Error insert(Media *);
+	Error retrieve(Media *);
+	Error displayAll() const;
 	bool isEmpty() const;
-	void collectionToArray(CollectionTree* []) const;
 private:
-    Error displayAll() const;
-	void initializeArrayHelper(CollectionTree* []) const;
-	ListNode* root;
+	CollectionTree* collectTree;
 };
 #endif
