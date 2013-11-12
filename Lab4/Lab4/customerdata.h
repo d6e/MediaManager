@@ -24,6 +24,7 @@ public:
    virtual CustomerData();          // constructor
    virtual ~CustomerData();         // destructor
    CustomerData(const Customer*);   // Constructor for customer object
+   virtual CustomerData* create(){return new CustomerData();}
    virtual string dataType() const; // returns unique identifier        
    virtual void duplicate();        // LEAVE THIS AN EMPTY METHOD
    virtual Error getKey();          // returns the customer's ID key

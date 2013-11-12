@@ -16,7 +16,6 @@ public:
 	void inorderDisplay() const;
  
 private:
-<<<<<<< HEAD
 	Node* root;						// root node of the binary tree 
 	void copyNode(Node&, Node &);  // copy constructor helper method
 	int getDepth(const Node &, const NodeData &, int) const; //getDepth helper 
@@ -28,14 +27,12 @@ private:
 	void inorderHelper(Node*,NodeData* [],int&) const;//does inorder traversal
 	void cleanTree(Node *); // empties tree like empty tree but deletes datsa
 	bool retrieve(Node*, const NodeData&, NodeData*&) const; //retrieve helper
-=======
 	struct ListNode
 	{	
 		BinTree* mediaTree;
 		ListNode* next;
 	};
 	ListNode* root;
->>>>>>> 97e61ebecd34d0ad8affeb7aef1789e7874174dd
 };
 
 #endif
