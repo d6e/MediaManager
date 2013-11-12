@@ -1,10 +1,11 @@
 #ifndef MANAGER_H
 #define MANAGER_H
-#include <string>
 #include "customerindex.h"
 #include "mediacollection.h"
 #include "commandcontrol.h"
+#include "commandfactory.h"
 #include "error.h"
+#include <string>
 
 /*
 The manager class is the main controller for the program.
@@ -18,10 +19,15 @@ private:
     CustomerFactory cFactory;
     MediaFactory mFactory;
     CommandControl controls;
-    Error inputMedia(String);
-    Error inputCustomer(String);
-    Error initCmd();
-    Error inputCmd(String);
+    Bool inputMedia(String);
+    Bool inputCustomer(String);
+    Bool initCmd();
+    Bool inputCmd(String arg);
+        // {    // pseudocode for inputCmd
+        //     Command CMD = CommandFactory.create(arg)
+        //     cmd.execute
+        //     delete cmd
+        // }
 
 public:
 	Manager();

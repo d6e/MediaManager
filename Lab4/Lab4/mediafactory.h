@@ -1,6 +1,5 @@
 #ifndef MEDIAFACTORY_H
 #define MEDIAFACTORY_H
-#include "factory.h"
 #include "media.h"
 #include <string>
 
