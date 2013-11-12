@@ -47,9 +47,13 @@ public:
    
 private:
    /*
-    * The pointer to the tree
+    * The struct to the tree
     */
-   int* BinTreePtr;
+   stuct BinTreePtr {
+      NodeData data;
+      BinTreePtr* left;
+      BintreePtr* right;
+   };
    
    /*
     * size of the tree
