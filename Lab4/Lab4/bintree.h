@@ -63,9 +63,11 @@ private:
    /*
     * 
     */
-   NodeData* data;
-   BinTree* left;
-   Bintree* right;
+   struct BinTreeNode{
+      NodeData* data;
+      BinTree* left;
+      Bintree* right;
+   };
    
    BinTree* root;
    
