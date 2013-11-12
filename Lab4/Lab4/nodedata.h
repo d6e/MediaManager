@@ -3,7 +3,6 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include "media.h"
 using namespace std;
 
 // simple class containing one string to use for testing
@@ -13,12 +12,16 @@ class NodeData {
    friend ostream & operator<<(ostream &, const NodeData &);
 
 public:
-   virtual NodeData() = 0;          // default constructor, data is set to an empty string
+   virtual NodeData() = 0; // default constructor, data is set to an empty string
    virtual ~NodeData() = 0;          
          // data is set equal to parameter
    NodeData(const NodeData &);    // copy constructor
    NodeData& operator=(const NodeData &);
-   bool setData(istream&);     
+   virtual string dataType() const =0;    // returns unique identifier    
+   virtual void duplicate() =0; // signals overridden functions to handle its quantity
+   virtual Error getKey() =0;
+
+   // comparison operators
    virtual bool operator==(const NodeData &) const = 0;
    virtual bool operator!=(const NodeData &) const = 0;
    virtual bool operator<(const NodeData &) const = 0;

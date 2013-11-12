@@ -1,6 +1,6 @@
 class MediaFormat {
 public:
-    MediaFormat(string);
+	MediaFormat(string);
 private:
-    string formatName;
+	string formatName;
 }
