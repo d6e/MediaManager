@@ -24,9 +24,9 @@ public:
    virtual bool operator<(const NodeData &) const = 0;
    virtual bool operator>(const NodeData &) const = 0;
    virtual bool operator<=(const NodeData &) const = 0;
-   virtual  bool operator>=(const NodeData &) const = 0;          
+   virtual bool operator>=(const NodeData &) const = 0;          
 private:
-   virtual const Media* data = 0;          
+   virtual Media* data = 0;          
 };
 
 class MediaData:NodeData {
@@ -35,7 +35,7 @@ public:
    virtual ~MediaData();
    MediaData(const Media *);
    string dataType() const;
-   void incrementCount(int);
+   void duplicate();
 
    virtual bool operator==(const MediaData &) const;
    virtual bool operator!=(const MediaData &) const;
@@ -44,8 +44,7 @@ public:
    virtual bool operator<=(const MediaData &) const;
    virtual bool operator>=(const MediaData &) const;
 private:
-   virtual const Media* data;          
-   int count;
+   virtual Media* data;          
 };
 
 #endif
