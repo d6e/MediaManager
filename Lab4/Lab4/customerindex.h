@@ -38,8 +38,8 @@ private:
     HashTable custHT; // A hashtable used to hold the customer objects
 public:
     CustomerIndex();
-    Error addTransaction(custID, String);  // looks up custID in hashtable, calls the costomer
-    bool customerExists(custID);
+    Error addTransaction(custID, String);  // calls customer's addTransaction
+    bool customerExists(custID);           // 
     Error displayHistory(custID) const;
     Error insertCustomer(Customer*); // inserts customer pointer into hashtable
 };
