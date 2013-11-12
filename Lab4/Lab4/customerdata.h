@@ -19,6 +19,7 @@ CustomerData object with another.
 class CustomerData : public NodeData {
 private:
    Customer* data;                  // points to customer object
+   virtual string dataString();
 public:
    virtual CustomerData();          // constructor
    virtual ~CustomerData();         // destructor

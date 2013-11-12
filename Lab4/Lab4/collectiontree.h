@@ -45,8 +45,7 @@ private:
 	void convertArrayToTree(NodeData*[], int); // arrayToBSTree helper
     void initializeArrayHelper(NodeData* []); // Sets array elements to NULL
 	void inorderHelper(Node*,NodeData* [],int&) const;//does inorder traversal
-	void cleanTree(Node *); // empties tree like empty tree but deletes data
-	void sideways(Node*, int) const; // helper for displaySideways() 
+	void cleanTree(Node *); // empties tree like empty tree but deletes datsa
 	bool retrieve(Node*, const NodeData&, NodeData*&) const; //retrieve helper
 };
 

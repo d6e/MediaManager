@@ -6,7 +6,8 @@
 
 class MediaData : public NodeData {
 private:
-   Media* data;          
+   Media* data;
+   virtual string dataString();   //calls its data's << operator          
 public:
    virtual MediaData();      // constructor
    virtual ~MediaData();     // destructor

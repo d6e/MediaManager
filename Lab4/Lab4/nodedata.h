@@ -9,7 +9,7 @@ using namespace std;
 // not necessary to comment further
 
 class NodeData {
-   friend ostream & operator<<(ostream &, const NodeData &);
+   friend ostream & operator<<(ostream &, const NodeData &) = 0;
 
 public:
    virtual NodeData() = 0; // default constructor, data is set to an empty string
@@ -27,6 +27,8 @@ public:
    virtual bool operator>(const NodeData &) const = 0;
    virtual bool operator<=(const NodeData &) const = 0;
    virtual bool operator>=(const NodeData &) const = 0;                
+private:
+   virtual string dataString() = 0;
 };
 
 #endif
