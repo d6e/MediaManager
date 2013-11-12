@@ -69,7 +69,7 @@ private:
       Bintree* right;
    };
    
-   BinTree* root;
+   Node* root;
    
    /*
     * size of the tree

@@ -3,9 +3,6 @@
 #include "media.h"
 #include <string>
 
-#include "mediafactory.h"
-
-
 class MediaFactory
 {
 private:

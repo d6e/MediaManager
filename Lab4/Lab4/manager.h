@@ -19,10 +19,10 @@ private:
     CustomerFactory cFactory;
     MediaFactory mFactory;
     CommandControl controls;
-    Bool inputMedia(String);
-    Bool inputCustomer(String);
+    Bool inputMedia(string);
+    Bool inputCustomer(string);
     Bool initCmd();
-    Bool inputCmd(String arg);
+    Bool inputCmd(string);
         // {    // pseudocode for inputCmd
         //     Command CMD = CommandFactory.create(arg)
         //     cmd.execute

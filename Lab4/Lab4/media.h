@@ -40,7 +40,8 @@ corresponding _DATA_TYPES and _SORTED_BY arrays.
 
 dataString() outputs the Media object's format, along with all of its data in 
 order of its dataTypeNames(). The dataString() method is called as part of a 
-media BinTree's display method.
+media BinTree's display method. This is the only method called by the <<
+operator.
 
 create() is merely an instatiation method called by the MediaFactory that 
 creates a media object.
@@ -67,6 +68,7 @@ many copies of a media have been borrowed.
 
 //most generic Media type
 class Media {
+	friend ostream & operator<<(ostream &, const Movie &);
 public:
 	Media();
 	virtual ~Media();
