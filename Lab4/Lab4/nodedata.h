@@ -22,7 +22,6 @@ class NodeData {
 public:
    NodeData(); // default constructor, data is set to an empty string
    ~NodeData();          
-         // data is set equal to parameter
    NodeData(const NodeData &);    // copy constructor
    virtual Media* create() = 0;
    NodeData& operator=(const NodeData &);     
@@ -36,8 +35,6 @@ public:
    virtual bool operator>(const NodeData &) const = 0;
    virtual bool operator<=(const NodeData &) const = 0;
    virtual bool operator>=(const NodeData &) const = 0;                
-private:
-   virtual string dataString() = 0;
 };
 
 #endif
