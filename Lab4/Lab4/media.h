@@ -77,7 +77,7 @@ public:
 	virtual const string* sortedByNames() const = 0;
 	string dataString() const;			//represents the work's data as a string (based on proper sorting)
 	virtual Media* create() = 0;
-	void addData(string,object);	//TODO: find proper syntax to replace "object"
+	void addData(string,string);	//TODO: find proper syntax to replace "object"
 	//comparison operators compare media by their sorting criteria
 	bool operator==(const Media &) const;
     bool operator!=(const Media &) const;
@@ -89,7 +89,7 @@ public:
     int borrowedCopies() const; 			//number of copies borrowed by customers
 private:
 	MediaFormat format;	//should this be a part of mediaData?
-	map<string,object> mediaData;	//IDEA: use a <string,string> map for simplicity (since data input comes from strings anyway),
+	map<string,string> mediaData;	//IDEA: use a <string,string> map for simplicity (since data input comes from strings anyway),
 									//for special cases, (like performing arithmetic operations on year), just make temp variables parsed from the string data.
 	int count = DEFAULT_MEDIA_QUANTITY;
 	int size = DEFAULT_MEDIA_QUANTITY;
