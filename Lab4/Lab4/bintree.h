@@ -63,10 +63,10 @@ private:
     * 
     */
    NodeData* data;
-   BinTreePtr* left;
-   BintreePtr* right;
+   BinTree* left;
+   Bintree* right;
    
-   Bi
+   BinTree* root;
    
    /*
     * size of the tree
