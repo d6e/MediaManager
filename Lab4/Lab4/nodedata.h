@@ -8,6 +8,8 @@ using namespace std;
 // simple class containing one string to use for testing
 // not necessary to comment further
 
+
+
 class NodeData {
    friend ostream & operator<<(ostream &, const NodeData &) = 0;
 
@@ -18,7 +20,7 @@ public:
    NodeData(const NodeData &);    // copy constructor
    NodeData& operator=(const NodeData &);     
    virtual void duplicate() =0; // signals overridden functions to handle dupiclate items
-   virtual string getKey() =0; // returns unique identifier
+   virtual string getKey() =0; // returns unique key that tells you type of object
 
    // comparison operators
    virtual bool operator==(const NodeData &) const = 0;

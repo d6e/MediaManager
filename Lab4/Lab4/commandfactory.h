@@ -6,9 +6,15 @@
 #include <string>
 
 /*
-Parses string command and input and sets it up so the product commands only
-have to read 
+The CommandFactory class parses out the command at the start of the string and creates a product
+command based on that command. The rest of the string is passed into the new
+command product.
+
+The CommandFactory constructor that takes a CustomerIndex and a MediaCollection
+is used to  
+
 */
+
 
 class CommandFactory {
 private:

@@ -30,18 +30,22 @@ it returns an Error object with an error message string describing the error,
 otherwise, if the object does exist it returns an Error object with an empty
 string. 
 
-The insertCustomer method takes in a customer pointer and inserts it
+The insertCustomer method inserts a pointer to a customer object into the 
+private member hashtable. It takes in a string used for the customerID which is
+the key in the hashtable customer pointer and inserts it into
+the custHT. 
 */
 
 class CustomerIndex {
 private:
     HashTable custHT; // A hashtable used to hold the customer objects
 public:
-    CustomerIndex();
-    Error addTransaction(custID, String);  // calls customer's addTransaction
-    bool customerExists(custID);           // 
+    CustomerIndex();     //constructor
+    ~CustomerIndex();    //destructor
+    Error addTransaction(custID, String); // calls customer's addTransaction
+    bool customerExists(custID);          // checks whether customer obj exists
     Error displayHistory(custID) const;
-    Error insertCustomer(Customer*); // inserts customer pointer into hashtable
+    void insertCustomer(String, Customer*); // adds customer ptr to hashtable
 };
 
 #endif
