@@ -46,35 +46,24 @@ public:
     * If found set true and return the string.
     * If not found return a not found message
     */
-   bool retrive( string[]) const; //
+   bool retrieve( NodeData*) const; //
    
    /*
     * Display in order traversal of the whole list
     */
-   void diplayInOrder();  // Display the tree
-   
-   /*
-    * return size
-    */
-   int getSize() const;
-   
+   void displayInOrder();  // Display the tree
    
 private:
    /*
     * 
     */
-   struct BinTreeNode{
+   struct Node{
       NodeData* data;
-      BinTree* left;
-      Bintree* right;
+      Node* left;
+      Node* right;
    };
    
    BinTree* root;
-   
-   /*
-    * size of the tree
-    */
-   int size;
 };
 
 #endif
