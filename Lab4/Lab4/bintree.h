@@ -9,7 +9,8 @@ using namespace std;
  * will fall into place according to if it is less than or greater than the root.
  *
  * The NodeData is assumed that all the data is formatted correctly to the point
- * they can be compared as we go.
+ * they can be compared as we go. All instances of BinTree should have all the
+ * same data types.
  */
 class BinTree {
 
