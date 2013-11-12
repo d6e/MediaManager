@@ -10,10 +10,10 @@ private:
 public:
    virtual MediaData();      // constructor
    virtual ~MediaData();     // destructor
-   MediaData(const Media *); // constructor for inserting Media
-   string dataType() const;  // returns unique identifier    
-   void duplicate();  // signals overridden functions to handle its quantity
-   virtual Error getKey(); //
+   MediaData(const Media *); // constructor for inserting Media 
+   void duplicate();  // signals media that quantity should be added.
+   virtual string getKey(); // returns unique identifier 
+   Media* getMedia();
 
    // comparison operators
    virtual bool operator==(const MediaData &) const;

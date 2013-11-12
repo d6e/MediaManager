@@ -16,10 +16,9 @@ public:
    virtual ~NodeData() = 0;          
          // data is set equal to parameter
    NodeData(const NodeData &);    // copy constructor
-   NodeData& operator=(const NodeData &);
-   virtual string dataType() const =0;    // returns unique identifier    
-   virtual void duplicate() =0; // signals overridden functions to handle its quantity
-   virtual Error getKey() =0;
+   NodeData& operator=(const NodeData &);     
+   virtual void duplicate() =0; // signals overridden functions to handle dupiclate items
+   virtual string getKey() =0; // returns unique identifier
 
    // comparison operators
    virtual bool operator==(const NodeData &) const = 0;
