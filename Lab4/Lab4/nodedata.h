@@ -24,27 +24,7 @@ public:
    virtual bool operator<(const NodeData &) const = 0;
    virtual bool operator>(const NodeData &) const = 0;
    virtual bool operator<=(const NodeData &) const = 0;
-   virtual bool operator>=(const NodeData &) const = 0;          
-private:
-   virtual Media* data = 0;          
-};
-
-class MediaData:NodeData {
-public:
-   virtual MediaData();
-   virtual ~MediaData();
-   MediaData(const Media *);
-   string dataType() const;
-   void duplicate();
-
-   virtual bool operator==(const MediaData &) const;
-   virtual bool operator!=(const MediaData &) const;
-   virtual bool operator<(const MediaData &) const;
-   virtual bool operator>(const MediaData &) const;
-   virtual bool operator<=(const MediaData &) const;
-   virtual bool operator>=(const MediaData &) const;
-private:
-   virtual Media* data;          
+   virtual bool operator>=(const NodeData &) const = 0;                
 };
 
 #endif
