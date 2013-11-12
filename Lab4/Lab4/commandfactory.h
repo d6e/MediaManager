@@ -1,10 +1,10 @@
-#pragma once
-#include "factory.h"
-class CommandFactory :
-	public Factory
+#ifndef COMMANDFACTORY_H
+#define COMMANDFACTORY_H
+class CommandFactory
 {
 public:
 	CommandFactory(void);
 	~CommandFactory(void);
 };
 
+#endif

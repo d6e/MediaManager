@@ -5,7 +5,9 @@
 
 /*
 The customer class is used to keep track of customer data. Each customer object 
-corresponds to each customer. As private datamembers, it possesses a history
+corresponds to each customer. 
+
+As private datamembers, it possesses a history
 object which is used to log all customer transactions, a first name string,
 a last name string, and a string for the customer ID. The customerID is a four
 digit int, but storing it as a string will be more flexible for the future.
