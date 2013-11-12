@@ -9,10 +9,11 @@
 class HistoryCMD : public Command {    
 private:
     CustomerIndex* cIndex;
+	String custInfo;
 public:
-    HistoryCMD();
+    HistoryCMD(CustomerIndex* index, String customerInfo);
     ~HistoryCMD();
-    execute(); 
+    Error execute(); 
 };
 
 #endif

@@ -72,104 +72,30 @@ class Media {
 public:
 	Media();
 	virtual ~Media();
-	virtual string mediaType() const = 0; //allows the media to say whether it is a movie, music album, book, etc
+	virtual string getFormat() const = 0; //allows the media to say whether it is a movie, music album, book, etc
 	virtual string genre() const = 0;	//returns the work's genre. Overridden for each specific media type/genre combination.
-	virtual string dataType() const; 	// a more general data getter which concatenates mediaType() and genreType(). Example: "comedymovie"
-	virtual const string* dataTypeNames() const = 0;
-	virtual const string* sortedByNames() const = 0;
-	string dataString() const;			//represents the work's data as a string (based on proper sorting)
-	virtual Media* create() = 0;
-	void addData(string,string);	//TODO: find proper syntax to replace "object"
+	virtual const string* dataTypeNames() const = 0; // Returns all data, inorder of input, deliminated by commas
+	virtual const string* sortedByNames() const = 0; // Returns the sorting data, deliminated by commas
+	virtual void display(); // Displays contents via cout
+	
 	//comparison operators compare media by their sorting criteria
-	bool operator==(const Media &) const;
-    bool operator!=(const Media &) const;
-    bool operator<(const Media &) const;
-    bool operator>(const Media &) const;
-    bool operator<=(const Media &) const;
-    bool operator>=(const Media &) const;
+	virtual bool operator==(const Media &) const;
+    virtual bool operator!=(const Media &) const;
+    virtual bool operator<(const Media &) const;
+    virtual bool operator>(const Media &) const;
+    virtual bool operator<=(const Media &) const;
+    virtual bool operator>=(const Media &) const;
+	
     void incrementQuantity();		//increments count and size by DEFAULT_MEDIA_QUANTITY
-    int borrowedCopies() const; 			//number of copies borrowed by customers
+    int getBorrowedItems() const; 			//number of copies borrowed by customers
+	int getRemainingItems() const; 			//number of copies borrowed by customers
 private:
-	MediaFormat format;	//should this be a part of mediaData?
-	map<string,string> mediaData;	//IDEA: use a <string,string> map for simplicity (since data input comes from strings anyway),
-									//for special cases, (like performing arithmetic operations on year), just make temp variables parsed from the string data.
+	MediaFormat format;	
+	map<string,string> mediaData;
 	int count = DEFAULT_MEDIA_QUANTITY;
 	int size = DEFAULT_MEDIA_QUANTITY;
+	void addData(string,string);
+	void setFormat(string);
 };
 
-//generic Movie
-class Movie: public Media {
-	const MediaFormat DVD("DVD"));	//possible formats for Movie
-	const MediaFormat bluRay("blu-ray"));
-	virtual string mediaType() const;		//overridden, always returns "movie"
-};
-//movie genres
-	class ClassicMovie: public Movie {
-	public:
-		const string CLASSIC_MOVIE_DATA_TYPES [] = 
-			{"director","title","famous actor","date"};
-		const string CLASSIC_MOVIE_SORTED_BY [] = {"date","famous actor"};
-		virtual const string* dataTypeNames() const;
-		virtual const string* sortedByNames() const;
-		virtual ClassicMovie* create(){return new ClassicMovie();}
-		virtual string genre() const;	//overridden, always returns "classic"
-};
-
-	class DramaMovie: public Movie {
-	public:
-		const string DRAMA_MOVIE_DATA_TYPES [] = {"director","title","date"};
-		const string DRAMA_MOVIE_SORTED_BY [] = {"director","title"};
-		virtual const string* dataTypeNames() const;
-		virtual const string* sortedByNames() const;
-		virtual DramaMovie* create(){return new DramaMovie();}
-		virtual string genre() const;	//overridden, always returns "drama"
-	};
-	class ComedyMovie: public Movie {
-	public:
-		const string COMEDY_MOVIE_DATA_TYPES [] = {"director","title","date"};
-		const string COMEDY_MOVIE_SORTED_BY [] = {"title","date"};
-		virtual const string* dataTypeNames() const;
-		virtual const string* sortedByNames() const;
-		virtual ComedyMovie* create(){return new ComedyMovie();}
-		virtual string genre() const;	//overridden, always returns "comedy"
-	};
-
-//generic Music
-class Music: public Media {
-	const MediaFormat CD("CD"));	//possible formats for Music
-	const MediaFormat cassette("cassette"));
-	virtual string mediaType() const;	//overridden, always returns "music"
-};
-//music genres
-	class RockMusic: public Music {
-		const string ROCK_MUSIC_DATA_TYPES [] = {"artist","title","date"};
-		const string ROCK_MUSIC_SORTED BY [] = {"artist","title"};
-		virtual const string* dataTypeNames() const;
-		virtual const string* sortedByNames() const;
-		virtual DramaMovie* create(){return new RockMusic();}
-		virtual string genre() const;	//overridden, always returns "rock"
-	};
-
-	class JazzMusic: public Music {
-		const string JAZZ_MUSIC_DATA_TYPES [] = {"artist","title","date"};
-		const string JAZZ_MUSIC_SORTED BY [] = {"artist","date"};
-		virtual const string* dataTypeNames() const;
-		virtual const string* sortedByNames() const;
-		virtual DramaMovie* create(){return new JazzMusic();}
-		virtual string genre() const;	//overridden, always returns "jazz"
-	};
-class Book: public Media {
-	const MediaFormat book("book"));	//possible formats for Book
-	const MediaFormat bookOnTape("book on tape"));
-	virtual string mediaType() const;	//overridden, always returns "book"
-};
-//book genres
-	class MysteryBook: public Book {
-		const string MYSTERY_BOOK_DATA_TYPES [] = {"author","title","date"};
-		const string MYSTERY_BOOK_SORTED BY [] = {"title","author"};
-		virtual const string* dataTypeNames() const;
-		virtual const string* sortedByNames() const;
-		virtual DramaMovie* create(){return new DramaMovie();}
-		virtual string genre() const;	//overridden, always returns "mystery"
-	};
 #endif

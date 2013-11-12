@@ -9,12 +9,11 @@
 */
 class DisplayAllMediaCMD : public Command {
 private:
-    CustomerIndex* cIndex;
     MediaCollection* mColl;
 public:
-    DisplayAllMediaCMD();
+    DisplayAllMediaCMD(MediaCollection* mColl);
     ~DisplayAllMediaCMD();
-    execute();
+    Error execute();
 };
 
 #endif

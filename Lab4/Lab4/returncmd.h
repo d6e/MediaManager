@@ -10,11 +10,11 @@ class ReturnCMD : public Command {
 private:
     CustomerIndex* cIndex;
     MediaCollection* mColl;
+	String mediaInfo;
 public:
-    ReturnCMD(mColl, cInd, custID);
+    ReturnCMD(mColl, cInd, custID, mediaInfo);
     ~ReturnCMD();
     execute();
-    getID() const;
 };
 
 #endif

@@ -24,13 +24,13 @@ private:
 
     CustomerIndex* cIndex; //customer Index pointer 
     MediaCollection* mColl; //media collection pointer 
+	String mediaInfo;
+	String custID;
 
 public:
-
-    BorrowCMD(mColl, cInd, custID); //default constructor
+    BorrowCMD(mColl, cInd, custID, mediaInfo); //default constructor
     ~BorrowCMD(); //default destructor 
-    bool execute(); //execute command from the IO 
-    int getID() const; //get the customer ID 
+    Error execute(); //execute command from the IO 
 };
 
 #endif

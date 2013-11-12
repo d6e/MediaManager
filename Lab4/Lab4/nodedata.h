@@ -23,7 +23,6 @@ public:
    NodeData(); // default constructor, data is set to an empty string
    ~NodeData();          
    NodeData(const NodeData &);    // copy constructor
-   virtual Media* create() = 0;
    NodeData& operator=(const NodeData &);     
    virtual void duplicate() = 0; // signals overridden functions to handle dupiclate items
    virtual string getKey() = 0; // returns unique identifier

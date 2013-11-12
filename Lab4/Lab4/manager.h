@@ -2,8 +2,8 @@
 #define MANAGER_H
 #include "customerindex.h"
 #include "mediacollection.h"
-#include "commandcontrol.h"
 #include "commandfactory.h"
+#include "mediafactory.h"
 #include "error.h"
 #include <string>
 
@@ -16,22 +16,21 @@ class Manager{
 private:
     CustomerIndex customerDB;
     MediaCollection mediaDB;
-    CustomerFactory cFactory;
+    CommandFactory cFactory;
     MediaFactory mFactory;
-    CommandControl controls;
-    Bool inputMedia(string);
-    Bool inputCustomer(string);
-    Bool initCmd();
-    Bool inputCmd(string);
-        // {    // pseudocode for inputCmd
-        //     Command CMD = CommandFactory.create(arg)
-        //     cmd.execute
-        //     delete cmd
-        // }
 
 public:
-	Manager();
+	Manager(); //Initializes all collections and factories
 	~Manager();
+	
+	Bool inputMedia(string);
+    Bool inputCustomer(string);
+    Bool inputCmd(string);
+	 // {    // pseudocode for inputCmd
+     //     Command CMD = CommandFactory.create(arg)
+     //     cmd.execute
+     //     delete cmd
+     // }
 };
 
 #endif

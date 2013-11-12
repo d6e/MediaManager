@@ -10,8 +10,6 @@ to override various functions.
 
 CustomerData has a private customer pointer.
 
-The 
-
 There is a whole set of comparison operators which are used to compare one
 CustomerData object with another. 
 */

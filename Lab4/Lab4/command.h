@@ -8,8 +8,6 @@
 Pure virtual command class. It is the parent to the other command classes.
 */
 class Command {
-private:
-    String custID;
 public:
     Command();
     ~Command();
