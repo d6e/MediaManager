@@ -13,9 +13,7 @@ private:
 public:
     ReturnCMD(mColl, cInd, custID);
     ~ReturnCMD();
-    execute(String);  // Parses string into sections. Checks validity of each section.
-        // if customer exists, it adds the transaction to the customer Index
-        // calls the mediacollection's return method
+    execute();
     getID() const;
 };
 

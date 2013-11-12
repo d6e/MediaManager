@@ -1,7 +1,10 @@
 #ifndef MEDIACOLLECTION_H
 #define MEDIACOLLECTION_H
-
+#include "error.h"
+#include "media.h"
 #include "collectiontree.h"
+#include "mediacollection.h"
+#include <string>
 
 class ListNode{
 	friend class MediaCollection;
@@ -29,6 +32,7 @@ public:
 	bool isEmpty() const;
 	void collectionToArray(CollectionTree* []) const;
 private:
+    Error displayAll() const;
 	void initializeArrayHelper(CollectionTree* []) const;
 	ListNode* root;
 };

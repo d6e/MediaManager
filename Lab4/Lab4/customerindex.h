@@ -6,8 +6,11 @@
 #include <string>
 
 /*
-The customerindex class is used to hold customer objects which corresponds
-to each customer that uses the system.   
+The customerindex class that constains all customer objects for each customer 
+who uses the system.   
+
+The class has a private datamember called custHT. It's a hashtable used to
+hold pointers to the customer objects. The key for it is the customerID.
 
 The addTransaction method looks up the customer object in the hashtable 
 using custID as a key, it then calls the customer object's addTransaction
@@ -18,20 +21,27 @@ parameter, if it does exist, the error object has an empty string.
 The customerExists method determines whether the customer object corresponding
 to the custID exists. It attempts to look up the customer object in the 
 hash table using custID as a key, if it exists it returns true, otherwise
-false.
+it returns false.
 
 The displayHistory method displays the customer's history by calling the
 customer object's displayHistory method. It looks up the customer object
-in the customer hash table and if it does not exist
+in the customer hash table using the custID parameter and if it does not exist
+it returns an Error object with an error message string describing the error,
+otherwise, if the object does exist it returns an Error object with an empty
+string. 
+
+The insertCustomer method takes in a customer pointer and inserts it
 */
+
 class CustomerIndex {
 private:
-    HashTable custHT;
+    HashTable custHT; // A hashtable used to hold the customer objects
 public:
     CustomerIndex();
     Error addTransaction(custID, String);  // looks up custID in hashtable, calls the costomer
     bool customerExists(custID);
     Error displayHistory(custID) const;
+    Error insertCustomer(Customer*); // inserts customer pointer into hashtable
 };
 
 #endif

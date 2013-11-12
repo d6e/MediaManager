@@ -6,7 +6,8 @@
 #include <string>
 
 /*
-
+Parses string command and input and sets it up so the product commands only
+have to read 
 */
 
 class CommandFactory {

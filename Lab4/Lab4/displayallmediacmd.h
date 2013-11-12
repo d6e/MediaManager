@@ -2,6 +2,7 @@
 #define DISPLAYALLMEDIACMD_H
 #include <string>
 #include "customerindex.h"
+#include "mediacollection.h"
 #include "command.h"
 
 /*
@@ -13,7 +14,7 @@ private:
 public:
     DisplayAllMediaCMD();
     ~DisplayAllMediaCMD();
-    execute(String);
+    execute();
 };
 
 #endif

@@ -12,7 +12,7 @@ private:
 public:
     HistoryCMD();
     ~HistoryCMD();
-    execute(string custID); // takes in customerID string and calls cIndex.display(custID)
+    execute(); 
 };
 
 #endif

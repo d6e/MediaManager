@@ -2,6 +2,7 @@
 #define BORROWCMD_H
 #include <string>
 #include "customerindex.h"
+#include "mediacollection.h"
 #include "command.h"
 
 /*
@@ -13,9 +14,7 @@ private:
 public:
     BorrowCMD(mColl, cInd, custID);
     ~BorrowCMD();
-    execute(String);// Parses string into sections. Checks validity of each section.
-        // if customer exists, it adds the transaction to the customer Index
-        // calls the mediacollection's borrow method
+    execute();
     getID() const;
 };
 
