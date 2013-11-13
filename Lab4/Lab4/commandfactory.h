@@ -10,7 +10,8 @@
 A factory that produces Commands based on a key to a hashtable containing 
 the different types of Command objects.
 
-The CommandFactory constructor that takes a CustomerIndex and a ProductCollection
+The CommandFactory constructor that takes a CustomerIndex and a
+ ProductCollection
 is used to pass along the two data structures to it's products.
 
 The create method takes in a string and parses out the command portion of the
