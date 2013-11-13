@@ -63,7 +63,7 @@ inserted, incrementQuantity() is called and increases each value by another 10.
 "count" refers to the number of available copies of the media, while size refers
 to the total number of copies that the store owns (i.e., all copies including
 those borrowed.) borrowedCopies() subtracts count from size to determine how
-many copies of a media have been borrowed.
+many copies of a product.have been borrowed.
 */
 
 //most generic Media type

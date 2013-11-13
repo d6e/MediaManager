@@ -2,7 +2,7 @@
 #define BORROWCMD_H
 #include <string>
 #include "customerindex.h"
-#include "mediacollection.h"
+#include "productcollection.h"
 #include "command.h"
 
 /*

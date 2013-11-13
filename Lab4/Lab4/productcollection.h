@@ -1,9 +1,9 @@
 #ifndef MEDIACOLLECTION_H
 #define MEDIACOLLECTION_H
 #include "error.h"
-#include "media.h"
+#include "product.h"
 #include "collectiontree.h"
-#include "mediacollection.h"
+#include "productcollection.h"
 #include <string>
 
 

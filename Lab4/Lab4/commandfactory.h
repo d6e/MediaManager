@@ -1,7 +1,7 @@
 #ifndef COMMANDFACTORY_H
 #define COMMANDFACTORY_H
 #include "customerindex.h"
-#include "mediacollection.h"
+#include "productcollection.h"
 #include "command.h"
 #include <string>
 

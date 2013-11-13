@@ -1,6 +1,6 @@
 #ifndef COMEDY_H
 #define COMEDY_H
-#include "media.h"
+#include "product.h"
 class Comedy : public Media {
 public:
 	Comedy(String director, String title);

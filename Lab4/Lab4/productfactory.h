@@ -1,6 +1,6 @@
 #ifndef MEDIAFACTORY_H
 #define MEDIAFACTORY_H
-#include "media.h"
+#include "product.h"
 #include <string>
 
 class MediaFactory

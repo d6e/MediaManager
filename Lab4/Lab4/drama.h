@@ -1,6 +1,6 @@
 #ifndef DRAMA_H
 #define DRAMA_H
-#include "media.h"
+#include "product.h"
 class Drama : public Media {
 public:
 	Drama(String director, String title, String date);

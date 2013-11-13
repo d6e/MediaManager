@@ -1,4 +1,4 @@
-#include "mediafactory.h"
+#include "productfactory.h"
 
 
 class MediaFactory

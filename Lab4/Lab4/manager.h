@@ -1,9 +1,9 @@
 #ifndef MANAGER_H
 #define MANAGER_H
 #include "customerindex.h"
-#include "mediacollection.h"
+#include "productcollection.h"
 #include "commandfactory.h"
-#include "mediafactory.h"
+#include "productfactory.h"
 #include "error.h"
 #include <string>
 

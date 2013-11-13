@@ -1,7 +1,7 @@
 #ifndef MEDIADATA_H
 #define MEDIADATA_H
 #include "nodedata.h"
-#include "media.h"
+#include "product.h"
 #include <string>
 
 /*
