@@ -5,7 +5,6 @@ todocument:
         productcollection.h
         productfactory.h
         collectiontree.h
-        bintree.h
 
     Danielle:
     x    commandfactory.h
