@@ -3,70 +3,77 @@
 #include <iostream>
 #include "nodedata.h"
 
-/* BinTree is a standard binary tree that will sort the data objects
- * as they come into the tree. Whatever comes in fist is the root the rest
- * will fall into place according to if it is less than or greater than the root.
- *
- * The NodeData is assumed that all the data is formatted correctly to the point
- * they can be compared as we go. All instances of BinTree should have all the
- * same data types.
- */
+/*BinTree is a standard binary tree that will sort inputted data objects as 
+nodes. The first inputted data becomes is the root, and the rest are sorted by 
+applying their comparison operators to existing nodes, sorting smaller-valued
+data "left", higher-valued data "right", and not inserting data that is equal to
+existing data.
+ 
+The NodeData stored in each Node is of a general type, meaning the bintree
+can store any kind of data that can inherit from the nodedata class, and 
+meaningfully sort this data as long as its instances have meaningful comparison
+operators, and as long all data in the bintree is of the same type. (For 
+example, a bintree of ComedyMovies is sorted first by title, then by date.)
+
+The << operator displays each item in the tree in sorted order. In order for it
+to work, the type of NodeData in the tree mus have a << operator as well. It
+calls displayInOrder() to help sort the tree's data in the proper order.
+
+BinTree's destructor calls makeEmpty(), which recursively deletes nodes and
+their nodeData from the bottom up.
+
+isEmpty() only needs to check the root of the tree to determine whether it is 
+empty, since a NULL root should always mean an empty tree.
+
+BinTree's = operator calls makeEmpty(), and then populates the tree with the
+same data as the right hand side of the expression. The latter process should
+work the same in the copy constructor.
+
+The insert() function attempts to insert a new node created from the NodeData
+arg, and returns true if the node was successfully inserted (i.e., if there are
+no duplicates according to the == operator). 
+
+When the tree is used to store 
+Products, each inserted Product is sorted based on its sorting order (ex: date,
+then famous actor), and if a duplicate is found, the Product stored in the 
+existing Node has its quantity incremented by some number (currently 10) which
+represents the quantity of each Product entered into the system.
+
+retrieve() searches the tree for a NodeData using its comparison operators, 
+returning false if it is not found and true if it is. It should return false
+immediately if the data searched is not of the same type contained in the tree
+(for instance, searching for a book in a tree of comedy movies).
+*/
+
 class BinTree {
 
 // ostream is for all output
 friend ostream& operator<<(ostream&, const BinTree&);
 
-// istream is used for inputting
-friend istream& operator>>(istream&, BinTree&);
-
 public:
 
-   /* 
-    * Create a tree with or with out any NodeData
-    */
    BinTree();              // No argument constructor
-   BinTree( const BinTree & );   // one argument constructor
+   BinTree(const BinTree & );   // copy constructor
    
-   ~BinTree();
+   ~BinTree();            //destructor
    
-   bool isEmpty() const;
-   void makeEmpty();
-   BinTree& operator=(const BinTree &);
-   /*
-    * Insert new data in proper order, insert should traverse
-    * until there is a spot for new data to be placed.
-    */
+   bool isEmpty() const;  //checks if the tree is empty
+   void makeEmpty();      //makes the tree empty
+   BinTree& operator=(const BinTree &);  //sets the tree equal to another tree
+
    bool insert( NodeData*); // insert new object
-   /*
-    * I chose a bool however we may not want a bool I felt we should
-    * know if we found what it is that we are looking for so I felt
-    * a true false was needed.
-    * If found set true and return the string.
-    * If not found return a not found message
-    */
-   bool retrieve( NodeData*) const; //
+   bool retrieve( NodeData*) const; //searches the Tree for a NodeData object
    
-   /*
-    * Display in order traversal of the whole list
-    */
-   void displayInOrder();  // Display the tree, calls NodeData.display();
+   int getSize() const;        //returns the number of nodes in the tree
    
 private:
-   /*
-    * 
-    */
    struct Node{
       NodeData* data;
       Node* left;
       Node* right;
    };
-   
    Node* root;
-   
-   /*
-    * size of the tree
-    */
-   int size;
+   string displayInOrder() const;  // string displaying the tree (helper for <<)
 };
 
 #endif
