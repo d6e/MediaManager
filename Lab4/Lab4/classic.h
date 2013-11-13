@@ -44,7 +44,8 @@ public:
 	
 	bool setData(Event*); // Returns false if input invalid.
     virtual Product* create(); // Creates a new, empty Classic object
-    virtual std::string type() const;	//returns the type ("classic") of product. Used as a key.
+	//returns the type ("classic") of product. Used as a key.
+    virtual std::string type() const;	
 	virtual void display(); // Displays contents via cout
 	
 	virtual const std::string* dataTypeNames() const;
