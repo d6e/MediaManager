@@ -6,7 +6,7 @@
 using namespace std;
 
 /*
-NodeData is an abstract class which can be a CustomerData object or a MediaData
+NodeData is an abstract class which can be a CustomerData object or a ProductData
 object.
 
 duplicate() lets the NodeData know that the system has received duplicate data. 

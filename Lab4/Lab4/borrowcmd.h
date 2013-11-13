@@ -25,12 +25,12 @@ class BorrowCMD : public Command {
 private:
 
     CustomerIndex* cIndex; //customer Index pointer 
-    MediaCollection* mColl; //media collection pointer 
-	String mediaInfo;
+    ProductCollection* mColl; //product collection pointer 
+	String productInfo;
 	String custID;
 
 public:
-    BorrowCMD(mColl, cInd, custID, mediaInfo); //default constructor
+    BorrowCMD(mColl, cInd, custID, productInfo); //default constructor
     ~BorrowCMD(); //default destructor 
     Error execute(); //execute command from the IO 
 };

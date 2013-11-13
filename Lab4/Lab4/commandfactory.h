@@ -10,7 +10,7 @@ The CommandFactory class parses out the command at the start of the string and c
 command based on that command. The rest of the string is passed into the new
 command product.
 
-The CommandFactory constructor that takes a CustomerIndex and a MediaCollection
+The CommandFactory constructor that takes a CustomerIndex and a ProductCollection
 is used to  
 
 */
@@ -19,10 +19,10 @@ is used to
 class CommandFactory {
 private:
     CustomerIndex cIndex;
-    MediaCollection mCollect;
+    ProductCollection mCollect;
 public:
     CommandFactory();
-	CommandFactory(CustomerIndex, MediaCollection);
+	CommandFactory(CustomerIndex, ProductCollection);
 	~CommandFactory();
     Command* create(String);
 };

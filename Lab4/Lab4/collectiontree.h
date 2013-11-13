@@ -18,7 +18,7 @@ public:
 private:
 	struct ListNode
 	{	
-		BinTree* mediaTree;
+		BinTree* productTree;
 		ListNode* next;
 	};
 	ListNode* root;

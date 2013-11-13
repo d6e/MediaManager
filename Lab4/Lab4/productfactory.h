@@ -3,20 +3,20 @@
 #include "product.h"
 #include <string>
 
-class MediaFactory
+class ProductFactory
 {
 public:
-    MediaFactory();    //fills mediatemplates with instances of each instantiatable Media object
-    ~MediaFactory();
-    Media *createMedia(std::string arg); //parses input to create Media objects
+    ProductFactory();    //fills producttemplates with instances of each instantiatable Product object
+    ~ProductFactory();
+    Product *createProduct(std::string arg); //parses input to create Product objects
 private:
 	const std::string[] GENRE_CODES = {"F","C","D"};
 	const std::string[] MEDIUM_CODES = {"D"};
 	const int GENRE_AMOUNT = 3; 	
 	
-	bool createComedy(Media*&, std::string); // mItem doesn't point to anything unless return true
-	bool createDrama(Media*&, std::string); // mItem doesn't point to anything unless return true
-	bool createClassic(Media*&, std::string); // mItem doesn't point to anything unless return true
+	bool createComedy(Product*&, std::string); // mItem doesn't point to anything unless return true
+	bool createDrama(Product*&, std::string); // mItem doesn't point to anything unless return true
+	bool createClassic(Product*&, std::string); // mItem doesn't point to anything unless return true
 	
 	
 };

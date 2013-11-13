@@ -1,7 +1,7 @@
 #ifndef CLASSIC_H
 #define CLASSIC_H
 #include "product.h"
-class Classic : public Media {
+class Classic : public Product {
 public:
 	Classic(String director, String title, String famousActor, String date);
 	~Classic(void);
@@ -9,13 +9,13 @@ public:
 	virtual const string* sortedByNames() const;
 	virtual string genre() const;	//overridden, always returns "classic"
 	
-	//comparison operators compare media by their sorting criteria
-	virtual bool operator==(const Media &) const;
-    virtual bool operator!=(const Media &) const;
-    virtual bool operator<(const Media &) const;
-    virtual bool operator>(const Media &) const;
-    virtual bool operator<=(const Media &) const;
-    virtual bool operator>=(const Media &) const;
+	//comparison operators compare product by their sorting criteria
+	virtual bool operator==(const Product &) const;
+    virtual bool operator!=(const Product &) const;
+    virtual bool operator<(const Product &) const;
+    virtual bool operator>(const Product &) const;
+    virtual bool operator<=(const Product &) const;
+    virtual bool operator>=(const Product &) const;
 	
 private:
 	const string CLASSIC_DATA_TYPES [] = {"director","title","famous actor","date"};

@@ -1,6 +1,6 @@
-class MediaFormat {
+class ProductFormat {
 public:
-	MediaFormat(string);
+	ProductFormat(string);
 	string getFormat();
 private:
 	string formatName;

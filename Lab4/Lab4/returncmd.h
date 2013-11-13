@@ -22,11 +22,11 @@ class ReturnCMD : public Command {
 private:
 
     CustomerIndex* cIndex; //pointer to the customer index
-    MediaCollection* mColl; //pointer to the media collection 
-    String mediaInfo; //variable to store the variable info 
+    ProductCollection* mColl; //pointer to the product collection 
+    String productInfo; //variable to store the variable info 
 
 public:
-    ReturnCMD(mColl, cInd, custID, mediaInfo); //default constructor 
+    ReturnCMD(mColl, cInd, custID, productInfo); //default constructor 
     ~ReturnCMD(); //default destructor 
     bool execute(); //validate the cmd input 
 };

@@ -15,15 +15,15 @@ class Manager{
 
 private:
     CustomerIndex customerDB;
-    MediaCollection mediaDB;
+    ProductCollection productDB;
     CommandFactory cFactory;
-    MediaFactory mFactory;
+    ProductFactory mFactory;
 
 public:
 	Manager(); //Initializes all collections and factories
 	~Manager();
 	
-	bool inputMedia(std::string);
+	bool inputProduct(std::string);
     bool inputCustomer(std::string);
     bool inputCmd(std::string);
 	 // {    // pseudocode for inputCmd

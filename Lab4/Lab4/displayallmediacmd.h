@@ -7,12 +7,12 @@
 
 /*
 */
-class DisplayAllMediaCMD : public Command {
+class DisplayAllProductCMD : public Command {
 private:
-    MediaCollection* mColl;
+    ProductCollection* mColl;
 public:
-    DisplayAllMediaCMD(MediaCollection* mColl);
-    ~DisplayAllMediaCMD();
+    DisplayAllProductCMD(ProductCollection* mColl);
+    ~DisplayAllProductCMD();
     Error execute();
 };
 

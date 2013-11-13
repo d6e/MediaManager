@@ -1,7 +1,7 @@
 #ifndef COMEDY_H
 #define COMEDY_H
 #include "product.h"
-class Comedy : public Media {
+class Comedy : public Product {
 public:
 	Comedy(String director, String title);
 	~Comedy(void);
@@ -10,13 +10,13 @@ public:
 	virtual const string* sortedByNames() const;
 	virtual string genre() const;	//overridden, always returns "comedy"
 	
-	//comparison operators compare media by their sorting criteria
-	virtual bool operator==(const Media &) const;
-    virtual bool operator!=(const Media &) const;
-    virtual bool operator<(const Media &) const;
-    virtual bool operator>(const Media &) const;
-    virtual bool operator<=(const Media &) const;
-    virtual bool operator>=(const Media &) const;
+	//comparison operators compare product by their sorting criteria
+	virtual bool operator==(const Product &) const;
+    virtual bool operator!=(const Product &) const;
+    virtual bool operator<(const Product &) const;
+    virtual bool operator>(const Product &) const;
+    virtual bool operator<=(const Product &) const;
+    virtual bool operator>=(const Product &) const;
 	
 private:
 	const string COMEDY_DATA_TYPES [] = {"director","title","date"};

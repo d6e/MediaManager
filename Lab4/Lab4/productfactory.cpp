@@ -1,13 +1,13 @@
 #include "productfactory.h"
 
 
-class MediaFactory
+class ProductFactory
 {
 private:
-	Media* mediaTemplates[];
+	Product* productTemplates[];
 public:
-	MediaFactory();
-	~MediaFactory();
-	Media *createMedia(string,ifstream&);	//parses input to create movies
-	Media *createMedia(const Movie& m);		//used in place of a copy constructor for Media
+	ProductFactory();
+	~ProductFactory();
+	Product *createProduct(string,ifstream&);	//parses input to create movies
+	Product *createProduct(const Movie& m);		//used in place of a copy constructor for Product
 };
