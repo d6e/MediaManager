@@ -20,7 +20,7 @@ of object stored by NodeData.
 class NodeData {
 public:
    NodeData(); // default constructor,
-   ~NodeData();          
+   ~NodeData();   // destructor
    NodeData(const NodeData &);    // copy constructor
    NodeData& operator=(const NodeData &);     
    virtual void duplicate(NodeData*) = 0; // Gives NodeData the duplicate to handle it.
