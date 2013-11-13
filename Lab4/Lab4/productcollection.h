@@ -14,8 +14,12 @@ insert, retrieve, and print
 */
 
 class ProductCollection{
+<<<<<<< HEAD
 	/* overwrite the << operator */
 	friend ostream & operator<<(ostream &, const ProductCollection &);
+=======
+	friend std::ostream & operator<<(std::ostream &, const ProductCollection &);
+>>>>>>> 25ad46307ae710a73e49865d099d6a8120f33089
 public:
 	ProductCollection(); //default constractor
 	virtual ~ProductCollection(); //default destructor 
