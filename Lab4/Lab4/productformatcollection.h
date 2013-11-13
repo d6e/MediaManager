@@ -20,7 +20,7 @@ private:
 		ProductFormat* format;
 		int count = DEFAULT_PRODUCT_QUANTITY;
 	    int size = DEFAULT_PRODUCT_QUANTITY;
-	}
+	};
 		
 	std::list<FormatAmount> formatDataList;
 };

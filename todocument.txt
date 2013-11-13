@@ -11,11 +11,11 @@ todocument:
     x    commandfactory.h
         productformat.h 
         historycmd.h 
-        drama.h 
         displayallproductcmd.h
         customerdata.h
         command.h
-        comedy.h
+        drama.h 
+    x    comedy.h
         classic.h
 
 Todo:

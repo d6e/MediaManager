@@ -4,7 +4,8 @@
 #include <string>
 
 /*
-Contains the attributes of a Movie. Valid formats of Movies are initialized here.
+Contains the attributes of a Movie. Valid formats of Movies are initialized 
+here.
 */
 class Movie : public Product 
 {
