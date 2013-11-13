@@ -2,35 +2,24 @@
 #define EVENT_H
 #include "error.h"
 #include <string>
+#include <list>
 
 /*
-An event object holds the data for a transaction. 
+An event object holds the data for a command.
 
-It has two private string datamembers, one for the borrowed/returned status 
-called borrowedOrReturned and another for the rest of the string. The 
-borrowed/returned status will likely be a single character 
-(B or R respectively) for our usage, but we chose to use a string as that will 
-allow for more flexibility in the future. 
-
-The display method prints both the borrowedOrReturned string and the
-otherinfo string as one line. 
-
-The set method parses the string passed into it and assigns the first 
-substring to the borrowedOrReturned string and the rest of the string to the
-otherInfo String. If the setting fails it returns an Error object with a 
-relevant error message, otherwise it returns an Error object with an empty
-string.  
+In parsing the intial string, it divides up the string into parts deliminated by whitespace
+and inputs them into the list . Commas are always seperated out into its own node as
+a special marker.
 */
 
 class Event {
 private:
-    std::string borrowedOrReturned;  // the first character or substring passed in
-    std::string otherInfo;           // all the other string data
+    list<std::string> arguments;
 public:
     void display() const;  // Display the data from one event object
     Event();
     ~Event();
-    Error set(std::string); // Parses input, sets corresponding data to datamembers
+    Error set(std::string); // Parses input a string into the list.
 };
 
 

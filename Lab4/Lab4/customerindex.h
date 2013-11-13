@@ -42,10 +42,10 @@ private:
 public:
     CustomerIndex();     //constructor
     ~CustomerIndex();    //destructor
-    Error addTransaction(custID, String); // calls customer's addTransaction
-    bool customerExists(custID);          // checks whether customer obj exists
-    Error displayHistory(custID) const;
-    void insertCustomer(String, Customer*); // adds customer ptr to hashtable
+    Error addTransaction(Event*); // calls customer's addTransaction
+    bool customerExists(std::string);   // checks whether customer obj exists from an customer id
+    Error displayHistory(std::string) const; //displays a customer's history from customer ID
+    void insertCustomer(Customer*); // adds customer ptr to hashtable
 };
 
 #endif

@@ -24,6 +24,9 @@ object.
 The tableRetrieve function will retrieve a tyep of NodeData object from the 
 hashtable and will return an error, if the data retrieved is node a NodeData 
 object.
+
+NOTE: Design of this class was based on examples from
+Data Abstraction & Problem Solving with C++ (5th Edition) by Frank Carrano
 */
 
 class HashTable {
@@ -36,11 +39,8 @@ public:
 	virtual bool tableIsEmpty() const; //check if table is empty or not 
 	virtual int tableGetLength() const; //get the length of the table 
 	virtual void tableInsert(const NodeData& newItem) //insert data into the table
-				throw(TableException);
 	virtual void tableDelete(KeyType searchKey) //delete item from the table
-				throw(TableException);
 	virtual void tableRetrieve(KeyType searchKey, NodeData& tableItem) const 
-				throw(TableException); //retrieve data from the table
 				
 protected:
 	int hashIndex(KeyType searchKey) const; //hash function 

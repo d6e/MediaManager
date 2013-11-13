@@ -2,7 +2,6 @@
 #define BINTREE_H
 #include <iostream>
 #include "nodedata.h"
-using namespace std;
 
 /* BinTree is a standard binary tree that will sort the data objects
  * as they come into the tree. Whatever comes in fist is the root the rest
@@ -14,7 +13,6 @@ using namespace std;
  */
 class BinTree {
 
-// We may not need these at all I was not sure how we are reading in.
 // ostream is for all output
 friend ostream& operator<<(ostream&, const BinTree&);
 
@@ -51,7 +49,7 @@ public:
    /*
     * Display in order traversal of the whole list
     */
-   void displayInOrder();  // Display the tree
+   void displayInOrder();  // Display the tree, calls NodeData.display();
    
 private:
    /*
