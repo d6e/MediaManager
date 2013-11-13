@@ -45,9 +45,8 @@ protected:
 	int resize(int size);
 private:
 	int hashTableSize = 2001; //size of the hash table 
-	NodeData* table[hastTableSize];
+	NodeData* table[hashTableSize];
 
 }; //end HashTable
-typedef KeyType;
 
 #endif 
