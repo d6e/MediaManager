@@ -7,7 +7,7 @@
 
 */
 
-class Comedy : public Product {
+class Comedy : public Media{
 public:
 	Comedy(std::string director, std::string title);
 	~Comedy(void);

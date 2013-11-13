@@ -1,7 +1,7 @@
 #ifndef CLASSIC_H
 #define CLASSIC_H
 #include "product.h"
-class Classic : public Product {
+class Classic : public Media{
 public:
 	Classic(String director, String title, String famousActor, String date);
 	~Classic(void);
