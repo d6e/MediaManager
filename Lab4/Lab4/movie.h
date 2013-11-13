@@ -12,3 +12,5 @@ class Movie : public Product
 private:
 	virtual initValidFormats(); // Inits to DVD for now.
 };
+
+#endif

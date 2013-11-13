@@ -2,6 +2,8 @@
 #define PRODUCTDATA_H
 #include "nodedata.h"
 #include "product.h"
+#include "productdata.h"
+#include "nodedata.h"
 #include <string>
 
 /*
@@ -30,7 +32,7 @@ public:
    ~ProductData();     // destructor
    ProductData(const Product *); // constructor for inserting Product 
    void duplicate(NodeData*);  // signals product that quantity or format should be added.
-   virtual string getKey(); // returns unique identifier 
+   virtual std::string getKey(); // returns unique identifier 
    Product* getProduct();
 
    // comparison operators

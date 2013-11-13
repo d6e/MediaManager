@@ -17,3 +17,5 @@ private:
 	int hash(string key);
 	
 };
+
+#endif
