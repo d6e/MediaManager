@@ -1,6 +1,7 @@
 #ifndef BINTREE_H
 #define BINTREE_H
 #include <iostream>
+#include <string>
 #include "nodedata.h"
 
 /*BinTree is a standard binary tree that will sort inputted data objects as 
@@ -48,32 +49,32 @@ immediately if the data searched is not of the same type contained in the tree
 class BinTree {
 
 // ostream is for all output
-friend ostream& operator<<(ostream&, const BinTree&);
+friend std::ostream& operator<<(std::ostream&, const BinTree&);
 
 public:
 
-   BinTree();              // No argument constructor
-   BinTree(const BinTree & );   // copy constructor
-   
-   virtual ~BinTree();            //destructor
-   
-   bool isEmpty() const;  //checks if the tree is empty
-   void makeEmpty();      //makes the tree empty
-   BinTree& operator=(const BinTree &);  //sets the tree equal to another tree
+    BinTree();              // No argument constructor
+    BinTree(const BinTree & );   // copy constructor
 
-   bool insert( NodeData*); // insert new object
-   bool retrieve( NodeData*) const; //searches the Tree for a NodeData object
-   
-   int getSize() const;        //returns the number of nodes in the tree
+    virtual ~BinTree();            //destructor
+
+    bool isEmpty() const;  //checks if the tree is empty
+    void makeEmpty();      //makes the tree empty
+    BinTree& operator=(const BinTree &);  //sets the tree equal to another tree
+
+    bool insert( NodeData*); // insert new object
+    bool retrieve( NodeData*) const; //searches the Tree for a NodeData object
+
+    int getSize() const;        //returns the number of nodes in the tree
    
 private:
-   struct Node{
-      NodeData* data;
-      Node* left;
-      Node* right;
-   };
-   Node* root;
-   string displayInOrder() const;  // string displaying the tree (helper for <<)
+    struct Node{
+        NodeData* data;
+        Node* left;
+        Node* right;
+    };
+    Node* root;
+    std::string displayInOrder() const;  // string displaying the tree (helper for <<)
 };
 
 #endif

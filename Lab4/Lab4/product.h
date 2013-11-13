@@ -1,6 +1,5 @@
 #ifndef PRODUCT_H
 #define PRODUCT_H
-#include <map>
 #include "hashtable.h"
 #include <string>
 #include "event.h"
