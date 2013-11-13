@@ -21,7 +21,7 @@ private:
     ProductCollection pCollect;
 	const int HASH_TABLE_SIZE = 256; //create a hash table with the size of 256
 	Product* hashTable; // A pointer to an array of Products implemented as a hash table
-	int hash(string key); //find the given key in the hash table 
+	int hash(std::string key); //find the given key in the hash table 
 	
 };
 
