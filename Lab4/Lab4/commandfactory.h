@@ -2,6 +2,7 @@
 #define COMMANDFACTORY_H
 #include "customerindex.h"
 #include "productcollection.h"
+#include "productfactory.h"
 #include "command.h"
 #include <string>
 
