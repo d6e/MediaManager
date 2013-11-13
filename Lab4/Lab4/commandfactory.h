@@ -17,8 +17,9 @@ public:
     Command* create(string key);   // Creates and inits cmd obj based on key given, returns null if invalid key
 	
 private:
-    CustomerIndex cIndex;
-    ProductCollection pCollect;
+    CustomerIndex* cIndex; // For commands that need access to the customers
+    ProductCollection* pCollect; // For commands that need to access the products
+	MediaFactory* mFactory; // For commands that need to create products.
 	const int HASH_TABLE_SIZE = 256;
 	Command* hashTable; // A pointer to an array of Commands implemented as a hash table
 	int hash(string key);
