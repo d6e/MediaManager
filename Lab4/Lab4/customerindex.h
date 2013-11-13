@@ -41,7 +41,7 @@ private:
     HashTable custHT; // A hashtable used to hold the customer objects
 public:
     CustomerIndex();     //constructor
-    ~CustomerIndex();    //destructor
+    virtual ~CustomerIndex();    //destructor
     Error addTransaction(Event*); // calls customer's addTransaction
     bool customerExists(std::string);   // checks whether customer obj exists from an customer id
     Error displayHistory(std::string) const; //displays a customer's history from customer ID

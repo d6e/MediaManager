@@ -20,7 +20,7 @@ private:
 
 public:
     History();
-    ~History();               // deletes each node in the list. 
+    virtual ~History();               // deletes each node in the list. 
     void displayAll() const;  // Iterates through displays all event objects
     void addEvent(Event*);// Adds event to eventList
 

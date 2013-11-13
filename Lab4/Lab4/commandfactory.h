@@ -21,7 +21,7 @@ command it parsed. Finally, it returns a pointer to that command.
 class CommandFactory {
 public:
 	CommandFactory(CustomerIndex, ProductCollection);  // constructor, inits hash table
-	~CommandFactory();    // destructor
+	virtual ~CommandFactory();    // destructor
     Command* create(std::string key);   // Creates and inits cmd obj based on key given, returns null if invalid key
 	
 private:
