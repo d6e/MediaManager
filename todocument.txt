@@ -8,17 +8,17 @@ todocument:
 
     Danielle:
     x    commandfactory.h
-        productformat.h 
-        historycmd.h 
-        displayallproductcmd.h
-        customerdata.h
+    x    productformat.h 
+    x    historycmd.h 
+    x    displayallproductcmd.h
+    x    customerdata.h
     x    command.h
     x    drama.h 
     x    comedy.h
     x    classic.h
 
 Todo:
-header documentation (take a look at media class)
-need to update the diagrams so that "media" is changed to "product"
 make sure things compile
 80char limit
+double check the design spec
+make a namespace
