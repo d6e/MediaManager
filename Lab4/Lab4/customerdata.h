@@ -17,15 +17,12 @@ CustomerData object with another.
 class CustomerData : public NodeData {
 private:
    Customer* data;                  // points to customer object
-   virtual string dataString();
 public:
    virtual CustomerData();          // constructor
    virtual ~CustomerData();         // destructor
-   CustomerData(const Customer*);   // Constructor for customer object
-   virtual CustomerData* create(){return new CustomerData();}
-   virtual string dataType() const; // returns unique identifier        
-   virtual void duplicate();        // LEAVE THIS AN EMPTY METHOD
-   virtual Error getKey();          // returns the customer's ID key
+   virtual void duplicate(NodeData*);        // CustomerData doesn't need to handle duplicates.
+   virtual bool getKey();          // returns the customer's ID key
+   Customer* getCustomer(); //returns the Customer CustomerData is pointing to.
 
    // comparison operators
    virtual bool operator==(const CustomerData &) const;

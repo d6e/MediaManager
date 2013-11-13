@@ -5,13 +5,14 @@
 #include <string>
 
 /*
-Pure virtual command class. It is the parent to the other command classes.
+A command executes some operation on the system.
 */
 class Command {
 public:
     Command();
-    ~Command();
-    Error execute(String);
+    virtual ~Command();
+	virtual bool setData(Event*) =0; // Returns false if data invalid, for factory use only.
+    virtual Error execute() =0; // Returns NULL if no error occured.
 };
 
 #endif

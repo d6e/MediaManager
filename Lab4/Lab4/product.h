@@ -1,6 +1,5 @@
 #ifndef MEDIA_H
 #define MEDIA_H
-#define DEFAULT_MEDIA_QUANTITY 10;
 #include <map>
 #include <string>
 #include <iostream>
@@ -68,15 +67,16 @@ many copies of a product.have been borrowed.
 
 //most generic Product type
 class Product {
-	friend ostream & operator<<(ostream &, const Movie &);
 public:
 	Product();
 	virtual ~Product();
-	virtual string getFormat() const = 0; //allows the product to say whether it is a movie, music album, book, etc
-	virtual string genre() const = 0;	//returns the work's genre. Overridden for each specific product type/genre combination.
+	bool setData(Event); // Returns false if input invalid.
+    virtual Product* create() = 0; // Creates a new, empty Product 
+    virtual string type() const = 0;	//returns the type (the class) of product. Used as a key.
+	virtual void display(); // Displays contents via cout
+	
 	virtual const string* dataTypeNames() const = 0; // Returns all data, inorder of input, deliminated by commas
 	virtual const string* sortedByNames() const = 0; // Returns the sorting data, deliminated by commas
-	virtual void display(); // Displays contents via cout
 	
 	//comparison operators compare product by their sorting criteria
 	virtual bool operator==(const Product &) const;
@@ -86,16 +86,17 @@ public:
     virtual bool operator<=(const Product &) const;
     virtual bool operator>=(const Product &) const;
 	
-    void incrementQuantity();		//increments count and size by DEFAULT_MEDIA_QUANTITY
-    int getBorrowedItems() const; 			//number of copies borrowed by customers
-	int getRemainingItems() const; 			//number of copies borrowed by customers
+    void incrementQuantity(ProductFormat);		//increments the quantity of a particular product format.
+    int getBorrowedItems(ProductFormat) const; 			//number of copies borrowed by customers of a particular product format
+	int getRemainingItems(ProductFormat) const; 			//number of copies borrowed by customers of a particular product format
 private:
-	ProductFormat format;	
-	map<string,string> productData;
-	int count = DEFAULT_MEDIA_QUANTITY;
-	int size = DEFAULT_MEDIA_QUANTITY;
-	void addData(string,string);
-	void setFormat(string);
+	ProductFormatCollection inventory; //Contains the quantities and different formats this product has.	
+	map<string,string> productData;     //Contains the attributes of this product.
+	map<string,ProductFormat> validFormats; //Contains valid formats of the product. The identifier code is the key.
+    bool addData(string key,string value);         // Returns false if key doesn't exist  in productData;
+	virtual void initValidFormats() = 0; // All products must have possible format(s).
+	bool addFormat(ProductFormat); //Returns false if data invalid.
+	
 };
 
 #endif

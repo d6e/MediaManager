@@ -10,9 +10,6 @@ to override various functions and is stored in a bintree.
 
 ProductData has a private Product pointer.
 
-dataString() is an inherited method from NodeData, and calls the Product data's
-<< operator.
-
 The comparison operators are used to compare one ProductData object with another
 by sorting criteria. To do so, they simply call the same operators on the
 ProductData's respective data objects.
@@ -28,13 +25,11 @@ would return "moviecomedy" upon this call.)
 class ProductData : public NodeData {
 private:
    Product* data;
-   virtual string dataString();   //calls its data's << operator          
 public:
-   ProductData();      // constructor
+   ProductData(Product*);      // constructor
    ~ProductData();     // destructor
    ProductData(const Product *); // constructor for inserting Product 
-   virtual ProductData* create(){return new ProductData();}
-   void duplicate();  // signals product that quantity should be added.
+   void duplicate(NodeData*);  // signals product that quantity or format should be added.
    virtual string getKey(); // returns unique identifier 
    Product* getProduct();
 

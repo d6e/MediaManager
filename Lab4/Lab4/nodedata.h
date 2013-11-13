@@ -10,6 +10,7 @@ NodeData is an abstract class which can be a CustomerData object or a ProductDat
 object.
 
 duplicate() lets the NodeData know that the system has received duplicate data. 
+and gives it the duplicate so that it can handle it.
 It is not defined in this class, but in the child classes.
 
 getKey() returns some unique identifier providing information about the class
@@ -17,14 +18,12 @@ of object stored by NodeData.
 */
 
 class NodeData {
-   friend ostream & operator<<(ostream &, const NodeData &) = 0;
-
 public:
-   NodeData(); // default constructor, data is set to an empty string
+   NodeData(); // default constructor,
    ~NodeData();          
    NodeData(const NodeData &);    // copy constructor
    NodeData& operator=(const NodeData &);     
-   virtual void duplicate() = 0; // signals overridden functions to handle dupiclate items
+   virtual void duplicate(NodeData*) = 0; // Gives NodeData the duplicate to handle it.
    virtual string getKey() = 0; // returns unique identifier
 
    // comparison operators

@@ -29,7 +29,7 @@ private:
 
 public:
     void displayHistory() const; // Calls history's displayAll method
-    void addTransaction(std::string); // Calls history's addTransaction method
+    void addEvent(Event*); // Calls history's addTransaction method
 };
 
 #endif

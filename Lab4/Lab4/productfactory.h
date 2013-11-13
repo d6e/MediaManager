@@ -6,17 +6,14 @@
 class ProductFactory
 {
 public:
-    ProductFactory();    //fills producttemplates with instances of each instantiatable Product object
+    ProductFactory(ProductCollection);    //fills producttemplates with instances of each instantiatable Product object
     ~ProductFactory();
-    Product *createProduct(std::string arg); //parses input to create Product objects
+    Product *create(std::string key); //parses input to create Product objects, returns null if invalid hash key
+	
 private:
-	const std::string[] GENRE_CODES = {"F","C","D"};
-	const std::string[] MEDIUM_CODES = {"D"};
-	const int GENRE_AMOUNT = 3; 	
-	
-	bool createComedy(Product*&, std::string); // mItem doesn't point to anything unless return true
-	bool createDrama(Product*&, std::string); // mItem doesn't point to anything unless return true
-	bool createClassic(Product*&, std::string); // mItem doesn't point to anything unless return true
-	
+    ProductCollection pCollect;
+	const int HASH_TABLE_SIZE = 256;
+	Product* hashTable; // A pointer to an array of Products implemented as a hash table
+	int hash(string key);
 	
 };

@@ -1,14 +1,17 @@
 #ifndef DRAMA_H
 #define DRAMA_H
 #include "product.h"
-class Drama : public Media{
+class Drama : public Movie{
 public:
-	Drama(String director, String title, String date);
+	Drama();
 	~Drama(void);
+	bool setData(Event*); // Returns false if input invalid.
+    virtual Product* create(); // Creates a new, empty Drama object
+    virtual string type() const;	//returns the type ("drama") of product. Used as a key.
+	virtual void display(); // Displays contents via cout
 	
 	virtual const string* dataTypeNames() const;
 	virtual const string* sortedByNames() const;
-	virtual string genre() const;	//overridden, always returns "drama"
 	
 	//comparison operators compare product by their sorting criteria
 	virtual bool operator==(const Product &) const;
@@ -21,9 +24,6 @@ public:
 private:
 	const string DRAMA_DATA_TYPES [] = {"director","title","date"};
 	const string DRAMA_SORTED_BY [] = {"director","title"};
-	void addData(string, string);
-	void setFormat(string);
-
 };
 
 #endif

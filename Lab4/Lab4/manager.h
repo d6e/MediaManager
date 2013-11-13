@@ -8,29 +8,25 @@
 #include <string>
 
 /*
-The manager class is the main controller for the program.
+The manager class is the main controller for the program. IO is handled outside the Manager class
+so all input is assumed to be lines of strings.
 */
 
 class Manager{
 
 private:
-    CustomerIndex customerDB;
-    ProductCollection productDB;
-    CommandFactory cFactory;
-    ProductFactory mFactory;
+    CustomerIndex customerDB; // Stores customer information and history.
+    ProductCollection productDB; // Stores product information and quantities
+    CommandFactory cFactory; // Creates commands.
+    ProductFactory mFactory; // Creates products.
 
 public:
 	Manager(); //Initializes all collections and factories
 	~Manager();
 	
-	bool inputProduct(std::string);
-    bool inputCustomer(std::string);
-    bool inputCmd(std::string);
-	 // {    // pseudocode for inputCmd
-     //     Command CMD = CommandFactory.create(arg)
-     //     cmd.execute
-     //     delete cmd
-     // }
+	bool inputProduct(std::string); // Inputs new products, prints errors in process, returns false if failed.
+    bool inputCustomer(std::string);// Inputs new customers, prints errors in process, returns false if failed.
+    bool inputCmd(std::string);// Inputs commands into system, prints errors in process, returns false if failed.
 };
 
 #endif
