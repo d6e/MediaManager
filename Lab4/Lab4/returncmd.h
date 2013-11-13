@@ -7,7 +7,15 @@
 /*
 This class will return the valid command entered by the user
 If the command is valid, it will execute the command and return NULL
- otherwise it will return error.
+otherwise it will return error.
+
+The ReturnCMD is the default constructor for this class 
+
+The ~ReturnCMD is the default destructor for this class
+
+The execute command will execute the given command from the IO
+It will return true, if the command is found and return ERROR 
+message if the command is not found.
 */
 
 class ReturnCMD : public Command {
@@ -18,9 +26,9 @@ private:
 
 public:
     ReturnCMD(CustomerIndex*, ProductCollection*, Event*); //default constructor 
-    ~ReturnCMD(); //default destructor 
+    virtual ~ReturnCMD(); //default destructor 
 	virtual bool setData(Event); // Returns false if data invalid, for factory use only.
-    Error execute(); //validate the cmd input 
+    Error execute(); //execute command from the IO 
 };
 
 #endif

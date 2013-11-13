@@ -60,10 +60,9 @@ public:
 private:
 	struct ListNode
 	{	
-		//std::string key;	//TODO: remove this if it's ok with fernando
+		std::string key;	
 		BinTree* productTree;
 		ListNode* next;
-
 	};
 	ListNode* root;
 	std::string getKey(const ListNode) const;
