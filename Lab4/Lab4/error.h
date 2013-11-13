@@ -19,7 +19,7 @@ private:
 public:
     Error();  // Creates an error object with an empty string
     Error(std::string err);  // assigns error message string to datamember string
-    ~Error();
+    virtual ~Error();
     std::string getErrorMessage() const;  // returns msg
 };
 

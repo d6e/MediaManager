@@ -4,11 +4,19 @@
 
 /*
 Specifies a product's format. For a movie, this could be a DVD or Blueray.
+
+The constructor takes in a string and sets the private datamember to it.
+
+The getName method returns the private formatname string.
+
+The equals method checks if two productformats match. Returns true if they 
+are, false if they're not.
 */
+
 class ProductFormat {
 public:
-	ProductFormat(std::string);
-	std::string getName();
+	ProductFormat(std::string); // constructor
+	std::string getName(); // returns the private formatname string
 	bool equals(const ProductFormat); //Checks if two ProductFormats are equivilent
 private:
 	std::string formatName;

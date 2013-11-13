@@ -13,7 +13,7 @@ command exists.
 
 The BorrowCMD is the default constructor for this class 
 
-The ~BorrowCMD is the default destructor for this class
+The virtual ~BorrowCMD is the default destructor for this class
 
 The execute command will execute the given command from the IO
 It will return true, if the command is found and return ERROR 
@@ -29,7 +29,7 @@ private:
 
 public:
     BorrowCMD(CustomerIndex*,ProductCollection*, Event*); //default constructor
-    ~BorrowCMD(); //default destructor 
+    virtual ~BorrowCMD(); //default destructor 
     virtual bool setData(Event*); // Returns false if data invalid, for factory use only.
     Error execute(); //execute command from the IO 
 };

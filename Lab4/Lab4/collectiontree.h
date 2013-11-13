@@ -51,7 +51,7 @@ class CollectionTree {
 public:
 	CollectionTree(); 						//  constructor 
 	CollectionTree(const CollectionTree &); //copy constructor	
-	~CollectionTree(); 					//  destructor, calls makeEmpty 
+	virtual ~CollectionTree(); 					//  destructor, calls makeEmpty 
 	bool isEmpty() const; // true if collection tree is empty, otherwise false 
 	void makeEmpty(); // empties the collection tree
 	bool insert(NodeData*);					// Insert node
@@ -61,10 +61,9 @@ public:
 private:
 	struct ListNode
 	{	
-		//std::string key;	//TODO: remove this if it's ok with fernando
+		std::string key;	
 		BinTree* productTree;
 		ListNode* next;
-
 	};
 	ListNode* root;
 	//gets a unique key identifying a ListNode's associated object

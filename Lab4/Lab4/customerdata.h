@@ -8,10 +8,20 @@
 The CustomerData class is a child of the NodeData class. It uses polymorphism
 to override various functions.
 
-CustomerData has a private customer pointer.
+CustomerData has a private Customer pointer.
 
-There is a whole set of comparison operators which are used to compare one
-CustomerData object with another. 
+The comparison operators are used to compare one CustomerData object with another
+by sorting criteria. To do so, they simply call the same operators on the
+CustomerData's respective data objects.
+
+The duplictate() method is used to notify a NodeData object that a duplicate
+data instance has been detected. It should call incrementQuantity() on data.
+
+getKey() returns a unique identifier for the *class* (not the specific data) of
+data. It does this by calling Customer's dataType(). (for example, a comedy Movie
+would return "moviecomedy" upon this call.) 
+
+The getCustomer method returns the customer object pointer.
 */
 
 class CustomerData : public NodeData {

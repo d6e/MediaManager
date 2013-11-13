@@ -22,14 +22,16 @@ data instance has been detected. It should call incrementQuantity() on data.
 getKey() returns a unique identifier for the *class* (not the specific data) of
 data. It does this by calling Product's dataType(). (for example, a comedy Movie
 would return "moviecomedy" upon this call.) 
+
+The getProduct method returns the product object pointer.
 */
 
 class ProductData : public NodeData {
 private:
    Product* data;
 public:
-   ProductData(Product*);      // constructor
-   ~ProductData();     // destructor
+   ProductData(Product*);        // constructor
+   virtual ~ProductData();               // destructor
    ProductData(const Product *); // constructor for inserting Product 
    void duplicate(NodeData*);  // signals product that quantity or format should be added.
    virtual std::string getKey(); // returns unique identifier 

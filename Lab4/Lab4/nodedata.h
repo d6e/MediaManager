@@ -3,7 +3,6 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-using namespace std;
 
 /*
 NodeData is an abstract class which can be a CustomerData object or a ProductData
@@ -19,20 +18,20 @@ of object stored by NodeData.
 
 class NodeData {
 public:
-   NodeData(); // default constructor,
-   ~NodeData();   // destructor
-   NodeData(const NodeData &);    // copy constructor
-   NodeData& operator=(const NodeData &);     
-   virtual void duplicate(NodeData*) = 0; // Gives NodeData the duplicate to handle it.
-   virtual string getKey() = 0; // returns unique identifier
+    NodeData(); // default constructor,
+    virtual ~NodeData();   // destructor
+    NodeData(const NodeData &);    // copy constructor
+    NodeData& operator=(const NodeData &);     
+    virtual void duplicate(NodeData*) = 0; // Gives NodeData the duplicate to handle it.
+    virtual std::string getKey() = 0; // returns unique identifier
 
-   // comparison operators
-   virtual bool operator==(const NodeData &) const = 0;
-   virtual bool operator!=(const NodeData &) const = 0;
-   virtual bool operator<(const NodeData &) const = 0;
-   virtual bool operator>(const NodeData &) const = 0;
-   virtual bool operator<=(const NodeData &) const = 0;
-   virtual bool operator>=(const NodeData &) const = 0;                
+    // comparison operators
+    virtual bool operator==(const NodeData &) const = 0;
+    virtual bool operator!=(const NodeData &) const = 0;
+    virtual bool operator<(const NodeData &) const = 0;
+    virtual bool operator>(const NodeData &) const = 0;
+    virtual bool operator<=(const NodeData &) const = 0;
+    virtual bool operator>=(const NodeData &) const = 0;                
 };
 
 #endif

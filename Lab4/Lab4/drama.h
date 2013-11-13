@@ -40,7 +40,7 @@ with another.
 class Drama : public Movie{
 public:
 	Drama();
-	~Drama(void);
+	virtual ~Drama(void);
 	bool setData(Event*); // Returns false if input invalid.
     virtual Product* create(); // Creates a new, empty Drama object
     virtual std::string type() const;	//returns the type ("drama") of product. Used as a key.
