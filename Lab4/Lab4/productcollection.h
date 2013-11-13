@@ -9,7 +9,7 @@
 
 
 class ProductCollection{
-	friend ostream & operator<<(ostream &, const ProductCollection &);
+	friend std::ostream & operator<<(std::ostream &, const ProductCollection &);
 public:
 	ProductCollection();
 	virtual ~ProductCollection();

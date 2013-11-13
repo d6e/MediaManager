@@ -94,8 +94,8 @@ public:
 	int getRemainingItems(ProductFormat) const; 			//number of copies borrowed by customers of a particular product format
 private:
 	ProductFormatCollection inventory; //Contains the quantities and different formats this product has.	
-	map<std::string,std::string> productData;     //Contains the attributes of this product.
-	map<std::string,ProductFormat> validFormats; //Contains valid formats of the product. The identifier code is the key.
+	std::map<std::string,std::string> productData;     //Contains the attributes of this product.
+	std::map<std::string,ProductFormat> validFormats; //Contains valid formats of the product. The identifier code is the key.
     bool addData(std::string key,std::string value);         // Returns false if key doesn't exist  in productData;
 	virtual void initValidFormats() = 0; // All products must have possible format(s).
 	bool addFormat(ProductFormat); //Returns false if data invalid.
