@@ -1,5 +1,6 @@
 #ifndef PRODUCTFORMAT_H
 #define PRODUCTFORMAT_H
+#include <string>
 
 /*
 
@@ -7,10 +8,10 @@
 
 class ProductFormat {
 public:
-	ProductFormat(string);
-	string getFormat();
+	ProductFormat(std::string);
+	std::string getFormat();
 private:
-	string formatName;
+	std::string formatName;
 };
 
 #endif

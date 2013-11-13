@@ -20,5 +20,6 @@ todocument:
 
 Todo:
 header documentation
+need to update the diagrams so that "media" is changed to "product"
 make sure things compile
 80char limit
