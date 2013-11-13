@@ -15,12 +15,12 @@ error message datamember.
 
 class Error {
 private:
-    String msg;
+    std::string msg;
 public:
     Error();  // Creates an error object with an empty string
-    Error(String err);  // assigns error message string to datamember string
+    Error(std::string err);  // assigns error message string to datamember string
     ~Error();
-    String getErrorMessage() const;  // returns msg
+    std::string getErrorMessage() const;  // returns msg
 };
 
 

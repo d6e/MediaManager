@@ -24,13 +24,13 @@ string.
 
 class Event {
 private:
-    String borrowedOrReturned;  // the first character or substring passed in
-    String otherInfo;           // all the other string data
+    std::string borrowedOrReturned;  // the first character or substring passed in
+    std::string otherInfo;           // all the other string data
 public:
     void display() const;  // Display the data from one event object
     Event();
     ~Event();
-    Error set(String); // Parses input, sets corresponding data to datamembers
+    Error set(std::string); // Parses input, sets corresponding data to datamembers
 };
 
 

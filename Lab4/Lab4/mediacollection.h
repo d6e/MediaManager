@@ -2,7 +2,6 @@
 #define MEDIACOLLECTION_H
 #include "error.h"
 #include "media.h"
-#include "medianode.h"
 #include "collectiontree.h"
 #include "mediacollection.h"
 #include <string>

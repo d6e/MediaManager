@@ -2,6 +2,7 @@
 #define HISTORY_H
 #include "event.h"
 #include <list>
+#include <string>
 
 /*
 History objects hold a list of event objects. It is used to keep track of
@@ -26,7 +27,7 @@ public:
     History();
     ~History();               // deletes each node in the list. 
     void displayAll() const;  // Iterates through displays all event objects
-    void addTransaction(String);// Creates a new event and adds it to eventList
+    void addTransaction(std::string);// Creates a new event and adds it to eventList
 
 };
 #endif

@@ -23,13 +23,13 @@ addTransaction method with the string as a parameter.
 class Customer {
 private:
     History customerHistory; // customer's history
-    String firstName;        // first name of customer
-    String lastName;         // last name of customer
-    String customerID;       // four digit int stored as a string
+    std::string firstName;        // first name of customer
+    std::string lastName;         // last name of customer
+    std::string customerID;       // four digit int stored as a string
 
 public:
     void displayHistory() const; // Calls history's displayAll method
-    void addTransaction(String); // Calls history's addTransaction method
+    void addTransaction(std::string); // Calls history's addTransaction method
 };
 
 #endif

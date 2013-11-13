@@ -23,9 +23,9 @@ public:
 	Manager(); //Initializes all collections and factories
 	~Manager();
 	
-	Bool inputMedia(string);
-    Bool inputCustomer(string);
-    Bool inputCmd(string);
+	bool inputMedia(std::string);
+    bool inputCustomer(std::string);
+    bool inputCmd(std::string);
 	 // {    // pseudocode for inputCmd
      //     Command CMD = CommandFactory.create(arg)
      //     cmd.execute
