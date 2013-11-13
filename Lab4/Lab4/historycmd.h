@@ -10,7 +10,7 @@ associated with them.
 
 The HistoryCMD is the default constructor for this class.
 
-The ~HistoryCMD is the default destructor for this class.
+The virtual ~HistoryCMD is the default destructor for this class.
 
 The execute command will execute the given command from the IO
 It will return true, if the command is found and return ERROR 

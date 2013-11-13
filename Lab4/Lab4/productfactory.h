@@ -7,7 +7,7 @@ class ProductFactory
 {
 public:
     ProductFactory(ProductCollection);    //fills producttemplates with instances of each instantiatable Product object
-    ~ProductFactory();
+    virtual ~ProductFactory();
     Product *create(std::string key); //parses input to create Product objects, returns null if invalid hash key
 	
 private:

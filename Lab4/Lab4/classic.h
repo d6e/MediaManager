@@ -40,7 +40,7 @@ with another.
 class Classic : public Movie{
 public:
 	Classic(std::string director, std::string title, std::string famousActor, std::string date);
-	~Classic(void);
+	virtual ~Classic(void);
 	
 	bool setData(Event*); // Returns false if input invalid.
     virtual Product* create(); // Creates a new, empty Classic object

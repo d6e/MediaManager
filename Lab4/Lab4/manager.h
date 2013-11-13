@@ -22,7 +22,7 @@ private:
 
 public:
 	Manager(); //Initializes all collections and factories
-	~Manager();
+	virtual ~Manager();
 	
 	bool inputProduct(std::string); // Inputs new products, prints errors in process, returns false if failed.
     bool inputCustomer(std::string);// Inputs new customers, prints errors in process, returns false if failed.

@@ -13,7 +13,7 @@ private:
 	Product* productTemplates[];
 public:
 	ProductFactory();
-	~ProductFactory();
+	virtual ~ProductFactory();
 	Product *createProduct(std::string,ifstream&);	//parses input to create movies
 	Product *createProduct(const Movie& m);		//used in place of a copy constructor for Product
 };

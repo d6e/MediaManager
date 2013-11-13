@@ -55,7 +55,7 @@ public:
    BinTree();              // No argument constructor
    BinTree(const BinTree & );   // copy constructor
    
-   ~BinTree();            //destructor
+   virtual ~BinTree();            //destructor
    
    bool isEmpty() const;  //checks if the tree is empty
    void makeEmpty();      //makes the tree empty

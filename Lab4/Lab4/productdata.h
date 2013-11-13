@@ -31,7 +31,7 @@ private:
    Product* data;
 public:
    ProductData(Product*);        // constructor
-   ~ProductData();               // destructor
+   virtual ~ProductData();               // destructor
    ProductData(const Product *); // constructor for inserting Product 
    void duplicate(NodeData*);  // signals product that quantity or format should be added.
    virtual std::string getKey(); // returns unique identifier 

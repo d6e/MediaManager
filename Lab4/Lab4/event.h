@@ -23,7 +23,7 @@ private:
 public:
     void display() const;  // Display the data from one event object
     Event();
-    ~Event();
+    virtual ~Event();
     Error set(std::string); // Parses input a string into the list.
 };
 
