@@ -5,7 +5,7 @@
 #include "event.h"
 #include "productformat.h"
 #include "productformatcollection.h"
-#include "hashtable.h"
+#include <map>
 #include <iostream>
 
 /*
@@ -102,15 +102,14 @@ private:
 	//Contains the quantities and different formats this product has.	
 	ProductFormatCollection inventory; 
 	//Contains the attributes of this product.
-	HashTable<std::string,std::string> productData;    
+	std::map<std::string,std::string> productData;    
 	//Contains valid formats of the product. The identifier code is the key. 
-	HashTable<std::string,ProductFormat> validFormats; 
+	std::map<std::string,ProductFormat> validFormats; 
 	// Returns false if key doesn't exist  in productData;
     bool addData(std::string key,std::string value); 
     // All products must have possible format(s).        
 	virtual void initValidFormats() = 0; 
 	bool addFormat(ProductFormat); //Returns false if data invalid.
-	
 };
 
 #endif

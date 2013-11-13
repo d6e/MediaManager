@@ -18,8 +18,8 @@ private:
 	struct FormatAmount
 	{
 		ProductFormat* format;
-		int count = DEFAULT_PRODUCT_QUANTITY;
-	    int size = DEFAULT_PRODUCT_QUANTITY;
+		int count;
+	    int size;
 	};
 		
 	std::list<FormatAmount> formatDataList;

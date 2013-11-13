@@ -3,19 +3,19 @@
 #include "productfactory.h"
 #include "product.h"
 #include "movie.h"
-#include <fstream>
 #include <string>
 
 
 class ProductFactory
 {
-private:
-	Product* productTemplates[];
 public:
 	ProductFactory();
 	virtual ~ProductFactory();
-	Product *createProduct(std::string,ifstream&);	//parses input to create movies
-	Product *createProduct(const Movie& m);		//used in place of a copy constructor for Product
+	Product *createProduct(std::string);	//parses input to create movies
+private:
+	static const int HASH_TABLE_SIZE = 256;
+	Product* hashTable; // A pointer to an array of Product implemented as a hash table
+	int hash(std::string key);
 };
 
 #endif

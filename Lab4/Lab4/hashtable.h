@@ -31,7 +31,7 @@ Data Abstraction & Problem Solving with C++ (5th Edition) by Frank Carrano
 
 class HashTable {
 public:
-	HashTable(); //default constructor 
+	HashTable(); //default constructor, creates array for hashtable
 	HashTable(const HashTable& table); 
 	virtual ~HashTable(); //default destructor 
 
@@ -44,10 +44,10 @@ protected:
 	int hashIndex(std::string searchKey) const; //hash function 
 	int resize(int size);
 private:
-	int hashTableSize = 2001; //size of the hash table 
-	NodeData* table[hastTableSize];
-
+	static const int DEFAULT_HASH_TABLE_SIZE = 2001;
+	int hashTableSize; //size of the hash table 
+	NodeData* tablePtr; //Points to first element of dynamic array.
 }; //end HashTable
-typedef KeyType;
+
 
 #endif 
