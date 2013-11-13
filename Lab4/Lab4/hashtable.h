@@ -38,7 +38,8 @@ public:
 	/* table operations */
 	virtual bool tableIsEmpty() const; //check if table is empty or not 
 	virtual int tableGetLength() const; //get the length of the table 
-	virtual void tableInsert(const NodeData& newItem); //insert data into the table
+	//insert data into the table
+	virtual void tableInsert(const NodeData& newItem); 
 	virtual void tableDelete(KeyType searchKey); //delete item from the table
 	virtual void tableRetrieve(KeyType searchKey, NodeData& tableItem) const;
 				
@@ -53,5 +54,6 @@ private:
 	int size; //size of the ADT table 
 
 }; //end HashTable
+typedef KeyType;
 
 #endif 

@@ -46,6 +46,7 @@ insert(), traversing the nodes and checking for a match with getKey(), and then
 calling the matching node's bintree's retrieve(). Unlike insert(), retrieve()
 returns false if it reaches the last ListNode without finding a match.
 */
+
 class CollectionTree {  
 public:
 	CollectionTree(); 						//  constructor 
@@ -66,6 +67,7 @@ private:
 
 	};
 	ListNode* root;
+	//gets a unique key identifying a ListNode's associated object
 	std::string getKey(const ListNode) const;
 };
 
