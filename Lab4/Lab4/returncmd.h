@@ -3,6 +3,7 @@
 #include <string>
 #include "customerindex.h"
 #include "command.h"
+#include "productcollection.h"
 
 /*
 This class will return the valid command entered by the user

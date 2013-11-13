@@ -2,6 +2,7 @@
 #define COMMANDFACTORY_H
 #include "customerindex.h"
 #include "productcollection.h"
+#include "productfactory.h"
 #include "command.h"
 #include <string>
 
@@ -27,7 +28,7 @@ public:
 private:
     CustomerIndex* cIndex; // For commands that need access to the customers
     ProductCollection* pCollect; // For commands that need to access the products
-	MediaFactory* mFactory; // For commands that need to create products.
+	ProductFactory* mFactory; // For commands that need to create products.
 	const int HASH_TABLE_SIZE = 256;
 	Command* hashTable; // A pointer to an array of Commands implemented as a hash table
 	int hash(std::string key);
