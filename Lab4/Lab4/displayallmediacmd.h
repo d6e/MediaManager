@@ -1,5 +1,5 @@
-#ifndef DISPLAYALLMEDIACMD_H
-#define DISPLAYALLMEDIACMD_H
+#ifndef DISPLAYALLPRODUCTCMD_H
+#define DISPLAYALLPRODUCTCMD_H
 #include <string>
 #include "customerindex.h"
 #include "productcollection.h"

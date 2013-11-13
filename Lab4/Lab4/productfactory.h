@@ -1,5 +1,5 @@
-#ifndef MEDIAFACTORY_H
-#define MEDIAFACTORY_H
+#ifndef PRODUCTFACTORY_H
+#define PRODUCTFACTORY_H
 #include "product.h"
 #include <string>
 
@@ -17,3 +17,5 @@ private:
 	int hash(string key);
 	
 };
+
+#endif

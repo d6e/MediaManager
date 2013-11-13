@@ -1,9 +1,10 @@
-#ifndef MEDIA_H
-#define MEDIA_H
+#ifndef PRODUCT_H
+#define PRODUCT_H
 #include <map>
 #include <string>
+#include "event.h"
+#include "productformat.h"
 #include <iostream>
-using namespace std;
 
 /*
 Product class
@@ -34,7 +35,7 @@ types like ComedyMovie (which would return "comedy"). dataType() concatenates
 these two strings to create a unique idenifier for an instantiable product type,
 aiding in sorting.
 
-dataTypeNames() and sortedByNames() are helper metods which quickly retrieve the
+dataTypeNames() and sortedByNames() are helper methods which quickly retrieve the
 corresponding _DATA_TYPES and _SORTED_BY arrays. 
 
 dataString() outputs the Product object's format, along with all of its data in 
@@ -72,11 +73,11 @@ public:
 	virtual ~Product();
 	bool setData(Event); // Returns false if input invalid.
     virtual Product* create() = 0; // Creates a new, empty Product 
-    virtual string type() const = 0;	//returns the type (the class) of product. Used as a key.
+    virtual std::string type() const = 0;	//returns the type (the class) of product. Used as a key.
 	virtual void display(); // Displays contents via cout
 	
-	virtual const string* dataTypeNames() const = 0; // Returns all data, inorder of input, deliminated by commas
-	virtual const string* sortedByNames() const = 0; // Returns the sorting data, deliminated by commas
+	virtual const std::string* dataTypeNames() const = 0; // Returns all data, inorder of input, deliminated by commas
+	virtual const std::string* sortedByNames() const = 0; // Returns the sorting data, deliminated by commas
 	
 	//comparison operators compare product by their sorting criteria
 	virtual bool operator==(const Product &) const;
@@ -91,9 +92,9 @@ public:
 	int getRemainingItems(ProductFormat) const; 			//number of copies borrowed by customers of a particular product format
 private:
 	ProductFormatCollection inventory; //Contains the quantities and different formats this product has.	
-	map<string,string> productData;     //Contains the attributes of this product.
-	map<string,ProductFormat> validFormats; //Contains valid formats of the product. The identifier code is the key.
-    bool addData(string key,string value);         // Returns false if key doesn't exist  in productData;
+	map<std::string,std::string> productData;     //Contains the attributes of this product.
+	map<std::string,ProductFormat> validFormats; //Contains valid formats of the product. The identifier code is the key.
+    bool addData(std::string key,std::string value);         // Returns false if key doesn't exist  in productData;
 	virtual void initValidFormats() = 0; // All products must have possible format(s).
 	bool addFormat(ProductFormat); //Returns false if data invalid.
 	

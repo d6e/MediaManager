@@ -11,15 +11,15 @@ todocument:
     x    commandfactory.h
         productformat.h 
         historycmd.h 
-        drama.h 
         displayallproductcmd.h
         customerdata.h
         command.h
-        comedy.h
+        drama.h 
+    x    comedy.h
         classic.h
 
 Todo:
-header documentation
+header documentation (take a look at media class)
 need to update the diagrams so that "media" is changed to "product"
 make sure things compile
 80char limit
