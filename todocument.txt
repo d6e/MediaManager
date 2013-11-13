@@ -1,5 +1,5 @@
 todocument:
-
+// These headers need documenting
     someone else:
         manager.h
         mediacollection.h
@@ -17,3 +17,9 @@ todocument:
         command.h
         comedy.h
         classic.h
+
+Todo:
+rename all instances of media to product
+header documentation
+make sure things compile
+80char limit
