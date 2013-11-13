@@ -18,7 +18,8 @@ private:
     std::string msg;
 public:
     Error();  // Creates an error object with an empty string
-    Error(std::string err);  // assigns error message string to datamember string
+     // assigns error message string to datamember string
+    Error(std::string err); 
     virtual ~Error();
     std::string getErrorMessage() const;  // returns msg
 };

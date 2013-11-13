@@ -36,9 +36,11 @@ public:
 	virtual ~HashTable(); //default destructor 
 
 	/* table operations */
-	virtual void tableInsert(const NodeData& newItem); //insert data into the table, NodeData contains key
-	virtual void tableDelete(std::string searchKey); //delete item from the table
-	virtual void tableRetrieve(std::string searchKey, NodeData& tableItem) const;
+    //insert data into the table, NodeData contains key
+	virtual void tableInsert(const NodeData& newItem); 
+    //delete item from the table
+	virtual void tableDelete(std::string searchKey); 
+	virtual void tableRetrieve(std::string searchKey,NodeData& tableItem)const;
 				
 protected:
 	int hashIndex(std::string searchKey) const; //hash function 

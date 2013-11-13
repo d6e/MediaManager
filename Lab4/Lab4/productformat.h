@@ -17,7 +17,8 @@ class ProductFormat {
 public:
 	ProductFormat(std::string); // constructor
 	std::string getName(); // returns the private formatname string
-	bool equals(const ProductFormat); //Checks if two ProductFormats are equivilent
+    //Checks if two ProductFormats are equivilent
+	bool equals(const ProductFormat); 
 private:
 	std::string formatName;
 };

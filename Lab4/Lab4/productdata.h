@@ -20,8 +20,8 @@ The duplictate() method is used to notify a NodeData object that a duplicate
 data instance has been detected. It should call incrementQuantity() on data.
 
 getKey() returns a unique identifier for the *class* (not the specific data) of
-data. It does this by calling Product's dataType(). (for example, a comedy Movie
-would return "moviecomedy" upon this call.) 
+data. It does this by calling Product's dataType(). (for example, a comedy 
+Movie would return "moviecomedy" upon this call.) 
 
 The getProduct method returns the product object pointer.
 */
@@ -33,7 +33,8 @@ public:
    ProductData(Product*);        // constructor
    virtual ~ProductData();               // destructor
    ProductData(const Product *); // constructor for inserting Product 
-   void duplicate(NodeData*);  // signals product that quantity or format should be added.
+   // signals product that quantity or format should be added.
+   void duplicate(NodeData*);  
    virtual std::string getKey(); // returns unique identifier 
    Product* getProduct();
 

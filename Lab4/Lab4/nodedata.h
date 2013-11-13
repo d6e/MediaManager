@@ -5,8 +5,8 @@
 #include <fstream>
 
 /*
-NodeData is an abstract class which can be a CustomerData object or a ProductData
-object.
+NodeData is an abstract class which can be a CustomerData object or a 
+ProductData object.
 
 duplicate() lets the NodeData know that the system has received duplicate data. 
 and gives it the duplicate so that it can handle it.
@@ -22,7 +22,8 @@ public:
     virtual ~NodeData();   // destructor
     NodeData(const NodeData &);    // copy constructor
     NodeData& operator=(const NodeData &);     
-    virtual void duplicate(NodeData*) = 0; // Gives NodeData the duplicate to handle it.
+    // Gives NodeData the duplicate to handle it.
+    virtual void duplicate(NodeData*) = 0; 
     virtual std::string getKey() = 0; // returns unique identifier
 
     // comparison operators

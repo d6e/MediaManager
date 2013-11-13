@@ -43,7 +43,8 @@ public:
 	virtual ~Drama(void);
 	bool setData(Event*); // Returns false if input invalid.
     virtual Product* create(); // Creates a new, empty Drama object
-    virtual std::string type() const;	//returns the type ("drama") of product. Used as a key.
+    //returns the type ("drama") of product. Used as a key.
+    virtual std::string type() const;	
 	virtual void display(); // Displays contents via cout
 	
 	virtual const std::string* dataTypeNames() const;
