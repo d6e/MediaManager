@@ -39,11 +39,11 @@ public:
 	virtual bool tableIsEmpty() const; //check if table is empty or not 
 	virtual int tableGetLength() const; //get the length of the table 
 	virtual void tableInsert(const NodeData& newItem); //insert data into the table
-	virtual void tableDelete(KeyType searchKey); //delete item from the table
-	virtual void tableRetrieve(KeyType searchKey, NodeData& tableItem) const;
+	virtual void tableDelete(string searchKey); //delete item from the table
+	virtual void tableRetrieve(string searchKey, NodeData& tableItem) const;
 				
 protected:
-	int hashIndex(KeyType searchKey) const; //hash function 
+	int hashIndex(string searchKey) const; //hash function 
 	
 private:
 	static const int HASH_TABLE_SIZE = 2001; //size of the hash table 
