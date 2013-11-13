@@ -1,5 +1,5 @@
-#ifndef MEDIACOLLECTION_H
-#define MEDIACOLLECTION_H
+#ifndef PRODUCTCOLLECTION_H
+#define PRODUCTCOLLECTION_H
 #include "error.h"
 #include "product.h"
 #include "collectiontree.h"

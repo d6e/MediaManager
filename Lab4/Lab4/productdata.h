@@ -1,5 +1,5 @@
-#ifndef MEDIADATA_H
-#define MEDIADATA_H
+#ifndef PRODUCTDATA_H
+#define PRODUCTDATA_H
 #include "nodedata.h"
 #include "product.h"
 #include <string>
