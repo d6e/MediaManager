@@ -2,24 +2,23 @@ todocument:
 // These headers need documenting
     someone else:
         manager.h
-        mediacollection.h
-        mediafactory.h
+        productcollection.h
+        productfactory.h
         collectiontree.h
         bintree.h
 
     Danielle:
         commandfactory.h
-        mediaformat.h 
+        productformat.h 
         historycmd.h 
         drama.h 
-        displayallmediacmd.h
+        displayallproductcmd.h
         customerdata.h
         command.h
         comedy.h
         classic.h
 
 Todo:
-rename all instances of media to product
 header documentation
 make sure things compile
 80char limit
