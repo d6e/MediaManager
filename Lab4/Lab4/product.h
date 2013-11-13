@@ -4,6 +4,7 @@
 #include <string>
 #include "event.h"
 #include "productformat.h"
+#include "productformatcollection.h"
 #include <iostream>
 
 /*

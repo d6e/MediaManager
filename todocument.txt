@@ -13,7 +13,7 @@ todocument:
         historycmd.h 
         displayallproductcmd.h
         customerdata.h
-        command.h
+    x    command.h
     x    drama.h 
     x    comedy.h
     x    classic.h

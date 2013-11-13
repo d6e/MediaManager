@@ -1,6 +1,7 @@
 #ifndef COLLECTIONTREE_H
 #define COLLECTIONTREE_H
 #include "nodedata.h"
+#include "bintree.h"
 
 /*
 A CollectionTree is a linked list of binary trees. 
