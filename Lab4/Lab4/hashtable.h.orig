@@ -39,6 +39,9 @@ public:
 	virtual bool tableIsEmpty() const; //check if table is empty or not 
 	virtual int tableGetLength() const; //get the length of the table 
 	//insert data into the table
+	virtual void tableInsert(const NodeData& newItem); 
+	virtual void tableDelete(KeyType searchKey); //delete item from the table
+	virtual void tableRetrieve(KeyType searchKey, NodeData& tableItem) const;
 	virtual void tableInsert(const NodeData& newItem); //insert data into the table, NodeData contains key
 	virtual void tableDelete(std::string searchKey); //delete item from the table
 	virtual void tableRetrieve(std::string searchKey, NodeData& tableItem) const;
@@ -50,8 +53,12 @@ private:
 	const static int HASH_TABLE_SIZE = 2001; //size of the hash table 
 	NodeData* table[HASH_TABLE_SIZE];
 	int hashTableSize = 2001; //size of the hash table 
+<<<<<<< HEAD
 	NodeData* table[hashTableSize];
 
+=======
+	NodeData* table[hastTableSize];
+>>>>>>> 25ad46307ae710a73e49865d099d6a8120f33089
 }; //end HashTable
 
 #endif 
