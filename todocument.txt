@@ -19,7 +19,7 @@ todocument:
         classic.h
 
 Todo:
-header documentation
+header documentation (take a look at media class)
 need to update the diagrams so that "media" is changed to "product"
 make sure things compile
 80char limit
