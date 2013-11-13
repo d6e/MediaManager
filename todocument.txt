@@ -1,0 +1,19 @@
+todocument:
+
+    someone else:
+        manager.h
+        mediacollection.h
+        mediafactory.h
+        collectiontree.h
+        bintree.h
+
+    Danielle:
+        commandfactory.h
+        mediaformat.h 
+        historycmd.h 
+        drama.h 
+        displayallmediacmd.h
+        customerdata.h
+        command.h
+        comedy.h
+        classic.h
