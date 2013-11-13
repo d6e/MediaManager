@@ -74,7 +74,8 @@ private:
         Node* right;
     };
     Node* root;
-    std::string displayInOrder() const;  // string displaying the tree (helper for <<)
+    // string displaying the tree (helper for <<)
+    std::string displayInOrder() const; 
 };
 
 #endif

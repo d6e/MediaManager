@@ -52,8 +52,8 @@ protected:
 private:
 	const static int HASH_TABLE_SIZE = 2001; //size of the hash table 
 	NodeData* table[HASH_TABLE_SIZE];
-	int hashTableSize = 2001; //size of the hash table 
-	NodeData* table[hastTableSize];
+	//int hashTableSize = 2001; //size of the hash table 
+	//NodeData* table[hastTableSize];
 }; //end HashTable
 typedef KeyType;
 

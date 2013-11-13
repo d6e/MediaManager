@@ -43,8 +43,10 @@ public:
     CustomerIndex();     //constructor
     virtual ~CustomerIndex();    //destructor
     Error addTransaction(Event*); // calls customer's addTransaction
-    bool customerExists(std::string);   // checks whether customer obj exists from an customer id
-    Error displayHistory(std::string) const; //displays a customer's history from customer ID
+    // checks whether customer obj exists from an customer id
+    bool customerExists(std::string);   
+    //displays a customer's history from customer ID
+    Error displayHistory(std::string) const; 
     void insertCustomer(Customer*); // adds customer ptr to hashtable
 };
 

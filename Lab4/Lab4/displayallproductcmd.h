@@ -6,9 +6,9 @@
 #include "command.h"
 
 /*
-Displays all products by thier type (catagory) and sorted by thier unique crtieria.
-Also displays how many items were borrowed, how many remain.
-Deletes event when destructed.
+Displays all products by thier type (catagory) and sorted by thier unique 
+crtieria. Also displays how many items were borrowed, how many remain. Deletes 
+event when destructed.
 
 The DisplayAllProductCMD is the default constructor for this class 
 
@@ -25,7 +25,8 @@ private:
 public:
     DisplayAllProductCMD(ProductCollection*);  // default constructor
     virtual ~DisplayAllProductCMD();           // default destructor
-	virtual bool setData(Event); // Returns false if data invalid, for factory use only.
+    // Returns false if data invalid, for factory use only.
+	virtual bool setData(Event); 
     Error execute();  //execute command from the IO 
 };
 

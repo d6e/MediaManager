@@ -6,8 +6,8 @@
 #include <string>
 
 /*
-The command class is the parent class which all the other commands for the system
-inherit from. 
+The command class is the parent class which all the other commands for the 
+system inherit from. 
 
 The setData comamnd is for factory use only and is used to insert an event 
 object into the new command objects created by the command factory. It returns 
@@ -22,7 +22,8 @@ class Command {
 public:
     Command();          // constructor
     virtual ~Command(); // destructor
-	virtual bool setData(Event*) =0; // Returns false if data invalid, for factory use only.
+    // Returns false if data invalid, for factory use only.
+	virtual bool setData(Event*) =0; 
     virtual Error execute() =0; // Returns NULL if no error occured.
 };
 
