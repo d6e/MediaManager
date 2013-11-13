@@ -6,8 +6,10 @@
 #include "productcollection.h"
 #include <string>
 
-
-
+/*
+A product Collection performs manipulations on product objects in contains.
+It can store and retrieve product objects as well.
+*/
 class ProductCollection{
 	friend std::ostream & operator<<(std::ostream &, const ProductCollection &);
 public:
