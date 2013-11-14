@@ -10,8 +10,9 @@ different attributes matter between movies, classic movies hold different
 attributes than drama. 
 
 It's data members consist of two arrays, one array being the data types like
-"director", "title", "famous actor", and "date" and another being the data types 
-it's sorted by, which in this case are "date" and "famous actor".
+"director", "title", "famous actor", and "date" and another being the data 
+types it's sorted
+by, which in this case are "date" and "famous actor".
 
 The constructor creates a bunch of ProductData objects and initializes their
 keys.
@@ -40,7 +41,7 @@ with another.
 class Classic : public Movie{
 public:
 	Classic(std::string director, std::string title, 
-		std::string famousActor, std::string date);
+        std::string famousActor, std::string date);
 	virtual ~Classic(void);
 	
 	bool setData(Event*); // Returns false if input invalid.
@@ -61,8 +62,8 @@ public:
     virtual bool operator>=(const Product &) const;
 	
 private:
-	const std::string CLASSIC_DATA_TYPES [] = {"director","title","famous actor"
-		,"date"};
+	const std::string CLASSIC_DATA_TYPES [] = {"director","title",
+    "famous actor","date"};
 	const std::string CLASSIC_SORTED_BY [] = {"date","famous actor"};
 };
 

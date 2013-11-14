@@ -10,7 +10,7 @@ here.
 class Movie : public Product 
 {
 private:
-	virtual initValidFormats(); // Inits to DVD for now.
+	virtual void initValidFormats(); // Inits to DVD for now.
 };
 
 #endif

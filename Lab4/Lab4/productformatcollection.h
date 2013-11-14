@@ -10,7 +10,7 @@ Contains quantites and max quantites of various ProductFormats in a collection.
 class ProductFormatCollection{
 public:
 	ProductFormatCollection();
-	//Returns the amount of items that particular ProductFormat has.
+    //Returns the amount of items that particular ProductFormat has.
 	int getFormatAmount(const ProductFormat*) const; 
 	int getFormatMaxAmount(const ProductFormat*) const;
 	
@@ -19,8 +19,8 @@ private:
 	struct FormatAmount
 	{
 		ProductFormat* format;
-		int count = DEFAULT_PRODUCT_QUANTITY;
-	    int size = DEFAULT_PRODUCT_QUANTITY;
+		int count;
+	    int size;
 	};
 		
 	std::list<FormatAmount> formatDataList;

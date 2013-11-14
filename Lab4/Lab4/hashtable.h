@@ -31,31 +31,25 @@ Data Abstraction & Problem Solving with C++ (5th Edition) by Frank Carrano
 
 class HashTable {
 public:
-	HashTable(); //default constructor 
+	HashTable(); //default constructor, creates array for hashtable
 	HashTable(const HashTable& table); 
 	virtual ~HashTable(); //default destructor 
 
 	/* table operations */
-	virtual bool tableIsEmpty() const; //check if table is empty or not 
-	virtual int tableGetLength() const; //get the length of the table 
-	//insert data into the table
+    //insert data into the table, NodeData contains key
 	virtual void tableInsert(const NodeData& newItem); 
-	virtual void tableDelete(KeyType searchKey); //delete item from the table
-	virtual void tableRetrieve(KeyType searchKey, NodeData& tableItem) const;
-	virtual void tableInsert(const NodeData& newItem); //insert data into the table, NodeData contains key
-	virtual void tableDelete(std::string searchKey); //delete item from the table
-	virtual void tableRetrieve(std::string searchKey, NodeData& tableItem) const;
+    //delete item from the table
+	virtual void tableDelete(std::string searchKey); 
+	virtual void tableRetrieve(std::string searchKey,NodeData& tableItem)const;
 				
 protected:
 	int hashIndex(std::string searchKey) const; //hash function 
 	int resize(int size);
 private:
-	const static int HASH_TABLE_SIZE = 2001; //size of the hash table 
-	NodeData* table[HASH_TABLE_SIZE];
-	int hashTableSize = 2001; //size of the hash table 
-	NodeData* table[hashTableSize];
-
+	static const int DEFAULT_HASH_TABLE_SIZE = 2001;
+	int hashTableSize; //size of the hash table 
+	NodeData* tablePtr; //Points to first element of dynamic array.
 }; //end HashTable
-typedef KeyType;
+
 
 #endif 

@@ -11,8 +11,8 @@ to override various functions.
 CustomerData has a private Customer pointer.
 
 The comparison operators are used to compare one CustomerData object with 
-another by sorting criteria. To do so, they simply call the same operators on 
-the CustomerData's respective data objects.
+another by sorting criteria. To do so, they simply call the same operators 
+on the CustomerData's respective data objects.
 
 The duplictate() method is used to notify a NodeData object that a duplicate
 data instance has been detected. It should call incrementQuantity() on data.

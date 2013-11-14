@@ -8,8 +8,8 @@
 #include <string>
 
 /*
-The manager class is the main controller for the program. IO is handled outside the Manager class
-so all input is assumed to be lines of strings.
+The manager class is the main controller for the program. IO is handled 
+outside the Manager class so all input is assumed to be lines of strings.
 */
 
 class Manager{
@@ -24,9 +24,13 @@ public:
 	Manager(); //Initializes all collections and factories
 	virtual ~Manager();
 	
-	bool inputProduct(std::string); // Inputs new products, prints errors in process, returns false if failed.
-    bool inputCustomer(std::string);// Inputs new customers, prints errors in process, returns false if failed.
-    bool inputCmd(std::string);// Inputs commands into system, prints errors in process, returns false if failed.
+    // Inputs new products, prints errors in process, returns false if failed.
+	bool inputProduct(std::string); 
+    // Inputs new customers, prints errors in process, returns false if failed.
+    bool inputCustomer(std::string);
+    // Inputs commands into system, prints errors in process, 
+    // returns false if failed.
+    bool inputCmd(std::string);
 };
 
 #endif

@@ -7,8 +7,8 @@
 
 /*
 Displays all products by thier type (catagory) and sorted by thier unique 
-crtieria. Also displays how many items were borrowed, how many remain. Deletes 
-event when destructed.
+crtieria. Also displays how many items were borrowed, how many remain.
+Deletes event when destructed.
 
 The DisplayAllProductCMD is the default constructor for this class 
 
