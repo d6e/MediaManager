@@ -1,0 +1,36 @@
+remove productData and customerData, instead have customer and product inherit directly from pure virtual nodedata
+make customer and product inherit from nodedata
+nodedata would be pure virtual
+
+For the productCollection list of trees you can just use an array of 26 (each element being a char and pointing to a tree)
+
+
+Things we got marked down on:
+	Forgot main in design
+
+Casting inside override of comparison operators for product and customer class. (Product and customer class comparison operators should take in a nodedata which might later be casted)
+
+------------------------------------------------------------------------------
+
+Notes from thursday Meeting:
+Hey,
+
+I emailed Zander about Robert not being able to make it., but I never got a response so I assume she was in meetings until we met at 9:30Pm. 
+
+Here are some notes from the meeting.
+
+Customers can be stored in an array of 10,000.
+
+Pass in stream for setData
+
+LinkedList in Collection Tree can be an Array / Hashtable
+
+Make more of Product pure virtual (The comparison operators)
+
+Have Product and Customer be subclasses of NodeData, and get rid of ProductData and CustomerData. Have Product and Customer have the the comparison Operator for NodeData.
+EX:
+In Product: virtual bool operator > (const NodeData&) const = 0;
+
+Make a function called ProcessCommands in manager that can take in multiple commands.
+
+We will get our grade Monday.
