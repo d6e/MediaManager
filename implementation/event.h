@@ -27,5 +27,4 @@ public:
     Error set(std::string); // Parses input a string into the list.
 };
 
-
 #endif

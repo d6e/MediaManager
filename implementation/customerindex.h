@@ -38,7 +38,7 @@ the custHT.
 
 class CustomerIndex {
 private:
-    HashTable custHT; // A hashtable used to hold the customer objects
+    // HashTable custHT; // A hashtable used to hold the customer objects
 public:
     CustomerIndex();     //constructor
     virtual ~CustomerIndex();    //destructor

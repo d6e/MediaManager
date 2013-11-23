@@ -22,7 +22,7 @@ command it parsed. Finally, it returns a pointer to that command.
 
 class CommandFactory {
 public:
-     // constructor, inits hash table
+    // constructor, inits hash table
 	CommandFactory(CustomerIndex, ProductCollection); 
 	virtual ~CommandFactory();    // destructor
     // Creates and inits cmd obj based on key given, returns null if invalid key
