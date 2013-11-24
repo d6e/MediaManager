@@ -39,15 +39,17 @@ the custHT.
 class CustomerIndex {
 private:
     // HashTable custHT; // A hashtable used to hold the customer objects
+    Customer* customers;
+    const int size = 10000;
 public:
-    CustomerIndex();     //constructor
+    CustomerIndex();  //constructor
     virtual ~CustomerIndex();    //destructor
-    Error addTransaction(Event*); // calls customer's addTransaction
+    Error addTransaction(std::string,Event*); //calls customer's addTransaction
      // checks whether customer obj exists from an customer id
     bool customerExists(std::string);  
     //displays a customer's history from customer ID
     Error displayHistory(std::string) const; 
-    void insertCustomer(Customer*); // adds customer ptr to hashtable
+    Error insertCustomer(Customer*); // adds customer ptr to hashtable
 };
 
 #endif

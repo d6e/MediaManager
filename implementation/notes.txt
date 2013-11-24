@@ -2,7 +2,7 @@ remove productData and customerData, instead have customer and product inherit d
 make customer and product inherit from nodedata
 nodedata would be pure virtual
 
-For the productCollection list of trees you can just use an array of 26 (each element being a char and pointing to a tree)
+For the productCollection list of trees you can just use an array of 26 (each element representing a char and pointing to a tree)
 
 
 Things we got marked down on:

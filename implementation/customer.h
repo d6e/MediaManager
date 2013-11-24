@@ -30,6 +30,7 @@ private:
 public:
     void displayHistory() const; // Calls history's displayAll method
     void addEvent(Event*); // Calls history's addTransaction method
+    std::string getID();
 };
 
 #endif
