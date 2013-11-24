@@ -9,7 +9,7 @@
 The command class is the parent class which all the other commands for the 
 system inherit from. 
 
-The setData comamnd is for factory use only and is used to insert an event 
+The setData command is for factory use only and is used to insert an event 
 object into the new command objects created by the command factory. It returns 
 false if the event object passed in is invalid and true otherwise. However, it 
 is pure virtual so it doesn't have to be implemented here.
