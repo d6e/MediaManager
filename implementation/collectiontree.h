@@ -1,8 +1,8 @@
 #ifndef COLLECTIONTREE_H
 #define COLLECTIONTREE_H
-#include "nodedata.h"
+//#include "nodedata.h"
 #include "bintree.h"
-
+#include <string> //should be temporary
 /*
 A CollectionTree is a linked list of binary trees. 
 
@@ -49,7 +49,9 @@ returns false if it reaches the last ListNode without finding a match.
 
 class CollectionTree {  
 public:
+	
 	CollectionTree(); 						//  constructor 
+	/*
 	CollectionTree(const CollectionTree &); //copy constructor	
 	virtual ~CollectionTree(); 					//  destructor, calls makeEmpty 
 	bool isEmpty() const; // true if collection tree is empty, otherwise false 
@@ -57,10 +59,11 @@ public:
 	bool insert(NodeData*);					// Insert node
 	bool retrieve(NodeData*) const; // retrieves a node identical to parameter
 	void inorderDisplay() const;	//displays the tree in order
- 
+ 	*/
 private:
 	struct ListNode
 	{	
+		ListNode();
 		std::string key;	
 		BinTree* productTree;
 		ListNode* next;
@@ -68,6 +71,7 @@ private:
 	ListNode* root;
 	//gets a unique key identifying a ListNode's associated object
 	std::string getKey(const ListNode) const;
+	
 };
 
 #endif

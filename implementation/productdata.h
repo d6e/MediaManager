@@ -3,7 +3,6 @@
 #include "nodedata.h"
 #include "product.h"
 #include "productdata.h"
-#include "nodedata.h"
 #include <string>
 
 /*
@@ -46,5 +45,3 @@ public:
    virtual bool operator<=(const ProductData &) const;
    virtual bool operator>=(const ProductData &) const;
 };
-
-#endif

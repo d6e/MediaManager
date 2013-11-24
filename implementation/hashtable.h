@@ -37,10 +37,10 @@ public:
 
 	/* table operations */
     //insert data into the table, NodeData contains key
-	virtual void tableInsert(const NodeData& newItem); 
+	//virtual void tableInsert(const NodeData& newItem); 
     //delete item from the table
 	virtual void tableDelete(std::string searchKey); 
-	virtual void tableRetrieve(std::string searchKey,NodeData& tableItem)const;
+	//virtual void tableRetrieve(std::string searchKey,NodeData& tableItem)const;
 				
 protected:
 	int hashIndex(std::string searchKey) const; //hash function 
@@ -48,7 +48,7 @@ protected:
 private:
 	static const int DEFAULT_HASH_TABLE_SIZE = 2001;
 	int hashTableSize; //size of the hash table 
-	NodeData* tablePtr; //Points to first element of dynamic array.
+	//NodeData* tablePtr; //Points to first element of dynamic array.
 }; //end HashTable
 
 

@@ -1,12 +1,12 @@
 #ifndef PRODUCT_H
 #define PRODUCT_H
-#include "hashtable.h"
+
 #include <string>
-#include "event.h"
-#include "productformat.h"
-#include "productformatcollection.h"
-#include <map>
 #include <iostream>
+#include <map>
+#include "event.h"
+#include "productformatcollection.h"
+#include "hashtable.h"
 
 /*
 Product class

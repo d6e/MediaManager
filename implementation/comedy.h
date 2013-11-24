@@ -1,9 +1,11 @@
 #ifndef COMEDY_H
 #define COMEDY_H
-#include "product.h"
+//#include "product.h"
 #include "movie.h"
 #include <string>
 
+const std::string COMEDY_DATA_TYPES [] = {"director","title","date"};
+const std::string COMEDY_SORTED_BY [] = {"title","date"};
 /*
 The comedy class is a child of movie and represents a movie genre. Because
 different attributes matter between movies, comedy movies hold different
@@ -39,27 +41,28 @@ with another.
 
 class Comedy : public Movie {
 public:
-	Comedy(); //Inits productData keys.
-	virtual ~Comedy(); // cleans up any productdata objects it created
-	bool setData(Event*); // Returns false if input invalid.
+    //Comedy(); //Inits productData keys.
+    virtual ~Comedy(); // cleans up any productdata objects it created
+    bool setData(Event*); // Returns false if input invalid.
     virtual Product* create(); // Creates a new, empty genre movie object
     virtual std::string type() const; //returns type ("comedy"). Used as key
-	virtual void display(); // Displays contents via cout
+    virtual void display(); // Displays contents via cout
 
-	virtual const std::string* dataTypeNames() const;
-	virtual const std::string* sortedByNames() const;
-	
-	//comparison operators compare product by their sorting criteria
-	virtual bool operator==(const Product &) const;
+    virtual const std::string* dataTypeNames() const;
+    virtual const std::string* sortedByNames() const;
+        
+        //comparison operators compare product by their sorting criteria
+    /*
+    virtual bool operator==(const Product &) const;
     virtual bool operator!=(const Product &) const;
     virtual bool operator<(const Product &) const;
     virtual bool operator>(const Product &) const;
     virtual bool operator<=(const Product &) const;
     virtual bool operator>=(const Product &) const;
-	
-private:
-	const std::string COMEDY_DATA_TYPES [] = {"director","title","date"};
-	const std::string COMEDY_SORTED_BY [] = {"title","date"};
+    */
+        
+//private:
+    
 };
 
 #endif

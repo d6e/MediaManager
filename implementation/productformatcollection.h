@@ -1,6 +1,7 @@
 #ifndef PRODUCTFORMATCOLLECTION_H
 #define PRODUCTFORMATCOLLECTION_H
 #define DEFAULT_PRODUCT_QUANTITY 10;
+#include "productformat.h"
 #include <string>
 #include <list>
 
