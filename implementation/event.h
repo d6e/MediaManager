@@ -21,6 +21,7 @@ private:
     std::vector<std::string> argList;
 public:
     Event();
+    Event(std::string);
     virtual ~Event();
     void set(std::string); // Parses input a string into the list.
     void display() const;  // Display the data from one event object

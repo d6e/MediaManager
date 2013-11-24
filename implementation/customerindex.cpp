@@ -1,21 +1,19 @@
 #include "customerindex.h"
 
 CustomerIndex::CustomerIndex(){
-    customers = new Customer[size]; // create array of customers
-    for(int i = 0; i < size; i++){ // intialize array elements to NULL
-        customers[i] = NULL;
-    }
+    size = 10000; // set size
+    customers = new Customer*[size](); // create array of customer pointers
 }
 
-virtual CustomerIndex::~CustomerIndex(){
+CustomerIndex::~CustomerIndex(){
     delete[] customers;
     customers = NULL;
 }
 
 Error CustomerIndex::addTransaction(std::string custID, Event* event){
     for(int i = 0; i < size; i++){
-        if(customers[i].getID() == custID){
-            customers[i].addEvent(event);
+        if(customers[i]->getID() == custID){
+            customers[i]->addEvent(event);
             return Error("");
         }
     }
@@ -25,8 +23,10 @@ Error CustomerIndex::addTransaction(std::string custID, Event* event){
 // checks whether customer obj exists from an customer id
 bool CustomerIndex::customerExists(std::string custID){
     for(int i = 0; i < size; i++){
-        if(customers[i].getID() == custID){
-            return true;
+        if(customers[i]){
+            if(customers[i]->getID() == custID){
+                return true;
+            }
         }
     }
     return false;
@@ -35,8 +35,8 @@ bool CustomerIndex::customerExists(std::string custID){
 //displays a customer's history from customer ID
 Error CustomerIndex::displayHistory(std::string custID) const{
     for(int i = 0; i < size; i++){
-        if(customers[i].getID() == custID){
-            customers[i].displayHistory();
+        if(customers[i]->getID() == custID){
+            customers[i]->displayHistory();
             return Error("");
         }
     }
@@ -46,7 +46,7 @@ Error CustomerIndex::displayHistory(std::string custID) const{
 // adds customer ptr to hashtable
 Error CustomerIndex::insertCustomer(Customer* cust){
     for(int i = 0; i < size; i++){
-        if(customers[i] == NULL){
+        if(!customers[i]){
             customers[i] = cust;
             return Error("");
         }

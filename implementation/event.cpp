@@ -1,7 +1,8 @@
 #include "event.h"
 #include <iostream>
 
-Event::Event(){
+Event::Event(std::string msg){
+    argList.push_back(msg);
 }
 
 Event::~Event(){
