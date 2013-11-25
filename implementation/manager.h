@@ -31,6 +31,8 @@ public:
     // Inputs commands into system, prints errors in process, 
     // returns false if failed.
     bool inputCmd(std::string);
+    //TODO: Make a function called ProcessCommands in manager that can take in multiple commands.
+
 };
 
 #endif

@@ -85,13 +85,15 @@ public:
 	virtual const std::string* sortedByNames() const = 0; 
 	
 	//comparison operators compare product by their sorting criteria
-	virtual bool operator==(const Product &) const;
-    virtual bool operator!=(const Product &) const;
-    virtual bool operator<(const Product &) const;
-    virtual bool operator>(const Product &) const;
-    virtual bool operator<=(const Product &) const;
-    virtual bool operator>=(const Product &) const;
+	virtual bool operator==(const NodeData&) const = 0;
+    virtual bool operator!=(const NodeData&) const = 0;
+    virtual bool operator<(const NodeData&) const = 0;
+    virtual bool operator>(const NodeData&) const = 0;
+    virtual bool operator<=(const NodeData&) const = 0;
+    virtual bool operator>=(const NodeData&) const = 0;
 	
+//TODO: In Product: virtual bool operator > (const NodeData&) const = 0; //finished just leaving this as a note
+
 	//increments the quantity of a particular product format.
     void incrementQuantity(ProductFormat);		
     //number of copies borrowed by customers of a particular product format
