@@ -8,7 +8,7 @@
 #include "event.h"
 #include "productformatcollection.h"
 #include "hashtable.h"
-
+#include "nodedata.h"
 const int MAX_DATA_LENGTH = 20;
 /*
 Product class
@@ -71,16 +71,17 @@ determine how many copies of a product.have been borrowed.
 */
 
 //most generic Product type
-class Product {
+class Product : public NodeData {
 public:
 	Product();
 	virtual ~Product();
 	bool setData(Event); // Returns false if input invalid.
-    virtual Product* create() = 0; // Creates a new, empty Product 
+    virtual Product* create() = 0; // Creates a new, empty Product
+    virtual std::string getKey() const; // returns unique identifier
     //returns the type (the class) of product. Used as a key.
     virtual std::string type() const = 0;	
-	void display(); // Displays contents via cout
-	
+	void display() const; // Displays contents via cout
+	virtual void duplicate(NodeData*);
 	// Returns all data, inorder of input, deliminated by commas
 	virtual const std::string* dataTypeNames() const = 0;
 	virtual const int dataTypeCount() const = 0;
@@ -88,12 +89,12 @@ public:
 	virtual const std::string* sortedByNames() const = 0; 
 	
 	//comparison operators compare product by their sorting criteria
-	virtual bool operator==(const Product &) const;
-    virtual bool operator!=(const Product &) const;
-    virtual bool operator<(const Product &) const;
-    virtual bool operator>(const Product &) const;
-    virtual bool operator<=(const Product &) const;
-    virtual bool operator>=(const Product &) const;
+	virtual bool operator==(const NodeData &) const;
+    virtual bool operator!=(const NodeData &) const;
+    virtual bool operator<(const NodeData &) const;
+    virtual bool operator>(const NodeData &) const;
+    virtual bool operator<=(const NodeData &) const;
+    virtual bool operator>=(const NodeData &) const;
 	
 	//increments the quantity of a particular product format.
     void incrementQuantity(ProductFormat);		
@@ -117,8 +118,8 @@ private:
     // All products must have possible format(s).        
 	virtual void initValidFormats() = 0; 
 	bool addFormat(ProductFormat); //Returns false if data invalid.
-	void normalizeLength(std::string&);
-	void truncate(std::string&);
+	void normalizeLength(std::string&) const;
+	void truncate(std::string&) const;
 };
 
 #endif

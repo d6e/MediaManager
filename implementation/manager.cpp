@@ -25,12 +25,12 @@ bool Manager::inputProduct(ifstream& productInput){
 	if(!p -> addData(dataTypeNames[dataTypeCount-1],lastData)) return false;
 
 	//p -> display();	//TEMPORARY FOR TESTING
-	//TODO: actually insert product into collection
+	productDB.insert(p);
 	return true;
 }
 
 //TEMPORARY
 void Manager::displayAll(){
-
+	//int test = MAX_DATA_LENGTH;
 }
 //TEMPORARY

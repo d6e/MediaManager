@@ -1,59 +1,22 @@
 
 #include "nodedata.h"
-/*
+
 //------------------- constructors/destructor  -------------------------------
-NodeData::NodeData() { 
-   data = NULL; 
-   count = DEFAULT_MOVIE_QUANTITY;
-}                         // default
+NodeData::NodeData() {}                         // default
 
 NodeData::~NodeData() {}            // needed so strings are deleted properly
 
-NodeData::NodeData(const NodeData& nd) { // copy
-   count = nd.count;
-   data = nd.data; 
+NodeData::NodeData(const NodeData& nd) { // copy. TODO (i think)
+   //count = nd.count;
+   //data = nd.data; 
 }  
-
-NodeData::NodeData(const Movie* m) { 
-   data = m;
-   count = DEFAULT_MOVIE_QUANTITY;
-}    // cast string to NodeData
 
 //------------------------- operator= ----------------------------------------
 NodeData& NodeData::operator=(const NodeData& rhs) {
-   if (this != &rhs) {
-      data = rhs.data;
-   }
+   //TODO
    return *this;
 }
 
-
-//------------------------- operator==,!= ------------------------------------
-bool NodeData::operator==(const NodeData& rhs) const {
-   return *data == *(rhs.data);
-}
-
-bool NodeData::operator!=(const NodeData& rhs) const {
-   return *data != *(rhs.data);
-}
-
-//------------------------ operator<,>,<=,>= ---------------------------------
-bool NodeData::operator<(const NodeData& rhs) const {
-   return *data < *(rhs.data);
-}
-
-bool NodeData::operator>(const NodeData& rhs) const {
-   return *data > *(rhs.data);
-}
-//TODO: as operators get more complex, add *s to propely access movies.
-bool NodeData::operator<=(const NodeData& rhs) const {
-   return data <= rhs.data;
-}
-
-bool NodeData::operator>=(const NodeData& rhs) const {
-   return data >= rhs.data;
-}
-*/
 
 //------------------------------ setData -------------------------------------
 // returns true if the data is set, false when bad data, i.e., is eof

@@ -22,8 +22,9 @@ class Manager{
 private:
     //CustomerIndex customerDB; // Stores customer information and history.
     ProductCollection productDB; // Stores product information and quantities
-    //CommandFactory cFactory; // Creates commands.
     ProductFactory mFactory; // Creates products.
+    //CommandFactory cFactory; // Creates commands.
+   
 
 public:
 	Manager(); //Initializes all collections and factories

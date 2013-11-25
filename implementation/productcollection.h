@@ -3,13 +3,8 @@
 #include "collectiontree.h"
 #include "comedy.h"	//not sure about this include, but using it temporarily
 #include "drama.h"
-/*
-#include "product.h"
-
 #include "error.h"
-*/
-
-#include <string>
+//#include <string>
 
 
 /* 
@@ -23,18 +18,19 @@ class ProductCollection{
 	//friend std::ostream & operator<<(std::ostream &, const ProductCollection &);
 public:
 	ProductCollection(); //default constractor
-	//virtual ~ProductCollection(); //default destructor 
+	virtual ~ProductCollection(); //default destructor 
+	
 	//goes through ListNode linked list, comparing each Node's dataType() 
 	//to the inserted Product's dataType() and inseting when it finds a match.
 	//(this means product type and genre must match.) if no match is found, a new
 	//ListNode is created and the Product is inserted into its tree.
-	/*
 	Error insert(Product *); //inset product into a linked list 
 	Error retrieve(Product *); //retrieve product from a linked list 
 	Error displayAll() const; //display all the products 
 	bool isEmpty() const; //check if the list is empty 
-	*/
+	
 private:
-	CollectionTree* collectTree; //pointer to the collection tree 
+	BinTree* collectTree[26];
+	//CollectionTree* collectTree; //pointer to the collection tree 
 };
 #endif

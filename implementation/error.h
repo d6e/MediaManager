@@ -1,6 +1,7 @@
 #ifndef ERROR_H
 #define ERROR_H
 #include <string>
+#include <ostream>
 
 /*
 The error class has a private string datamember that holds an error message.
@@ -22,7 +23,7 @@ public:
     Error(std::string err); 
     virtual ~Error();
     std::string getErrorMessage() const;  // returns msg
+    friend std::ostream& operator<< (std::ostream &out, Error &error);
 };
-
 
 #endif

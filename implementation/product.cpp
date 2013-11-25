@@ -4,8 +4,11 @@ Product::Product(){}
 
 Product::~Product(){}
 
-void Product::display(){
-	//string dataString = "";
+std::string Product::getKey() const{
+	return type(); //not sure this is correct yet
+}
+
+void Product::display() const{
 	const string* tempTypeNames = dataTypeNames();
 	const int tempTypeCount = dataTypeCount();
 	for(int i = 0; i < tempTypeCount; i++){
@@ -13,42 +16,43 @@ void Product::display(){
 		map<string,string>::const_iterator index = productData.find(dataType);
    	 	string nextData = index -> second;	
    	 	normalizeLength(nextData);
-   	 	
-   	 	cout << nextData; //<< setw(MAX_DATA_LENGTH+4);
+   	 	cout << nextData;
 	}
 	cout << endl;
 }
 
-void Product::normalizeLength(std::string& data){
+void Product::normalizeLength(std::string& data) const{
 	if(data.length() > MAX_DATA_LENGTH*1) truncate(data);	//the *1 is necessary to avoid a waring from the compiler
 	else data.resize(MAX_DATA_LENGTH, ' ');
 }
 
-void Product::truncate(std::string& longString){
+void Product::truncate(std::string& longString) const{
 	longString.resize(MAX_DATA_LENGTH - 3);
 	longString.resize(MAX_DATA_LENGTH, '.');
 }
 
-bool Product::operator==(const Product &p) const{
+void Product::duplicate(NodeData*){}  //TODO
+
+bool Product::operator==(const NodeData& n) const{
 	return true; //TODO
 }
 
-bool Product::operator!=(const Product &p) const{
+bool Product::operator!=(const NodeData& n) const{
 	return true; //TODO
 }
-bool Product::operator<(const Product &p) const{
-	return true; //TODO
-}
-
-bool Product::operator>(const Product &p) const{
+bool Product::operator<(const NodeData& n) const{
 	return true; //TODO
 }
 
-bool Product::operator<=(const Product &p) const{
+bool Product::operator>(const NodeData& n) const{
 	return true; //TODO
 }
 
-bool Product::operator>=(const Product &p) const{
+bool Product::operator<=(const NodeData& n) const{
+	return true; //TODO
+}
+
+bool Product::operator>=(const NodeData& n) const{
 	return true; //TODO
 }
 

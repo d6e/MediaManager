@@ -3,9 +3,9 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-//#include "movie.h"
-using namespace std;
 
+using namespace std;
+//TODO: may need pure virtual display() method for product to use (will be useful in bintrees)
 class NodeData {
 public:
     NodeData(); // default constructor,
@@ -14,7 +14,7 @@ public:
     NodeData& operator=(const NodeData &);     
     // Gives NodeData the duplicate to handle it.
     virtual void duplicate(NodeData*) = 0; 
-    virtual std::string getKey() = 0; // returns unique identifier
+    virtual std::string getKey() const = 0; // returns unique identifier
 
     // comparison operators
     virtual bool operator==(const NodeData &) const = 0;
