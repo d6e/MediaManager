@@ -1,5 +1,5 @@
 #include <string>
-#include <iostream>
+//#include <iostream>
 #include <fstream>
 //#include "lab4IoPrep.h"
 #include "manager.h"
@@ -13,7 +13,7 @@ int main(){
    	//TODO: add other files to be read
    	Manager productManager;
 
-   	std::string testData1 = "F Gore Verbinski, Pirates of the Caribbean, 2003 "; //TEMPORARY
+    productManager.inputProduct(inputFile1);  //NOTE: this will eventually be processed through commands instead.
    	
    	//TODO: replace the part below with a Manager  that achieves the same functionality.
 	//Lab4IoPrep ioObject;

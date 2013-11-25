@@ -1,7 +1,7 @@
 #ifndef MANAGER_H
 #define MANAGER_H
 #include <string>
-
+#include <iostream>
 #include "productcollection.h"
 #include "productfactory.h"
 /*
@@ -31,7 +31,12 @@ public:
     //virtual ~Manager();
 	
     // Inputs new products, prints errors in process, returns false if failed.
-	//bool inputProduct(std::string); 
+	bool inputProduct(ifstream&); 
+
+    //TEMPORARY
+    void displayAll(); //displays all products.
+    //TEMPORARY
+
     // Inputs new customers, prints errors in process, returns false if failed.
     /*
     bool inputCustomer(std::string);

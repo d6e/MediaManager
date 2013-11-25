@@ -17,4 +17,5 @@ std::string Drama::type() const{return "drama";} //returns type ("comedy"). Used
 void Drama::display(){} // Displays contents via cout
 
 const std::string* Drama::dataTypeNames() const{return DRAMA_DATA_TYPES;}
+const int Drama::dataTypeCount() const{return sizeof(DRAMA_DATA_TYPES)/sizeof(*DRAMA_DATA_TYPES);}
 const std::string* Drama::sortedByNames() const{return DRAMA_SORTED_BY;}

@@ -5,6 +5,8 @@
 
 class Movie : 
 public Product {
+//public:
+
 private:
         virtual void initValidFormats(); // Inits to DVD for now.
 };

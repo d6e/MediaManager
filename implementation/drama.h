@@ -17,6 +17,7 @@ public:
     virtual void display(); // Displays contents via cout
 
     virtual const std::string* dataTypeNames() const;
+    virtual const int dataTypeCount() const;
     virtual const std::string* sortedByNames() const;
         
         //comparison operators compare product by their sorting criteria

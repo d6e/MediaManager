@@ -9,8 +9,8 @@ The class ProductFactory collects information about the movie { Classic,
 Drama, Comedy } Once the input has been parsed, this class will fills product 
 templates with instances of each instantiatable product object. It will then 
 create the product objects , returns null if there is an invalid hash key
-
 */
+
 class ProductFactory
 {
     
@@ -32,7 +32,7 @@ private:
 	 //create a hash table with the size of 256
     // A pointer to an array of Products implemented as a hash table
 	
-    Product* productTemplates; 
+    Product* productTemplates[256]; 
 	int hash(std::string); //find the given key in the hash table
      
 

@@ -2,16 +2,12 @@
 
 ProductFactory::ProductFactory(){
 	//IDEA: may need a special, instantiable "blankMovie" type to solve this problem.
-	Comedy c[200]; 
-	productTemplates = c;
 
-	Comedy c1;
-	int comedyIndex = hash("C");
-	productTemplates[comedyIndex] = c1;
+	int comedyIndex = hash("F");
+	productTemplates[comedyIndex] = new Comedy();
 
-	Drama d1;
 	int dramaIndex = hash("D");
-	productTemplates[dramaIndex] = d1; 
+	productTemplates[dramaIndex] = new Drama(); 
 
 	//TODO: fills producttemplates with instances of each instantiatable 
     //Product object, using pcollect and hash fuction.
@@ -19,7 +15,7 @@ ProductFactory::ProductFactory(){
 
 Product* ProductFactory::create(std::string key){
 	int index = hash(key);
-	return &productTemplates[index]; //TODO: error checking (maybe not here though)
+	return productTemplates[index]; //TODO: error checking (maybe not here though)
 }
 
 int ProductFactory::hash(std::string key){
