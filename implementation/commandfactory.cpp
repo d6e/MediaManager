@@ -1,16 +1,52 @@
 #include "commandfactory.h"
+#include <sstream>
 
+// The CommandFactory constructor that takes a CustomerIndex and a
+// ProductCollection is used to pass along the two data structures 
+// to it's products.
 // constructor, inits hash table
-CommandFactory(CustomerIndex, ProductCollection); 
-virtual ~CommandFactory();    // destructor
-// Creates and inits cmd obj based on key given, returns null if invalid key
-Command* create(std::string key);   
+CommandFactory::CommandFactory(CustomerIndex* cI, ProductCollection* pC){
+    cIndex = cI;
+    pCollect = pC;
+    //TODO: init hashtable
+} 
 
-CustomerIndex* cIndex; // For commands that need access to the customers
-// For commands that need to access the products
-ProductCollection* pCollect; 
-ProductFactory* mFactory; // For commands that need to create products.
-const int HASH_TABLE_SIZE = 256;
- // A pointer to an array of Commands implemented as a hash table
-Command* hashTable;
-int hash(std::string key);
+// The create method takes in a string and parses out the command portion of the
+// string. It then creates an instance of a child command object based on the 
+// command it parsed. Finally, it returns a pointer to that command.
+Command* CommandFactory::create(std::string key){
+//TODO: parse string and create appropriate command
+    std::string cmdString;
+    std::string restOfString;
+    std::stringstream ss;
+    ss << key;
+    ss >> cmd;
+    restOfString = ss.str();
+
+    Command* cmd = NULL;
+    switch (cmdString)
+    {
+        case "H":  // history
+            cmd = new HistoryCMD();
+            return cmd;
+            break;
+        case "B": // borrow
+            cmd = new BorrowCMD();
+            return cmd;
+            break;
+        case "R": // return
+            cmd = new ReturnCMD();
+            return cmd;
+            break;
+        case "S": // display all products
+            cmd = new DisplayAllProductCMD();
+            return cmd;
+            break;
+        default: // command not accepted, returning NULL Command pointer
+            return cmd;
+    }
+}
+
+int CommandFactory::hash(std::string key){
+    return 0; //TODO: finish this
+}

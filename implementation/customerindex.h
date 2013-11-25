@@ -4,6 +4,7 @@
 #include "error.h"
 #include "hashtable.h"
 #include <string>
+#include <map>
 
 /*
 The customerindex class that constains all customer objects for each customer 
@@ -38,18 +39,16 @@ the custHT.
 
 class CustomerIndex {
 private:
-    // HashTable custHT; // A hashtable used to hold the customer objects
-    Customer** customers;
-    int size;
+    std::map<std::string, Customer*> customers; // A hashtable used to hold the customer objects
 public:
-    CustomerIndex();  //constructor
-    virtual ~CustomerIndex();    //destructor
+    // CustomerIndex();  //constructor
+    // virtual ~CustomerIndex();    //destructor
     Error addTransaction(std::string,Event*); //calls customer's addTransaction
      // checks whether customer obj exists from an customer id
     bool customerExists(std::string);  
     //displays a customer's history from customer ID
-    Error displayHistory(std::string) const; 
-    Error insertCustomer(Customer*); // adds customer ptr to hashtable
+    Error displayHistory(std::string); 
+    void insertCustomer(Customer*); // adds customer ptr to hashtable
 };
 
 #endif

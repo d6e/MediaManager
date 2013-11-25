@@ -1,14 +1,23 @@
 #include "historycmd.h"
 
-HistoryCMD(CustomerIndex*, Event*);          // default constructor
-virtual ~HistoryCMD();                       // default destructor
+// default constructor
+HistoryCMD::HistoryCMD(CustomerIndex* i, Event* e){
+    cIndex = i;
+    event = e;
+}
+
 // Returns false if data invalid, for factory use only.
-virtual bool setData(Event*); 
+bool HistoryCMD::setData(Event* e){
+    //TODO: figure out whether to fix Event::set so it returns a bool
+    event = e;
+    return true;
+} 
 
 
-//     The execute command will execute the given command from the IO
+// The execute command will execute the given command from the IO
 // It will return true, if the command is found and return ERROR 
 // message if the command is not found.
-Error execute(){
-    return Error("This is the execute command.")
+Error HistoryCMD::execute(){
+    cIndex.displayHistory(custID);  
+    return Error("This is the execute command.");
 }
