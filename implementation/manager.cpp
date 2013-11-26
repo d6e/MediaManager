@@ -30,7 +30,8 @@ bool Manager::inputProduct(ifstream& productInput){
 }
 
 //TEMPORARY
-void Manager::displayAll(){
+void Manager::displayAll() const{
+	productDB.displayAll();
 	//int test = MAX_DATA_LENGTH;
 }
 //TEMPORARY

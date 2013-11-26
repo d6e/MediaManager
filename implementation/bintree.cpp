@@ -1,8 +1,9 @@
 #include "bintree.h"
-/*
+
 //-------------------------------------------------------------------------
 // Node constructor
 // Creates a node object and sets it to NULL
+/*
 BinTree::Node::Node(){
     left = NULL;
     right = NULL;
@@ -39,11 +40,17 @@ bool Node::operator==(const Node& rhs) const{
 // --------------------------------------------------------------------------
 // BinTree Constructor
 // Creates a tree object and sets its root data member to NULL
-/*
+
 BinTree::BinTree(){
     root = NULL;
 }
-*/
+
+BinTree::~BinTree(){
+	//makeEmpty();
+}	//TODO
+
+
+
 /*
 // --------------------------------------------------------------------------
 // BinTree copy constuctor 
@@ -87,14 +94,14 @@ void BinTree::copyNode(Node& currNode, Node& otherNode){
 BinTree::~BinTree(){
     makeEmpty();
 }
-
+*/
 // --------------------------------------------------------------------------
 // isEmpty
 // Checks whether the tree is emtpy and returns true if it is.
 bool BinTree::isEmpty() const{  
     return root == NULL;
 }
-
+/*
 // --------------------------------------------------------------------------
 // makeEmpty
 // Empties the tree recursively by calling the helper makeEmpty(). Deletes the root ndoe. 
@@ -206,12 +213,13 @@ bool BinTree::isNotEqual(const Node &node1, const Node &node2)const{
 		isNotEqual(*node1.right,*node2.right)
 	);
 }
+*/
 
 // --------------------------------------------------------------------------
 // Insert method
 // Recursively inserts the node in an inorder traversal by calling the 
 // insert helper method.
-bool BinTree::insert(NodeData *inserted){
+bool BinTree::insert(NodeData* inserted){
 	if(inserted == NULL){ //cannot insert null data
 		return false;
 	}
@@ -221,15 +229,17 @@ bool BinTree::insert(NodeData *inserted){
 		return true;   
 	}
 	if(*inserted == *(root -> data)){ //check if node is already in the tree
-		int added = DEFAULT_MOVIE_QUANTITY;
-		(root -> data) -> incrementCount(added);
+		//TODO: case for matching data
+
+		//int added = DEFAULT_MOVIE_QUANTITY;
+		//(root -> data) -> incrementCount(added);
 		return false;
 	}
 	if(*inserted < *(root->data)){            // go down the left side
 		return insert(inserted, root, root -> left,false);
 	}
 	else{                                     // go down the right side
-		return insert(inserted, root, root -> right, true);
+		return insert(inserted, root, root -> left, true);
 	}
 }
 
@@ -252,9 +262,9 @@ bool BinTree::insert(NodeData *ptr, Node *cNode, Node *nNode, bool right){
 		}
 	}
 	if(*ptr == *(nNode->data)){   
-	//TODO: increase the "quantity"
-		int added = DEFAULT_MOVIE_QUANTITY;
-		(nNode -> data) -> incrementCount(added);
+		//TODO: case for matching data
+		//int added = DEFAULT_MOVIE_QUANTITY;
+		//(nNode -> data) -> incrementCount(added);
 		return false;
 	}
 	if(*ptr < *(nNode->data)){ 		// go down the left side
@@ -264,7 +274,7 @@ bool BinTree::insert(NodeData *ptr, Node *cNode, Node *nNode, bool right){
 		return insert(ptr, nNode, nNode->right, true); // recurse right
 	}
 }
-
+/*
 // --------------------------------------------------------------------------
 // getDepth
 // Recursively finds the depth of the tree by calling the helper method
@@ -317,11 +327,13 @@ int BinTree::maximum(const int num1, const int num2){
 		return num2;
 	}
 }
-
+*/
 // --------------------------------------------------------------------------
 // Prints a Tree to the standard output in alphabetical order
 ostream& operator<<(ostream& output, const BinTree& tree) {
 	if(!tree.isEmpty()){
+		tree.displayHelper(output,tree.root);
+		/*
 		BinTree temp(tree);
 		NodeData* array[100];  //assuming there won't be more than 100 nodes
 		temp.bstreeToArray(array); //temp copy tree cuz bstreeToArray empties
@@ -331,10 +343,18 @@ ostream& operator<<(ostream& output, const BinTree& tree) {
 		for(int i = 1; i < 100 && array[i] != NULL; i++){
 			output << *array[i] << endl;
 		}
+		*/
 	}
 	return output;
 }
 
+void BinTree::displayHelper(ostream& output, Node* cNode) const{
+	if(cNode == NULL) return;
+	displayHelper(output,cNode -> left);
+	output << *(cNode -> data);
+	displayHelper(output,cNode -> right);
+}
+/*
 // --------------------------------------------------------------------------
 // bstreeToArray
 // Fills an array of NodeData* via an inorder traversal of the tree. 
@@ -390,7 +410,8 @@ void BinTree::cleanTree(Node *currNode){
         currNode = NULL;
     }
 }
-
+*/
+/*
 //--------------------------------------------------------------------------
 // arrayToBSTree
 // Builds a balanced BinTree from a sorted array of NodeData* leaving the 

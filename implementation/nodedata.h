@@ -3,10 +3,12 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+const int MAX_DATA_LENGTH = 20;
 
 using namespace std;
 //TODO: may need pure virtual display() method for product to use (will be useful in bintrees)
 class NodeData {
+friend std::ostream& operator<<(std::ostream&, const NodeData&);
 public:
     NodeData(); // default constructor,
     virtual ~NodeData();   // destructor
@@ -15,6 +17,8 @@ public:
     // Gives NodeData the duplicate to handle it.
     virtual void duplicate(NodeData*) = 0; 
     virtual std::string getKey() const = 0; // returns unique identifier
+
+    virtual std::string dataString() const = 0;
 
     // comparison operators
     virtual bool operator==(const NodeData &) const = 0;

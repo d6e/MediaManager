@@ -8,6 +8,21 @@ std::string Product::getKey() const{
 	return type(); //not sure this is correct yet
 }
 
+std::string Product::dataString() const{
+	std::string dataString = "";
+	const std::string* tempTypeNames = dataTypeNames();
+	const int tempTypeCount = dataTypeCount();
+	for(int i = 0; i < tempTypeCount; i++){
+		std::string dataType = tempTypeNames[i];
+		map<string,string>::const_iterator index = productData.find(dataType);
+   	 	std::string nextData = index -> second;	
+   	 	normalizeLength(nextData);
+   	 	dataString += nextData;
+	}
+	dataString += "\n";
+	return dataString;
+}
+/*
 void Product::display() const{
 	const string* tempTypeNames = dataTypeNames();
 	const int tempTypeCount = dataTypeCount();
@@ -20,7 +35,7 @@ void Product::display() const{
 	}
 	cout << endl;
 }
-
+*/
 void Product::normalizeLength(std::string& data) const{
 	if(data.length() > MAX_DATA_LENGTH*1) truncate(data);	//the *1 is necessary to avoid a waring from the compiler
 	else data.resize(MAX_DATA_LENGTH, ' ');

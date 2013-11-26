@@ -9,7 +9,7 @@
 #include "productformatcollection.h"
 #include "hashtable.h"
 #include "nodedata.h"
-const int MAX_DATA_LENGTH = 20;
+
 /*
 Product class
 
@@ -72,6 +72,9 @@ determine how many copies of a product.have been borrowed.
 
 //most generic Product type
 class Product : public NodeData {
+
+friend std::ostream& operator<<(std::ostream&, const NodeData&);
+
 public:
 	Product();
 	virtual ~Product();
@@ -80,7 +83,8 @@ public:
     virtual std::string getKey() const; // returns unique identifier
     //returns the type (the class) of product. Used as a key.
     virtual std::string type() const = 0;	
-	void display() const; // Displays contents via cout
+	//void display() const; // Displays contents via cout
+	virtual std::string dataString() const;
 	virtual void duplicate(NodeData*);
 	// Returns all data, inorder of input, deliminated by commas
 	virtual const std::string* dataTypeNames() const = 0;

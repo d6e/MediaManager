@@ -9,7 +9,13 @@ NodeData::~NodeData() {}            // needed so strings are deleted properly
 NodeData::NodeData(const NodeData& nd) { // copy. TODO (i think)
    //count = nd.count;
    //data = nd.data; 
-}  
+} 
+
+ostream& operator<<(ostream& output, const NodeData& n){
+   //TODO
+   output << n.dataString() << endl;
+   return output;
+}
 
 //------------------------- operator= ----------------------------------------
 NodeData& NodeData::operator=(const NodeData& rhs) {

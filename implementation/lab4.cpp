@@ -14,6 +14,7 @@ int main(){
    	Manager productManager;
 
     productManager.inputProduct(inputFile1);  //NOTE: this will eventually be processed through commands instead.
+    productManager.displayAll();
    	
    	//TODO: replace the part below with a Manager  that achieves the same functionality.
 	//Lab4IoPrep ioObject;

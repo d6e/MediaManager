@@ -35,7 +35,7 @@ public:
 	bool inputProduct(ifstream&); 
 
     //TEMPORARY
-    void displayAll(); //displays all products.
+    void displayAll() const; //displays all products.
     //TEMPORARY
 
     // Inputs new customers, prints errors in process, returns false if failed.

@@ -30,7 +30,7 @@ public:
 	bool isEmpty() const; //check if the list is empty 
 	
 private:
-	BinTree* collectTree[26];
+	BinTree collectTree[26];
 	//CollectionTree* collectTree; //pointer to the collection tree 
 };
 #endif

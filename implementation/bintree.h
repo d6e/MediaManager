@@ -68,14 +68,17 @@ public:
     int getSize() const;        //returns the number of nodes in the tree
    
 private:
-    struct Node{
+    struct Node {
         NodeData* data;
         Node* left;
         Node* right;
     };
     Node* root;
     // string displaying the tree (helper for <<)
-    std::string displayInOrder() const;  
+    std::string displayInOrder() const;
+    bool insert(NodeData*,Node*,Node*,bool); //helper for insert(NodeData*)
+    void displayHelper(ostream&,Node*) const;
+//friend std::ostream& operator<<(std::ostream& output, const Node&);
 };
 /*
 #ifndef BINTREE_H
