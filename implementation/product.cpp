@@ -51,91 +51,62 @@ void Product::truncate(std::string& longString) const{
 
 void Product::duplicate(NodeData*){}  //TODO
 
+//operator overrides
+
+//------------------------- operator==,!= ------------------------------------
+
 bool Product::operator==(const NodeData& n) const{
-	//cout << n.dataString() << endl;
 	if(getKey() != n.getKey()) return false;
 	const Product& p = static_cast<const Product&>(n);
-
-	const string* tempTypeNames = sortedByNames();
-	const int tempTypeCount = sortedByCount();
-    for(int i = 0; i < tempTypeCount; i++){
-    	//cout << getData(tempTypeNames[i]) << ", " 
-    	//	<< p.getData(tempTypeNames[i]) << endl;
-    	if(getData(tempTypeNames[i]) != 
-    		p.getData(tempTypeNames[i])) return false;
+	const string* tempSortedByNames = sortedByNames();
+	const int sortedByCount = p.sortedByCount();//sizeof(tempSortedByNames)/sizeof(*tempSortedByNames);
+    for(int i = 0; i < sortedByCount; i++){
+    	if(getData(tempSortedByNames[i]) != 
+    		p.getData(tempSortedByNames[i])) return false;
     }
-	
     return true;
 }
 
 bool Product::operator!=(const NodeData& n) const{
-	return true; //TODO
-}
-bool Product::operator<(const NodeData& n) const{
-	return true; //TODO
-}
-
-bool Product::operator>(const NodeData& n) const{
-	return true; //TODO
-}
-
-bool Product::operator<=(const NodeData& n) const{
-	return true; //TODO
-}
-
-bool Product::operator>=(const NodeData& n) const{
-	return true; //TODO
-}
-/*
-//operator overrides
-
-//------------------------- operator==,!= ------------------------------------
-bool Movie::operator==(const Movie& otherMovie) const {
-	if(genre() != otherMovie.genre()) return false;
-	const string* tempTypeNames = sortedByNames();
-	const int tempTypeCount = dataTypeCount();
-    for(int i = 0; i < tempTypeCount; i++){
-    	if(getData(tempTypeNames[i]) != 
-    		otherMovie.getData(tempTypeNames[i])) return false;
-    }
-    return true;
-}
-
-bool Movie::operator!=(const Movie& otherMovie) const {
-   return !(*this == otherMovie);
+	return !(*this == n); //TODO
 }
 
 //------------------------ operator<,>,<=,>= ---------------------------------
-bool Movie::operator<(const Movie& otherMovie) const {
+
+bool Product::operator<(const NodeData& n) const{
+	if(getKey() != n.getKey()) return false;	//NOTE: should this always return false? should keys be compared for sorting, too?
+	const Product& p = static_cast<const Product&>(n);
 	const string* tempSortedByNames = sortedByNames();
-	int sortedByCount = sizeof(tempSortedByNames)/sizeof(*tempSortedByNames);
+	const int sortedByCount = p.sortedByCount();
 	for(int i = 0; i <= sortedByCount; i++){
 		string nextSortBy = tempSortedByNames[i];
-		if(getData(nextSortBy) < otherMovie.getData(nextSortBy)) return true;
-		if(getData(nextSortBy) > otherMovie.getData(nextSortBy)) return false;
+		if(getData(nextSortBy) < p.getData(nextSortBy)) return true;
+		if(getData(nextSortBy) > p.getData(nextSortBy)) return false;
 	}
     return false;
 }
 
-bool Movie::operator>(const Movie& otherMovie) const {
-   const string* tempSortedByNames = sortedByNames();
-	int sortedByCount = sizeof(tempSortedByNames)/sizeof(*tempSortedByNames);
-	for(int i = 0; i < sortedByCount; i++){
+bool Product::operator>(const NodeData& n) const{
+	if(getKey() != n.getKey()) return false;
+	const Product& p = static_cast<const Product&>(n);
+	const string* tempSortedByNames = sortedByNames();
+	const int sortedByCount = p.sortedByCount();
+	for(int i = 0; i <= sortedByCount; i++){
 		string nextSortBy = tempSortedByNames[i];
-		if(getData(nextSortBy) > otherMovie.getData(nextSortBy)) return true;
-		if(getData(nextSortBy) < otherMovie.getData(nextSortBy)) return false;
+		if(getData(nextSortBy) > p.getData(nextSortBy)) return true;
+		if(getData(nextSortBy) < p.getData(nextSortBy)) return false;
 	}
     return false;
 }
 
-bool Movie::operator<=(const Movie& otherMovie) const {
-   return (*this < otherMovie) || (*this == otherMovie);
+bool Product::operator<=(const NodeData& n) const{
+	return (*this < n) || (*this == n);
 }
 
-bool Movie::operator>=(const Movie& otherMovie) const {
-   return (*this > otherMovie) || (*this == otherMovie);
+bool Product::operator>=(const NodeData& n) const{
+	return (*this > n) || (*this == n);
 }
-*/
+
 
 bool Product::addData(std::string key,std::string value){
 	productData.insert(pair<string,string>(key,value));
