@@ -69,7 +69,7 @@ determine how many copies of a product.have been borrowed.
 */
 
 //most generic Product type
-class Product {
+class Product: public NodeData {
 public:
 	Product();
 	virtual ~Product();
@@ -91,8 +91,6 @@ public:
     virtual bool operator>(const NodeData&) const = 0;
     virtual bool operator<=(const NodeData&) const = 0;
     virtual bool operator>=(const NodeData&) const = 0;
-	
-//TODO: In Product: virtual bool operator > (const NodeData&) const = 0; //finished just leaving this as a note
 
 	//increments the quantity of a particular product format.
     void incrementQuantity(ProductFormat);		

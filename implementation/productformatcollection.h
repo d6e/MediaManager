@@ -1,6 +1,8 @@
 #ifndef PRODUCTFORMATCOLLECTION_H
 #define PRODUCTFORMATCOLLECTION_H
-#define DEFAULT_PRODUCT_QUANTITY 10;
+#define DEFAULT_PRODUCT_QUANTITY 10;  //TODO: verify that this represents count
+#define DEFAULT_PRODUCT_SIZE 100;
+#include "productformat.h"
 #include <string>
 #include <list>
 
@@ -19,11 +21,13 @@ private:
 	struct FormatAmount
 	{
 		ProductFormat* format;
-		int count;
-	    int size;
+		int count; // Number in stock
+	    int size;  // Number of products in total
+        // size - count = number of products being rented
 	};
 		
-	std::list<FormatAmount> formatDataList;
+    std::list<FormatAmount*>::const_iterator it;
+	std::list<FormatAmount*> formatDataList;
 };
 
 #endif

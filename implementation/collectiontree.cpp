@@ -1,7 +1,9 @@
 #include "collectiontree.h"
 
 CollectionTree(){ // constructor 
-
+    std::string key;    
+    BinTree* productTree;
+    ListNode* next;
 }                         
 
 // The copy constructor must make a copy of each node in the other CollectionTree,
@@ -17,11 +19,11 @@ CollectionTree(const CollectionTree &){ //copy constructor
 // private helper method, because it may be useful to empty a collection tree
 // before filling it with new data, rather than entirely deleting it.
 virtual ~CollectionTree(){     //  destructor, calls makeEmpty 
-
+    makeEmpty();
 }   
 
 bool isEmpty() const{// true if collection tree is empty, otherwise false 
-
+    return collTree.empty();
 } 
 
 void makeEmpty(){// empties the collection tree

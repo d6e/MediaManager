@@ -8,7 +8,7 @@
 CommandFactory::CommandFactory(CustomerIndex* cI, ProductCollection* pC){
     cIndex = cI;
     pCollect = pC;
-    //TODO: init hashtable
+    HASH_TABLE_SIZE = 256;
 } 
 
 // The create method takes in a string and parses out the command portion of the
@@ -27,7 +27,7 @@ Command* CommandFactory::create(std::string key){
     switch (cmdString)
     {
         case "H":  // history
-            cmd = new HistoryCMD();
+            cmd = new HistoryCMD(cIndex, Event(restOfString));
             return cmd;
             break;
         case "B": // borrow

@@ -10,6 +10,7 @@
 #include "customer.h"
 #include "customerindex.h"
 #include "command.h"
+#include "commandfactory.h"
 #include "historycmd.h"    
 
 using namespace std;
@@ -56,6 +57,9 @@ int main(){
     delete cust1;
 */
 
+    CommandFactory cmdfact();
+    Command* cmd = cmdfact.create("H 1373");
+    cmd->execute();
 
 
     return 0;

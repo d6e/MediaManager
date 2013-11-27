@@ -16,6 +16,10 @@ insert, retrieve, and print
 class ProductCollection{
 	/* overwrite the << operator */
 	friend std::ostream & operator<<(std::ostream &, const ProductCollection &);
+    
+private:
+    CollectionTree* collectTree; //pointer to the collection tree 
+    Bintree* treeNode;
 public:
 	ProductCollection(); //default constractor
 	virtual ~ProductCollection(); //default destructor 
@@ -27,7 +31,6 @@ public:
 	Error retrieve(Product *); //retrieve product from a linked list 
 	Error displayAll() const; //display all the products 
 	bool isEmpty() const; //check if the list is empty 
-private:
-	CollectionTree* collectTree; //pointer to the collection tree 
 };
+
 #endif

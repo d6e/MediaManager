@@ -30,7 +30,7 @@ private:
     // For commands that need to access the products
     ProductCollection* pCollect; 
     ProductFactory* mFactory; // For commands that need to create products.
-    const int HASH_TABLE_SIZE = 256;
+    const int HASH_TABLE_SIZE;
      // A pointer to an array of Commands implemented as a hash table
     Command* hashTable;
     int hash(std::string key);

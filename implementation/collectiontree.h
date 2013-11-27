@@ -2,6 +2,8 @@
 #define COLLECTIONTREE_H
 #include "nodedata.h"
 #include "bintree.h"
+#include <map>
+#include <string>
 
 /*
 A CollectionTree is a linked list of binary trees. 
@@ -68,6 +70,7 @@ private:
 	ListNode* root;
 	//gets a unique key identifying a ListNode's associated object
 	std::string getKey(const ListNode) const;
+    std::map<std::string, ListNode> collTree;
 };
 
 #endif
