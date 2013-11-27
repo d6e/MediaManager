@@ -15,7 +15,7 @@ ProductFactory::ProductFactory(){
 
 Product* ProductFactory::create(std::string key){
 	int index = hash(key);
-	return productTemplates[index]; //TODO: error checking (maybe not here though)
+	return productTemplates[index] -> create(); //TODO: error checking (maybe not here though)
 }
 
 int ProductFactory::hash(std::string key){

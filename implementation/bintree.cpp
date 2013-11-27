@@ -220,6 +220,7 @@ bool BinTree::isNotEqual(const Node &node1, const Node &node2)const{
 // Recursively inserts the node in an inorder traversal by calling the 
 // insert helper method.
 bool BinTree::insert(NodeData* inserted){
+	//cout << inserted -> dataString() << endl;
 	if(inserted == NULL){ //cannot insert null data
 		return false;
 	}
@@ -333,17 +334,6 @@ int BinTree::maximum(const int num1, const int num2){
 ostream& operator<<(ostream& output, const BinTree& tree) {
 	if(!tree.isEmpty()){
 		tree.displayHelper(output,tree.root);
-		/*
-		BinTree temp(tree);
-		NodeData* array[100];  //assuming there won't be more than 100 nodes
-		temp.bstreeToArray(array); //temp copy tree cuz bstreeToArray empties
-		if(array[0] != NULL){
-			output << *array[0] << endl;
-		}	
-		for(int i = 1; i < 100 && array[i] != NULL; i++){
-			output << *array[i] << endl;
-		}
-		*/
 	}
 	return output;
 }
@@ -354,7 +344,22 @@ void BinTree::displayHelper(ostream& output, Node* cNode) const{
 	output << *(cNode -> data);
 	displayHelper(output,cNode -> right);
 }
+
+const std::string* BinTree::dataTypeNames() const{
+	if(root != NULL){
+		return root -> data -> dataTypeNames();
+	}
+	return NULL;
+}
+
+const int BinTree::dataTypeCount() const{
+	if(root != NULL){
+		return root -> data -> dataTypeCount();
+	}
+	return 0;
+}
 /*
+
 // --------------------------------------------------------------------------
 // bstreeToArray
 // Fills an array of NodeData* via an inorder traversal of the tree. 

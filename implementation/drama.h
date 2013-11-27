@@ -19,7 +19,7 @@ public:
     virtual const std::string* dataTypeNames() const;
     virtual const int dataTypeCount() const;
     virtual const std::string* sortedByNames() const;
-        
+    virtual const int sortedByCount() const;  
         //comparison operators compare product by their sorting criteria
     /*
     virtual bool operator==(const Product &) const;

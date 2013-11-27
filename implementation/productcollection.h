@@ -31,6 +31,7 @@ public:
 	
 private:
 	BinTree collectTree[26];
+	Error displayDataTypes(const BinTree &) const;
 	//CollectionTree* collectTree; //pointer to the collection tree 
 };
 #endif

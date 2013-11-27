@@ -26,9 +26,26 @@ Error ProductCollection::retrieve(Product* p){
 Error ProductCollection::displayAll() const{
 	Error empty;
 	int collectionSize = sizeof(collectTree)/sizeof(*collectTree);
+
 	for(int i = 0; i < collectionSize; i++){
-		if(!collectTree[i].isEmpty()) cout << collectTree[i];
+		if(!collectTree[i].isEmpty()){
+			empty = displayDataTypes(collectTree[i]);	//should this be an error?
+			cout << endl;
+			if(empty.getErrorMessage() != "") return empty;
+			cout << collectTree[i];
+		} 
+	}
+	return empty;	
+}
+
+Error ProductCollection::displayDataTypes(const BinTree& dataTree) const{
+	Error empty;
+	const std::string* dataTypes = dataTree.dataTypeNames();
+	int dataTypeCount = dataTree.dataTypeCount();
+	for(int i = 0; i < dataTypeCount; i++){
+		std::string nextType = dataTypes[i];
+		nextType.resize(MAX_DATA_LENGTH,' ');
+		cout << nextType;
 	}
 	return empty;
-	
 }
