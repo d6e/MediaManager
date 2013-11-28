@@ -14,7 +14,9 @@ bool Manager::inputProduct(ifstream& productInput){
 		productInput >> genre;
 		Product* p = mFactory.create(genre);
 		if(p == NULL){
-			//TODO: go to next line.
+			//cout << "ERROR" << endl;
+			std::string temp;
+			getline(productInput, temp);
 			continue;
 		}
 		

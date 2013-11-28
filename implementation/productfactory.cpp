@@ -2,7 +2,10 @@
 
 ProductFactory::ProductFactory(){
 	//IDEA: may need a special, instantiable "blankMovie" type to solve this problem.
-	
+	for(int i = 0; i < HASH_TABLE_SIZE; i++){
+		productTemplates[i] = NULL;
+	}
+
 	int classicIndex = hash("C");
 	productTemplates[classicIndex] = new Classic();
 
@@ -20,7 +23,10 @@ ProductFactory::ProductFactory(){
 
 Product* ProductFactory::create(std::string key){
 	int index = hash(key);
-	return productTemplates[index] -> create(); //TODO: error checking (maybe not here though)
+	if(productTemplates[index] != NULL){
+		return productTemplates[index] -> create(); //TODO: error checking (maybe not here though)
+	}
+	return NULL;
 }
 
 int ProductFactory::hash(std::string key){

@@ -32,7 +32,7 @@ private:
 	 //create a hash table with the size of 256
     // A pointer to an array of Products implemented as a hash table
 	
-    Product* productTemplates[256]; 
+    Product* productTemplates[HASH_TABLE_SIZE]; 
 	int hash(std::string); //find the given key in the hash table
      
 
