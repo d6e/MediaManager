@@ -13,11 +13,8 @@ int main(){
    	//TODO: add other files to be read
    	Manager productManager;
 
-    productManager.inputProduct(inputFile1);  //NOTE: this will eventually be processed through commands instead.
-    productManager.displayAll();
+    productManager.inputProduct(inputFile1);  
+    productManager.displayAll();   //TODO: this will eventually be processed through commands instead.
    	
-   	//TODO: replace the part below with a Manager  that achieves the same functionality.
-	//Lab4IoPrep ioObject;
-	//ioObject.readInputFile(inputFile1);
 	return 1;
 }

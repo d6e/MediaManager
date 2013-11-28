@@ -1,6 +1,5 @@
 F Gore Verbinski, Pirates of the Caribbean, 2003 
-F Steven Spielberg, Schindler's List, 1993 
-F George Cukor, Holiday, 1938 
-F George Cukor, Holiday, 1939
-F Hal Ashby, Harold and Maude, 2 1971 
-F Phillippe De Broca, King of Hearts, 1967 
+D Steven Spielberg, Schindler's List, 1993 
+C George Cukor, Holiday, Katherine Hepburn, 9 1938 
+C George Cukor, Holiday, Cary Grant, 9 1938 
+D Phillippe De Broca, King of Hearts, 1967 

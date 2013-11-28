@@ -1,5 +1,7 @@
 #include "manager.h"
 
+//TODO: check for invalid genres
+
 Manager::Manager(){
 	//productDB = new CollectionTree();
 //TODO: Initializes all collections and factories
@@ -10,7 +12,12 @@ bool Manager::inputProduct(ifstream& productInput){
 	for(;;){
 		if(productInput.eof()) break;
 		productInput >> genre;
-		Product* p = mFactory.create(genre); //TODO: check valid genre
+		Product* p = mFactory.create(genre);
+		if(p == NULL){
+			//TODO: go to next line.
+			continue;
+		}
+		
 		productInput.get();
 		const std::string* dataTypeNames = p -> dataTypeNames();
 		const int dataTypeCount = p -> dataTypeCount();
@@ -29,15 +36,14 @@ bool Manager::inputProduct(ifstream& productInput){
 		getline(productInput, lastData);
 
 		if(!p -> addData(dataTypeNames[dataTypeCount-1],lastData)) return false;
-		productDB.insert(p);
+		productDB.insert(p,genre);
 
 	}
 	return true;
 }
 
-//TEMPORARY
+//TEMPORARY. replace with event.
 void Manager::displayAll() const{
 	productDB.displayAll();
-	//int test = MAX_DATA_LENGTH;
 }
 //TEMPORARY

@@ -1,16 +1,16 @@
-#ifndef DRAMA_H
-#define DRAMA_H
+#ifndef CLASSIC_H
+#define CLASSIC_H
 #include "movie.h"
 #include <string>
 
-const std::string DRAMA_DATA_TYPES [] = {"director","title","date"};
-const std::string DRAMA_SORTED_BY [] = {"director","title"};
+const std::string CLASSIC_DATA_TYPES [] = {"director","title","famous actor","date"};
+const std::string CLASSIC_SORTED_BY [] = {"date","famous actor"};
 
 
-class Drama : public Movie {
+class Classic : public Movie {
 public:
     //Comedy(); //Inits productData keys.
-    virtual ~Drama(); // cleans up any productdata objects it created
+    virtual ~Classic(); // cleans up any productdata objects it created
     bool setData(Event*); // Returns false if input invalid.
     virtual Product* create(); // Creates a new, empty genre movie object
     virtual std::string type() const; //returns type ("comedy"). Used as key

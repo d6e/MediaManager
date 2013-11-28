@@ -16,7 +16,7 @@ public:
     NodeData& operator=(const NodeData &);     
     // Gives NodeData the duplicate to handle it.
     virtual void duplicate(NodeData*) = 0; 
-    virtual std::string getKey() const = 0; // returns unique identifier
+    virtual const std::string getKey() const = 0; // returns unique identifier
 
     virtual std::string dataString() const = 0;
 

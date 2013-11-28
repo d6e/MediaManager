@@ -80,7 +80,7 @@ public:
 	virtual ~Product();
 	bool setData(Event); // Returns false if input invalid.
     virtual Product* create() = 0; // Creates a new, empty Product
-    virtual std::string getKey() const; // returns unique identifier
+    virtual const std::string getKey() const; // returns unique identifier
     //returns the type (the class) of product. Used as a key.
     virtual std::string type() const = 0;	
 	//void display() const; // Displays contents via cout

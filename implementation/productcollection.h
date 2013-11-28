@@ -1,9 +1,12 @@
 #ifndef PRODUCTCOLLECTION_H
 #define PRODUCTCOLLECTION_H
 #include "collectiontree.h"
+#include "classic.h"
 #include "comedy.h"	//not sure about this include, but using it temporarily
 #include "drama.h"
 #include "error.h"
+
+const int A_INDEX = 65; //memory index of capital A (used for dealing with geners)
 //#include <string>
 
 
@@ -24,7 +27,7 @@ public:
 	//to the inserted Product's dataType() and inseting when it finds a match.
 	//(this means product type and genre must match.) if no match is found, a new
 	//ListNode is created and the Product is inserted into its tree.
-	Error insert(Product *); //inset product into a linked list 
+	Error insert(Product *,std::string); //inset product into a linked list 
 	Error retrieve(Product *); //retrieve product from a linked list 
 	Error displayAll() const; //display all the products 
 	bool isEmpty() const; //check if the list is empty 

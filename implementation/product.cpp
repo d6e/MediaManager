@@ -4,7 +4,7 @@ Product::Product(){}
 
 Product::~Product(){}
 
-std::string Product::getKey() const{
+const std::string Product::getKey() const{
 	return type(); //not sure this is correct yet
 }
 
@@ -20,25 +20,13 @@ std::string Product::dataString() const{
 	return dataString;
 }
 
-std::string Product::getData(const std::string key) const{	
+std::string Product::getData(const std::string key) const{
+
 	map<string,string>::const_iterator index = productData.find(key);
    	const std::string data = index -> second;
 	return data;
 }
-/*
-void Product::display() const{
-	const string* tempTypeNames = dataTypeNames();
-	const int tempTypeCount = dataTypeCount();
-	for(int i = 0; i < tempTypeCount; i++){
-		string dataType = tempTypeNames[i];
-		map<string,string>::const_iterator index = productData.find(dataType);
-   	 	string nextData = index -> second;	
-   	 	normalizeLength(nextData);
-   	 	cout << nextData;
-	}
-	cout << endl;
-}
-*/
+
 void Product::normalizeLength(std::string& data) const{
 	if(data.length() > MAX_DATA_LENGTH*1) truncate(data);	//the *1 is necessary to avoid a waring from the compiler
 	else data.resize(MAX_DATA_LENGTH, ' ');
@@ -68,7 +56,7 @@ bool Product::operator==(const NodeData& n) const{
 }
 
 bool Product::operator!=(const NodeData& n) const{
-	return !(*this == n); //TODO
+	return !(*this == n);
 }
 
 //------------------------ operator<,>,<=,>= ---------------------------------

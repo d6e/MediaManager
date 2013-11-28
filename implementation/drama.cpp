@@ -13,7 +13,7 @@ Product* Drama::create(){
 	return new Drama();
 }
 
-std::string Drama::type() const{return "drama";} //returns type ("comedy"). Used as key
+std::string Drama::type() const{return "drama";} //returns type ("drama"). Used as key
 void Drama::display(){} // Displays contents via cout
 
 const std::string* Drama::dataTypeNames() const{return DRAMA_DATA_TYPES;}
