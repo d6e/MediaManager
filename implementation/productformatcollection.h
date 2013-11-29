@@ -11,12 +11,13 @@ Contains quantites and max quantites of various ProductFormats in a collection.
 */
 class ProductFormatCollection{
 public:
-	ProductFormatCollection();
+    virtual ~ProductFormatCollection();
     //Returns the amount of items that particular ProductFormat has.
-	int getFormatAmount(const ProductFormat*) const; 
-	int getFormatMaxAmount(const ProductFormat*) const;
-	
-	bool addProductFormat(ProductFormat);
+	int getFormatAmount(const ProductFormat*); 
+	int getFormatMaxAmount(const ProductFormat*);
+	//TODO: Add more mutators??? Not necessarily necessary
+    std::string getFormatNames();  //iterate, display productformats
+	void addProductFormat(ProductFormat);
 private:
 	struct FormatAmount
 	{
@@ -26,7 +27,7 @@ private:
         // size - count = number of products being rented
 	};
 		
-    std::list<FormatAmount*>::const_iterator it;
+    std::list<FormatAmount*>::iterator it;
 	std::list<FormatAmount*> formatDataList;
 };
 

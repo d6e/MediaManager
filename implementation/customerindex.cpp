@@ -10,8 +10,6 @@ Error CustomerIndex::addTransaction(std::string custID, Event* event){
     }
 }
 
-
-
 //displays a customer's history from customer ID
 Error CustomerIndex::displayHistory(std::string custID){
     if (customers[custID]){

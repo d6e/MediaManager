@@ -23,16 +23,16 @@ public:
     NodeData(const NodeData &);    // copy constructor
     NodeData& operator=(const NodeData &);     
     // Gives NodeData the duplicate to handle it.
-    virtual void duplicate(NodeData*) = 0; 
+    // virtual void duplicate(NodeData*) = 0;  //TODO: Not sure what to do with this 
     virtual std::string getKey() = 0; // returns unique identifier
 
     // comparison operators
-    virtual bool operator==(const NodeData &) const = 0;
-    virtual bool operator!=(const NodeData &) const = 0;
-    virtual bool operator<(const NodeData &) const = 0;
-    virtual bool operator>(const NodeData &) const = 0;
-    virtual bool operator<=(const NodeData &) const = 0;
-    virtual bool operator>=(const NodeData &) const = 0;                
+    // virtual bool operator==(const NodeData &) const = 0;
+    // virtual bool operator!=(const NodeData &) const = 0;
+    // virtual bool operator<(const NodeData &) const = 0;
+    // virtual bool operator>(const NodeData &) const = 0;
+    // virtual bool operator<=(const NodeData &) const = 0;
+    // virtual bool operator>=(const NodeData &) const = 0;                
 };
 
 #endif

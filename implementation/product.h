@@ -4,6 +4,7 @@
 #include <string>
 #include "event.h"
 #include "productformat.h"
+#include "nodedata.h"
 #include "productformatcollection.h"
 #include <map>
 #include <iostream>
@@ -69,15 +70,14 @@ determine how many copies of a product.have been borrowed.
 */
 
 //most generic Product type
-class Product: public NodeData {
+class Product : public NodeData {
 public:
-	Product();
 	virtual ~Product();
 	bool setData(Event); // Returns false if input invalid.
     virtual Product* create() = 0; // Creates a new, empty Product 
     //returns the type (the class) of product. Used as a key.
     virtual std::string type() const = 0;	
-	virtual void display(); // Displays contents via cout
+	// virtual void display(); // Displays contents via cout //TODO: Not sure if need
 	
 	// Returns all data, inorder of input, deliminated by commas
 	virtual const std::string* dataTypeNames() const = 0; 
@@ -85,12 +85,12 @@ public:
 	virtual const std::string* sortedByNames() const = 0; 
 	
 	//comparison operators compare product by their sorting criteria
-	virtual bool operator==(const NodeData&) const = 0;
-    virtual bool operator!=(const NodeData&) const = 0;
-    virtual bool operator<(const NodeData&) const = 0;
-    virtual bool operator>(const NodeData&) const = 0;
-    virtual bool operator<=(const NodeData&) const = 0;
-    virtual bool operator>=(const NodeData&) const = 0;
+	// virtual bool operator==(const NodeData&) const = 0;
+ //    virtual bool operator!=(const NodeData&) const = 0;
+ //    virtual bool operator<(const NodeData&) const = 0;
+ //    virtual bool operator>(const NodeData&) const = 0;
+ //    virtual bool operator<=(const NodeData&) const = 0;
+ //    virtual bool operator>=(const NodeData&) const = 0;
 
 	//increments the quantity of a particular product format.
     void incrementQuantity(ProductFormat);		
@@ -98,13 +98,15 @@ public:
     int getBorrowedItems(ProductFormat) const; 			
     //number of copies borrowed by customers of a particular product format
 	int getRemainingItems(ProductFormat) const; 			
+protected:
+    //Contains valid formats of the product. The identifier code is the key. 
+    std::map<std::string,ProductFormat> validFormats; 
 private:
 	//Contains the quantities and different formats this product has.	
 	ProductFormatCollection inventory; 
 	//Contains the attributes of this product.
 	std::map<std::string,std::string> productData;    
-	//Contains valid formats of the product. The identifier code is the key. 
-	std::map<std::string,ProductFormat> validFormats; 
+	
 	// Returns false if key doesn't exist  in productData;
     bool addData(std::string key,std::string value); 
     // All products must have possible format(s).        

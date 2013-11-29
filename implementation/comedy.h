@@ -46,20 +46,25 @@ public:
     virtual std::string type() const; //returns type ("comedy"). Used as key
 	virtual void display(); // Displays contents via cout
 
+
 	virtual const std::string* dataTypeNames() const;
-	virtual const std::string* sortedByNames() const;
-	
+	virtual const std::string* sortedByNames() const;	
+    virtual std::string getKey(); // returns unique identifier
+
 	//comparison operators compare product by their sorting criteria
-	virtual bool operator==(const Product &) const;
-    virtual bool operator!=(const Product &) const;
-    virtual bool operator<(const Product &) const;
-    virtual bool operator>(const Product &) const;
-    virtual bool operator<=(const Product &) const;
-    virtual bool operator>=(const Product &) const;
+	// virtual bool operator==(const NodeData&) const;
+ //    virtual bool operator!=(const NodeData&) const;
+ //    virtual bool operator<(const NodeData&) const;
+ //    virtual bool operator>(const NodeData&) const;
+ //    virtual bool operator<=(const NodeData&) const;
+ //    virtual bool operator>=(const NodeData&) const;
 	
 private:
-	const std::string COMEDY_DATA_TYPES [] = {"director","title","date"};
-	const std::string COMEDY_SORTED_BY [] = {"title","date"};
+    int T_SIZE;
+    int S_SIZE;
+
+    std::string COMEDY_DATA_TYPES[3];
+    std::string COMEDY_SORTED_BY[2];
 };
 
 #endif

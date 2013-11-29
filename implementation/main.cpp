@@ -10,8 +10,13 @@
 #include "customer.h"
 #include "customerindex.h"
 #include "command.h"
-#include "commandfactory.h"
+// #include "commandfactory.h"
 #include "historycmd.h"    
+#include "productformat.h"    
+#include "productformatcollection.h"    
+#include "comedy.h"    
+#include "product.h"    
+#include "nodedata.h"    
 
 using namespace std;
 
@@ -22,13 +27,10 @@ int main(){
     I.read("data.txt");
     // cout << I.get() << endl;
 */
-    // // TESTING ERROR
-    // Error E("Testing error message");
-    // cout << E.getErrorMessage() << endl;
-
 
     // Manager M;
-/*    
+/*
+    //clang++ main.cpp event.cpp history.cpp error.cpp customerindex.cpp customer.cpp
     Event* e = new Event("D F You've Got Mail, 1998");
     Event* e2 = new Event("f d shawn of the dead, 1458");
     Event* e3 = new Event("bitches need stitches");
@@ -57,10 +59,33 @@ int main(){
     delete cust1;
 */
 
+
+/*  //have not got this to work
     CommandFactory cmdfact();
     Command* cmd = cmdfact.create("H 1373");
     cmd->execute();
+*/
 
+/*
+    //clang++ main.cpp productformat.cpp product.cpp productformatcollection.cpp nodedata.cpp
+    ProductFormat* pf = new ProductFormat("D");
+    ProductFormat* pf2 = new ProductFormat("B");
+    cout << "product format: " << pf->getName() << endl;
 
+    ProductFormatCollection* pfc = new ProductFormatCollection();
+    pfc->addProductFormat(*pf);
+    pfc->addProductFormat(*pf2);
+    cout << "format amount: " << pfc->getFormatAmount(pf) << endl;
+    cout << "formats: " << pfc->getFormatNames() << endl;
+    delete pf;
+    delete pf2;
+    delete pfc;
+*/
+
+/*
+    NodeData* nd = new Comedy();
+    cout << nd->getKey() << endl;
+    delete nd;
+*/
     return 0;
 }

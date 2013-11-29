@@ -2,17 +2,17 @@
 
 case "$1" in
 "-c") 
-    clang -x c++ $files main.cpp && ./a.out
+    clang++ $files && ./a.out
     ;;
 "-v")
-    g++ -g -Wall $files && valgrind ./a.out
+    clang++ -g -Wall $files && valgrind ./a.out
     ;;
 "-g")
-    g++ -g -Wall $files && gdb ./a.out
+    clang++ -g -Wall $files && gdb ./a.out
     ;;
 *)
-    files="main.cpp"
+    files="product.cpp nodedata.cpp movie.cpp productformat.cpp comedy.cpp main.cpp"
     ;;  
 esac
 
-g++ -g -Wall $files && ./a.out
+clang++ -g -Wall $files && ./a.out
