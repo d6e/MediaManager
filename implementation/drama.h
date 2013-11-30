@@ -1,3 +1,4 @@
+#pragma once
 #ifndef DRAMA_H
 #define DRAMA_H
 #include "product.h"

@@ -1,3 +1,4 @@
+#pragma once
 #ifndef PRODUCTFORMATCOLLECTION_H
 #define PRODUCTFORMATCOLLECTION_H
 #define DEFAULT_PRODUCT_QUANTITY 10;  //TODO: verify that this represents count

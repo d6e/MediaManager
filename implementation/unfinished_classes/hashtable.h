@@ -1,3 +1,4 @@
+#pragma once
 #ifndef HASHTABLE_H
 #define HASHTABLE_H
 #include "nodedata.h"

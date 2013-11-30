@@ -1,3 +1,4 @@
+#pragma once
 #ifndef COMMANDFACTORY_H
 #define COMMANDFACTORY_H
 #include "customerindex.h"

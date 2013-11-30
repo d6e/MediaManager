@@ -1,3 +1,4 @@
+#pragma once
 #ifndef COMEDY_H
 #define COMEDY_H
 #include "product.h"

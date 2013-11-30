@@ -1,3 +1,4 @@
+#pragma once
 #ifndef DISPLAYALLPRODUCTCMD_H
 #define DISPLAYALLPRODUCTCMD_H
 #include <string>

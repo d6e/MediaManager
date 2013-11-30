@@ -1,3 +1,4 @@
+#pragma once
 #ifndef COLLECTIONTREE_H
 #define COLLECTIONTREE_H
 #include "nodedata.h"

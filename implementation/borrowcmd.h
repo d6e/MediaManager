@@ -1,3 +1,4 @@
+#pragma once
 #ifndef BORROWCMD_H
 #define BORROWCMD_H
 #include <string>

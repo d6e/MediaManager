@@ -1,3 +1,4 @@
+#pragma once
 #ifndef PRODUCTCOLLECTION_H
 #define PRODUCTCOLLECTION_H
 #include "error.h"

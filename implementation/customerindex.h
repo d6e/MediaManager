@@ -1,3 +1,4 @@
+#pragma once
 #ifndef CUSTOMERINDEX_H
 #define CUSTOMERINDEX_H
 #include "customer.h"

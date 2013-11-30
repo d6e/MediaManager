@@ -1,3 +1,4 @@
+#pragma once
 #ifndef RETURNCMD_H
 #define RETURNCMD_H
 #include <string>

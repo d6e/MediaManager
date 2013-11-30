@@ -1,3 +1,4 @@
+#pragma once
 #ifndef PRODUCTFORMAT_H
 #define PRODUCTFORMAT_H
 #include <string>

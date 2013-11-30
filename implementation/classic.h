@@ -1,3 +1,4 @@
+#pragma once
 #ifndef CLASSIC_H
 #define CLASSIC_H
 #include "product.h"

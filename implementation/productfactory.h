@@ -1,3 +1,4 @@
+#pragma once
 #ifndef PRODUCTFACTORY_H
 #define PRODUCTFACTORY_H
 #include "product.h"

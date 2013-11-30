@@ -1,3 +1,4 @@
+#pragma once
 #ifndef PRODUCT_H
 #define PRODUCT_H
 #include "hashtable.h"

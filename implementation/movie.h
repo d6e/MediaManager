@@ -1,3 +1,4 @@
+#pragma once
 #ifndef MOVIE_H
 #define MOVIE_H
 #include "product.h"
