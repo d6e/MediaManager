@@ -6,6 +6,9 @@ HistoryCMD::HistoryCMD(CustomerIndex* i, Event* e){
     event = e;
 }
 
+HistoryCMD::~HistoryCMD(){}
+
+
 // Returns false if data invalid, for factory use only.
 bool HistoryCMD::setData(Event* e){
     //TODO: figure out whether to fix Event::set so it returns a bool

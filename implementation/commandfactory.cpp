@@ -11,6 +11,9 @@ CommandFactory::CommandFactory(CustomerIndex* cI, ProductCollection* pC)
     pCollect = pC;
 } 
 
+CommandFactory::~CommandFactory(){} 
+
+
 // The create method takes in a string and parses out the command portion of the
 // string. It then creates an instance of a child command object based on the 
 // command it parsed. Finally, it returns a pointer to that command.
