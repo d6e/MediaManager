@@ -41,8 +41,8 @@ class CustomerIndex {
 private:
     std::map<std::string, Customer*> customers; // A hashtable used to hold the customer objects
 public:
-    // CustomerIndex();  //constructor
-    // virtual ~CustomerIndex();    //destructor
+    CustomerIndex();  //constructor
+    virtual ~CustomerIndex();    //destructor
     Error addTransaction(std::string,Event*); //calls customer's addTransaction
      // checks whether customer obj exists from an customer id
     bool customerExists(std::string);  

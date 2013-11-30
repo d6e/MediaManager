@@ -1,4 +1,9 @@
 #include "customerindex.h"
+#include <iostream>
+
+CustomerIndex::CustomerIndex(){}
+
+CustomerIndex::~CustomerIndex(){}
 
 Error CustomerIndex::addTransaction(std::string custID, Event* event){
     if(customerExists(custID)){
@@ -12,7 +17,11 @@ Error CustomerIndex::addTransaction(std::string custID, Event* event){
 
 //displays a customer's history from customer ID
 Error CustomerIndex::displayHistory(std::string custID){
+    std::cout << "customer: " << custID << std::endl;
+
     if (customers[custID]){
+        std::cout << "customer index displayhistory" << std::endl;
+
         Customer* cust = customers[custID];
         cust->displayHistory();
         return Error("");

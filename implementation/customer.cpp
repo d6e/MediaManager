@@ -1,5 +1,6 @@
 #include "customer.h"
 
+
 Customer::Customer(std::string id, std::string first, std::string last){
     customerID = id;
     firstName = first;

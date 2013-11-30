@@ -27,7 +27,7 @@ Command* CommandFactory::create(std::string key){
     restOfString = ss.str();
 
     Command* cmd = NULL;
-    switch (cmdString.at(0)) //TODO: Verify that this works
+    switch (cmdString.at(0)) //Convert string to a char
     {
         case 'H':  // history
             cmd = new HistoryCMD(cIndex, new Event(restOfString));
