@@ -6,7 +6,9 @@ HistoryCMD::HistoryCMD(CustomerIndex* i, Event* e){
     event = e;
 }
 
-HistoryCMD::~HistoryCMD(){}
+HistoryCMD::~HistoryCMD(){
+	delete his
+}
 
 
 // Returns false if data invalid, for factory use only.

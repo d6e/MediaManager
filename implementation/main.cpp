@@ -22,6 +22,9 @@
 using namespace std;
 
 int main(){
+    cout << "----------------------------------------------------------------------" << endl;
+
+
     /*
     // TESTING INPUT
     Input I;
@@ -99,18 +102,19 @@ int main(){
     e = cmd->execute();
     cout << e << endl;
 
-    Command* cmd2 = cmdfact->create("H 1373");
-    er = cmd2->execute();
-    cout << er << endl;
-    cout << er << endl;
+    // Command* cmd2 = cmdfact->create("H 1373");
+    // er = cmd2->execute();
+    // cout << er << endl;
+    // cout << er << endl;
 
 
     delete cIndex;
     delete pColl;
-    delete cmdfact;
-    delete cmd;
-    delete cmd2;
+    // delete cmd;
+    // delete cmd2;
     delete cust1;
+    delete cmdfact;
+    
 
     return 0;
 }

@@ -34,8 +34,8 @@ private:
     ProductFactory* pFactory; // For commands that need to create products.
      // A pointer to an array of Commands implemented as a hash table
     // Command* hashTable;
-    std::map<char, Command*> cmds;
-    std::map<char, Command*>::iterator it;
+    std::list<Command*> cmds;
+    std::list<Command*>::iterator it;
     const int HASH_TABLE_SIZE;
     int hash(std::string key);
 
