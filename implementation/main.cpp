@@ -28,7 +28,6 @@ int main(){
     I.read("data.txt");
     // cout << I.get() << endl;
 */
-
     // Manager M;
 /*
     //clang++ main.cpp event.cpp history.cpp error.cpp customerindex.cpp customer.cpp
