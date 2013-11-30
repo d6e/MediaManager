@@ -2,6 +2,7 @@
 #ifndef MANAGER_H
 #define MANAGER_H
 #include "customerindex.h"
+#include "customer.h"
 #include "productcollection.h"
 #include "commandfactory.h"
 #include "productfactory.h"
@@ -27,11 +28,14 @@ public:
 	
     // Inputs new products, prints errors in process, returns false if failed.
 	bool inputProduct(std::string); 
+
     // Inputs new customers, prints errors in process, returns false if failed.
     bool inputCustomer(std::string);
+
     // Inputs commands into system, prints errors in process, 
     // returns false if failed.
     bool inputCmd(std::string);
+
     //TODO: Make a function called ProcessCommands in manager that can take in multiple commands.
 
 };

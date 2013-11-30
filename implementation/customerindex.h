@@ -42,6 +42,7 @@ class CustomerIndex {
 private:
     std::map<std::string, Customer*> customers; // A hashmap for customers objs 
     std::map<std::string, Customer*>::iterator it; // customers iterator
+    History unknownCustHist;  // Used to store events that have no customers
 public:
     CustomerIndex();  //constructor
     virtual ~CustomerIndex();    //destructor

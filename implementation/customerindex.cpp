@@ -4,6 +4,7 @@
 CustomerIndex::CustomerIndex(){}
 
 CustomerIndex::~CustomerIndex(){
+    std::cout << "CustomerIndex destructor called." << std::endl;    
     for(it = customers.begin(); it != customers.end(); ++it) {
         delete it->second;
     }
@@ -15,6 +16,7 @@ Error CustomerIndex::addTransaction(std::string custID, Event* event){
         return Error("");
     }
     else{
+        unknownCustHist.addEvent(event);
         return Error("Cannot find customer");
     }
 }

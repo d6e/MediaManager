@@ -3,7 +3,7 @@
 #include <string>
 #include "input.h"
 #include "error.h"
-// #include "manager.h"
+#include "manager.h"
 // #include "hashtable.h"
 #include "event.h"
 #include "history.h"
@@ -83,31 +83,30 @@ int main(){
     // cout << I.get() << endl;
 */
 
-// clang++ main.cpp event.cpp history.cpp error.cpp customerindex.cpp customer.cpp productcollection.cpp bintree.cpp
-    CustomerIndex* cIndex = new CustomerIndex();
-    ProductCollection* pColl = new ProductCollection();
+    Manager M;
+    // CustomerIndex* cIndex = new CustomerIndex();
+    // ProductCollection* pColl = new ProductCollection();
 
-    CommandFactory* cmdfact = new CommandFactory(cIndex, pColl);
+    // CommandFactory* cmdfact = new CommandFactory(cIndex, pColl);
 
-    Error e;
-    Error er;
-    Customer* cust1 = new Customer("1373", "Anthony", "Giovannetti");
-    cIndex->insertCustomer(cust1);
+    // Customer* cust1 = new Customer("1373", "Anthony", "Giovannetti");
+    // cIndex->insertCustomer(cust1);
+    M.inputCustomer("1373 Anthony Giovannetti");
+    M.inputCmd("H 1373");
 
-    Command* cmd = cmdfact->create("H 1373");
-    e = cmd->execute();
-    cout << e << endl;
 
+    // Command* cmd = cmdfact->create("H 1373");
+    // e = cmd->execute();
+    // cout << e << endl;
+/*
     Command* cmd2 = cmdfact->create("H 1373");
     er = cmd2->execute();
     cout << er << endl;
-    cout << er << endl;
+*/
 
-
-    delete cIndex;
-    delete pColl;
-    // delete cust1;
-    delete cmdfact;
+    // delete cIndex;
+    // delete pColl;
+    // delete cmdfact;
     
     return 0;
 }

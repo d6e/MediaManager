@@ -17,7 +17,7 @@ HistoryCMD::~HistoryCMD(){}
 bool HistoryCMD::setData(Event* e){
     //TODO: figure out whether to fix Event::set so it returns a bool
     event = e;
-    std::string custID = event->get(1); // The second word is customer ID
+    std::string custID = e->get(1); // The second word is customer ID
 	cIndex->addTransaction(custID, e);
     return true;
 } 
