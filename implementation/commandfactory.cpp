@@ -11,12 +11,17 @@ CommandFactory::CommandFactory(CustomerIndex* cI, ProductCollection* pC)
         : HASH_TABLE_SIZE(256){
     cIndex = cI;
     pCollect = pC;    
+    
+    cmds['H'] = new HistoryCMD(cIndex);
+    cmds['B'] = new BorrowCMD(cIndex, pCollect);
+    cmds['R'] = new ReturnCMD(cIndex, pCollect);
+    cmds['S'] = new DisplayAllProductCMD(pCollect);
 } 
 
 CommandFactory::~CommandFactory(){
     for(it = cmds.begin(); it != cmds.end(); ++it) {
         std::cout << "type: " << typeid(*it).name() << std::endl;
-        delete *it;
+        delete it->second;
     }
 } 
 
@@ -31,7 +36,14 @@ Command* CommandFactory::create(std::string key){
     ss << key;
     ss >> cmdString;
     restOfString = ss.str();
+    char cmdChar = cmdString.at(0); //Convert string to a char
 
+    Command* cmd = NULL;
+    cmd = cmds[cmdChar];
+    cmd->setData(new Event(restOfString));
+    return cmd;
+
+/*
     Command* cmd = NULL;
     switch (cmdString.at(0)) //Convert string to a char
     {
@@ -59,6 +71,7 @@ Command* CommandFactory::create(std::string key){
             cmds.push_back(cmd);
             return cmd;
     }
+    */
 }
 
 int CommandFactory::hash(std::string key){

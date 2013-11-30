@@ -28,6 +28,7 @@ private:
 
 public:
     ReturnCMD(CustomerIndex*, ProductCollection*, Event*); //default constructor 
+    ReturnCMD(CustomerIndex*, ProductCollection*);
     virtual ~ReturnCMD(); //default destructor 
     // Returns false if data invalid, for factory use only.
 	virtual bool setData(Event*); 

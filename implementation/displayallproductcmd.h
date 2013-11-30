@@ -23,6 +23,7 @@ message if the command is not found.
 class DisplayAllProductCMD : public Command {
 private:
     ProductCollection* pColl;
+    Event* event;
 public:
     DisplayAllProductCMD(ProductCollection*);  // default constructor
     virtual ~DisplayAllProductCMD();           // default destructor

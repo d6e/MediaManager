@@ -23,6 +23,7 @@ private:
     CustomerIndex* cIndex;
 	Event* event;
 public:
+	HistoryCMD(CustomerIndex*); // event is intialized with setdata
     HistoryCMD(CustomerIndex*, Event*);          // default constructor
     virtual ~HistoryCMD();                       // default destructor
     // Returns false if data invalid, for factory use only.

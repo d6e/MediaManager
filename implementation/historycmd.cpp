@@ -1,20 +1,24 @@
 #include "historycmd.h"
 
 // default constructor
+HistoryCMD::HistoryCMD(CustomerIndex* i){ // event is intialized with setdata
+    cIndex = i;
+}
+
 HistoryCMD::HistoryCMD(CustomerIndex* i, Event* e){
     cIndex = i;
     event = e;
 }
 
-HistoryCMD::~HistoryCMD(){
-	delete his
-}
+HistoryCMD::~HistoryCMD(){}
 
 
 // Returns false if data invalid, for factory use only.
 bool HistoryCMD::setData(Event* e){
     //TODO: figure out whether to fix Event::set so it returns a bool
     event = e;
+    std::string custID = event->get(1); // The second word is customer ID
+	cIndex->addTransaction(custID, e);
     return true;
 } 
 

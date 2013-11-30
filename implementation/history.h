@@ -18,6 +18,7 @@ display method.
 class History {
 private:
     std::list<Event*> eventList;  //list of event objects
+    std::list<Event*>::iterator it;  //iterator for list of event objects
 public:
     History();
     virtual ~History();               // deletes each node in the list. 

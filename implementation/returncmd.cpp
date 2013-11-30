@@ -7,13 +7,20 @@ ReturnCMD::ReturnCMD(CustomerIndex* ci, ProductCollection* pc, Event* e){
     event = e;
 }
 
-//default destructor 
-ReturnCMD::~ReturnCMD(){
+ReturnCMD::ReturnCMD(CustomerIndex* ci, ProductCollection* pc){
+    cIndex = ci;
+    pColl = pc;
+}
 
-} 
+
+//default destructor 
+ReturnCMD::~ReturnCMD(){} 
 
 // Returns false if data invalid, for factory use only.
-bool ReturnCMD::setData(Event*){
+bool ReturnCMD::setData(Event* e){
+	event = e;
+    std::string custID = event->get(1); // The second word is customer ID
+	cIndex->addTransaction(custID, e);
     return true; //TODO
 }
 

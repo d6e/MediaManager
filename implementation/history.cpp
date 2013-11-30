@@ -7,7 +7,10 @@ History::History(){
 
 // deletes each node in the list. 
 History::~History(){
-    eventList.clear();
+	for(it = eventList.begin(); it != eventList.end(); ++it){
+		delete *it;
+	}
+    // eventList.clear();
 }
 
 // Iterates through displays all event objects

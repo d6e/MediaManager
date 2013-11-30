@@ -30,6 +30,7 @@ private:
 
 public:
     BorrowCMD(CustomerIndex*,ProductCollection*, Event*); //default constructor
+    BorrowCMD(CustomerIndex*,ProductCollection*);
     virtual ~BorrowCMD(); //default destructor 
 	// Returns false if data invalid, for factory use only.
     virtual bool setData(Event*); 
