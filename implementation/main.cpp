@@ -89,7 +89,6 @@ int main(){
     CustomerIndex* cIndex = new CustomerIndex();
     ProductCollection* pColl = new ProductCollection();
 
-    //have not got this to work
     CommandFactory* cmdfact = new CommandFactory(cIndex, pColl);
     Command* cmd = cmdfact->create("H 1373");
     cmd->execute();
