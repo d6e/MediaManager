@@ -15,10 +15,10 @@ outside the Manager class so all input is assumed to be lines of strings.
 class Manager{
 
 private:
-    CustomerIndex customerDB; // Stores customer information and history.
-    ProductCollection productDB; // Stores product information and quantities
-    CommandFactory cFactory; // Creates commands.
-    ProductFactory mFactory; // Creates products.
+    CustomerIndex* cIndex; // Stores customer information and history.
+    ProductCollection* pCollect; // Stores product information and quantities
+    CommandFactory* cFactory; // Creates commands.
+    ProductFactory* pFactory; // Creates products.
 
 public:
 	Manager(); //Initializes all collections and factories

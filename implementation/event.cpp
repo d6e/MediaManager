@@ -15,6 +15,10 @@ void Event::set(std::string msg){
     argList.push_back(msg);
 }
 
+std::string Event::get(int index){
+    return argList.at(index);
+}
+
 // The display method iterates through the list displaying the data.
 void Event::display() const{
     for(int i = 0; i < argList.size(); ++i){

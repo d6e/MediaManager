@@ -18,6 +18,9 @@ bool HistoryCMD::setData(Event* e){
 // It will return true, if the command is found and return ERROR 
 // message if the command is not found.
 Error HistoryCMD::execute(){
-    cIndex.displayHistory(custID);  
+    //TODO: figure out if this is where the data should be parsed or not
+    std::string custID = event->get(0);
+
+    cIndex->displayHistory(custID);  
     return Error("This is the execute command.");
 }

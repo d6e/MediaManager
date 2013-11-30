@@ -1,6 +1,7 @@
 #ifndef PRODUCTFACTORY_H
 #define PRODUCTFACTORY_H
 #include "product.h"
+#include "productcollection.h"
 #include <string>
 
 /*
@@ -15,7 +16,7 @@ class ProductFactory
 public:
     //fills producttemplates with instances of each instantiatable 
     //Product object
-    ProductFactory(ProductCollection);    
+    ProductFactory(ProductCollection*);    
     virtual ~ProductFactory();
     //parses input to create Product objects, returns null if invalid hash key
     Product *create(std::string key); 

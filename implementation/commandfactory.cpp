@@ -5,10 +5,10 @@
 // ProductCollection is used to pass along the two data structures 
 // to it's products.
 // constructor, inits hash table
-CommandFactory::CommandFactory(CustomerIndex* cI, ProductCollection* pC){
+CommandFactory::CommandFactory(CustomerIndex* cI, ProductCollection* pC) 
+        : HASH_TABLE_SIZE(256){
     cIndex = cI;
     pCollect = pC;
-    HASH_TABLE_SIZE = 256;
 } 
 
 // The create method takes in a string and parses out the command portion of the
@@ -20,26 +20,26 @@ Command* CommandFactory::create(std::string key){
     std::string restOfString;
     std::stringstream ss;
     ss << key;
-    ss >> cmd;
+    ss >> cmdString;
     restOfString = ss.str();
 
     Command* cmd = NULL;
-    switch (cmdString)
+    switch (cmdString.at(0)) //TODO: Verify that this works
     {
-        case "H":  // history
-            cmd = new HistoryCMD(cIndex, Event(restOfString));
+        case 'H':  // history
+            cmd = new HistoryCMD(cIndex, new Event(restOfString));
             return cmd;
             break;
-        case "B": // borrow
-            cmd = new BorrowCMD();
+        case 'B': // borrow
+            cmd = new BorrowCMD(cIndex, pCollect, new Event(restOfString));
             return cmd;
             break;
-        case "R": // return
-            cmd = new ReturnCMD();
+        case 'R': // return
+            cmd = new ReturnCMD(cIndex, pCollect, new Event(restOfString));
             return cmd;
             break;
-        case "S": // display all products
-            cmd = new DisplayAllProductCMD();
+        case 'S': // display all products
+            cmd = new DisplayAllProductCMD(pCollect);
             return cmd;
             break;
         default: // command not accepted, returning NULL Command pointer

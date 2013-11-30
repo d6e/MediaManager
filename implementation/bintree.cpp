@@ -3,31 +3,31 @@
 //---------------------------------------------------------------------------
 // Node constructor
 // Creates a node object and sets it to NULL
-Node::Node(){
+BinTree::Node::Node(){
     left = NULL;
     right = NULL;
     data = NULL;
 }
-
+/*
 // --------------------------------------------------------------------------
 // Node copy constructor
 // Copies a node that is passed by reference 
-Node::Node(const Node& otherNode){
-      data = new NodeData(*otherNode.data);
-     left = NULL;
-      right = NULL;
+BinTree::Node::Node(const Node& otherNode){
+    data = new NodeData(*otherNode.data);
+    left = NULL;
+    right = NULL;
 }
-
+*/
 // --------------------------------------------------------------------------
 // Node destructor
 // Deletes a DataNode object and sets all the other members to NULL
-Node::~Node(){
+BinTree::Node::~Node(){
     left = NULL;
     right = NULL;
     delete data;
     data = NULL;
 }
-
+/*
 // --------------------------------------------------------------------------
 // Equality Operator
 // Compares the data members of two node objects for equality. Returns true
@@ -35,14 +35,14 @@ Node::~Node(){
 bool Node::operator==(const Node& rhs) const{
       return data == rhs.data;
 }
-
+*/
 // --------------------------------------------------------------------------
 // BinTree Constructor
 // Creates a tree object and sets its root data member to NULL
 BinTree::BinTree(){
     root = NULL;
 }
-
+/*
 // --------------------------------------------------------------------------
 // BinTree copy constuctor 
 // Copies a tree that is passed by reference 
@@ -63,6 +63,7 @@ BinTree::BinTree(const BinTree& otherTree){
       }
 }
 
+
 // --------------------------------------------------------------------------
 // BinTree Copy Constructor Helper
 // Helps copy constructor perform a deep copy on the tree
@@ -78,7 +79,7 @@ void BinTree::copyNode(Node& currNode, Node& otherNode){
         copyNode(*currNode.right, *otherNode.right);
       }
 }
-
+*/
 // --------------------------------------------------------------------------
 // BinTree Destructor
 // Calls makeEmpty to destroy the tree.
@@ -116,7 +117,7 @@ void BinTree::makeEmpty(Node *currNode){
         currNode = NULL;
     }
 }
-
+/*
 // --------------------------------------------------------------------------
 // Assignment Operator
 BinTree& BinTree::operator=(const BinTree &otherTree){
@@ -512,3 +513,4 @@ void BinTree::sideways(Node* current, int level) const {
         sideways(current -> left, level);
     }
 }
+*/

@@ -29,10 +29,10 @@ private:
     CustomerIndex* cIndex; // For commands that need access to the customers
     // For commands that need to access the products
     ProductCollection* pCollect; 
-    ProductFactory* mFactory; // For commands that need to create products.
-    const int HASH_TABLE_SIZE;
+    ProductFactory* pFactory; // For commands that need to create products.
      // A pointer to an array of Commands implemented as a hash table
     Command* hashTable;
+    const int HASH_TABLE_SIZE;
     int hash(std::string key);
 
 public:

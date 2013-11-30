@@ -19,7 +19,7 @@ class ProductCollection{
     
 private:
     CollectionTree* collectTree; //pointer to the collection tree 
-    Bintree* treeNode;
+    BinTree* treeNode;
 public:
 	ProductCollection(); //default constractor
 	virtual ~ProductCollection(); //default destructor 

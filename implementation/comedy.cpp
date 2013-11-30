@@ -7,6 +7,7 @@ Comedy::Comedy(){
     T_SIZE = 3;
     S_SIZE = 2;
 
+    //TODO: Makes these const and put them in an initializer list
     std::string COMEDY_DATA_TYPES[3] = {"director","title","date"};
     std::string COMEDY_SORTED_BY[2] = {"title","date"};
 }

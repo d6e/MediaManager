@@ -23,7 +23,7 @@ message if the command is not found.
 class BorrowCMD : public Command {
 private:
     CustomerIndex* cIndex; //customer Index pointer 
-    ProductCollection* mColl; //product collection pointer 
+    ProductCollection* pColl; //product collection pointer 
 	Event* event;
 	int getID(); //Gets the customer ID from the event.
 

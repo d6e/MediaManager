@@ -21,12 +21,12 @@ message if the command is not found.
 */
 class DisplayAllProductCMD : public Command {
 private:
-    ProductCollection* mColl;
+    ProductCollection* pColl;
 public:
     DisplayAllProductCMD(ProductCollection*);  // default constructor
     virtual ~DisplayAllProductCMD();           // default destructor
     // Returns false if data invalid, for factory use only.
-	virtual bool setData(Event); 
+	virtual bool setData(Event*); 
     Error execute();  //execute command from the IO 
 };
 

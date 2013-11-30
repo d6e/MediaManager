@@ -1,6 +1,7 @@
 #ifndef HISTORYCMD_H
 #define HISTORYCMD_H
 #include <string>
+#include <sstream>
 #include "customerindex.h"
 #include "command.h"
 

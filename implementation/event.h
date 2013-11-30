@@ -24,6 +24,7 @@ public:
     Event(std::string);
     virtual ~Event();
     void set(std::string); // Parses input a string into the list.
+    std::string get(int);
     void display() const;  // Display the data from one event object
 };
 

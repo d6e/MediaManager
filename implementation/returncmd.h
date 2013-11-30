@@ -22,14 +22,14 @@ message if the command is not found.
 class ReturnCMD : public Command {
 private:
     CustomerIndex* cIndex; //pointer to the customer index
-    ProductCollection* mColl; //pointer to the product collection 
+    ProductCollection* pColl; //pointer to the product collection 
     Event* event; // pointer to entire command information.
 
 public:
     ReturnCMD(CustomerIndex*, ProductCollection*, Event*); //default constructor 
     virtual ~ReturnCMD(); //default destructor 
     // Returns false if data invalid, for factory use only.
-	virtual bool setData(Event); 
+	virtual bool setData(Event*); 
     Error execute(); //execute command from the IO 
 };
 

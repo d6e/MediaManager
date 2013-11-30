@@ -10,10 +10,11 @@
 #include "customer.h"
 #include "customerindex.h"
 #include "command.h"
-// #include "commandfactory.h"
+#include "commandfactory.h"
 #include "historycmd.h"    
 #include "productformat.h"    
 #include "productformatcollection.h"    
+#include "productcollection.h"    
 #include "comedy.h"    
 #include "product.h"    
 #include "nodedata.h"    
@@ -60,12 +61,6 @@ int main(){
 */
 
 
-/*  //have not got this to work
-    CommandFactory cmdfact();
-    Command* cmd = cmdfact.create("H 1373");
-    cmd->execute();
-*/
-
 /*
     //clang++ main.cpp productformat.cpp product.cpp productformatcollection.cpp nodedata.cpp
     ProductFormat* pf = new ProductFormat("D");
@@ -87,5 +82,21 @@ int main(){
     cout << nd->getKey() << endl;
     delete nd;
 */
+
+    
+
+// clang++ main.cpp event.cpp history.cpp error.cpp customerindex.cpp customer.cpp productcollection.cpp bintree.cpp
+    CustomerIndex* cIndex = new CustomerIndex();
+    ProductCollection* pColl = new ProductCollection();
+
+    //have not got this to work
+    CommandFactory* cmdfact = new CommandFactory(cIndex, pColl);
+    Command* cmd = cmdfact->create("H 1373");
+    cmd->execute();
+
+    delete cIndex;
+    delete pColl;
+    delete cmdfact;
+
     return 0;
 }

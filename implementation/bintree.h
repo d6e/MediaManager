@@ -51,6 +51,21 @@ class BinTree {
 // ostream is for all output
 friend std::ostream& operator<<(std::ostream&, const BinTree&);
 
+   
+private:
+    struct Node{
+        NodeData* data;
+        Node* left;
+        Node* right;
+
+        Node();
+        Node(const Node& otherNode);
+        ~Node();
+    };
+    Node* root;
+    // string displaying the tree (helper for <<)
+    std::string displayInOrder() const;  
+
 public:
 
     BinTree();              // No argument constructor
@@ -60,22 +75,14 @@ public:
 
     bool isEmpty() const;  //checks if the tree is empty
     void makeEmpty();      //makes the tree empty
+    void makeEmpty(Node*);      //makes the tree empty
     BinTree& operator=(const BinTree &);  //sets the tree equal to another tree
 
     bool insert( NodeData*); // insert new object
     bool retrieve( NodeData*) const; //searches the Tree for a NodeData object
 
     int getSize() const;        //returns the number of nodes in the tree
-   
-private:
-    struct Node{
-        NodeData* data;
-        Node* left;
-        Node* right;
-    };
-    Node* root;
-    // string displaying the tree (helper for <<)
-    std::string displayInOrder() const;  
+
 };
 
 #endif
