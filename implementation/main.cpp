@@ -23,15 +23,6 @@ using namespace std;
 
 int main(){
     cout << "----------------------------------------------------------------------" << endl;
-
-
-    /*
-    // TESTING INPUT
-    Input I;
-    I.read("data.txt");
-    // cout << I.get() << endl;
-*/
-    // Manager M;
 /*
     //clang++ main.cpp event.cpp history.cpp error.cpp customerindex.cpp customer.cpp
     Event* e = new Event("D F You've Got Mail, 1998");
@@ -85,7 +76,12 @@ int main(){
     delete nd;
 */
 
-    
+    /*
+    // TESTING INPUT
+    Input I;
+    I.read("data.txt");
+    // cout << I.get() << endl;
+*/
 
 // clang++ main.cpp event.cpp history.cpp error.cpp customerindex.cpp customer.cpp productcollection.cpp bintree.cpp
     CustomerIndex* cIndex = new CustomerIndex();
@@ -110,9 +106,8 @@ int main(){
 
     delete cIndex;
     delete pColl;
-    delete cust1;
+    // delete cust1;
     delete cmdfact;
     
-
     return 0;
 }

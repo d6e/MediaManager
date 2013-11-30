@@ -19,8 +19,8 @@ bool Manager::inputProduct(std::string){
 } 
 
 bool Manager::inputCustomer(std::string){
+    
     return true; //TODO
-
 }
 
 bool Manager::inputCmd(std::string){

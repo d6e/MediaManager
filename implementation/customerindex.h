@@ -40,7 +40,8 @@ the custHT.
 
 class CustomerIndex {
 private:
-    std::map<std::string, Customer*> customers; // A hashtable used to hold the customer objects
+    std::map<std::string, Customer*> customers; // A hashmap for customers objs 
+    std::map<std::string, Customer*>::iterator it; // customers iterator
 public:
     CustomerIndex();  //constructor
     virtual ~CustomerIndex();    //destructor

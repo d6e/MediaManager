@@ -3,7 +3,11 @@
 
 CustomerIndex::CustomerIndex(){}
 
-CustomerIndex::~CustomerIndex(){}
+CustomerIndex::~CustomerIndex(){
+    for(it = customers.begin(); it != customers.end(); ++it) {
+        delete it->second;
+    }
+}
 
 Error CustomerIndex::addTransaction(std::string custID, Event* event){
     if(customerExists(custID)){

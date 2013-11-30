@@ -1,7 +1,5 @@
 #include "commandfactory.h"
 #include <sstream>
-#include <typeinfo>
-#include <iostream>
 
 // The CommandFactory constructor that takes a CustomerIndex and a
 // ProductCollection is used to pass along the two data structures 
@@ -20,7 +18,6 @@ CommandFactory::CommandFactory(CustomerIndex* cI, ProductCollection* pC)
 
 CommandFactory::~CommandFactory(){
     for(it = cmds.begin(); it != cmds.end(); ++it) {
-        std::cout << "type: " << typeid(*it).name() << std::endl;
         delete it->second;
     }
 } 
