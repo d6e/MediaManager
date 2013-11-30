@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+
 const int MAX_DATA_LENGTH = 20;
 
 using namespace std;
@@ -15,7 +16,8 @@ public:
     NodeData(const NodeData &);    // copy constructor
     NodeData& operator=(const NodeData &);     
     // Gives NodeData the duplicate to handle it.
-    virtual void duplicate(NodeData*) = 0; 
+    virtual void duplicate(NodeData*) = 0;
+    virtual void display(std::ostream&) const = 0;
     virtual const std::string getKey() const = 0; // returns unique identifier
 
     virtual std::string dataString() const = 0;

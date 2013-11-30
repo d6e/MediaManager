@@ -13,7 +13,8 @@ NodeData::NodeData(const NodeData& nd) { // copy. TODO (i think)
 
 ostream& operator<<(ostream& output, const NodeData& n){
    //TODO
-   output << n.dataString() << endl;
+   //output << n.dataString() << endl;
+   n.display(output);
    return output;
 }
 

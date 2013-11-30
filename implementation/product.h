@@ -80,14 +80,12 @@ public:
 	virtual ~Product();
 	bool setData(Event); // Returns false if input invalid.
     virtual Product* create() = 0; // Creates a new, empty Product
+    virtual void display(std::ostream&) const;
     virtual const std::string getKey() const; // returns unique identifier
     //returns the type (the class) of product. Used as a key.
-    virtual std::string type() const = 0;	
-	//void display() const; // Displays contents via cout
+    virtual std::string type() const = 0;
 	virtual std::string dataString() const;
 	virtual void duplicate(NodeData*);
-	// Returns all data, inorder of input, deliminated by commas
-	//virtual const std::string* dataTypeNames() const = 0;
 	virtual const int dataTypeCount() const = 0;
 	// Returns the sorting data, delineated by commas
 	virtual const std::string* sortedByNames() const = 0;
@@ -111,7 +109,8 @@ public:
 	//TODO: make addData private and use setData instead in Manager/Factory.
 	// Returns false if key doesn't exist  in productData;
     bool addData(std::string,std::string);
-    
+    //bool addFormat
+    void initValidFormats();
 
 private:
 	//Contains the quantities and different formats this product has.	
@@ -123,8 +122,11 @@ private:
 	
 	std::string getData(const std::string) const;
     // All products must have possible format(s).        
-	virtual void initValidFormats() = 0; 
-	bool addFormat(ProductFormat); //Returns false if data invalid.
+	
+	virtual const std::string* validFormatNames() const = 0;
+	virtual const int validFormatCount() const = 0;
+	bool addFormat(ProductFormat*); //Returns false if data invalid.
+	bool addValidFormat(ProductFormat);
 	void normalizeLength(std::string&) const;
 	void truncate(std::string&) const;
 };

@@ -1,6 +1,10 @@
 #include "manager.h"
 
-//TODO: check for invalid genres
+//TODO: implement movie formats
+//TODO: deal with sorting matches
+//TODO: fully implement Errors (figure out which methods are supposed to call them
+	//and what they should do)
+//TODO: implement Events
 
 Manager::Manager(){
 	//productDB = new CollectionTree();
@@ -14,7 +18,6 @@ bool Manager::inputProduct(ifstream& productInput){
 		productInput >> genre;
 		Product* p = mFactory.create(genre);
 		if(p == NULL){
-			//cout << "ERROR" << endl;
 			std::string temp;
 			getline(productInput, temp);
 			continue;
@@ -38,6 +41,7 @@ bool Manager::inputProduct(ifstream& productInput){
 		getline(productInput, lastData);
 
 		if(!p -> addData(dataTypeNames[dataTypeCount-1],lastData)) return false;
+		//cout << "INSERTING" << endl;
 		productDB.insert(p,genre);
 
 	}
