@@ -29,7 +29,6 @@ CommandFactory::~CommandFactory(){
 // string. It then creates an instance of a child command object based on the 
 // command it parsed. Finally, it returns a pointer to that command.
 Command* CommandFactory::create(std::string key){
-//TODO: parse string and create appropriate command
     std::string cmdString;
     std::string restOfString;
     std::stringstream ss;
@@ -42,36 +41,6 @@ Command* CommandFactory::create(std::string key){
     cmd = cmds[cmdChar];
     cmd->setData(new Event(restOfString));
     return cmd;
-
-/*
-    Command* cmd = NULL;
-    switch (cmdString.at(0)) //Convert string to a char
-    {
-        case 'H':  // history
-            cmd = new HistoryCMD(cIndex, new Event(restOfString));
-            cmds.push_back(cmd);
-            return cmd;
-            break;
-        case 'B': // borrow
-            cmd = new BorrowCMD(cIndex, pCollect, new Event(restOfString));
-            cmds.push_back(cmd);
-            return cmd;
-            break;
-        case 'R': // return
-            cmd = new ReturnCMD(cIndex, pCollect, new Event(restOfString));
-            cmds.push_back(cmd);
-            return cmd;
-            break;
-        case 'S': // display all products
-            cmd = new DisplayAllProductCMD(pCollect);
-            cmds.push_back(cmd);
-            return cmd;
-            break;
-        default: // command not accepted, returning NULL Command pointer
-            cmds.push_back(cmd);
-            return cmd;
-    }
-    */
 }
 
 int CommandFactory::hash(std::string key){

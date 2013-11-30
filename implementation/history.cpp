@@ -10,7 +10,6 @@ History::~History(){
 	for(it = eventList.begin(); it != eventList.end(); ++it){
 		delete *it;
 	}
-    // eventList.clear();
 }
 
 // Iterates through displays all event objects
