@@ -10,6 +10,7 @@
 #include "displayallproductcmd.h"
 #include "returncmd.h"
 #include <string>
+#include <map>
 
 /*
 A factory that produces Commands based on a key to a hashtable containing 
@@ -32,7 +33,9 @@ private:
     ProductCollection* pCollect; 
     ProductFactory* pFactory; // For commands that need to create products.
      // A pointer to an array of Commands implemented as a hash table
-    Command* hashTable;
+    // Command* hashTable;
+    std::map<char, Command*> cmds;
+    std::map<char, Command*>::iterator it;
     const int HASH_TABLE_SIZE;
     int hash(std::string key);
 

@@ -9,10 +9,17 @@ CommandFactory::CommandFactory(CustomerIndex* cI, ProductCollection* pC)
         : HASH_TABLE_SIZE(256){
     cIndex = cI;
     pCollect = pC;
+    
+    
 } 
 
 CommandFactory::~CommandFactory(){
-    
+    for(it = cmds.begin(); it != cmds.end(); it++) {
+        // iterator->first = key
+        // iterator->second = value
+        delete it->second;
+        // Repeat if you also want to iterate through the second map.
+    }
 } 
 
 

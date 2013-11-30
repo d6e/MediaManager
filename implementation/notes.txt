@@ -1,3 +1,8 @@
+"Store dates as ints, not strings, with ints month and year.
+While it may make sense to store them as strings, you will
+store then as ints to represent data of different types
+that could be stored."
+
 remove productData and customerData, instead have customer and product inherit directly from pure virtual nodedata
 make customer and product inherit from nodedata
 nodedata would be pure virtual
