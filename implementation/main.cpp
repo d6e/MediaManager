@@ -102,6 +102,7 @@ int main(){
     Command* cmd2 = cmdfact->create("H 1373");
     er = cmd2->execute();
     cout << er << endl;
+    cout << er << endl;
 
 
     delete cIndex;
