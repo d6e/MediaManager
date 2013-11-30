@@ -24,9 +24,11 @@ Error CustomerIndex::displayHistory(std::string custID){
 
         Customer* cust = customers[custID];
         cust->displayHistory();
-        return Error("");
+        return Error(""); //success
     }
-    return Error("Cannot find customer ID");   
+    std::cout << "customer: " << custID << std::endl;
+
+    return Error("Cannot find customer ID");   //fail
 }
 
 // adds customer ptr to hashtable

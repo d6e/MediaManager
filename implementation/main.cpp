@@ -90,12 +90,27 @@ int main(){
     ProductCollection* pColl = new ProductCollection();
 
     CommandFactory* cmdfact = new CommandFactory(cIndex, pColl);
+
+    Error e;
+    Error er;
+    Customer* cust1 = new Customer("1373", "Anthony", "Giovannetti");
+    cIndex->insertCustomer(cust1);
+
     Command* cmd = cmdfact->create("H 1373");
-    cmd->execute();
+    e = cmd->execute();
+    cout << e << endl;
+
+    Command* cmd2 = cmdfact->create("H 1373");
+    er = cmd2->execute();
+    cout << er << endl;
+
 
     delete cIndex;
     delete pColl;
     delete cmdfact;
+    delete cmd;
+    delete cmd2;
+    delete cust1;
 
     return 0;
 }

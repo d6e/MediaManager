@@ -11,7 +11,9 @@ CommandFactory::CommandFactory(CustomerIndex* cI, ProductCollection* pC)
     pCollect = pC;
 } 
 
-CommandFactory::~CommandFactory(){} 
+CommandFactory::~CommandFactory(){
+    
+} 
 
 
 // The create method takes in a string and parses out the command portion of the

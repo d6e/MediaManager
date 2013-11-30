@@ -7,7 +7,7 @@ case "$1" in
     clang++ $files && ./a.out
     ;;
 "-v")
-    clang++ -g $files && valgrind ./a.out
+    clang++ -g $files && valgrind --leak-check=full ./a.out
     ;;
 "-g")
     echo "test"
