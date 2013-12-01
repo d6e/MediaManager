@@ -13,9 +13,7 @@ Comedy::Comedy(){
 }
 
 // cleans up any productdata objects it created
-Comedy::~Comedy(){
-
-}
+Comedy::~Comedy(){}
 
 // The setData method takes in a pointer to an event object and the data it 
 // contains to the event object's data. If the event object input is invalid,

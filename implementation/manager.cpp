@@ -42,5 +42,4 @@ bool Manager::inputCmd(std::string cmdString){
     e = cmd->execute();
     std::cout << e << std::endl;
     return true; //TODO
-
 }
