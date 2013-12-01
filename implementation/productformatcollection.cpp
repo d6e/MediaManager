@@ -1,42 +1,55 @@
 #include "productformatcollection.h"
-
-ProductFormatCollection::FormatAmount::FormatAmount(){
-	format = NULL;
-	size = 0;
-	count = 0;
+/*
+void ProductFormatCollection::FormatAmount::addQuantity(int quantity){
+	size += quantity;
+	count += quantity;	
 }
-
-ProductFormatCollection::ProductFormatCollection(){
-	/*
+*/
+int ProductFormatCollection::getFormatAmount(const ProductFormat& pf) const{
+	std::string searchName = pf.getName();
 	for (std::list<FormatAmount>::const_iterator 
-	it=formatDataList.begin(); 
-	it != formatDataList.end(); ++it){
-		//formatDataList.insert(it, );
-		//it = new FormatAmount();
-	}	
-	*/
-}
-
-int ProductFormatCollection::getFormatAmount(const ProductFormat* pf) const{
-	//TODO: search list for this format, returing 0 if not found and format.count if it is.
+		it=formatDataList.begin(); 
+		it != formatDataList.end(); ++it){
+		if(it -> format -> getName() == searchName){
+			return it -> count;
+		}
+	}
 	return 0;
 }
 	
-int ProductFormatCollection::getFormatMaxAmount(const ProductFormat* pf) const{
-	//TODO: search list for this format, returing 0 if not found and format.size if it is.
+int ProductFormatCollection::getFormatMaxAmount(const ProductFormat& pf) const{
+	std::string searchName = pf.getName();
+	for (std::list<FormatAmount>::const_iterator 
+		it=formatDataList.begin(); 
+		it != formatDataList.end(); ++it){
+		if(it -> format -> getName() == searchName){
+			return it -> size;
+		}
+	}
 	return 0;
 }
 
 bool ProductFormatCollection::addProductFormat(ProductFormat* pf){
-	//TODO: create and add a FormatAmount.	(how do we know whether it's valid? maybe should be void)
+	std::string searchName = pf -> getName();
+	std::list<FormatAmount>::iterator it=formatDataList.begin();
+	int currentQuantity = 0;
+	while(it != formatDataList.end()){
+		if(it -> format -> getName() == searchName){
+			currentQuantity = it -> size;
+			formatDataList.erase(it);
+			break;
+		}
+		++it;
+	} 
+
 	FormatAmount inserted;
-	inserted.size = inserted.count = DEFAULT_PRODUCT_QUANTITY;
+	inserted.size = inserted.count = currentQuantity + DEFAULT_PRODUCT_QUANTITY;
 	inserted.format = pf;
-	formatDataList.push_back(inserted);
+	formatDataList.insert(it, inserted);
 	return true;
 }
 
-const void ProductFormatCollection::display(std::ostream& output) const{	//display the amount of each format
+const void ProductFormatCollection::display(std::ostream& output) const{	//display the amount of each format. NOTE: might be wrong way to do this
 
 	for (std::list<FormatAmount>::const_iterator 
 		it=formatDataList.begin(); 

@@ -84,7 +84,7 @@ public:
     virtual const std::string getKey() const; // returns unique identifier
     //returns the type (the class) of product. Used as a key.
     virtual std::string type() const = 0;
-	virtual std::string dataString() const;
+	//virtual std::string dataString() const;
 	virtual void duplicate(NodeData*);
 	virtual const int dataTypeCount() const = 0;
 	// Returns the sorting data, delineated by commas
@@ -119,10 +119,10 @@ private:
 	std::map<std::string,std::string> productData;    
 	//Contains valid formats of the product. The identifier code is the key. 
 	std::map<std::string,ProductFormat> validFormats; 
-	
+	ProductFormat getProductFormat(std::string) const;
 	std::string getData(const std::string) const;
     // All products must have possible format(s).        
-	
+	void displayFormatCollection(std::ostream&) const;
 	virtual const std::string* validFormatNames() const = 0;
 	virtual const int validFormatCount() const = 0;
 	bool addFormat(ProductFormat*); //Returns false if data invalid.

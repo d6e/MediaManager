@@ -5,31 +5,29 @@
 #include "productformat.h"
 #include <string>
 #include <list>
+#include <algorithm>
 #include <fstream>
+#include <iostream> 
 
-//#include <to_string>
-#include <iostream> //temporary
-
-//using namespace std;
 /*
 Contains quantites and max quantites of various ProductFormats in a collection.
 */
 class ProductFormatCollection{
 public:
-	ProductFormatCollection();
+	//ProductFormatCollection();
     //Returns the amount of items that particular ProductFormat has.
-	int getFormatAmount(const ProductFormat*) const; 
-	int getFormatMaxAmount(const ProductFormat*) const;
+	int getFormatAmount(const ProductFormat&) const; 
+	int getFormatMaxAmount(const ProductFormat&) const;
 	
 	bool addProductFormat(ProductFormat*);
 	const void display(std::ostream&) const;
 private:
 	struct FormatAmount
 	{
-		FormatAmount();
+		void addQuantity(int);
 		ProductFormat* format;
-		int count;
-	    int size;
+		int count;	//amount in stock
+	    int size;	//total amount owned
 	};
 		
 	std::list<FormatAmount> formatDataList;

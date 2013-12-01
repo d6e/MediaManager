@@ -20,7 +20,6 @@ void Product::initValidFormats(){
 }
 
 void Product::display(std::ostream& output) const{
-	//std::string dataString = "";
 	const std::string* tempTypeNames = dataTypeNames();
 	const int tempTypeCount = dataTypeCount();
 	for(int i = 0; i < tempTypeCount; i++){
@@ -28,32 +27,32 @@ void Product::display(std::ostream& output) const{
    	 	normalizeLength(nextData);
    	 	output << nextData;
 	}
-	output << "\n"; 
-	inventory.display(output);
-	//return output;
+	output << endl;
+	displayFormatCollection(output);
+}
+
+void Product::displayFormatCollection(std::ostream& output) const{	//TODO: add to header
+	int formatCount = validFormatCount(); 
+	const std::string* formatNames = validFormatNames();
+	for(int i = 0; i < formatCount; i++){
+		const std::string formatKey = formatNames[i];
+		ProductFormat p = getProductFormat(formatKey);
+		output << formatKey << ": " << inventory.getFormatAmount(p) << " ";
+	}
+	output << endl;
+}
+
+ProductFormat Product::getProductFormat(std::string key) const{
+	map<string,ProductFormat>::const_iterator index = validFormats.find(key);
+   	ProductFormat data = index -> second;
+   	return data;
 }
 
 const std::string Product::getKey() const{
 	return type(); //not sure this is correct yet
 }
 
-std::string Product::dataString() const{
-	std::string dataString = "";
-	/*
-	const std::string* tempTypeNames = dataTypeNames();
-	const int tempTypeCount = dataTypeCount();
-	for(int i = 0; i < tempTypeCount; i++){
-   	 	std::string nextData = getData(tempTypeNames[i]);
-   	 	normalizeLength(nextData);
-   	 	dataString += nextData;
-	}
-	dataString += "\n" + inventory.formatString();
-	*/
-	return dataString;
-}
-
 std::string Product::getData(const std::string key) const{
-
 	map<string,string>::const_iterator index = productData.find(key);
    	const std::string data = index -> second;
 	return data;
@@ -69,7 +68,13 @@ void Product::truncate(std::string& longString) const{
 	longString.resize(MAX_DATA_LENGTH, '.');
 }
 
-void Product::duplicate(NodeData*){}  //TODO
+void Product::duplicate(NodeData* n){	//upon receiving a duplicate product, add 10 to the quantity of the existing product's default format.
+	const Product* p = static_cast<const Product*>(n);
+	const std::string* formatNames = p -> validFormatNames();
+	const std::string defaultFormat = formatNames[0];
+	ProductFormat* pf = new ProductFormat(defaultFormat);
+	addFormat(pf);
+}  
 
 //operator overrides
 

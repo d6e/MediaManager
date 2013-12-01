@@ -230,10 +230,8 @@ bool BinTree::insert(NodeData* inserted){
 		return true;   
 	}
 	if(*inserted == *(root -> data)){ //check if node is already in the tree
-		//TODO: case for matching data
-
-		//int added = DEFAULT_MOVIE_QUANTITY;
-		//(root -> data) -> incrementCount(added);
+		//case for matching data: increment count of standard format.
+		root -> data -> duplicate(inserted);
 		return false;
 	}
 	if(*inserted < *(root->data)){            // go down the left side
@@ -263,9 +261,7 @@ bool BinTree::insert(NodeData *ptr, Node *cNode, Node *nNode, bool right){
 		}
 	}
 	if(*ptr == *(nNode->data)){   
-		//TODO: case for matching data
-		//int added = DEFAULT_MOVIE_QUANTITY;
-		//(nNode -> data) -> incrementCount(added);
+		nNode -> data -> duplicate(ptr);
 		return false;
 	}
 	if(*ptr < *(nNode->data)){ 		// go down the left side
