@@ -27,12 +27,6 @@ int main(){
 
     Manager M;
 
-/*    
-    // TESTING INPUT
-    Input I;
-    I.read("data.txt");
-    // cout << I.get() << endl;
-*/
     vector<string> custData;
     Input custInput;
     custInput.read("data4customers.txt");
@@ -41,8 +35,6 @@ int main(){
     for(int i = 0; i < custData.size(); ++i){
         M.inputCustomer(custData[i]);
     }
-
-    M.inputCustomer("1373 Anthony Giovannetti");
     M.inputCmd("H 1373");
     
     return 0;
