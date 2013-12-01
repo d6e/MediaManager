@@ -2,6 +2,9 @@
 #ifndef PRODUCTFACTORY_H
 #define PRODUCTFACTORY_H
 #include "product.h"
+#include "comedy.h"
+#include "drama.h"
+#include "classic.h"
 #include "productcollection.h"
 #include <string>
 
@@ -15,7 +18,7 @@ create the product objects , returns null if there is an invalid hash key
 class ProductFactory
 {
 private:
-    ProductCollection pCollect;
+    ProductCollection* pCollect;
     const int HASH_TABLE_SIZE; //create a hash table with the size of 256
     // A pointer to an array of Products implemented as a hash table
     // Product* hashTable; 

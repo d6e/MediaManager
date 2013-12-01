@@ -1,13 +1,13 @@
 #include "productfactory.h"
+#include <sstream>
 
-ProductFactory::ProductFactory(ProductCollection*) 
+ProductFactory::ProductFactory(ProductCollection* pC) 
         : HASH_TABLE_SIZE(256) {
     pCollect = pC;    
 
-    // cmds['H'] = new HistoryCMD(cIndex);
-    // cmds['B'] = new BorrowCMD(cIndex, pCollect);
-    // cmds['R'] = new ReturnCMD(cIndex, pCollect);
-    // cmds['S'] = new DisplayAllProductCMD(pCollect);    
+    products['F'] = new Comedy();
+    // products['D'] = new Drama();
+    // products['C'] = new Classic();
 }
 
 ProductFactory::~ProductFactory(){
@@ -26,8 +26,8 @@ Product* ProductFactory::create(std::string key){
     restOfString = ss.str();
     char pdtChar = pdtString.at(0); //Convert string to a char
 
-    Command* pdtPtr = NULL;
-    pdtPtr = products[cmdChar];
+    Product* pdtPtr = NULL;
+    pdtPtr = products[pdtChar];
     pdtPtr->setData(new Event(restOfString));
     return pdtPtr;
 }

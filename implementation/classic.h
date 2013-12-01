@@ -41,6 +41,7 @@ with another.
 
 class Classic : public Movie{
 public:
+	Classic();
 	Classic(std::string director, std::string title, 
         std::string famousActor, std::string date);
 	virtual ~Classic(void);
@@ -53,19 +54,23 @@ public:
 	
 	virtual const std::string* dataTypeNames() const;
 	virtual const std::string* sortedByNames() const;
+	virtual std::string getKey();
+
 	
 	//comparison operators compare product by their sorting criteria
-	virtual bool operator==(const Product &) const;
-    virtual bool operator!=(const Product &) const;
-    virtual bool operator<(const Product &) const;
-    virtual bool operator>(const Product &) const;
-    virtual bool operator<=(const Product &) const;
-    virtual bool operator>=(const Product &) const;
+	// virtual bool operator==(const Product &) const;
+ //    virtual bool operator!=(const Product &) const;
+ //    virtual bool operator<(const Product &) const;
+ //    virtual bool operator>(const Product &) const;
+ //    virtual bool operator<=(const Product &) const;
+ //    virtual bool operator>=(const Product &) const;
 	
 private:
-	const std::string CLASSIC_DATA_TYPES [] = {"director","title",
-    "famous actor","date"};
-	const std::string CLASSIC_SORTED_BY [] = {"date","famous actor"};
+	int T_SIZE;
+    int S_SIZE;
+
+	std::string CLASSIC_DATA_TYPES[4];
+	std::string CLASSIC_SORTED_BY[2];
 };
 
 #endif

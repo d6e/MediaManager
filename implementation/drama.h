@@ -50,18 +50,23 @@ public:
 	
 	virtual const std::string* dataTypeNames() const;
 	virtual const std::string* sortedByNames() const;
+	virtual std::string getKey();
+	
 	
 	//comparison operators compare product by their sorting criteria
-	virtual bool operator==(const Product &) const;
-    virtual bool operator!=(const Product &) const;
-    virtual bool operator<(const Product &) const;
-    virtual bool operator>(const Product &) const;
-    virtual bool operator<=(const Product &) const;
-    virtual bool operator>=(const Product &) const;
+	// virtual bool operator==(const Product &) const;
+ //    virtual bool operator!=(const Product &) const;
+ //    virtual bool operator<(const Product &) const;
+ //    virtual bool operator>(const Product &) const;
+ //    virtual bool operator<=(const Product &) const;
+ //    virtual bool operator>=(const Product &) const;
 	
 private:
-	const std::string DRAMA_DATA_TYPES [] = {"director","title","date"};
-	const std::string DRAMA_SORTED_BY [] = {"director","title"};
+    int T_SIZE;
+    int S_SIZE;
+
+	std::string DRAMA_DATA_TYPES[3];
+	std::string DRAMA_SORTED_BY[2];
 };
 
 #endif

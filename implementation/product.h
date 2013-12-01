@@ -73,8 +73,9 @@ determine how many copies of a product.have been borrowed.
 //most generic Product type
 class Product : public NodeData {
 public:
+	Product();
 	virtual ~Product();
-	bool setData(Event); // Returns false if input invalid.
+	bool setData(Event*); // Returns false if input invalid.
     virtual Product* create() = 0; // Creates a new, empty Product 
     //returns the type (the class) of product. Used as a key.
     virtual std::string type() const = 0;	
