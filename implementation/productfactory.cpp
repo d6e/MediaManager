@@ -15,6 +15,20 @@ ProductFactory::ProductFactory(){
 	productTemplates[comedyIndex] = new Comedy();
 }
 
+ProductFactory::~ProductFactory(){
+	int classicIndex = hash("C");
+	delete productTemplates[classicIndex];
+	productTemplates[classicIndex] = NULL;
+	
+	int dramaIndex = hash("D");
+	delete productTemplates[dramaIndex];
+	productTemplates[dramaIndex] = NULL;
+
+	int comedyIndex = hash("F");
+	delete productTemplates[comedyIndex];
+	productTemplates[comedyIndex] = NULL;
+}
+
 Product* ProductFactory::create(std::string key){
 	int index = hash(key);
 	if(productTemplates[index] != NULL){

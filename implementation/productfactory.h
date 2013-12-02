@@ -18,10 +18,11 @@ public:
     //fills producttemplates with instances of each instantiatable 
     //Product object
     ProductFactory();
+    virtual ~ProductFactory();
 /*
     ProductFactory(ProductCollection);
 
-    virtual ~ProductFactory();
+    
     //parses input to create Product objects, returns null if invalid hash key
 */
     Product *create(std::string key); 

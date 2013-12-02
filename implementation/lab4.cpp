@@ -11,7 +11,7 @@ int main(){
         return 1;
    	}
    	//TODO: add other files to be read
-   	Manager productManager;
+    Manager productManager;
 
     productManager.inputProduct(inputFile1);  
     productManager.displayAll();   //TODO: this will eventually be processed through commands instead.
