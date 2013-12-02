@@ -117,12 +117,14 @@ private:
 	void displayFormatCollection(std::ostream&) const; //TODO:REWRITE
   	virtual const std::string* validFormatNames() const = 0; //TODO:rename
 	void normalizeLength(std::string&) const;  //TODO:rewrite
+	ProductFormat getProductFormat(std::string) const;
 	// Returns false if key doesn't exist  in productData;
     bool addData(std::string key,std::string value); 
+	bool addFormat(ProductFormat); //Returns false if data invalid.
+    void truncate(std::string&) const;
     // All products must have possible format(s).        
 	virtual void initValidFormats() = 0; 
 	virtual const int validFormatCount() const = 0;  //TODO:REWRITE
-	bool addFormat(ProductFormat); //Returns false if data invalid.
 };
 
 #endif

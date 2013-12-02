@@ -2,16 +2,17 @@
 
 
 ProductFormatCollection::~ProductFormatCollection(){
-    for(it = formatDataList.begin(); it != formatDataList.end(); ++it){
+    for(std::list<FormatAmount*>::const_iterator it = formatDataList.begin(); it != formatDataList.end(); ++it){
         // delete (*it)->format;
         delete *it;
     }
     formatDataList.clear();
 }
 
-int ProductFormatCollection::getFormatAmount(const ProductFormat* pfPtr) {
-    for(it = formatDataList.begin(); it != formatDataList.end(); ++it){
-        if((*it)->format->getName() == pfPtr->getName()){ //find corresponding pf
+int ProductFormatCollection::getFormatAmount(ProductFormat pf)const{
+    ProductFormat* pfPtr = &pf;
+    for(std::list<FormatAmount*>::const_iterator it = formatDataList.begin(); it != formatDataList.end(); ++it){
+        if((*it)->format->getName() == pfPtr->getName()){//find corresponding pf
             return (*it)->count;
         }
     }   
@@ -19,8 +20,8 @@ int ProductFormatCollection::getFormatAmount(const ProductFormat* pfPtr) {
 }
 
 int ProductFormatCollection::getFormatMaxAmount(const ProductFormat* pfPtr) {
-    for(it = formatDataList.begin(); it != formatDataList.end(); ++it){
-        if((*it)->format->getName() == pfPtr->getName()){ //find corresponding pf
+    for(std::list<FormatAmount*>::const_iterator it = formatDataList.begin(); it != formatDataList.end(); ++it){
+        if((*it)->format->getName() == pfPtr->getName()){//find corresponding pf
             return (*it)->size;
         }
     }   
@@ -38,7 +39,7 @@ void ProductFormatCollection::addProductFormat(ProductFormat pf){
 //iterate, display productformats
 std::string ProductFormatCollection::getFormatNames(){
     std::string retVal = "";
-    for(it = formatDataList.begin(); it != formatDataList.end(); ++it){
+    for(std::list<FormatAmount*>::const_iterator it = formatDataList.begin(); it != formatDataList.end(); ++it){
         retVal += " " + (*it)->format->getName();
     }
     return retVal;

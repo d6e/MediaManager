@@ -42,6 +42,11 @@ void Product::normalizeLength(std::string& data) const{ //TODO:REWRITE
         else data.resize(MAX_DATA_LENGTH, ' ');
 }
 
+void Product::truncate(std::string& longString) const{  //TODO: rewrite
+        longString.resize(MAX_DATA_LENGTH - 3);
+        longString.resize(MAX_DATA_LENGTH, '.');
+}
+
 void Product::displayFormatCollection(std::ostream& output) const{        //TODO: rewrite
         int formatCount = validFormatCount(); 
         const std::string* formatNames = validFormatNames();
@@ -51,6 +56,12 @@ void Product::displayFormatCollection(std::ostream& output) const{        //TODO
                 output << formatKey << ": " << inventory.getFormatAmount(p) << " ";
         }
         output << std::endl;
+}
+
+ProductFormat Product::getProductFormat(std::string key) const{
+        std::map<std::string,ProductFormat>::const_iterator index = validFormats.find(key);
+           ProductFormat data = index -> second;
+           return data;
 }
 
 // The addData() method inserts data into the Product's hashtable, with the form
