@@ -16,13 +16,16 @@ Manager::~Manager(){
     delete pFactory;
 }
 
-bool Manager::inputProduct(std::string){
+bool Manager::inputProduct(std::string movieDetails){
+    Product* pdtPtr = pFactory->create(movieDetails);
+    pCollect->insert(pdtPtr);
+    pdtPtr->display();
     return true; //TODO
 } 
 
 bool Manager::inputCustomer(std::string custDetails){
     std::stringstream ss;
-    std::string token, custID, first, last;
+    std::string custID, first, last;
 
     ss << custDetails;
     ss >> custID; 

@@ -1,4 +1,5 @@
 #include "comedy.h"
+#include <iostream>
 
 // The constructor creates a bunch of ProductData objects and initializes their
 // keys.
@@ -18,7 +19,22 @@ Comedy::~Comedy(){}
 // The setData method takes in a pointer to an event object and the data it 
 // contains to the event object's data. If the event object input is invalid,
 // it returns false, otherwise true.
-bool Comedy::setData(Event*){
+bool Comedy::setData(Event* e){
+    std::string eventToken;
+    std::string eventDetails = e->getEventDetails();
+    int dataTypeCounter = 0;
+    //deliminating eventDetails string by comma
+    for(int i = 1; i < eventDetails.size(); ++i){
+        if(eventDetails[i] == ',' || dataTypeCounter >= T_SIZE){
+             //load into product's ht
+            productData[COMEDY_DATA_TYPES[dataTypeCounter]] = eventToken;
+
+            dataTypeCounter++;
+            eventToken = "";
+        }
+        eventToken[i] = eventDetails[i];
+    }
+    delete e;
     return true; //TODO
 }
 
@@ -37,7 +53,10 @@ std::string Comedy::type() const{
 
 // The display method displays the private data members using cout.
 void Comedy::display(){
-
+    for(int i = 0; i < S_SIZE; ++i){
+        std::cout << COMEDY_SORTED_BY[i] << ": " << productData[COMEDY_SORTED_BY[i]];
+    }
+    std::cout << std::endl;
 }
 
 // The dataTypeNames() and sortedByNames() are helper methods which quickly 

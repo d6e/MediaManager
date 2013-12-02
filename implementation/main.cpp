@@ -10,6 +10,7 @@
 #include "customer.h"
 #include "customerindex.h"
 #include "command.h"
+#include "bintree.h"
 #include "commandfactory.h"
 #include "historycmd.h"    
 #include "productformat.h"    
@@ -32,10 +33,18 @@ int main(){
     custInput.read("data4customers.txt");
     custData = custInput.get();
 
+    vector<string> prodData;
+    Input prodInput;
+    prodInput.read("data4customers.txt");
+    prodData = prodInput.get();
+
     for(int i = 0; i < custData.size(); ++i){
         M.inputCustomer(custData[i]);
     }
     M.inputCmd("H 1373");
-    
+    M.inputProduct("F Todd Phillips, The Hangover, 2009");
+
+    BinTree tree;
+
     return 0;
 }

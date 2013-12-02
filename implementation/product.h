@@ -75,7 +75,7 @@ class Product : public NodeData {
 public:
 	Product();
 	virtual ~Product();
-	bool setData(Event*); // Returns false if input invalid.
+	virtual bool setData(Event*); // Returns false if input invalid.
     virtual Product* create() = 0; // Creates a new, empty Product 
     //returns the type (the class) of product. Used as a key.
     virtual std::string type() const = 0;	
@@ -100,14 +100,17 @@ public:
     int getBorrowedItems(ProductFormat) const; 			
     //number of copies borrowed by customers of a particular product format
 	int getRemainingItems(ProductFormat) const; 			
+	virtual void display() = 0; // Displays contents via cout
 protected:
     //Contains valid formats of the product. The identifier code is the key. 
     std::map<std::string,ProductFormat> validFormats; 
+
+	//Contains the attributes of this product.
+	std::map<std::string,std::string> productData;  
 private:
 	//Contains the quantities and different formats this product has.	
 	ProductFormatCollection inventory; 
-	//Contains the attributes of this product.
-	std::map<std::string,std::string> productData;    
+  
 	
 	// Returns false if key doesn't exist  in productData;
     bool addData(std::string key,std::string value); 

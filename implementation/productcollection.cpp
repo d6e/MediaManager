@@ -18,9 +18,8 @@ ProductCollection::~ProductCollection(){
 //to the inserted Product's dataType() and inseting when it finds a match.
 //(this means product type and genre must match.) if no match is found, a new
 //ListNode is created and the Product is inserted into its tree.
-Error ProductCollection::insert(Product *){ 
-    //TODO
-    return Error(""); 
+Error ProductCollection::insert(Product* pdtPtr){ 
+    return Error("");
 }  
 
 //retrieve product from a linked list 

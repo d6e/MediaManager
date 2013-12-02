@@ -6,9 +6,6 @@ Product::~Product(){}
 
 // Returns false if input invalid.
 bool Product::setData(Event* e){
-    //TODO: figure out whether to fix Event::set so it returns a bool
-    std::string custID = e->get(1); // The second word is customer ID
-	// cIndex->addTransaction(custID, e); //TODO: Add to something
     return true;
 }
 
@@ -32,6 +29,7 @@ int Product::getRemainingItems(ProductFormat) const{
 // <dataType,data> (Example: <"title","Titanic">). This data is retrieved in a
 // similar way by dataString().
 bool Product::addData(std::string key,std::string value){
+	productData[key] = value;
 	return true; //TODO
 }
 

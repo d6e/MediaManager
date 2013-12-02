@@ -27,7 +27,7 @@ Product* ProductFactory::create(std::string key){
     char pdtChar = pdtString.at(0); //Convert string to a char
 
     Product* pdtPtr = NULL;
-    pdtPtr = products[pdtChar];
+    pdtPtr = products[pdtChar]; //get product pointer from hashtable 
     pdtPtr->setData(new Event(restOfString));
     return pdtPtr;
 }

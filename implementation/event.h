@@ -19,13 +19,15 @@ The set method parses the string and inserts it into the list.
 
 class Event {
 private:
-    std::vector<std::string> argList;
+    std::vector<std::string> argList; //like eventDetails but space deliminated
+    std::string eventDetails;  //like argList but a string
 public:
     Event();
     Event(std::string);
     virtual ~Event();
     void set(std::string); // Parses input a string into the list.
-    std::string get(unsigned int);
+    std::string get(unsigned int) const;
+    std::string getEventDetails() const;
     void display() const;  // Display the data from one event object
 };
 

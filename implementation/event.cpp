@@ -2,7 +2,7 @@
 #include <sstream>
 #include <iostream>
 
-Event::Event(std::string msg){
+Event::Event(std::string msg) : eventDetails(msg){
     std::string token;
     std::stringstream ss;
     ss << msg;
@@ -18,6 +18,7 @@ Event::~Event(){
 
 // The set method parses the string and inserts it into the list.
 void Event::set(std::string msg){
+    eventDetails = msg;
     std::string token;
     std::stringstream ss;
     ss << msg;
@@ -27,11 +28,16 @@ void Event::set(std::string msg){
     }
 }
 
-std::string Event::get(unsigned int index){
+std::string Event::get(unsigned int index) const{
     if (argList.size() > index){
         return argList.at(index);
     }
     return "";
+}
+
+
+std::string Event::getEventDetails() const{
+    return eventDetails;
 }
 
 // The display method iterates through the list displaying the data.
