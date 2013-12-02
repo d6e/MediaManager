@@ -16,6 +16,7 @@ are, false if they're not.
 class ProductFormat {
 public:
 	ProductFormat(std::string); // constructor
+	virtual ~ProductFormat();
 	std::string getName() const; // returns the private formatname string
     //Checks if two ProductFormats are equivilent
 	bool equals(const ProductFormat); 

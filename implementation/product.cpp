@@ -76,9 +76,10 @@ void Product::duplicate(NodeData* n){	//upon receiving a duplicate product, add 
 	const Product* p = static_cast<const Product*>(n);
 	const std::string* formatNames = p -> validFormatNames();
 	const std::string defaultFormat = formatNames[0];
-	ProductFormat* pf = new ProductFormat(defaultFormat);
-	addFormat(pf);
-	delete pf;
+	//ProductFormat* pf = new ProductFormat(defaultFormat);
+	inventory.duplicate(defaultFormat);
+	//addFormat(pf);
+	//delete pf;
 }  
 
 //operator overrides

@@ -4,6 +4,8 @@ ProductFormat::ProductFormat(std::string name){
 	formatName = name;
 }
 
+ProductFormat::~ProductFormat(){}
+
 std::string ProductFormat::getName() const{
 	return formatName;
 }
