@@ -5,12 +5,12 @@
 // keys.
 Comedy::Comedy(){
 //TODO: find out if productdata objects should even be created.
-    T_SIZE = 3;
-    S_SIZE = 2;
+    COMEDY_DATA_TYPES.push_back("director");
+    COMEDY_DATA_TYPES.push_back("title");
+    COMEDY_DATA_TYPES.push_back("date");
 
-    //TODO: Makes these const and put them in an initializer list
-    std::string COMEDY_DATA_TYPES[3] = {"director","title","date"};
-    std::string COMEDY_SORTED_BY[2] = {"title","date"};
+    COMEDY_SORTED_BY.push_back("title");
+    COMEDY_SORTED_BY.push_back("date");
 }
 
 // cleans up any productdata objects it created
@@ -18,22 +18,29 @@ Comedy::~Comedy(){}
 
 // The setData method takes in a pointer to an event object and the data it 
 // contains to the event object's data. If the event object input is invalid,
-// it returns false, otherwise true.
+// it returns false, otherwise true.  //TODO: rewrite description
 bool Comedy::setData(Event* e){
     std::string eventToken;
     std::string eventDetails = e->getEventDetails();
     int dataTypeCounter = 0;
     //deliminating eventDetails string by comma
     for(int i = 1; i < eventDetails.size(); ++i){
-        if(eventDetails[i] == ',' || dataTypeCounter >= T_SIZE){
+        if(dataTypeCounter > COMEDY_DATA_TYPES.size()){            
+            break;            
+        }
+        else if(eventDetails.at(i) == ','){
              //load into product's ht
-            productData[COMEDY_DATA_TYPES[dataTypeCounter]] = eventToken;
-
+            productData[COMEDY_DATA_TYPES.at(dataTypeCounter)] = eventToken;
             dataTypeCounter++;
             eventToken = "";
         }
-        eventToken[i] = eventDetails[i];
+        else{
+            eventToken.push_back(eventDetails.at(i));        
+        }
     }
+    // Need to get the last token after the comma
+    productData[COMEDY_DATA_TYPES.at(dataTypeCounter)] = eventToken; 
+
     delete e;
     return true; //TODO
 }
@@ -53,21 +60,20 @@ std::string Comedy::type() const{
 
 // The display method displays the private data members using cout.
 void Comedy::display(){
-    for(int i = 0; i < S_SIZE; ++i){
-        std::cout << COMEDY_SORTED_BY[i] << ": " << productData[COMEDY_SORTED_BY[i]];
+    for(int i = 0; i < COMEDY_SORTED_BY.size(); ++i){
+        std::cout << COMEDY_SORTED_BY[i] << ": " << productData[COMEDY_SORTED_BY[i]] << std::endl;
     }
-    std::cout << std::endl;
 }
 
 // The dataTypeNames() and sortedByNames() are helper methods which quickly 
 // retrieve the corresponding _DATA_TYPES and _SORTED_BY arrays. 
-const std::string* Comedy::dataTypeNames() const{
-    return Comedy::COMEDY_DATA_TYPES;
-}
+// const std::string* Comedy::dataTypeNames() const{
+//     return Comedy::COMEDY_DATA_TYPES;
+// }
 
-const std::string* Comedy::sortedByNames() const{
-    return Comedy::COMEDY_SORTED_BY;
-}
+// const std::string* Comedy::sortedByNames() const{
+//     return Comedy::COMEDY_SORTED_BY;
+// }
 
 // returns unique identifier
 std::string Comedy::getKey(){

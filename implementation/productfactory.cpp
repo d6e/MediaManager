@@ -6,8 +6,8 @@ ProductFactory::ProductFactory(ProductCollection* pC)
     pCollect = pC;    
 
     products['F'] = new Comedy();
-    // products['D'] = new Drama();
-    // products['C'] = new Classic();
+    products['D'] = new Drama();
+    products['C'] = new Classic();
 }
 
 ProductFactory::~ProductFactory(){

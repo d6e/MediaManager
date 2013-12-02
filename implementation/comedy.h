@@ -4,6 +4,7 @@
 #include "product.h"
 #include "movie.h"
 #include <string>
+#include <vector>
 
 /*
 The comedy class is a child of movie and represents a movie genre. Because
@@ -48,8 +49,8 @@ public:
 	virtual void display(); // Displays contents via cout
 
 
-	virtual const std::string* dataTypeNames() const;
-	virtual const std::string* sortedByNames() const;	
+	// virtual const std::string* dataTypeNames() const;
+	// virtual const std::string* sortedByNames() const;	
     virtual std::string getKey(); // returns unique identifier
 
 	//comparison operators compare product by their sorting criteria
@@ -61,11 +62,8 @@ public:
  //    virtual bool operator>=(const NodeData&) const;
 	
 private:
-    int T_SIZE;
-    int S_SIZE;
-
-    std::string COMEDY_DATA_TYPES[3];
-    std::string COMEDY_SORTED_BY[2];
+    std::vector<std::string> COMEDY_DATA_TYPES;
+    std::vector<std::string> COMEDY_SORTED_BY;
 };
 
 #endif

@@ -4,6 +4,7 @@
 #include "product.h"
 #include "movie.h"
 #include <string>
+#include <vector>
 
 /*
 The classic class is a child of movie and represents a movie genre. Because
@@ -42,9 +43,7 @@ with another.
 class Classic : public Movie{
 public:
 	Classic();
-	Classic(std::string director, std::string title, 
-        std::string famousActor, std::string date);
-	virtual ~Classic(void);
+	virtual ~Classic();
 	
 	bool setData(Event*); // Returns false if input invalid.
     virtual Product* create(); // Creates a new, empty Classic object
@@ -52,8 +51,8 @@ public:
     virtual std::string type() const;	
 	virtual void display(); // Displays contents via cout
 	
-	virtual const std::string* dataTypeNames() const;
-	virtual const std::string* sortedByNames() const;
+	// virtual const std::string* dataTypeNames() const;
+	// virtual const std::string* sortedByNames() const;
 	virtual std::string getKey();
 
 	
@@ -66,11 +65,8 @@ public:
  //    virtual bool operator>=(const Product &) const;
 	
 private:
-	int T_SIZE;
-    int S_SIZE;
-
-	std::string CLASSIC_DATA_TYPES[4];
-	std::string CLASSIC_SORTED_BY[2];
+	std::vector<std::string> CLASSIC_DATA_TYPES;
+	std::vector<std::string> CLASSIC_SORTED_BY;
 };
 
 #endif
