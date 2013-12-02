@@ -3,8 +3,14 @@
 #include "customerindex.h"
 #include "productcollection.h"
 #include "productfactory.h"
-#include "command.h"
+#include "historycmd.h"
+#include "borrowcmd.h"
+#include "returncmd.h"
+#include "displayallproductcmd.h"
 #include <string>
+
+//const int A_INDEX = 65; //memory index of capital A (used for dealing with geners)
+//const int HASH_TABLE_SIZE = 256;
 
 /*
 A factory that produces Commands based on a key to a hashtable containing 
@@ -22,20 +28,22 @@ command it parsed. Finally, it returns a pointer to that command.
 
 class CommandFactory {
 public:
+	//CommandFactory();
      // constructor, inits hash table
-	CommandFactory(CustomerIndex, ProductCollection); 
+	CommandFactory(CustomerIndex*, ProductCollection*); 
 	virtual ~CommandFactory();    // destructor
     // Creates and inits cmd obj based on key given, returns null if invalid key
-    Command* create(std::string key);   
+    Command* create(std::string);   
 	
 private:
     CustomerIndex* cIndex; // For commands that need access to the customers
     // For commands that need to access the products
     ProductCollection* pCollect; 
 	ProductFactory* mFactory; // For commands that need to create products.
-	const int HASH_TABLE_SIZE = 256;
+	
      // A pointer to an array of Commands implemented as a hash table
-	Command* hashTable;
+	//Command* hashTable;
+	Command* commandTemplates[HASH_TABLE_SIZE]; 
 	int hash(std::string key);
 };
 

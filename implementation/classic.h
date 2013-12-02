@@ -9,7 +9,6 @@ const std::string CLASSIC_SORTED_BY [] = {"date","famous actor"};
 
 class Classic : public Movie {
 public:
-    //Comedy(); //Inits productData keys.
     virtual ~Classic(); // cleans up any productdata objects it created
     bool setData(Event*); // Returns false if input invalid.
     virtual Product* create(); // Creates a new, empty genre movie object

@@ -21,8 +21,10 @@ private:
     CustomerIndex* cIndex;
 	Event* event;
 public:
+	HistoryCMD(CustomerIndex*);
     HistoryCMD(CustomerIndex*, Event*);          // default constructor
     virtual ~HistoryCMD();                       // default destructor
+    virtual Command* create();
     // Returns false if data invalid, for factory use only.
 	virtual bool setData(Event*); 
     Error execute(); //execute command from the IO 

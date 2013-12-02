@@ -1,22 +1,34 @@
 #include "manager.h"
 
-//TODO: deal with sorting matches
+//TODO: make manager display all through a command, rather than just calling the method.
 //TODO: fully implement Errors (figure out which methods are supposed to call them
 	//and what they should do)
 //TODO: implement Events
 
 Manager::Manager(){
-//TODO: Initializes all collections and factories
+    productDB = new ProductCollection();
+    customerDB = new CustomerIndex();
+    mFactory = new ProductFactory();	//should this take pCollect arg or no? 
+    cFactory = new CommandFactory(customerDB, productDB); 
 }
 
-Manager::~Manager(){}
+Manager::~Manager(){
+	delete productDB;
+	productDB = NULL;
+	delete customerDB;
+	customerDB = NULL;
+	delete mFactory;
+	mFactory = NULL;
+	delete cFactory;
+	cFactory = NULL;
+}
 
 bool Manager::inputProduct(ifstream& productInput){
 	std::string genre;
 	for(;;){
 		if(productInput.eof()) break;
 		productInput >> genre;
-		Product* p = mFactory.create(genre);
+		Product* p = mFactory -> create(genre);
 		if(p == NULL){	//case for invalid genre
 			std::string temp;
 			getline(productInput, temp);
@@ -36,24 +48,37 @@ bool Manager::inputProduct(ifstream& productInput){
 		}
 		string lastData;
 		getline(productInput, lastData);
-		if(!p -> addData(dataTypeNames[dataTypeCount-1],lastData)) return false;
-		/*
-		if(productDB.retrieve(p,genre).getErrorMessage() == ""){	//case for data already existing in collection
-			delete p;
-		} 
-		else productDB.insert(p,genre);
-		*/
-		
-		if(productDB.insert(p,genre).getErrorMessage() != ""){ 
-			//cout << "DUPLICATE DETECED " << endl;
-			delete p;
+		if(!p -> addData(dataTypeNames[dataTypeCount-1],lastData)) return false;	
+		if(productDB -> insert(p,genre).getErrorMessage() != "") delete p;
+	}
+	return true;
+}
+
+bool Manager::inputCustomer(ifstream& customerInput){
+	//TODO
+	return false;
+}
+
+bool Manager::inputCmd(ifstream& cmdInput){	
+	std::string command;
+	for(;;){
+		if(cmdInput.eof()) break;
+		cmdInput >> command;
+		Command* c = cFactory -> create(command);
+		if(c == NULL){	//case for invalid command
+			std::string temp;
+			getline(cmdInput, temp);
+			continue;
 		}
+		cmdInput.get();
+		//TODO
+		break;
 	}
 	return true;
 }
 
 //TEMPORARY. replace with event.
 void Manager::displayAll() const{
-	productDB.displayAll();
+	productDB -> displayAll();
 }
 //TEMPORARY

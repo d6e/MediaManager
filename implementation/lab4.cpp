@@ -1,20 +1,20 @@
 #include <string>
-//#include <iostream>
 #include <fstream>
-//#include "lab4IoPrep.h"
 #include "manager.h"
-
+//TODO: separate input reading from string reading (maybe)
 int main(){
-	ifstream inputFile1("lab4TestData.txt");
-	if (!inputFile1) {
-    	cout << "File could not be opened." << endl;
+	ifstream movieInput("data4movies.txt");
+  ifstream cmdInput("data4customers.txt");
+  ifstream customerInput("data4customers.txt");
+	if (!(movieInput&&customerInput&&cmdInput)) {
+    	cout << "One or more files could not be opened." << endl;
         return 1;
    	}
-   	//TODO: add other files to be read
-    Manager productManager;
-
-    productManager.inputProduct(inputFile1);  
-    productManager.displayAll();   //TODO: this will eventually be processed through commands instead.
+   	//TODO: read other files as necessary
+  Manager productManager;
+  productManager.inputProduct(movieInput); 
+  productManager.inputCmd(cmdInput);
+  productManager.displayAll();   //TODO: this will eventually be processed through commands instead.
    	
 	return 1;
 }

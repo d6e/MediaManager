@@ -4,11 +4,9 @@
 #include <iostream>
 #include "productcollection.h"
 #include "productfactory.h"
+#include "commandfactory.h"
 /*
 #include "customerindex.h"
-
-#include "commandfactory.h"
-
 #include "error.h"
 */
 
@@ -21,10 +19,10 @@ class Manager{
 
 private:
     
-    ProductCollection productDB; // Stores product information and quantities
-    ProductFactory mFactory; // Creates products.
-    //CommandFactory cFactory; // Creates commands.
-    //CustomerIndex customerDB; // Stores customer information and history.
+    ProductCollection* productDB; // Stores product information and quantities
+    ProductFactory* mFactory; // Creates products.
+    CommandFactory* cFactory; // Creates commands.
+    CustomerIndex* customerDB; // Stores customer information and history.
 
 public:
 	Manager(); //Initializes all collections and factories
@@ -33,18 +31,16 @@ public:
 	
     // Inputs new products, prints errors in process, returns false if failed.
 	bool inputProduct(ifstream&); 
+    // Inputs new customers, prints errors in process, returns false if failed.
+    bool inputCustomer(ifstream&);
+    // Inputs commands into system, prints errors in process,
+    // returns false if failed.
+    bool inputCmd(ifstream&);
+    
 
     //TEMPORARY
     void displayAll() const; //displays all products.
     //TEMPORARY
-
-    // Inputs new customers, prints errors in process, returns false if failed.
-    /*
-    bool inputCustomer(std::string);
-    // Inputs commands into system, prints errors in process, 
-    // returns false if failed.
-    bool inputCmd(std::string);
-    */
 };
 
 #endif
