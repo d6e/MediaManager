@@ -30,7 +30,7 @@ Error ProductCollection::retrieve(Product* pdtPtr){
 } 
 
 //display all the products 
-Error ProductCollection::displayAll() const{ 
+Error ProductCollection::displayAll() const{ //TODO: REWRITE
     int collectionSize = sizeof(trees)/sizeof(*trees);
     Error empty;
     for(int i = 0; i < collectionSize; i++){
@@ -57,13 +57,13 @@ bool ProductCollection::isEmpty() const{
 }
 
 
-Error ProductCollection::displayDataTypes(const BinTree& dataTree) const{
+Error ProductCollection::displayDataTypes(const BinTree& dataTree) const{ //TODO: REWRITE
     Error empty;
     const std::string* dataTypes = dataTree.dataTypeNames();
-    int dataTypeCount = dataTree.dataTypeCount();
-    for(int i = 0; i < dataTypeCount; i++){
+    int getDataTypeSize = dataTree.getDataTypeSize();
+    for(int i = 0; i < getDataTypeSize; i++){
         std::string nextType = dataTypes[i];
-        nextType.resize(MAX_DATA_LENGTH,' ');
+        // nextType.resize(MAX_DATA_LENGTH,' ');
         std::cout << nextType;
     }
     return empty;

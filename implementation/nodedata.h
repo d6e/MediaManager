@@ -37,7 +37,7 @@ public:
     virtual bool operator<=(const NodeData &) const = 0;
     virtual bool operator>=(const NodeData &) const = 0;                
 
-    virtual const std::string dataTypeNames() const = 0; //TODO: rename      
+    virtual const std::string* dataTypeNames() const = 0; //TODO: rename      
     virtual int getDataTypeSize() const = 0; // returns size of DataTypes
 };
 

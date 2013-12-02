@@ -15,7 +15,10 @@ class Movie : public Product
 public:
     virtual ~Movie();
 private:
+	const static std::string formats[]; 
 	virtual void initValidFormats(); // Inits to DVD for now.
+	virtual const std::string* validFormatNames() const; //TODO: rewrite
+	virtual const int validFormatCount() const;
 };
 
 #endif

@@ -17,8 +17,9 @@ public:
 	int getFormatAmount(const ProductFormat*); 
 	int getFormatMaxAmount(const ProductFormat*);
 	//TODO: Add more mutators??? Not necessarily necessary
-    std::string getFormatNames();  //iterate, display productformats
+    std::string getFormatNames();  //iterate, display productformats //TODO: possibly use this instead of product::validFormatNames()
 	void addProductFormat(ProductFormat);
+	void duplicate(std::string);
 private:
 	struct FormatAmount
 	{
@@ -30,6 +31,7 @@ private:
 		
     std::list<FormatAmount*>::iterator it;
 	std::list<FormatAmount*> formatDataList;
+	void addAmount(FormatAmount&, int);  //TODO:REWRITE
 };
 
 #endif

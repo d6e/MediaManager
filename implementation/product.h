@@ -82,9 +82,9 @@ public:
 	virtual void duplicate(NodeData*);
 	
 	// Returns all data, inorder of input, deliminated by commas
-	virtual const std::string dataTypeNames() const = 0; 
+	virtual const std::string* dataTypeNames() const = 0; 
 	// Returns the sorting data, delineated by commas
-	virtual const std::string sortedByNames() const = 0; 
+	virtual const std::string* sortedByNames() const = 0; 
     virtual int getDataTypeSize() const = 0; // returns size of DataTypes
     virtual int getSortedBySize() const = 0; // returns size of SortedBy
 	
@@ -114,12 +114,14 @@ protected:
 private:
 	//Contains the quantities and different formats this product has.	
 	ProductFormatCollection inventory; 
-  
-	
+	void displayFormatCollection(std::ostream&) const; //TODO:REWRITE
+  	virtual const std::string* validFormatNames() const = 0; //TODO:rename
+	void normalizeLength(std::string&) const;  //TODO:rewrite
 	// Returns false if key doesn't exist  in productData;
     bool addData(std::string key,std::string value); 
     // All products must have possible format(s).        
 	virtual void initValidFormats() = 0; 
+	virtual const int validFormatCount() const = 0;  //TODO:REWRITE
 	bool addFormat(ProductFormat); //Returns false if data invalid.
 };
 

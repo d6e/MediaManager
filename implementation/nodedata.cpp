@@ -4,7 +4,7 @@ NodeData::NodeData(){}
 
 NodeData::~NodeData(){}
 
-ostream& operator<<(ostream& out, const NodeData& node){
+std::ostream& operator<<(std::ostream& out, const NodeData& node){
    node.display(out);
    return out;
 }

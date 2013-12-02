@@ -1,5 +1,8 @@
 #include "classic.h"
 
+const std::string Classic::dataTypeArr[] = {"director","title","famous actor","date"};
+const std::string Classic::sortedByArr[] = {"date","famous actor"};
+
 // The constructor creates a bunch of ProductData objects and initializes their
 // keys.
 Classic::Classic(){
@@ -61,20 +64,12 @@ std::string Classic::type() const{
 
 // The dataTypeNames() and sortedByNames() are helper methods which quickly 
 // retrieve the corresponding _DATA_TYPES and _SORTED_BY arrays. 
-const std::string Classic::dataTypeNames() const{
-    std::string retVal;
-    for(int i = 0; i < CLASSIC_DATA_TYPES.size(); ++i){
-        retVal.append(CLASSIC_DATA_TYPES.at(i));
-    } 
-    return retVal;
+const std::string* Classic::dataTypeNames() const{
+    return dataTypeArr;
 }
 
-const std::string Classic::sortedByNames() const{
-    std::string retVal;
-    for(int i = 0; i < CLASSIC_SORTED_BY.size(); ++i){
-        retVal.append(CLASSIC_SORTED_BY.at(i));
-    } 
-    return retVal;
+const std::string* Classic::sortedByNames() const{
+    return sortedByArr;
 }
 
 // returns size of DataTypes
@@ -93,7 +88,12 @@ std::string Classic::getKey() const{
 }
 
 std::string Classic::getData(std::string key) const{
-    return productData[key];
+    std::map<std::string, std::string>::const_iterator it = productData.find(key);
+    std::string retVal = "";
+    if (it != productData.end()) {
+        retVal = it->second;
+    } 
+    return retVal;
 }
 
 //TODO: comparison operators
@@ -103,7 +103,7 @@ bool Classic::operator==(const NodeData &node) const{ //TODO:rewrite
         return false;  
     } 
     const Product& p = static_cast<const Product&>(node);
-    const std::string tempSortedByNames = sortedByNames();
+    const std::string* tempSortedByNames = sortedByNames();
     const int sortedBySize = p.getSortedBySize();//sizeof(tempSortedByNames)/sizeof(*tempSortedByNames);
 
     for(int i = 0; i < sortedBySize; i++){
@@ -121,7 +121,7 @@ bool Classic::operator!=(const NodeData &node) const{
 bool Classic::operator<(const NodeData &n) const{ //TODO:REWRITE
         if(getKey() != n.getKey()) return false;        //NOTE: should this always return false? should keys be compared for sorting, too?
         const Product& p = static_cast<const Product&>(n);
-        const std::string tempSortedByNames = sortedByNames();
+        const std::string* tempSortedByNames = sortedByNames();
         const int sortedBySize = p.getSortedBySize();
         for(int i = 0; i <= sortedBySize; i++){
                 std::string nextSortBy = tempSortedByNames[i];
@@ -134,7 +134,7 @@ bool Classic::operator<(const NodeData &n) const{ //TODO:REWRITE
 bool Classic::operator>(const NodeData &n) const{ //TODO:REWRITE
         if(getKey() != n.getKey()) return false;
         const Product& p = static_cast<const Product&>(n);
-        const std::string tempSortedByNames = sortedByNames();
+        const std::string* tempSortedByNames = sortedByNames();
         const int sortedBySize = p.getSortedBySize();
         for(int i = 0; i <= sortedBySize; i++){
                 std::string nextSortBy = tempSortedByNames[i];

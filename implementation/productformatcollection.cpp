@@ -43,3 +43,21 @@ std::string ProductFormatCollection::getFormatNames(){
     }
     return retVal;
 }
+
+void ProductFormatCollection::duplicate(std::string searchName){ //TODO:REWRITE
+        std::list<FormatAmount*>::iterator it=formatDataList.begin();
+        while(it != formatDataList.end()){
+                if((*it) -> format -> getName() == searchName){
+                        FormatAmount& fa = **it;
+                        int amount = DEFAULT_PRODUCT_QUANTITY;
+                        addAmount(fa, amount);
+                        return;
+                }
+                ++it;
+        } 
+}
+
+void ProductFormatCollection::addAmount(FormatAmount& format, int amount){ //TODO: rewrite
+    format.size += amount;
+    format.count += amount;
+}

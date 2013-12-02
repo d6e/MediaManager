@@ -1,6 +1,10 @@
 #include "comedy.h"
 #include <iostream>
 
+const std::string Comedy::dataTypeArr[] = {"director","title","date"};
+const std::string Comedy::sortedByArr[] = {"title","date"};
+
+
 // The constructor creates a bunch of ProductData objects and initializes their
 // keys.
 Comedy::Comedy(){
@@ -60,20 +64,12 @@ std::string Comedy::type() const{
 
 // The dataTypeNames() and sortedByNames() are helper methods which quickly 
 // retrieve the corresponding _DATA_TYPES and _SORTED_BY arrays. 
-const std::string Comedy::dataTypeNames() const{
-    std::string retVal;
-    for(int i = 0; i < COMEDY_DATA_TYPES.size(); ++i){
-        retVal.append(COMEDY_DATA_TYPES.at(i));
-    } 
-    return retVal;
+const std::string* Comedy::dataTypeNames() const{
+    return dataTypeArr;
 }
 
-const std::string Comedy::sortedByNames() const{
-    std::string retVal[];
-    for(int i = 0; i < COMEDY_SORTED_BY.size(); ++i){
-        retVal.append(COMEDY_SORTED_BY.at(i));
-    } 
-    return retVal;
+const std::string* Comedy::sortedByNames() const{
+    return sortedByArr;
 }
 
 // returns size of DataTypes
@@ -93,7 +89,12 @@ std::string Comedy::getKey() const{
 }
 
 std::string Comedy::getData(std::string key) const{
-    return productData[key];
+    std::map<std::string, std::string>::const_iterator it = productData.find(key);
+    std::string retVal = "";
+    if (it != productData.end()) {
+        retVal = it->second;
+    } 
+    return retVal;
 }
 
 //TODO: comparison operators

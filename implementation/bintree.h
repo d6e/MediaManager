@@ -56,16 +56,14 @@ public:
 
     BinTree();              // No argument constructor
     BinTree(const BinTree & );   // copy constructor
-
     virtual ~BinTree();            //destructor
+
+    BinTree& operator=(const BinTree &);  //sets the tree equal to another tree
 
     bool isEmpty() const;  //checks if the tree is empty
     void makeEmpty();      //makes the tree empty
-    BinTree& operator=(const BinTree &);  //sets the tree equal to another tree
-
     bool insert( NodeData*); // insert new object
     bool retrieve(const NodeData*) const; //searches the Tree for a NodeData object
-
     int getSize() const;        //returns the number of nodes in the tree
 
     const std::string getKey() const;
