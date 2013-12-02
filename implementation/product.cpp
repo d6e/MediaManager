@@ -38,3 +38,27 @@ bool Product::addFormat(ProductFormat){
 	return true; //TODO
 
 }
+
+
+//upon receiving a duplicate product, add 10 to the quantity of the existing product's default format.
+void Product::duplicate(NodeData* n){      //TODO:rewrite  
+    const Product* p = static_cast<const Product*>(n);
+    const std::string* formatNames = p -> validFormatNames();
+    const std::string defaultFormat = formatNames[0];
+    //ProductFormat* pf = new ProductFormat(defaultFormat);
+    inventory.duplicate(defaultFormat);
+    //addFormat(pf);
+    //delete pf;
+}  
+
+void Product::display(std::ostream& output) const{  //TODO: REWRITE
+        const std::string* tempTypeNames = dataTypeNames();
+        const int tempTypeCount = dataTypeCount();
+        for(int i = 0; i < tempTypeCount; i++){
+                    std::string nextData = getData(tempTypeNames[i]);
+                    normalizeLength(nextData);
+                    output << nextData;
+        }
+        output << endl;
+        displayFormatCollection(output);
+}

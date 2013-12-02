@@ -7,6 +7,7 @@
 #include "productcollection.h"
 #include <string>
 
+const int A_INDEX = 65; //memory index of capital A (used for dealing with geners)
 
 /* 
 The ProductCollection function will collect information about the product and
@@ -19,8 +20,9 @@ class ProductCollection{
 	friend std::ostream & operator<<(std::ostream &, const ProductCollection &);
     
 private:
-    CollectionTree* collectTree; //pointer to the collection tree 
-    BinTree* treeNode;
+    // CollectionTree* collectTree; //pointer to the collection tree 
+    // BinTree* treeNode;
+    BinTree trees[26];
 public:
 	ProductCollection(); //default constractor
 	virtual ~ProductCollection(); //default destructor 

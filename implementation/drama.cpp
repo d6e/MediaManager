@@ -35,7 +35,7 @@ bool Drama::setData(Event* e){
             eventToken = "";
         }
         else{
-            eventToken.push_back(eventDetails.at(i));        
+            eventToken.push_back(eventDetails.at(i));//copy character to string
         }
     }
     // Need to get the last token after the comma
@@ -58,51 +58,95 @@ std::string Drama::type() const{
     return "Drama";
 }
 
-// The display method displays the private data members using cout.
-void Drama::display(){
-    for(int i = 0; i < DRAMA_SORTED_BY.size(); ++i){
-        std::cout << DRAMA_SORTED_BY[i] << ": " << productData[DRAMA_SORTED_BY[i]] << std::endl;
-    }
-}
-
 // The dataTypeNames() and sortedByNames() are helper methods which quickly 
 // retrieve the corresponding _DATA_TYPES and _SORTED_BY arrays. 
-// const std::string* Drama::dataTypeNames() const{
-//     return Drama::DRAMA_DATA_TYPES;
-// }
+const std::string Drama::dataTypeNames() const{
+    std::string retVal;
+    for(int i = 0; i < DRAMA_DATA_TYPES.size(); ++i){
+        retVal.append(DRAMA_DATA_TYPES.at(i));
+    } 
+    return retVal;
+}
 
-// const std::string* Drama::sortedByNames() const{
-//     return Drama::DRAMA_SORTED_BY;
-// }
+const std::string Drama::sortedByNames() const{
+    std::string retVal;
+    for(int i = 0; i < DRAMA_SORTED_BY.size(); ++i){
+        retVal.append(DRAMA_SORTED_BY.at(i));
+    } 
+    return retVal;
+}
+
+// returns size of DataTypes
+int Drama::getDataTypeSize() const{
+    return DRAMA_DATA_TYPES.size();
+}
+
+// returns size of SortedBy
+int Drama::getSortedBySize() const{
+    return DRAMA_SORTED_BY.size();
+}
 
 // returns unique identifier
-std::string Drama::getKey(){
+std::string Drama::getKey() const{
     return "Drama";
 }
 
+std::string Drama::getData(std::string key) const{
+    return productData[key];
+}
 
 //TODO: comparison operators
 // //comparison operators compare product by their sorting criteria
-// bool Drama::operator==(const NodeData &) const{
+bool Drama::operator==(const NodeData &node) const{ //TODO:rewrite
+    if(getKey() != node.getKey()){
+        return false;  
+    } 
+    const Product& p = static_cast<const Product&>(node);
+    const std::string* tempSortedByNames = sortedByNames();
+    const int sortedBySize = p.getSortedBySize();//sizeof(tempSortedByNames)/sizeof(*tempSortedByNames);
 
-// }
+    for(int i = 0; i < sortedBySize; i++){
+        if(getData(tempSortedByNames[i]) != p.getData(tempSortedByNames[i])){
+            return false;  
+        } 
+    }
+    return true;
+}
 
-// bool Drama::operator!=(const NodeData &) const{
+bool Drama::operator!=(const NodeData &node) const{
+    return !(*this == node);
+}
 
-// }
+bool Drama::operator<(const NodeData &n) const{ //TODO:REWRITE
+        if(getKey() != n.getKey()) return false;        //NOTE: should this always return false? should keys be compared for sorting, too?
+        const Product& p = static_cast<const Product&>(n);
+        const std::string* tempSortedByNames = sortedByNames();
+        const int sortedBySize = p.getSortedBySize();
+        for(int i = 0; i <= sortedBySize; i++){
+                std::string nextSortBy = tempSortedByNames[i];
+                if(getData(nextSortBy) < p.getData(nextSortBy)) return true;
+                if(getData(nextSortBy) > p.getData(nextSortBy)) return false;
+        }
+    return false;
+}
 
-// bool Drama::operator<(const NodeData &) const{
+bool Drama::operator>(const NodeData &n) const{ //TODO:REWRITE
+        if(getKey() != n.getKey()) return false;
+        const Product& p = static_cast<const Product&>(n);
+        const std::string* tempSortedByNames = sortedByNames();
+        const int sortedBySize = p.getSortedBySize();
+        for(int i = 0; i <= sortedBySize; i++){
+                std::string nextSortBy = tempSortedByNames[i];
+                if(getData(nextSortBy) > p.getData(nextSortBy)) return true;
+                if(getData(nextSortBy) < p.getData(nextSortBy)) return false;
+        }
+    return false;
+}
 
-// }
+bool Drama::operator<=(const NodeData &node) const{
+    return (*this < node) || (*this == node);//TODO: probably should be &&
+}
 
-// bool Drama::operator>(const NodeData &) const{
-
-// }
-
-// bool Drama::operator<=(const NodeData &) const{
-
-// }
-
-// bool Drama::operator>=(const NodeData &) const{
-
-// }
+bool Drama::operator>=(const NodeData &node) const{
+    return (*this > node) || (*this == node); //TODO: probably should be &&
+}

@@ -79,20 +79,22 @@ public:
     virtual Product* create() = 0; // Creates a new, empty Product 
     //returns the type (the class) of product. Used as a key.
     virtual std::string type() const = 0;	
-	// virtual void display(); // Displays contents via cout //TODO: Not sure if need
+	virtual void duplicate(NodeData*);
 	
 	// Returns all data, inorder of input, deliminated by commas
-	// virtual const std::string* dataTypeNames() const = 0; 
+	virtual const std::string dataTypeNames() const = 0; 
 	// Returns the sorting data, delineated by commas
-	// virtual const std::string* sortedByNames() const = 0; 
+	virtual const std::string sortedByNames() const = 0; 
+    virtual int getDataTypeSize() const = 0; // returns size of DataTypes
+    virtual int getSortedBySize() const = 0; // returns size of SortedBy
 	
 	//comparison operators compare product by their sorting criteria
-	// virtual bool operator==(const NodeData&) const = 0;
- //    virtual bool operator!=(const NodeData&) const = 0;
- //    virtual bool operator<(const NodeData&) const = 0;
- //    virtual bool operator>(const NodeData&) const = 0;
- //    virtual bool operator<=(const NodeData&) const = 0;
- //    virtual bool operator>=(const NodeData&) const = 0;
+	virtual bool operator==(const NodeData&) const = 0;
+    virtual bool operator!=(const NodeData&) const = 0;
+    virtual bool operator<(const NodeData&) const = 0;
+    virtual bool operator>(const NodeData&) const = 0;
+    virtual bool operator<=(const NodeData&) const = 0;
+    virtual bool operator>=(const NodeData&) const = 0;
 
 	//increments the quantity of a particular product format.
     void incrementQuantity(ProductFormat);		
@@ -100,7 +102,9 @@ public:
     int getBorrowedItems(ProductFormat) const; 			
     //number of copies borrowed by customers of a particular product format
 	int getRemainingItems(ProductFormat) const; 			
-	virtual void display() = 0; // Displays contents via cout
+	virtual void display(std::ostream&) const; // Displays contents via cout
+	virtual std::string getKey() const = 0;
+	virtual std::string getData(std::string key) const = 0;
 protected:
     //Contains valid formats of the product. The identifier code is the key. 
     std::map<std::string,ProductFormat> validFormats; 

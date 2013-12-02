@@ -49,23 +49,8 @@ immediately if the data searched is not of the same type contained in the tree
 
 class BinTree {
 
-// ostream is for all output
+// std::ostream is for all output
 friend std::ostream& operator<<(std::ostream&, const BinTree&);
-
-   
-private:
-    struct Node{
-        NodeData* data;
-        Node* left;
-        Node* right;
-
-        Node();
-        Node(const Node& otherNode);
-        ~Node();
-    };
-    Node* root;
-    // string displaying the tree (helper for <<)
-    std::string displayInOrder() const;  
 
 public:
 
@@ -76,14 +61,82 @@ public:
 
     bool isEmpty() const;  //checks if the tree is empty
     void makeEmpty();      //makes the tree empty
-    void makeEmpty(Node*);      //makes the tree empty
     BinTree& operator=(const BinTree &);  //sets the tree equal to another tree
 
     bool insert( NodeData*); // insert new object
-    bool retrieve( NodeData*) const; //searches the Tree for a NodeData object
+    bool retrieve(const NodeData*) const; //searches the Tree for a NodeData object
 
     int getSize() const;        //returns the number of nodes in the tree
 
+    const std::string getKey() const;
+    const std::string* dataTypeNames() const;
+    const int getDataTypeSize() const; // returns size of DataTypes
+private:
+    struct Node {
+        ~Node();
+        NodeData* data;
+        Node* left;
+        Node* right;
+    };
+    Node* root;
+    // string displaying the tree (helper for <<)
+    std::string displayInOrder() const;
+    bool insert(NodeData*,Node*,Node*,bool); //helper for insert(NodeData*)
+    void displayHelper(std::ostream&,Node*) const;
+    void makeEmpty(Node*);                  // helper for destructor
+    bool retrieve(Node*,const NodeData*) const;
+};
+/*
+#ifndef BINTREE_H
+#define BINTREE_H
+#include "nodedata.h"
+
+class Node{
+    friend class BinTree;
+
+public:
+    Node();                                      // Node constructor
+    Node(const Node &);                    // copy constructor
+    ~Node();                                  // Node destructor
+    bool operator==(const Node &) const;  // Node equality operator
+ 
+private:
+    NodeData* data;                       // pointer to data object 
+    Node* left;                           // left subtree pointer 
+    Node* right;                           // right subtree pointer 
 };
 
+class BinTree {  
+    friend std::ostream & operator<<(std::ostream &, const BinTree &);
+
+public:
+    //TODO: consider removing methods we aren't using
+    BinTree& operator=(const BinTree &);    // BinTree Assignment operator
+    bool operator==(const BinTree &) const; // BinTree Equality operator
+    bool operator!=(const BinTree &) const; // BinTree Inequality operator
+    bool insert(NodeData*);                    // Insert node method
+    void bstreeToArray(NodeData* []); //converts bstree to an arary
+    void arrayToBSTree(NodeData* []); //converts array to bstree
+    int getDepth(const NodeData &) const; // gets the depth of the tree
+    bool retrieve(const NodeData &, NodeData*&) const; // retrieves a node
+    void displaySideways() const; // provided, displays the tree sideways
+    string genre();
+ 
+private:
+    Node* root;                        // root node of the binary tree 
+    void copyNode(Node&, Node &);  // copy constructor helper method
+    int getDepth(const Node &, const NodeData &, int) const; //getDepth helper 
+    int maximum(const int, const int); //determines the higher of two integers
+    bool isEqual(const Node&,const Node&)const;      // helper for operator==
+    bool isNotEqual(const Node&,const Node&)const;   // helper for operator==
+     
+    bool insert(NodeData*,Node*,Node*,bool); // helper for displaySideways() 
+    void convertArrayToTree(NodeData*[], int); // arrayToBSTree helper
+    void initializeArrayHelper(NodeData* []); // Sets array elements to NULL
+    void inorderHelper(Node*,NodeData* [],int&) const;//does inorder traversal
+    void cleanTree(Node *); // empties tree like empty tree but deletes data
+    void sideways(Node*, int) const; // helper for displaySideways() 
+    bool retrieve(Node*, const NodeData&, NodeData*&) const; //retrieve helper
+};
+*/
 #endif

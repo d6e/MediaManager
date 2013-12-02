@@ -47,20 +47,22 @@ public:
     virtual Product* create(); // Creates a new, empty Drama object
     //returns the type ("drama") of product. Used as a key.
     virtual std::string type() const;	
-	virtual void display(); // Displays contents via cout
 	
-	// virtual const std::string* dataTypeNames() const;
-	// virtual const std::string* sortedByNames() const;
-	virtual std::string getKey();
+	virtual const std::string dataTypeNames() const;
+	virtual const std::string sortedByNames() const;
+    virtual int getDataTypeSize() const; // returns size of DataTypes
+    virtual int getSortedBySize() const; // returns size of SortedBy
+	virtual std::string getKey() const;
+    std::string getData(std::string key) const;
 	
 	
 	//comparison operators compare product by their sorting criteria
-	// virtual bool operator==(const Product &) const;
- //    virtual bool operator!=(const Product &) const;
- //    virtual bool operator<(const Product &) const;
- //    virtual bool operator>(const Product &) const;
- //    virtual bool operator<=(const Product &) const;
- //    virtual bool operator>=(const Product &) const;
+	virtual bool operator==(const NodeData&) const;
+    virtual bool operator!=(const NodeData&) const;
+    virtual bool operator<(const NodeData&) const;
+    virtual bool operator>(const NodeData&) const;
+    virtual bool operator<=(const NodeData&) const;
+    virtual bool operator>=(const NodeData&) const;
 	
 private:
 	std::vector<std::string> DRAMA_DATA_TYPES;

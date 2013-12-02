@@ -18,22 +18,27 @@ of object stored by NodeData.
 */
 
 class NodeData {
+    friend std::ostream& operator<<(std::ostream&, const NodeData&);
 public:
-    NodeData(); // default constructor,
+    NodeData(); // default constructor
     virtual ~NodeData();   // destructor
     NodeData(const NodeData &);    // copy constructor
-    NodeData& operator=(const NodeData &);     
+    NodeData& operator=(const NodeData &);   //assignment operator
+    virtual void display(std::ostream&) const = 0;
     // Gives NodeData the duplicate to handle it.
-    // virtual void duplicate(NodeData*) = 0;  //TODO: Not sure what to do with this 
-    virtual std::string getKey() = 0; // returns unique identifier
+    virtual void duplicate(NodeData*) = 0;  
+    virtual std::string getKey() const = 0; // returns unique identifier
 
     // comparison operators
-    // virtual bool operator==(const NodeData &) const = 0;
-    // virtual bool operator!=(const NodeData &) const = 0;
-    // virtual bool operator<(const NodeData &) const = 0;
-    // virtual bool operator>(const NodeData &) const = 0;
-    // virtual bool operator<=(const NodeData &) const = 0;
-    // virtual bool operator>=(const NodeData &) const = 0;                
+    virtual bool operator==(const NodeData &) const = 0;
+    virtual bool operator!=(const NodeData &) const = 0;
+    virtual bool operator<(const NodeData &) const = 0;
+    virtual bool operator>(const NodeData &) const = 0;
+    virtual bool operator<=(const NodeData &) const = 0;
+    virtual bool operator>=(const NodeData &) const = 0;                
+
+    virtual const std::string dataTypeNames() const = 0; //TODO: rename      
+    virtual int getDataTypeSize() const = 0; // returns size of DataTypes
 };
 
 #endif
