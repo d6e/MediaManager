@@ -28,7 +28,7 @@ public:
 	//(this means product type and genre must match.) if no match is found, a new
 	//ListNode is created and the Product is inserted into its tree.
 	Error insert(Product *,std::string); //inset product into a linked list 
-	Error retrieve(Product *); //retrieve product from a linked list 
+	Error retrieve(Product *,std::string); //retrieve product from a linked list 
 	Error displayAll() const; //display all the products 
 	bool isEmpty() const; //check if the list is empty 
 	

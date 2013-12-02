@@ -1,9 +1,4 @@
 #include "comedy.h"
-/*
-Comedy::Comedy(){
-	//TODO: Inits productData keys.
-}
-*/
 
 Comedy::~Comedy(){
 	//TODO: check if this is necessary

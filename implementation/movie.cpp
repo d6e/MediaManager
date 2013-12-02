@@ -2,6 +2,8 @@
 
 Movie::Movie(){initValidFormats();}
 
+Movie::~Movie(){}
+
 const std::string* Movie::validFormatNames() const{
 	//cout << "THIS IS A MOVIE" << endl;
 	return MOVIE_FORMATS;

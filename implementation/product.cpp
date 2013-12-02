@@ -2,7 +2,10 @@
 
 Product::Product(){}
 
-Product::~Product(){}
+Product::~Product(){
+	//cout << "DELETING " << getData("title") << endl;
+	//TODO
+}
 
 void Product::initValidFormats(){	
 	int formatCount = validFormatCount(); 
@@ -69,11 +72,13 @@ void Product::truncate(std::string& longString) const{
 }
 
 void Product::duplicate(NodeData* n){	//upon receiving a duplicate product, add 10 to the quantity of the existing product's default format.
+	
 	const Product* p = static_cast<const Product*>(n);
 	const std::string* formatNames = p -> validFormatNames();
 	const std::string defaultFormat = formatNames[0];
 	ProductFormat* pf = new ProductFormat(defaultFormat);
 	addFormat(pf);
+	delete pf;
 }  
 
 //operator overrides
@@ -141,8 +146,7 @@ bool Product::addData(std::string key,std::string value){
 
 bool Product::addFormat(ProductFormat* pf){
 	//add 10 of this format to formatCollection. TODO: check if valid first
-	inventory.addProductFormat(pf);
-	return true;
+	return inventory.addProductFormat(pf);
 }
 
 bool Product::addValidFormat(ProductFormat pf){

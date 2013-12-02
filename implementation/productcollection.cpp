@@ -10,17 +10,20 @@ ProductCollection::ProductCollection(){
 ProductCollection::~ProductCollection(){} //TODO
 
 Error ProductCollection::insert(Product* p, std::string genre){
-	int genreIndex = (int) genre[0] - A_INDEX;
 	Error empty;
+	int genreIndex = (int) genre[0] - A_INDEX;
 	if(collectTree[genreIndex].insert(p)) return empty;
 	Error notFound("ERROR: failed to insert the product.");	//TODO: this might not actually be what "false" means in this context.
 	return notFound;
 }
 
-Error ProductCollection::retrieve(Product* p){
+Error ProductCollection::retrieve(Product* p, std::string genre){
+	
 	Error empty;
-	//TODO
-	return empty;
+	int genreIndex = (int) genre[0] - A_INDEX;
+	if(collectTree[genreIndex].retrieve(p)) return empty;
+	Error notFound("ERROR: product was not found.");	//TODO: this might not actually be what "false" means in this context.
+	return notFound;
 }
 
 Error ProductCollection::displayAll() const{

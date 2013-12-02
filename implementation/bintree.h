@@ -63,7 +63,7 @@ public:
     BinTree& operator=(const BinTree &);  //sets the tree equal to another tree
 
     bool insert( NodeData*); // insert new object
-    bool retrieve( NodeData*) const; //searches the Tree for a NodeData object
+    bool retrieve(const NodeData*) const; //searches the Tree for a NodeData object
 
     int getSize() const;        //returns the number of nodes in the tree
 
@@ -72,6 +72,7 @@ public:
    	const int dataTypeCount() const;
 private:
     struct Node {
+    	~Node();
         NodeData* data;
         Node* left;
         Node* right;
@@ -81,7 +82,8 @@ private:
     std::string displayInOrder() const;
     bool insert(NodeData*,Node*,Node*,bool); //helper for insert(NodeData*)
     void displayHelper(ostream&,Node*) const;
-//friend std::ostream& operator<<(std::ostream& output, const Node&);
+    void makeEmpty(Node*); 				 // helper for destructor
+    bool retrieve(Node*,const NodeData*) const;
 };
 /*
 #ifndef BINTREE_H
@@ -108,11 +110,6 @@ class BinTree {
 
 public:
 	//TODO: consider removing methods we aren't using
-	BinTree(); 						// BinTree constructor 
-	BinTree(const BinTree &); 		// BinTree copy constructor	
-	~BinTree(); 					// BinTree destructor, calls makeEmpty 
-	bool isEmpty() const; // true if tree is empty, otherwise false 
-	void makeEmpty(); // empties the tree, calls makeEmpty() helper 
 	BinTree& operator=(const BinTree &);    // BinTree Assignment operator
 	bool operator==(const BinTree &) const; // BinTree Equality operator
 	bool operator!=(const BinTree &) const; // BinTree Inequality operator
@@ -131,7 +128,7 @@ private:
 	int maximum(const int, const int); //determines the higher of two integers
 	bool isEqual(const Node&,const Node&)const;      // helper for operator==
 	bool isNotEqual(const Node&,const Node&)const;   // helper for operator==
-	void makeEmpty(Node*); 				 // helper for makeEmpty() 
+	 
 	bool insert(NodeData*,Node*,Node*,bool); // helper for displaySideways() 
 	void convertArrayToTree(NodeData*[], int); // arrayToBSTree helper
     void initializeArrayHelper(NodeData* []); // Sets array elements to NULL

@@ -20,16 +20,16 @@ outside the Manager class so all input is assumed to be lines of strings.
 class Manager{
 
 private:
-    //CustomerIndex customerDB; // Stores customer information and history.
+    
     ProductCollection productDB; // Stores product information and quantities
     ProductFactory mFactory; // Creates products.
     //CommandFactory cFactory; // Creates commands.
-   
+    //CustomerIndex customerDB; // Stores customer information and history.
 
 public:
 	Manager(); //Initializes all collections and factories
 	
-    //virtual ~Manager();
+    virtual ~Manager();
 	
     // Inputs new products, prints errors in process, returns false if failed.
 	bool inputProduct(ifstream&); 

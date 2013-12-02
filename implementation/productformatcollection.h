@@ -24,12 +24,12 @@ public:
 private:
 	struct FormatAmount
 	{
-		void addQuantity(int);
+		//void addQuantity(int);
 		ProductFormat* format;
 		int count;	//amount in stock
 	    int size;	//total amount owned
 	};
-		
+	void addAmount(FormatAmount &, int);
 	std::list<FormatAmount> formatDataList;
 };
 

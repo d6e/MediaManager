@@ -32,21 +32,25 @@ int ProductFormatCollection::getFormatMaxAmount(const ProductFormat& pf) const{
 bool ProductFormatCollection::addProductFormat(ProductFormat* pf){
 	std::string searchName = pf -> getName();
 	std::list<FormatAmount>::iterator it=formatDataList.begin();
-	int currentQuantity = 0;
 	while(it != formatDataList.end()){
 		if(it -> format -> getName() == searchName){
-			currentQuantity = it -> size;
-			formatDataList.erase(it);
-			break;
+			FormatAmount& fa = *it;
+			int amount = DEFAULT_PRODUCT_QUANTITY;
+			addAmount(fa, amount);
+			return true;	//TODO: maybe return false if not valid?
 		}
 		++it;
 	} 
-
 	FormatAmount inserted;
-	inserted.size = inserted.count = currentQuantity + DEFAULT_PRODUCT_QUANTITY;
+	inserted.size = inserted.count = DEFAULT_PRODUCT_QUANTITY;
 	inserted.format = pf;
 	formatDataList.insert(it, inserted);
 	return true;
+}
+
+void ProductFormatCollection::addAmount(FormatAmount& format, int amount){
+	format.size += amount;
+	format.count += amount;
 }
 
 const void ProductFormatCollection::display(std::ostream& output) const{	//display the amount of each format. NOTE: might be wrong way to do this

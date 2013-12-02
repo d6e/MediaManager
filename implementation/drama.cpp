@@ -1,9 +1,4 @@
 #include "drama.h"
-/*
-Drama::Drama(){
-	//TODO: Inits productData keys.
-}
-*/
 
 Drama::~Drama(){
 	//TODO: check if this is necessary

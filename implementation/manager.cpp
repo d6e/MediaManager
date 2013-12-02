@@ -9,38 +9,45 @@ Manager::Manager(){
 //TODO: Initializes all collections and factories
 }
 
+Manager::~Manager(){}
+
 bool Manager::inputProduct(ifstream& productInput){
 	std::string genre;
 	for(;;){
 		if(productInput.eof()) break;
 		productInput >> genre;
 		Product* p = mFactory.create(genre);
-		if(p == NULL){
+		if(p == NULL){	//case for invalid genre
 			std::string temp;
 			getline(productInput, temp);
 			continue;
-		}
-		
+		}	
 		productInput.get();
 		const std::string* dataTypeNames = p -> dataTypeNames();
 		const int dataTypeCount = p -> dataTypeCount();
 		for(int i = 0; i < dataTypeCount-1; i++){	//TODO: error checking		
 			string currentData;
 			getline(productInput, currentData, ',');
-
 			productInput.get();
 		//TODO: this should probably use setData(Event) but I'm not positive.
 			if(!p -> addData(dataTypeNames[i],currentData)){ 
 				return false;
 			}  
 		}
-	
 		string lastData;
 		getline(productInput, lastData);
-
 		if(!p -> addData(dataTypeNames[dataTypeCount-1],lastData)) return false;
-		productDB.insert(p,genre);
-
+		/*
+		if(productDB.retrieve(p,genre).getErrorMessage() == ""){	//case for data already existing in collection
+			delete p;
+		} 
+		else productDB.insert(p,genre);
+		*/
+		
+		if(productDB.insert(p,genre).getErrorMessage() != ""){ 
+			//cout << "DUPLICATE DETECED " << endl;
+			delete p;
+		}
 	}
 	return true;
 }

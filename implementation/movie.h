@@ -7,6 +7,7 @@ class Movie :
 public Product {
 public:
 	Movie();
+	virtual ~Movie();
 private:
     virtual const std::string* validFormatNames() const;
     virtual const int validFormatCount() const;
