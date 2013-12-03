@@ -1,5 +1,8 @@
 #include "productformatcollection.h"
 
+ProductFormatCollection::ProductFormatCollection(){
+
+}
 
 ProductFormatCollection::~ProductFormatCollection(){
     for(std::list<FormatAmount*>::const_iterator it = formatDataList.begin(); it != formatDataList.end(); ++it){
@@ -9,13 +12,15 @@ ProductFormatCollection::~ProductFormatCollection(){
     formatDataList.clear();
 }
 
-int ProductFormatCollection::getFormatAmount(ProductFormat pf)const{
-    ProductFormat* pfPtr = &pf;
-    for(std::list<FormatAmount*>::const_iterator it = formatDataList.begin(); it != formatDataList.end(); ++it){
-        if((*it)->format->getName() == pfPtr->getName()){//find corresponding pf
-            return (*it)->count;
-        }
-    }   
+int ProductFormatCollection::getFormatAmount(ProductFormat* pfPtr)const{
+    if(pfPtr != NULL){ //TODO: pfPtr is always NULL
+        for(std::list<FormatAmount*>::const_iterator it = formatDataList.begin(); it != formatDataList.end(); ++it){
+            std::string fname = (*it)->format->getName();
+            if(fname == pfPtr->getName()){//find corresponding pf
+                return (*it)->count;
+            }
+        }    
+    }
     return -1; // get amount failed
 }
 
@@ -33,6 +38,14 @@ void ProductFormatCollection::addProductFormat(ProductFormat pf){
     fa->format = &pf;
     fa->count = DEFAULT_PRODUCT_QUANTITY;
     fa->size = DEFAULT_PRODUCT_SIZE;
+    formatDataList.push_back(fa);
+}
+
+void ProductFormatCollection::addProductFormat(ProductFormat pf, int c, int s){
+    FormatAmount* fa = new FormatAmount();
+    fa->format = &pf;
+    fa->count = c;
+    fa->size = s;
     formatDataList.push_back(fa);
 }
 

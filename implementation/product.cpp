@@ -3,9 +3,7 @@
 
 Product::Product(){}
 
-Product::~Product(){
-	std::cout << "Product Freed" << std::endl;
-}
+Product::~Product(){}
 
 // Returns false if input invalid.
 bool Product::setData(Event* e){
@@ -51,20 +49,19 @@ void Product::truncate(std::string& longString) const{  //TODO: rewrite
 }
 
 void Product::displayFormatCollection(std::ostream& output) const{        //TODO: rewrite
-        int formatCount = validFormatCount(); 
-        const std::string* formatNames = validFormatNames();
-        for(int i = 0; i < formatCount; i++){
-                const std::string formatKey = formatNames[i];
-                ProductFormat p = getProductFormat(formatKey);
+        const std::vector<std::string> formatNames = getFormatNames();
+        for(int i = 0; i < formatNames.size(); i++){
+                const std::string formatKey = formatNames.at(i);
+                ProductFormat* p = getProductFormat(formatKey);
                 output << formatKey << ": " << inventory.getFormatAmount(p) << " ";
         }
         output << std::endl;
 }
 
-ProductFormat Product::getProductFormat(std::string key) const{
-        std::map<std::string,ProductFormat>::const_iterator index = validFormats.find(key);
-           ProductFormat data = index -> second;
-           return data;
+ProductFormat* Product::getProductFormat(std::string key) const{ 
+    std::map<std::string,ProductFormat*>::const_iterator index = validFormats.find(key);
+    ProductFormat* data = index -> second; //TODO: data is always NULL
+    return data;
 }
 
 // The addData() method inserts data into the Product's hashtable, with the form
@@ -84,8 +81,9 @@ bool Product::addFormat(ProductFormat){
 //upon receiving a duplicate product, add 10 to the quantity of the existing product's default format.
 void Product::duplicate(NodeData* n){      //TODO:rewrite  
     const Product* p = static_cast<const Product*>(n);
-    const std::string* formatNames = p -> validFormatNames();
-    const std::string defaultFormat = formatNames[0];
+    const std::vector<std::string> formatNames = p->getFormatNames();
+    // const std::string defaultFormat = formatNames[0];
+    const std::string defaultFormat = formatNames.at(0);//TODO: not sure if correct
     //ProductFormat* pf = new ProductFormat(defaultFormat);
     inventory.duplicate(defaultFormat);
     //addFormat(pf);

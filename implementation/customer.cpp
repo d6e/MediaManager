@@ -1,10 +1,16 @@
 #include "customer.h"
+#include <iostream>   
 
 
 Customer::Customer(std::string id, std::string first, std::string last){
     customerID = id;
     firstName = first;
     lastName = last;
+    std::cout << "Customer Created" << std::endl;
+}
+
+Customer::~Customer(){
+    std::cout << "Customer destroyed" << std::endl;
 }
 
 void Customer::displayHistory() const{

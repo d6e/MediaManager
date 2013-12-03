@@ -30,6 +30,7 @@ private:
 
 public:
     Customer(std::string, std::string, std::string);
+    virtual ~Customer();
     void displayHistory() const; // Calls history's displayAll method
     void addEvent(Event*); // Calls history's addTransaction method
     std::string getID() const;          // accessor

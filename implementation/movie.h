@@ -4,7 +4,7 @@
 #include "product.h"
 #include "productformat.h"
 #include <string>
-#include <map>
+#include <vector>
 
 /*
 Contains the attributes of a Movie. Valid formats of Movies are initialized 
@@ -13,12 +13,12 @@ here.
 class Movie : public Product 
 {
 public:
+    Movie();
     virtual ~Movie();
 private:
-	const static std::string formats[]; 
+	std::vector<std::string> formatList;
 	virtual void initValidFormats(); // Inits to DVD for now.
-	virtual const std::string* validFormatNames() const; //TODO: rewrite
-	virtual const int validFormatCount() const;
+	virtual const std::vector<std::string> getFormatNames() const;
 };
 
 #endif

@@ -22,7 +22,7 @@ class ProductCollection{
 private:
     BinTree collection[26];
     Error displayDataTypes(const BinTree &) const; //TODO: REWRITE
-    int collectionSize;
+    int collectionSize; //number of nodes in the collection
 public:
 	ProductCollection(); //default constractor
 	virtual ~ProductCollection(); //default destructor 

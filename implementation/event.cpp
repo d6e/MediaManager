@@ -43,6 +43,7 @@ std::string Event::getEventDetails() const{
 // The display method iterates through the list displaying the data.
 void Event::display() const{    
     for(int i = 0; i < argList.size(); ++i){
-        std::cout << argList.at(i) << std::endl;
+        std::cout << argList.at(i) << " ";
     }
+    std::cout << std::endl;
 }

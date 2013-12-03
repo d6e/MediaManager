@@ -1,6 +1,5 @@
 #include "manager.h"
 #include <sstream>
-#include <iostream>
 
 Manager::Manager(){
     cIndex = new CustomerIndex();
@@ -24,9 +23,12 @@ Manager::~Manager(){
 bool Manager::inputProduct(std::string movieDetails){
     Product* pdtPtr = pFactory->create(movieDetails);
     pCollect->insert(pdtPtr);
-    pCollect->displayAll();
     return true; //TODO
 } 
+
+void Manager::displayAllProducts(){
+    pCollect->displayAll();
+}
 
 bool Manager::inputCustomer(std::string custDetails){
     std::stringstream ss;
@@ -37,10 +39,9 @@ bool Manager::inputCustomer(std::string custDetails){
     ss >> first; 
     ss >> last; 
 
-    std::cout << "inputcustomer custID: " << custID << std::endl;
-
     Customer* cust = new Customer(custID, first, last);
     cIndex->insertCustomer(cust);
+    cust = NULL;
     return true; //TODO
 }
 

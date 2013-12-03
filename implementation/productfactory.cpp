@@ -21,8 +21,6 @@ ProductFactory::~ProductFactory(){
 
 //parses input to create Product objects, returns null if invalid hash key
 Product* ProductFactory::create(std::string key){
-    std::cout << "new Product" << std::endl;
-    
     std::string pdtString;
     std::string restOfString;
     std::stringstream ss;

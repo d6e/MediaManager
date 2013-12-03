@@ -12,13 +12,15 @@ Contains quantites and max quantites of various ProductFormats in a collection.
 */
 class ProductFormatCollection{
 public:
+    ProductFormatCollection();
     virtual ~ProductFormatCollection();
     //Returns the amount of items that particular ProductFormat has.
-	int getFormatAmount(const ProductFormat) const; 
+	int getFormatAmount(ProductFormat*)const; 
 	int getFormatMaxAmount(const ProductFormat*);
 	//TODO: Add more mutators??? Not necessarily necessary
     std::string getFormatNames();  //iterate, display productformats //TODO: possibly use this instead of product::validFormatNames()
 	void addProductFormat(ProductFormat);
+	void addProductFormat(ProductFormat, int, int);
 	void duplicate(std::string);
 private:
 	struct FormatAmount

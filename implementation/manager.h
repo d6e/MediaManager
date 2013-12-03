@@ -26,6 +26,8 @@ public:
 	Manager(); //Initializes all collections and factories
 	virtual ~Manager();
 	
+    void displayAllProducts();
+
     // Inputs new products, prints errors in process, returns false if failed.
 	bool inputProduct(std::string); 
 

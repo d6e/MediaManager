@@ -22,17 +22,11 @@ Error CustomerIndex::addTransaction(std::string custID, Event* event){
 
 //displays a customer's history from customer ID
 Error CustomerIndex::displayHistory(std::string custID){
-    std::cout << "customer: " << custID << std::endl;
-
     if (customers[custID]){
-        std::cout << "customer index displayhistory" << std::endl;
-
         Customer* cust = customers[custID];
         cust->displayHistory();
         return Error(""); //success
     }
-    std::cout << "customer: " << custID << std::endl;
-
     return Error("Cannot find customer ID");   //fail
 }
 
