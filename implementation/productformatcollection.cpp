@@ -58,7 +58,7 @@ std::string ProductFormatCollection::getFormatNames(){
     return retVal;
 }
 
-void ProductFormatCollection::duplicate(std::string formatName){
+void ProductFormatCollection::incrProductQuantity(std::string formatName){
     std::list<FormatAmount*>::iterator it;
     for(it = formatDataList.begin(); it != formatDataList.end(); ++it){
         if((*it)->format->getName() == formatName){

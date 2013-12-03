@@ -10,7 +10,7 @@
 NodeData is an abstract class which can be a CustomerData object or a 
 ProductData object.
 
-duplicate() lets the NodeData know that the system has received duplicate data. 
+incrProductQuantity() lets the NodeData know that the system has received duplicate data. 
 and gives it the duplicate so that it can handle it.
 It is not defined in this class, but in the child classes.
 
@@ -27,7 +27,7 @@ public:
     NodeData& operator=(const NodeData &);   //assignment operator
     virtual void display(std::ostream&) const = 0;
     // Gives NodeData the duplicate to handle it.
-    virtual void duplicate(NodeData*) = 0;  
+    virtual void incrProductQuantity(NodeData*) = 0;  
     virtual std::string getKey() const = 0; // returns unique identifier
 
     // comparison operators

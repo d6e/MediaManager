@@ -73,7 +73,7 @@ bool BinTree::insert(NodeData* inserted){
     }
     if(*inserted == *(root -> data)){ //check if node is already in the tree
         //case for matching data: increment count of standard format.
-        root -> data -> duplicate(inserted);
+        root -> data -> incrProductQuantity(inserted);
         return false;
     }
     if(*inserted < *(root->data)){            // go down the left side
@@ -103,7 +103,7 @@ bool BinTree::insert(NodeData *ptr, Node *cNode, Node *nNode, bool right){
         }
     }
     if(*ptr == *(nNode->data)){   
-        nNode -> data -> duplicate(ptr);
+        nNode -> data -> incrProductQuantity(ptr);
         return false;
     }
     if(*ptr < *(nNode->data)){         // go down the left side

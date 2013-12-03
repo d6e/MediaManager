@@ -62,7 +62,7 @@ int main(){
     pfc.addProductFormat(*pf);
     std::cout << pfc.getFormatNames() << std::endl;
     std::cout << pfc.getFormatAmount(pf) << std::endl;
-    pfc.duplicate("DVD");
+    pfc.incrProductQuantity("DVD");
     std::cout << pfc.getFormatAmount(pf) << std::endl;
     delete movie;
     delete pf;

@@ -80,9 +80,9 @@ void Product::addFormat(ProductFormat pf){
 }
 
 //upon receiving a duplicate product, add 10 to the quantity of the existing product's default format.
-void Product::duplicate(NodeData* node){      //TODO:rewrite  
+void Product::incrProductQuantity(NodeData* node){      //TODO:rewrite  
     Product* pdtPtr = static_cast<Product*>(node);
     std::vector<std::string> formatNames = pdtPtr->getFormatNames();
-    pfc.duplicate(formatNames.at(0));
+    pfc.incrProductQuantity(formatNames.at(0));
 }  
 

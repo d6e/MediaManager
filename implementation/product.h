@@ -79,7 +79,7 @@ public:
     virtual Product* create() = 0; // Creates a new, empty Product 
     //returns the type (the class) of product. Used as a key.
     virtual std::string type() const = 0;	
-	virtual void duplicate(NodeData*);
+	virtual void incrProductQuantity(NodeData*);
 	
 	// Returns all data, inorder of input, deliminated by commas
 	virtual std::vector<std::string> getDataTypes() const = 0; 

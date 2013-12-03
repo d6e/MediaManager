@@ -32,7 +32,7 @@ public:
     std::string getFormatNames();  //iterate, display productformats //TODO: possibly use this instead of product::validFormatNames()
 	void addProductFormat(ProductFormat);
 	void addProductFormat(ProductFormat, int, int);
-	void duplicate(std::string);
+	void incrProductQuantity(std::string);
 
 };
 
