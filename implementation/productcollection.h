@@ -20,10 +20,9 @@ class ProductCollection{
 	friend std::ostream & operator<<(std::ostream &, const ProductCollection &);
     
 private:
-    // CollectionTree* collectTree; //pointer to the collection tree 
-    // BinTree* treeNode;
-    BinTree trees[26];
+    BinTree collection[26];
     Error displayDataTypes(const BinTree &) const; //TODO: REWRITE
+    int collectionSize;
 public:
 	ProductCollection(); //default constractor
 	virtual ~ProductCollection(); //default destructor 

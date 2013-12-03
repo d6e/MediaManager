@@ -12,12 +12,17 @@ ProductFactory::ProductFactory(ProductCollection* pC)
 
 ProductFactory::~ProductFactory(){
     for(it = products.begin(); it != products.end(); ++it) {
-        delete it->second;
+        if(it->second != NULL){
+            delete it->second;
+            it->second = NULL;
+        }
     }
 } 
 
 //parses input to create Product objects, returns null if invalid hash key
 Product* ProductFactory::create(std::string key){
+    std::cout << "new Product" << std::endl;
+    
     std::string pdtString;
     std::string restOfString;
     std::stringstream ss;
@@ -27,8 +32,10 @@ Product* ProductFactory::create(std::string key){
     char pdtChar = pdtString.at(0); //Convert string to a char
 
     Product* pdtPtr = NULL;
-    pdtPtr = products[pdtChar]; //get product pointer from hashtable 
-    pdtPtr->setData(new Event(restOfString));
+    if(products[pdtChar] != NULL){
+        pdtPtr = products[pdtChar]->create(); //get product pointer from hashtable 
+        pdtPtr->setData(new Event(restOfString));    
+    }
     return pdtPtr;
 }
 

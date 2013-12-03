@@ -1,7 +1,9 @@
 #include "productcollection.h"
 
  //default constructor
-ProductCollection::ProductCollection(){}
+ProductCollection::ProductCollection(){
+    collectionSize = 0;
+}
 
 //default destructor 
 ProductCollection::~ProductCollection(){} 
@@ -11,9 +13,10 @@ ProductCollection::~ProductCollection(){}
 //(this means product type and genre must match.) if no match is found, a new
 //ListNode is created and the Product is inserted into its tree.
 Error ProductCollection::insert(Product* pdtPtr){ 
+    collectionSize++;
     std::string genre = pdtPtr->getKey();
     int genreIndex = (int) genre[0] - A_INDEX;
-    if(trees[genreIndex].insert(pdtPtr)){
+    if(collection[genreIndex].insert(pdtPtr)){
         return Error();  
     } 
     return Error("Error: Could not insert product.");
@@ -23,7 +26,7 @@ Error ProductCollection::insert(Product* pdtPtr){
 Error ProductCollection::retrieve(Product* pdtPtr){
     std::string genre = pdtPtr->getKey();
     int genreIndex = (int) genre[0] - A_INDEX;
-    if(trees[genreIndex].retrieve(pdtPtr)){
+    if(collection[genreIndex].retrieve(pdtPtr)){ //TODO rename retrieve() to productExists()
         return Error();  
     } 
     return Error("Error: Unable to find product.");
@@ -31,20 +34,19 @@ Error ProductCollection::retrieve(Product* pdtPtr){
 
 //display all the products 
 Error ProductCollection::displayAll() const{ //TODO: REWRITE
-    int collectionSize = sizeof(trees)/sizeof(*trees);
     Error empty;
     for(int i = 0; i < collectionSize; i++){
-        if(!trees[i].isEmpty()){
+        if(!collection[i].isEmpty()){
             //TODO: show genre and type here
-            std::cout << trees[i].getKey() << std::endl;
-            empty = displayDataTypes(trees[i]);        //should this be an error?
+            std::cout << collection[i].getKey() << std::endl;
+            empty = displayDataTypes(collection[i]);        //should this be an error?
             std::cout << std::endl << 
 "------------------------------------------------------------------------------" 
             << std::endl;
             if(empty.getErrorMessage() != ""){
                 return Error();  
             } 
-            std::cout << trees[i] << std::endl;
+            std::cout << collection[i] << std::endl;
         } 
     }
     return Error(""); //TODO: Needs a message    
@@ -63,7 +65,7 @@ Error ProductCollection::displayDataTypes(const BinTree& dataTree) const{ //TODO
     int getDataTypeSize = dataTree.getDataTypeSize();
     for(int i = 0; i < getDataTypeSize; i++){
         std::string nextType = dataTypes[i];
-        // nextType.resize(MAX_DATA_LENGTH,' ');
+        nextType.resize(MAX_DATA_LENGTH,' '); //TODO: NOT SURE IF NECESSARY
         std::cout << nextType;
     }
     return empty;

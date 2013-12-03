@@ -19,6 +19,7 @@ Manager::~Manager(){
 bool Manager::inputProduct(std::string movieDetails){
     Product* pdtPtr = pFactory->create(movieDetails);
     pCollect->insert(pdtPtr);
+    pCollect->displayAll();
     // pdtPtr->display();
     return true; //TODO
 } 

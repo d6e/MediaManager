@@ -1,8 +1,11 @@
 #include "product.h"
+#include <iostream>
 
 Product::Product(){}
 
-Product::~Product(){}
+Product::~Product(){
+	std::cout << "Product Freed" << std::endl;
+}
 
 // Returns false if input invalid.
 bool Product::setData(Event* e){

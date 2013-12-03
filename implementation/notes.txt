@@ -1,3 +1,10 @@
+if there's two copies of the same movie increment the amount by 10
+you can pretend there is no customer 00000
+
+TURN IN UML OF JUST THE CLASSES YOU IMPLEMENTED (just the names)
+print out hardcopy of only the classes you implement
+
+
 "Store dates as ints, not strings, with ints month and year.
 While it may make sense to store them as strings, you will
 store then as ints to represent data of different types
