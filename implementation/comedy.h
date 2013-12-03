@@ -47,8 +47,8 @@ public:
     virtual Product* create(); // Creates a new, empty genre movie object
     virtual std::string type() const; //returns type ("comedy"). Used as key
 
-	virtual const std::string* dataTypeNames() const;
-	virtual const std::string* sortedByNames() const;	
+	virtual const std::vector<std::string> dataTypeNames() const;
+	virtual const std::vector<std::string> sortedByNames() const;	
     virtual int getDataTypeSize() const; // returns size of DataTypes
     virtual int getSortedBySize() const; // returns size of SortedBy
     virtual std::string getKey() const; // returns unique identifier
@@ -65,9 +65,6 @@ public:
 private:
     std::vector<std::string> COMEDY_DATA_TYPES;
     std::vector<std::string> COMEDY_SORTED_BY;
-    const static std::string dataTypeArr[];
-    const static std::string sortedByArr[];
-
 };
 
 #endif

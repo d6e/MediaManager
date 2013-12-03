@@ -1,7 +1,7 @@
 #include "drama.h"
 
-const std::string Drama::dataTypeArr[] = {"director","title","date"};
-const std::string Drama::sortedByArr[] = {"director","title"};
+// const std::string Drama::dataTypeArr[] = {"director","title","date"};
+// const std::string Drama::sortedByArr[] = {"director","title"};
 
 
 // The constructor creates a bunch of ProductData objects and initializes their
@@ -63,12 +63,12 @@ std::string Drama::type() const{
 
 // The dataTypeNames() and sortedByNames() are helper methods which quickly 
 // retrieve the corresponding _DATA_TYPES and _SORTED_BY arrays. 
-const std::string* Drama::dataTypeNames() const{
-    return dataTypeArr;
+const std::vector<std::string> Drama::dataTypeNames() const{
+    return DRAMA_DATA_TYPES;
 }
 
-const std::string* Drama::sortedByNames() const{
-    return sortedByArr;
+const std::vector<std::string> Drama::sortedByNames() const{
+    return DRAMA_SORTED_BY;
 }
 
 // returns size of DataTypes
@@ -102,11 +102,11 @@ bool Drama::operator==(const NodeData &node) const{ //TODO:rewrite
         return false;  
     } 
     const Product& p = static_cast<const Product&>(node);
-    const std::string* tempSortedByNames = sortedByNames();
+    const std::vector<std::string> tempSortedByNames = sortedByNames();
     const int sortedBySize = p.getSortedBySize();//sizeof(tempSortedByNames)/sizeof(*tempSortedByNames);
 
     for(int i = 0; i < sortedBySize; i++){
-        if(getData(tempSortedByNames[i]) != p.getData(tempSortedByNames[i])){
+        if(getData(tempSortedByNames.at(i)) != p.getData(tempSortedByNames.at(i))){
             return false;  
         } 
     }
@@ -120,10 +120,10 @@ bool Drama::operator!=(const NodeData &node) const{
 bool Drama::operator<(const NodeData &n) const{ //TODO:REWRITE
         if(getKey() != n.getKey()) return false;        //NOTE: should this always return false? should keys be compared for sorting, too?
         const Product& p = static_cast<const Product&>(n);
-        const std::string* tempSortedByNames = sortedByNames();
+        const std::vector<std::string> tempSortedByNames = sortedByNames();
         const int sortedBySize = p.getSortedBySize();
         for(int i = 0; i <= sortedBySize; i++){
-                std::string nextSortBy = tempSortedByNames[i];
+                std::string nextSortBy = tempSortedByNames.at(i);
                 if(getData(nextSortBy) < p.getData(nextSortBy)) return true;
                 if(getData(nextSortBy) > p.getData(nextSortBy)) return false;
         }
@@ -133,10 +133,10 @@ bool Drama::operator<(const NodeData &n) const{ //TODO:REWRITE
 bool Drama::operator>(const NodeData &n) const{ //TODO:REWRITE
         if(getKey() != n.getKey()) return false;
         const Product& p = static_cast<const Product&>(n);
-        const std::string* tempSortedByNames = sortedByNames();
+        const std::vector<std::string> tempSortedByNames = sortedByNames();
         const int sortedBySize = p.getSortedBySize();
         for(int i = 0; i <= sortedBySize; i++){
-                std::string nextSortBy = tempSortedByNames[i];
+                std::string nextSortBy = tempSortedByNames.at(i);
                 if(getData(nextSortBy) > p.getData(nextSortBy)) return true;
                 if(getData(nextSortBy) < p.getData(nextSortBy)) return false;
         }

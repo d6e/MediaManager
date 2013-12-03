@@ -1,8 +1,7 @@
 #include "productfactory.h"
 #include <sstream>
 
-ProductFactory::ProductFactory(ProductCollection* pC) 
-        : HASH_TABLE_SIZE(256) {
+ProductFactory::ProductFactory(ProductCollection* pC) {
     pCollect = pC;    
 
     products['F'] = new Comedy();

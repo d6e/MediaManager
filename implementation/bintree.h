@@ -3,6 +3,7 @@
 #define BINTREE_H
 #include <iostream>
 #include <string>
+#include <vector>
 #include "nodedata.h"
 
 /*BinTree is a standard binary tree that will sort inputted data objects as 
@@ -67,7 +68,7 @@ public:
     // int getSize() const;        //returns the number of nodes in the tree //TODO: not sure if need
 
     const std::string getKey() const;
-    const std::string* dataTypeNames() const;
+    const std::vector<std::string> dataTypeNames() const;
     const int getDataTypeSize() const; // returns size of DataTypes
 private:
     struct Node {

@@ -36,7 +36,6 @@ private:
     // Command* hashTable;
     std::map<char, Command*> cmds;
     std::map<char, Command*>::iterator it;
-    const int HASH_TABLE_SIZE;
     int hash(std::string key);
 
 public:

@@ -10,18 +10,6 @@ bool Product::setData(Event* e){
     return true;
 }
 
-void Product::display(std::ostream& output) const{  //TODO: REWRITE
-        const std::string* tempTypeNames = dataTypeNames();
-        const int dataTypeSize = getDataTypeSize();
-        for(int i = 0; i < dataTypeSize; i++){
-                    std::string nextData = getData(tempTypeNames[i]);
-                    normalizeLength(nextData);
-                    output << nextData;
-        }
-        output << std::endl;
-        displayFormatCollection(output);
-}
-
 //increments the quantity of a particular product format.
 void Product::incrementQuantity(ProductFormat){
 //TODO
@@ -38,11 +26,25 @@ int Product::getRemainingItems(ProductFormat) const{
 
 } 			
 
-void Product::normalizeLength(std::string& data) const{ //TODO:REWRITE
+void Product::display(std::ostream& output) const{  //TODO: REWRITE
+    std::vector<std::string> tempTypeNames = dataTypeNames();
+    int dataTypeSize = getDataTypeSize();
+    for(int i = 0; i < dataTypeSize; i++){
+                std::string nextData = getData(tempTypeNames.at(i));
+                normalizeStringLength(nextData);
+                output << nextData;
+    }
+    output << std::endl;
+    displayFormatCollection(output);
+}
+
+//makes sure display doesn't take up too much space
+void Product::normalizeStringLength(std::string& data) const{ //TODO:REWRITE
         if(data.length() > MAX_DATA_LENGTH*1) truncate(data);        //the *1 is necessary to avoid a waring from the compiler
         else data.resize(MAX_DATA_LENGTH, ' ');
 }
 
+//truncates strings so they don't take up too much space
 void Product::truncate(std::string& longString) const{  //TODO: rewrite
         longString.resize(MAX_DATA_LENGTH - 3);
         longString.resize(MAX_DATA_LENGTH, '.');
@@ -67,15 +69,13 @@ ProductFormat* Product::getProductFormat(std::string key) const{
 // The addData() method inserts data into the Product's hashtable, with the form
 // <dataType,data> (Example: <"title","Titanic">). This data is retrieved in a
 // similar way by dataString().
-bool Product::addData(std::string key,std::string value){
+void Product::addData(std::string key,std::string value){
 	productData[key] = value;
-	return true; //TODO
 }
 
-//Returns false if data invalid.
-bool Product::addFormat(ProductFormat){
-	return true; //TODO
-
+ //adds product to productformatcollection
+void Product::addFormat(ProductFormat pf){
+    inventory.addProductFormat(pf);
 }
 
 //upon receiving a duplicate product, add 10 to the quantity of the existing product's default format.
@@ -84,9 +84,6 @@ void Product::duplicate(NodeData* n){      //TODO:rewrite
     const std::vector<std::string> formatNames = p->getFormatNames();
     // const std::string defaultFormat = formatNames[0];
     const std::string defaultFormat = formatNames.at(0);//TODO: not sure if correct
-    //ProductFormat* pf = new ProductFormat(defaultFormat);
     inventory.duplicate(defaultFormat);
-    //addFormat(pf);
-    //delete pf;
 }  
 

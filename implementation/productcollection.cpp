@@ -70,10 +70,10 @@ bool ProductCollection::isEmpty() const{
 
 Error ProductCollection::displayDataTypes(const BinTree& dataTree) const{ //TODO: REWRITE
     Error empty;
-    const std::string* dataTypes = dataTree.dataTypeNames();
+    const std::vector<std::string> dataTypes = dataTree.dataTypeNames();
     int getDataTypeSize = dataTree.getDataTypeSize();
     for(int i = 0; i < getDataTypeSize; i++){
-        std::string nextType = dataTypes[i];
+        std::string nextType = dataTypes.at(i);
         nextType.resize(MAX_DATA_LENGTH,' '); //TODO: NOT SURE IF NECESSARY
         std::cout << nextType;
     }

@@ -19,7 +19,6 @@ class ProductFactory
 {
 private:
     ProductCollection* pCollect;
-    const int HASH_TABLE_SIZE; //create a hash table with the size of 256
     // A pointer to an array of Products implemented as a hash table
     // Product* hashTable; 
     std::map<char, Product*> products;
@@ -31,8 +30,7 @@ public:
     ProductFactory(ProductCollection*);    
     virtual ~ProductFactory();
     //parses input to create Product objects, returns null if invalid hash key
-    Product* create(std::string key); 
-		
+    Product* create(std::string key); 		
 };
 
 #endif

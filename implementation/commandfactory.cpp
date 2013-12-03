@@ -5,8 +5,7 @@
 // ProductCollection is used to pass along the two data structures 
 // to it's products.
 // constructor, inits hash table
-CommandFactory::CommandFactory(CustomerIndex* cI, ProductCollection* pC) 
-        : HASH_TABLE_SIZE(256){
+CommandFactory::CommandFactory(CustomerIndex* cI, ProductCollection* pC) {
     cIndex = cI;
     pCollect = pC;    
     

@@ -190,11 +190,12 @@ const std::string BinTree::getKey() const{
     return NULL;
 }
 
-const std::string* BinTree::dataTypeNames() const{
+const std::vector<std::string> BinTree::dataTypeNames() const{ //TODO: REMOVE CONST FROM ALL THESE
+    std::vector<std::string> ret;
     if(root != NULL){
-        return root -> data -> dataTypeNames();
+        ret = root->data->dataTypeNames();
     }
-    return NULL;
+    return ret;
 }
 
 const int BinTree::getDataTypeSize() const{ //TODO: getDataTypeSize() is new, rewrite everything else in this method
