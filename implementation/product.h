@@ -51,7 +51,7 @@ create() is merely an instatiation method called by the ProductFactory that
 creates a product object.
 
 The addData() method inserts data into the Product's hashtable, with the form
-<dataType,data> (Example: <"title","Titanic">). This data is retrieved in a
+<dataType,data> (Example: <"TITLE","Titanic">). This data is retrieved in a
 similar way by dataString().
 
 All of any Product object's comparison operators work under the same principles:

@@ -4,13 +4,13 @@
 // keys.
 Classic::Classic(){
 //TODO: find out if productdata objects should even be created.
-    CLASSIC_DATA_TYPES.push_back("director");
-    CLASSIC_DATA_TYPES.push_back("title");
-    CLASSIC_DATA_TYPES.push_back("famous actor");
-    CLASSIC_DATA_TYPES.push_back("date");
+    CLASSIC_DATA_TYPES.push_back("DIRECTOR");
+    CLASSIC_DATA_TYPES.push_back("TITLE");
+    CLASSIC_DATA_TYPES.push_back("FAMOUS ACTOR");
+    CLASSIC_DATA_TYPES.push_back("DATE");
 
-    CLASSIC_SORTED_BY.push_back("date");
-    CLASSIC_SORTED_BY.push_back("famous actor");
+    CLASSIC_SORTED_BY.push_back("DATE");
+    CLASSIC_SORTED_BY.push_back("FAMOUS ACTOR");
 }
 
 // cleans up any productdata objects it created

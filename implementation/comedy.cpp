@@ -5,12 +5,12 @@
 // keys.
 Comedy::Comedy(){
 //TODO: find out if productdata objects should even be created.
-    COMEDY_DATA_TYPES.push_back("director");
-    COMEDY_DATA_TYPES.push_back("title");
-    COMEDY_DATA_TYPES.push_back("date");
+    COMEDY_DATA_TYPES.push_back("DIRECTOR");
+    COMEDY_DATA_TYPES.push_back("TITLE");
+    COMEDY_DATA_TYPES.push_back("DATE");
 
-    COMEDY_SORTED_BY.push_back("title");
-    COMEDY_SORTED_BY.push_back("date");
+    COMEDY_SORTED_BY.push_back("TITLE");
+    COMEDY_SORTED_BY.push_back("DATE");
 }
 
 // cleans up any productdata objects it created

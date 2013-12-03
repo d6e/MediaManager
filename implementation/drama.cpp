@@ -4,12 +4,12 @@
 // keys.
 Drama::Drama(){
 //TODO: find out if productdata objects should even be created.
-    DRAMA_DATA_TYPES.push_back("director");
-    DRAMA_DATA_TYPES.push_back("title");
-    DRAMA_DATA_TYPES.push_back("date");
+    DRAMA_DATA_TYPES.push_back("DIRECTOR");
+    DRAMA_DATA_TYPES.push_back("TITLE");
+    DRAMA_DATA_TYPES.push_back("DATE");
 
-    DRAMA_SORTED_BY.push_back("director");
-    DRAMA_SORTED_BY.push_back("title");
+    DRAMA_SORTED_BY.push_back("DIRECTOR");
+    DRAMA_SORTED_BY.push_back("TITLE");
 }
 
 // cleans up any productdata objects it created

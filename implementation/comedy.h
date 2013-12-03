@@ -12,8 +12,8 @@ different attributes matter between movies, comedy movies hold different
 attributes than drama. 
 
 It's data members consist of two arrays, one array being the data types like
-"director", "title", and "date" and another being the data types it's sorted
-by, which in this case are "title" and "date".
+"DIRECTOR", "TITLE", and "DATE" and another being the data types it's sorted
+by, which in this case are "TITLE" and "DATE".
 
 The constructor creates a bunch of ProductData objects and initializes their
 keys.

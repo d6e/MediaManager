@@ -62,7 +62,7 @@ ProductFormat* Product::getProductFormat(std::string key) const{
 }
 
 // The addData() method inserts data into the Product's hashtable, with the form
-// <dataType,data> (Example: <"title","Titanic">). This data is retrieved in a
+// <dataType,data> (Example: <"TITLE","Titanic">). This data is retrieved in a
 // similar way by dataString().
 void Product::addData(std::string key,std::string value){
 	productData[key] = value;

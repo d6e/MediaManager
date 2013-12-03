@@ -12,9 +12,9 @@ different attributes matter between movies, classic movies hold different
 attributes than drama. 
 
 It's data members consist of two arrays, one array being the data types like
-"director", "title", "famous actor", and "date" and another being the data 
+"DIRECTOR", "TITLE", "FAMOUS ACTOR", and "DATE" and another being the data 
 types it's sorted
-by, which in this case are "date" and "famous actor".
+by, which in this case are "DATE" and "FAMOUS ACTOR".
 
 The constructor creates a bunch of ProductData objects and initializes their
 keys.
