@@ -18,7 +18,7 @@ Error ProductCollection::insert(Product* pdtPtr){
     }
     collectionSize++;
     std::string genre = pdtPtr->getKey(); //TODO: change genre to a char
-    int genreIndex = (int) genre[0] - A_INDEX;
+    int genreIndex = (int)genre[0] - A_INDEX;
     if(collection[genreIndex].insert(pdtPtr)){
         return Error();  
     } 
@@ -28,7 +28,7 @@ Error ProductCollection::insert(Product* pdtPtr){
 //retrieve product from a linked list 
 Error ProductCollection::retrieve(Product* pdtPtr){
     std::string genre = pdtPtr->getKey();
-    int genreIndex = (int) genre[0] - A_INDEX;
+    int genreIndex = (int)genre[0] - A_INDEX;
     if(collection[genreIndex].retrieve(pdtPtr)){ //TODO rename retrieve() to productExists()
         return Error();  
     } 
@@ -38,8 +38,8 @@ Error ProductCollection::retrieve(Product* pdtPtr){
 //display all the products 
 Error ProductCollection::displayAll() const{ //TODO: REWRITE
     Error empty;
-    int i = 2;
-    // for(int i = 0; i < 26; ++i){
+    // int i = 2;
+    for(int i = 0; i < 26; ++i){
         if(!collection[i].isEmpty()){
             //TODO: show genre and type here
             std::cout << collection[i].getKey() << std::endl;
@@ -52,7 +52,7 @@ Error ProductCollection::displayAll() const{ //TODO: REWRITE
             } 
             std::cout << collection[i] << std::endl;
         } 
-    // }
+    }
     return Error(""); //TODO: Needs a message    
 } 
 

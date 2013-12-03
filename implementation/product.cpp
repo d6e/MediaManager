@@ -30,21 +30,16 @@ void Product::display(std::ostream& out) const{
     std::vector<std::string> dataTypes = getDataTypes();
     for(int i = 0; i < getDataTypeSize(); ++i){
         std::string data = getData(dataTypes.at(i));
-        normalizeStringLength(data);
+        if(data.length() > maxDataLength){
+            truncateData(data);
+        }
+        else{
+            data.resize(maxDataLength, ' ');  //creates buffer for display
+        } 
         out << data;
     }
     printProductFormatColl(out);
     out << std::endl;
-}
-
-//makes sure display doesn't take up too much space
-void Product::normalizeStringLength(std::string& data) const{
-    if(data.length() > maxDataLength){
-        truncateData(data);
-    }
-    else{
-        data.resize(maxDataLength, ' ');  
-    } 
 }
 
 //truncates strings so they don't take up too much space
@@ -80,7 +75,7 @@ void Product::addFormat(ProductFormat pf){
 }
 
 //upon receiving a duplicate product, add 10 to the quantity of the existing product's default format.
-void Product::incrProductQuantity(NodeData* node){      //TODO:rewrite  
+void Product::incrProductQuantity(NodeData* node){   
     Product* pdtPtr = static_cast<Product*>(node);
     std::vector<std::string> formatNames = pdtPtr->getFormatNames();
     pfc.incrProductQuantity(formatNames.at(0));

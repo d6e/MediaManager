@@ -116,16 +116,15 @@ protected:
 	//Contains the quantities and different formats this product has.	
 	ProductFormatCollection pfc; 
 private:
-	void printProductFormatColl(std::ostream&) const; //TODO:REWRITE
+	void printProductFormatColl(std::ostream&) const; 
 
 	//makes sure display doesn't take up too much space
-	void normalizeStringLength(std::string&) const;  //TODO:rewrite 
+	void truncateData(std::string&) const;  
 	ProductFormat* getProductFormat(std::string) const;
 
 	// Returns false if key doesn't exist  in productData;
     void addData(std::string key,std::string value); 
 	void addFormat(ProductFormat); //adds product to productformatcollection
-    void truncateData(std::string&) const;
 
     // All products must have possible format(s).        
 	virtual void initValidFormats() = 0; 
