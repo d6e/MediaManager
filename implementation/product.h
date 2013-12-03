@@ -77,8 +77,6 @@ public:
 	virtual ~Product();
 	virtual bool setData(Event*); // Returns false if input invalid.
     virtual Product* create() = 0; // Creates a new, empty Product 
-    //returns the type (the class) of product. Used as a key.
-    virtual std::string type() const = 0;	
 	virtual void incrProductQuantity(NodeData*);
 	
 	// Returns all data, inorder of input, deliminated by commas
@@ -103,6 +101,8 @@ public:
     //number of copies borrowed by customers of a particular product format
 	int getRemainingItems(ProductFormat) const; 			
 	virtual void display(std::ostream&) const; // Displays contents via cout
+
+    //returns the type (the class) of product. Used as a key.
 	virtual std::string getName() const = 0;
 	virtual char getKey() const = 0;
 	virtual std::string getData(std::string key) const = 0;

@@ -51,13 +51,6 @@ Product* Comedy::create(){
     return new Comedy();
 }
 
-// TODO: Not sure if this method is necessary
-// The type method returns the type of the genre product object. For this one,
-// it will return the string "comedy". This is used as a key for the hashtable.
-std::string Comedy::type() const{
-    return "Comedy";
-}
-
 char Comedy::getKey() const{
     std::string name = getName();
     return name[0];

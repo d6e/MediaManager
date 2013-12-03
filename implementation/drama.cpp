@@ -50,13 +50,6 @@ Product* Drama::create(){
     return new Drama();
 }
 
-// TODO: Not sure if this method is necessary
-// The type method returns the type of the genre product object. For this one,
-// it will return the string "drama". This is used as a key for the hashtable.
-std::string Drama::type() const{
-    return "Drama";
-}
-
 // The getDataTypes() and getSortedBy() are helper methods which quickly 
 // retrieve the corresponding _DATA_TYPES and _SORTED_BY arrays. 
 std::vector<std::string> Drama::getDataTypes() const{

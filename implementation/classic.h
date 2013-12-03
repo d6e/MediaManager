@@ -47,13 +47,13 @@ public:
 	
 	bool setData(Event*); // Returns false if input invalid.
     virtual Product* create(); // Creates a new, empty Classic object
-    //returns the type ("classic") of product. Used as a key.
-    virtual std::string type() const;	
 	
 	virtual std::vector<std::string> getDataTypes() const;
 	virtual std::vector<std::string> getSortedBy() const;
     virtual int getDataTypeSize() const; // returns size of DataTypes
     virtual int getSortedBySize() const; // returns size of SortedBy
+
+    //returns the type ("classic") of product. Used as a key.
 	virtual std::string getName() const;
     std::string getData(std::string key) const;
     virtual char getKey() const; // returns unique identifier

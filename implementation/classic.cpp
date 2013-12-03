@@ -51,13 +51,6 @@ Product* Classic::create(){
     return new Classic();
 }
 
-// TODO: Not sure if this method is necessary
-// The type method returns the type of the genre product object. For this one,
-// it will return the string "classic". This is used as a key for the hashtable.
-std::string Classic::type() const{
-    return "Classic";
-}
-
 
 // The getDataTypes() and getSortedBy() are helper methods which quickly 
 // retrieve the corresponding _DATA_TYPES and _SORTED_BY arrays. 
