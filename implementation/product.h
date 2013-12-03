@@ -82,9 +82,9 @@ public:
 	virtual void duplicate(NodeData*);
 	
 	// Returns all data, inorder of input, deliminated by commas
-	virtual const std::vector<std::string> getDataTypes() const = 0; 
+	virtual std::vector<std::string> getDataTypes() const = 0; 
 	// Returns the sorting data, delineated by commas
-	virtual const std::vector<std::string> getSortedBy() const = 0; 
+	virtual std::vector<std::string> getSortedBy() const = 0; 
     virtual int getDataTypeSize() const = 0; // returns size of DataTypes
     virtual int getSortedBySize() const = 0; // returns size of SortedBy
 	
@@ -105,6 +105,8 @@ public:
 	virtual void display(std::ostream&) const; // Displays contents via cout
 	virtual std::string getKey() const = 0;
 	virtual std::string getData(std::string key) const = 0;
+
+	const static int maxDataLength = 20;
 protected:
     //Contains valid formats of the product. The identifier code is the key. 
     std::map<std::string,ProductFormat*> validFormats; 
@@ -112,9 +114,9 @@ protected:
 	//Contains the attributes of this product.
 	std::map<std::string,std::string> productData;  
 	//Contains the quantities and different formats this product has.	
-	ProductFormatCollection inventory; 
+	ProductFormatCollection pfc; 
 private:
-	void displayFormatCollection(std::ostream&) const; //TODO:REWRITE
+	void printProductFormatColl(std::ostream&) const; //TODO:REWRITE
 
 	//makes sure display doesn't take up too much space
 	void normalizeStringLength(std::string&) const;  //TODO:rewrite 
@@ -123,11 +125,11 @@ private:
 	// Returns false if key doesn't exist  in productData;
     void addData(std::string key,std::string value); 
 	void addFormat(ProductFormat); //adds product to productformatcollection
-    void truncate(std::string&) const;
+    void truncateData(std::string&) const;
 
     // All products must have possible format(s).        
 	virtual void initValidFormats() = 0; 
-  	virtual const std::vector<std::string> getFormatNames() const = 0;
+  	virtual std::vector<std::string> getFormatNames() const = 0;
 
 };
 

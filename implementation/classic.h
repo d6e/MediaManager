@@ -50,8 +50,8 @@ public:
     //returns the type ("classic") of product. Used as a key.
     virtual std::string type() const;	
 	
-	virtual const std::vector<std::string> getDataTypes() const;
-	virtual const std::vector<std::string> getSortedBy() const;
+	virtual std::vector<std::string> getDataTypes() const;
+	virtual std::vector<std::string> getSortedBy() const;
     virtual int getDataTypeSize() const; // returns size of DataTypes
     virtual int getSortedBySize() const; // returns size of SortedBy
 	virtual std::string getKey() const;

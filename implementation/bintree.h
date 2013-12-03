@@ -68,7 +68,7 @@ public:
     // int getSize() const;        //returns the number of nodes in the tree //TODO: not sure if need
 
     const std::string getKey() const;
-    const std::vector<std::string> getDataTypes() const;
+    std::vector<std::string> getDataTypes() const;
     const int getDataTypeSize() const; // returns size of DataTypes
 private:
     struct Node {

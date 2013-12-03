@@ -190,7 +190,7 @@ const std::string BinTree::getKey() const{
     return NULL;
 }
 
-const std::vector<std::string> BinTree::getDataTypes() const{ //TODO: REMOVE CONST FROM ALL THESE
+std::vector<std::string> BinTree::getDataTypes() const{ //TODO: REMOVE CONST FROM ALL THESE
     std::vector<std::string> ret;
     if(root != NULL){
         ret = root->data->getDataTypes();

@@ -16,6 +16,6 @@ void Movie::initValidFormats(){
 	}
 }
 
-const std::vector<std::string> Movie::getFormatNames() const{ 
+std::vector<std::string> Movie::getFormatNames() const{ 
     return formatList;
 }

@@ -18,8 +18,6 @@ getKey() returns some unique identifier providing information about the class
 of object stored by NodeData.
 */
 
-const int MAX_DATA_LENGTH = 20; //TODO: find a way for this not to be global
-
 class NodeData {
     friend std::ostream& operator<<(std::ostream&, const NodeData&);
 public:
@@ -40,7 +38,7 @@ public:
     virtual bool operator<=(const NodeData &) const = 0;
     virtual bool operator>=(const NodeData &) const = 0;                
 
-    virtual const std::vector<std::string> getDataTypes() const = 0;      
+    virtual std::vector<std::string> getDataTypes() const = 0;      
     virtual int getDataTypeSize() const = 0; // returns size of DataTypes
 };
 

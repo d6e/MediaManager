@@ -58,12 +58,12 @@ int main(){
     std::cout << pf->getName() << std::endl;
 
 
-    ProductFormatCollection inventory;
-    inventory.addProductFormat(*pf);
-    std::cout << inventory.getFormatNames() << std::endl;
-    std::cout << inventory.getFormatAmount(pf) << std::endl;
-    inventory.duplicate("DVD");
-    std::cout << inventory.getFormatAmount(pf) << std::endl;
+    ProductFormatCollection pfc;
+    pfc.addProductFormat(*pf);
+    std::cout << pfc.getFormatNames() << std::endl;
+    std::cout << pfc.getFormatAmount(pf) << std::endl;
+    pfc.duplicate("DVD");
+    std::cout << pfc.getFormatAmount(pf) << std::endl;
     delete movie;
     delete pf;
     // delete e;

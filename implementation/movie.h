@@ -18,7 +18,7 @@ public:
 private:
 	std::vector<std::string> formatList;
 	virtual void initValidFormats(); // Inits to DVD for now.
-	virtual const std::vector<std::string> getFormatNames() const;
+	virtual std::vector<std::string> getFormatNames() const;
 };
 
 #endif
