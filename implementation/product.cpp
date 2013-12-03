@@ -27,18 +27,28 @@ int Product::getRemainingItems(ProductFormat) const{
 } 			
 
 void Product::display(std::ostream& out) const{
+    std::string inStatus = "09";
+    std::string outStatus = "08";
+    format(inStatus, maxQuantityLength);
+    format(outStatus, maxQuantityLength);
+    std::cout << inStatus << " " << outStatus;
+
     std::vector<std::string> dataTypes = getDataTypes();
     for(int i = 0; i < getDataTypeSize(); ++i){
         std::string data = getData(dataTypes.at(i));
-        if(data.length() > maxDataLength){
-            truncateData(data);
-        }
-        else{
-            data.resize(maxDataLength, ' ');  //creates buffer for display
-        } 
+        format(data, maxDataLength);
         out << data;
     }
-    printProductFormatColl(out);
+    displayProductFormatColl(out);
+}
+
+void Product::format(std::string& data, int maxLength) const{
+    if(data.length() > maxLength){
+        truncateData(data);
+    }
+    else{
+        data.resize(maxLength, ' ');  //creates buffer for display
+    } 
 }
 
 //truncates strings so they don't take up too much space
@@ -46,7 +56,7 @@ void Product::truncateData(std::string& data) const{
     data.resize(maxDataLength);
 }
 
-void Product::printProductFormatColl(std::ostream& out) const{ 
+void Product::displayProductFormatColl(std::ostream& out) const{ 
     std::vector<std::string> formatNames = getFormatNames();
     for(int i = 0; i < formatNames.size(); i++){
         ProductFormat* pf = getProductFormat(formatNames.at(i));

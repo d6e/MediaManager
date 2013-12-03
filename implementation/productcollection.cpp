@@ -41,10 +41,8 @@ Error ProductCollection::displayAll() const{ //TODO: REWRITE
         if(!collection[i].isEmpty()){
             //TODO: show genre and type here
             std::cout << collection[i].getName() << std::endl;
+            std::cout << "*IN* *OUT*" << std::endl;
             Error e = displayDataTypes(collection[i]);
-            std::cout << std::endl << 
-"------------------------------------------------------------------------------" 
-            << std::endl;
             if(e.getErrorMessage() != ""){
                 return Error();  
             } 
@@ -70,10 +68,12 @@ Error ProductCollection::displayDataTypes(const BinTree& dataTree) const{ //TODO
     Error empty;
     std::vector<std::string> dataTypes = dataTree.getDataTypes();
     int getDataTypeSize = dataTree.getDataTypeSize();
+    std::cout << "DVD  DVD ";
     for(int i = 0; i < getDataTypeSize; i++){
-        std::string nextType = dataTypes.at(i);
-        nextType.resize(Product::maxDataLength,' '); //TODO: NOT SURE IF NECESSARY
-        std::cout << nextType;
+        std::string tmpType = dataTypes.at(i);
+        tmpType.resize(Product::maxDataLength,' '); //TODO: NOT SURE IF NECESSARY
+        std::cout << tmpType;
     }
+    std::cout << std::endl;
     return empty;
 }

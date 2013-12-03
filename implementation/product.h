@@ -108,6 +108,7 @@ public:
 	virtual std::string getData(std::string key) const = 0;
 
 	const static int maxDataLength = 20;
+	const static int maxQuantityLength = 4;
 protected:
     //Contains valid formats of the product. The identifier code is the key. 
     std::map<std::string,ProductFormat*> validFormats; 
@@ -117,7 +118,8 @@ protected:
 	//Contains the quantities and different formats this product has.	
 	ProductFormatCollection pfc; 
 private:
-	void printProductFormatColl(std::ostream&) const; 
+	void displayProductFormatColl(std::ostream&) const; 
+	void format(std::string&, int) const;
 
 	//makes sure display doesn't take up too much space
 	void truncateData(std::string&) const;  
