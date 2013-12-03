@@ -80,8 +80,13 @@ int Classic::getSortedBySize() const{
 }
 
 // returns unique identifier
-std::string Classic::getKey() const{
+std::string Classic::getName() const{
     return "Classic";
+}
+
+char Classic::getKey() const{
+    std::string name = getName();
+    return name[0];
 }
 
 std::string Classic::getData(std::string key) const{
@@ -96,7 +101,7 @@ std::string Classic::getData(std::string key) const{
 //TODO: comparison operators
 // //comparison operators compare product by their sorting criteria
 bool Classic::operator==(const NodeData &node) const{ //TODO:rewrite
-    if(getKey() != node.getKey()){
+    if(getName() != node.getName()){
         return false;  
     } 
     const Product& p = static_cast<const Product&>(node);
@@ -116,7 +121,7 @@ bool Classic::operator!=(const NodeData &node) const{
 }
 
 bool Classic::operator<(const NodeData &n) const{ //TODO:REWRITE
-        if(getKey() != n.getKey()) return false;        //NOTE: should this always return false? should keys be compared for sorting, too?
+        if(getName() != n.getName()) return false;        //NOTE: should this always return false? should keys be compared for sorting, too?
         const Product& p = static_cast<const Product&>(n);
         std::vector<std::string> tempSortedByNames = getSortedBy();
         const int sortedBySize = p.getSortedBySize();
@@ -129,7 +134,7 @@ bool Classic::operator<(const NodeData &n) const{ //TODO:REWRITE
 }
 
 bool Classic::operator>(const NodeData &n) const{ //TODO:REWRITE
-        if(getKey() != n.getKey()) return false;
+        if(getName() != n.getName()) return false;
         const Product& p = static_cast<const Product&>(n);
         std::vector<std::string> tempSortedByNames = getSortedBy();
         const int sortedBySize = p.getSortedBySize();

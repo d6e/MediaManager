@@ -14,7 +14,7 @@ incrProductQuantity() lets the NodeData know that the system has received duplic
 and gives it the duplicate so that it can handle it.
 It is not defined in this class, but in the child classes.
 
-getKey() returns some unique identifier providing information about the class
+getName() returns some unique identifier providing information about the class
 of object stored by NodeData.
 */
 
@@ -28,7 +28,8 @@ public:
     virtual void display(std::ostream&) const = 0;
     // Gives NodeData the duplicate to handle it.
     virtual void incrProductQuantity(NodeData*) = 0;  
-    virtual std::string getKey() const = 0; // returns unique identifier
+    virtual std::string getName() const = 0; // returns unique identifier
+    virtual char getKey() const = 0; // returns unique identifier
 
     // comparison operators
     virtual bool operator==(const NodeData &) const = 0;

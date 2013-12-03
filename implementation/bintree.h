@@ -67,7 +67,7 @@ public:
     bool retrieve(const NodeData*) const; //searches the Tree for a NodeData object
     // int getSize() const;        //returns the number of nodes in the tree //TODO: not sure if need
 
-    const std::string getKey() const;
+    const std::string getName() const;
     std::vector<std::string> getDataTypes() const;
     const int getDataTypeSize() const; // returns size of DataTypes
 private:

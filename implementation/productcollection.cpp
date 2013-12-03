@@ -17,7 +17,7 @@ Error ProductCollection::insert(Product* pdtPtr){
         return Error("Error: Product inserted is null.");
     }
     collectionSize++;
-    std::string genre = pdtPtr->getKey(); //TODO: change genre to a char
+    std::string genre = pdtPtr->getName(); //TODO: change genre to a char
     int genreIndex = (int)genre[0] - 65;
     if(collection[genreIndex].insert(pdtPtr)){
         return Error();  
@@ -27,7 +27,7 @@ Error ProductCollection::insert(Product* pdtPtr){
 
 //retrieve product from a linked list 
 Error ProductCollection::retrieve(Product* pdtPtr){
-    std::string genre = pdtPtr->getKey();
+    std::string genre = pdtPtr->getName();
     int genreIndex = (int)genre[0] - 65; //convert letter to 1-26
     if(collection[genreIndex].retrieve(pdtPtr)){ //TODO rename retrieve() to productExists()
         return Error();  
@@ -40,7 +40,7 @@ Error ProductCollection::displayAll() const{ //TODO: REWRITE
     for(int i = 0; i < 26; ++i){
         if(!collection[i].isEmpty()){
             //TODO: show genre and type here
-            std::cout << collection[i].getKey() << std::endl;
+            std::cout << collection[i].getName() << std::endl;
             Error e = displayDataTypes(collection[i]);
             std::cout << std::endl << 
 "------------------------------------------------------------------------------" 

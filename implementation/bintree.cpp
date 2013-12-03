@@ -183,9 +183,9 @@ void BinTree::displayHelper(std::ostream& output, Node* cNode) const{
     displayHelper(output,cNode -> right);
 }
 
-const std::string BinTree::getKey() const{
+const std::string BinTree::getName() const{
     if(root != NULL){
-        return root -> data -> getKey();
+        return root -> data -> getName();
     }
     return NULL;
 }

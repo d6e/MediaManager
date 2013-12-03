@@ -51,7 +51,8 @@ public:
 	virtual std::vector<std::string> getSortedBy() const;	
     virtual int getDataTypeSize() const; // returns size of DataTypes
     virtual int getSortedBySize() const; // returns size of SortedBy
-    virtual std::string getKey() const; // returns unique identifier
+    virtual std::string getName() const; // returns unique identifier
+    virtual char getKey() const; // returns unique identifier
     std::string getData(std::string key) const;
 
 	//comparison operators compare product by their sorting criteria

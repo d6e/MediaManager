@@ -39,7 +39,6 @@ void Product::display(std::ostream& out) const{
         out << data;
     }
     printProductFormatColl(out);
-    out << std::endl;
 }
 
 //truncates strings so they don't take up too much space

@@ -58,6 +58,11 @@ std::string Comedy::type() const{
     return "Comedy";
 }
 
+char Comedy::getKey() const{
+    std::string name = getName();
+    return name[0];
+}
+
 // The getDataTypes() and getSortedBy() are helper methods which quickly 
 // retrieve the corresponding _DATA_TYPES and _SORTED_BY arrays. 
 std::vector<std::string> Comedy::getDataTypes() const{
@@ -80,7 +85,7 @@ int Comedy::getSortedBySize() const{
 
 
 // returns unique identifier
-std::string Comedy::getKey() const{
+std::string Comedy::getName() const{
     return "Comedy";
 }
 
@@ -96,7 +101,7 @@ std::string Comedy::getData(std::string key) const{
 //TODO: comparison operators
 // //comparison operators compare product by their sorting criteria
 bool Comedy::operator==(const NodeData &node) const{ //TODO:rewrite
-    if(getKey() != node.getKey()){
+    if(getName() != node.getName()){
         return false;  
     } 
     const Product& p = static_cast<const Product&>(node);
@@ -116,7 +121,7 @@ bool Comedy::operator!=(const NodeData &node) const{
 }
 
 bool Comedy::operator<(const NodeData &n) const{ //TODO:REWRITE
-        if(getKey() != n.getKey()) return false;        //NOTE: should this always return false? should keys be compared for sorting, too?
+        if(getName() != n.getName()) return false;        //NOTE: should this always return false? should keys be compared for sorting, too?
         const Product& p = static_cast<const Product&>(n);
         std::vector<std::string> tempSortedByNames = getSortedBy();
         const int sortedBySize = p.getSortedBySize();
@@ -129,7 +134,7 @@ bool Comedy::operator<(const NodeData &n) const{ //TODO:REWRITE
 }
 
 bool Comedy::operator>(const NodeData &n) const{ //TODO:REWRITE
-        if(getKey() != n.getKey()) return false;
+        if(getName() != n.getName()) return false;
         const Product& p = static_cast<const Product&>(n);
         std::vector<std::string> tempSortedByNames = getSortedBy();
         const int sortedBySize = p.getSortedBySize();

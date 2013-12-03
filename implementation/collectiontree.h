@@ -11,8 +11,8 @@ A CollectionTree is a linked list of binary trees.
 
 Each ListNode has a key and a BinaryTree. When inserting a NodeData, 
 the NodeData will be inserted into the binary tree whose ListNodes key
-matches with NodeData.getKey(). If no ListNode has a matching key, 
-then a new ListNode is created with NodeData.getKey() and NodeData
+matches with NodeData.getName(). If no ListNode has a matching key, 
+then a new ListNode is created with NodeData.getName() and NodeData
 is inserted into that binary tree.
 
 The CollectionTree stores a ListNode as its root. From the root, the rest of
@@ -33,7 +33,7 @@ before filling it with new data, rather than entirely deleting it.
 insert() inserts a NodeData (the object type stored in a BinTree's nodes) into 
 the collectiontree, returning true if it was successfully inserted and false if
 it was not. In order to find the correct BinTree node, each ListNode (starting 
-with root) is checked against the inserted NodeData's getKey(). If a match is
+with root) is checked against the inserted NodeData's getName(). If a match is
 found, the data is insertend into the matching ListNode's BinTree using the 
 BinTree insert() method. If insert() reaches the end of the node list without 
 finding a match, it adds a new node onto the end, creating a new BinTree in the 
@@ -45,7 +45,7 @@ execution. insert() *only* returns false if it finds duplicate data via
 BinTree's insert().)
 
 retrieve() searches for a NodeData through essentially the same process as
-insert(), traversing the nodes and checking for a match with getKey(), and then
+insert(), traversing the nodes and checking for a match with getName(), and then
 calling the matching node's bintree's retrieve(). Unlike insert(), retrieve()
 returns false if it reaches the last ListNode without finding a match.
 */
@@ -70,7 +70,7 @@ private:
 	};
 	ListNode* root;
 	//gets a unique key identifying a ListNode's associated object
-	std::string getKey(const ListNode) const;
+	std::string getName(const ListNode) const;
     std::map<std::string, ListNode> collTree;
 };
 

@@ -103,7 +103,8 @@ public:
     //number of copies borrowed by customers of a particular product format
 	int getRemainingItems(ProductFormat) const; 			
 	virtual void display(std::ostream&) const; // Displays contents via cout
-	virtual std::string getKey() const = 0;
+	virtual std::string getName() const = 0;
+	virtual char getKey() const = 0;
 	virtual std::string getData(std::string key) const = 0;
 
 	const static int maxDataLength = 20;
