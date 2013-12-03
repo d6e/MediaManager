@@ -11,7 +11,8 @@ Customer::Customer(std::string id, std::string first, std::string last){
 Customer::~Customer(){}
 
 void Customer::displayHistory() const{
-    std::cout << "  *** Customer ID = " << customerID << std::endl;
+    std::cout << "  *** Customer ID = " << customerID;
+    std::cout << "  " << firstName << " " << lastName << std::endl;
     customerHistory.displayAll();
 }
 
