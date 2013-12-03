@@ -34,19 +34,16 @@ int main(){
 
     //products
     std::vector<std::string> prodData = M.getInputData("data4movies.txt");
-    for(int i = 0; i < 5; ++i){
+    for(int i = 0; i < prodData.size(); ++i){
         M.inputProduct(prodData[i]);
     }
 
     //commands
     std::vector<std::string> cmdData = M.getInputData("data4commands.txt");
     for(int i = 0; i < cmdData.size(); ++i){
-        M.inputCmd(cmdData[i]);
+        // M.inputCmd(cmdData[i]);
     }
-
-    M.displayAllProducts();
-    M.inputCmd("H 1373");
-
+    M.inputCmd("S");
 /*
     Product* movie = new Comedy();
     Event* e = new Event("F Todd Phillips, The Hangover, 2009");

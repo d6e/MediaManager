@@ -22,5 +22,6 @@ bool DisplayAllProductCMD::setData(Event* e){
 
 //execute command from the IO 
 Error DisplayAllProductCMD::execute(){
+	pColl->displayAll();
     return Error(""); //TODO
 }
