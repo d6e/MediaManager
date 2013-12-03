@@ -1,21 +1,17 @@
 #include "borrowcmd.h"
 
-
-
-BorrowCMD::BorrowCMD(CustomerIndex* customers,ProductCollection* products){ //constructor
+BorrowCMD::BorrowCMD(ProductCollection* products, CustomerIndex* customers){ //constructor
 	//TODO
 }
 
-BorrowCMD::BorrowCMD(CustomerIndex* customers,ProductCollection* products, Event* e){ //default constructor
+BorrowCMD::BorrowCMD(ProductCollection* products, CustomerIndex* customers, Event* e){ //default constructor
 	//TODO
 }
 
 BorrowCMD::~BorrowCMD(){} //default destructor 
 
-Command* BorrowCMD::create(){
-	//TODO
-	return NULL;
-	//return new BorrowCMD();
+Command* BorrowCMD::create(ProductCollection* products, CustomerIndex* customers){
+	return new BorrowCMD(products,customers);
 }
 
 // Returns false if data invalid, for factory use only.

@@ -9,9 +9,6 @@
 #include "displayallproductcmd.h"
 #include <string>
 
-//const int A_INDEX = 65; //memory index of capital A (used for dealing with geners)
-//const int HASH_TABLE_SIZE = 256;
-
 /*
 A factory that produces Commands based on a key to a hashtable containing 
 the different types of Command objects.
@@ -33,7 +30,7 @@ public:
 	CommandFactory(CustomerIndex*, ProductCollection*); 
 	virtual ~CommandFactory();    // destructor
     // Creates and inits cmd obj based on key given, returns null if invalid key
-    Command* create(std::string);   
+    Command* create(std::string,ProductCollection*, CustomerIndex*);   
 	
 private:
     CustomerIndex* cIndex; // For commands that need access to the customers
@@ -41,8 +38,7 @@ private:
     ProductCollection* pCollect; 
 	ProductFactory* mFactory; // For commands that need to create products.
 	
-     // A pointer to an array of Commands implemented as a hash table
-	//Command* hashTable;
+     // A pointer to an array of Commands implemented as a hash tabless
 	Command* commandTemplates[HASH_TABLE_SIZE]; 
 	int hash(std::string key);
 };

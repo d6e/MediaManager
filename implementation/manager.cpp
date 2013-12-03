@@ -1,9 +1,9 @@
 #include "manager.h"
 
-//TODO: make manager display all through a command, rather than just calling the method.
+//TODO: implement customers
+//TODO: implement all commands
 //TODO: fully implement Errors (figure out which methods are supposed to call them
 	//and what they should do)
-//TODO: implement Events
 
 Manager::Manager(){
     productDB = new ProductCollection();
@@ -41,7 +41,6 @@ bool Manager::inputProduct(ifstream& productInput){
 			string currentData;
 			getline(productInput, currentData, ',');
 			productInput.get();
-		//TODO: this should probably use setData(Event) but I'm not positive.
 			if(!p -> addData(dataTypeNames[i],currentData)){ 
 				return false;
 			}  
@@ -55,30 +54,52 @@ bool Manager::inputProduct(ifstream& productInput){
 }
 
 bool Manager::inputCustomer(ifstream& customerInput){
-	//TODO
-	return false;
+	std::string custId;
+	std::string lastName;
+	std::string firstName;
+	for(;;){
+		if(customerInput.eof()) break;
+		customerInput >> custId;
+		customerInput.get();
+		customerInput >> lastName;
+		customerInput.get();
+		customerInput >> firstName;
+		customerInput.get();
+		Customer* c = new Customer();
+		c -> setData(custId,lastName,firstName);
+		customerDB -> insertCustomer(c);	//TODO: implement this in customerindex
+		cout << *c << endl;
+		//TODO
+	}
+	return true;
 }
 
 bool Manager::inputCmd(ifstream& cmdInput){	
 	std::string command;
+	Event* e = new Event();
 	for(;;){
 		if(cmdInput.eof()) break;
 		cmdInput >> command;
-		Command* c = cFactory -> create(command);
+		Command* c = cFactory -> create(command,productDB,customerDB);
 		if(c == NULL){	//case for invalid command
 			std::string temp;
 			getline(cmdInput, temp);
 			continue;
 		}
+		if(command == "S"){
+			c -> execute();
+			delete c;
+			continue;
+		}
 		cmdInput.get();
-		//TODO
-		break;
+		e -> makeEmpty();
+		e -> set(cmdInput);	//TODO: keep in mind this is of type error
+		c -> setData(e);
+		c -> execute();
+		delete c;
+		c = NULL;
 	}
+	delete e;
+	e = NULL;
 	return true;
 }
-
-//TEMPORARY. replace with event.
-void Manager::displayAll() const{
-	productDB -> displayAll();
-}
-//TEMPORARY

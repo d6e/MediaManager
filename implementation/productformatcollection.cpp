@@ -1,14 +1,5 @@
 #include "productformatcollection.h"
 
-/*
-ProductFormatCollection::FormatAmount::~FormatAmount(){
-	if(format != NULL){
-		delete format;
-		format = NULL;
-	}
-}
-*/
-
 ProductFormatCollection::~ProductFormatCollection(){
 	for (std::list<FormatAmount>::iterator
 		it=formatDataList.begin(); 

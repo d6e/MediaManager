@@ -36,14 +36,14 @@ the key in the hashtable customer pointer and inserts it into
 the custHT. 
 */
 
-class CustomerIndex {
+class CustomerIndex{
 private:
     //HashTable custHT; // A hashtable used to hold the customer objects
 public:
     CustomerIndex();     //constructor
     virtual ~CustomerIndex();    //destructor
     Error addTransaction(Event*); // calls customer's addTransaction
-     // checks whether customer obj exists from an customer id
+    // checks whether customer obj exists from an customer id
     bool customerExists(std::string);  
     //displays a customer's history from customer ID
     Error displayHistory(std::string) const; 

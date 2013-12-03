@@ -1,25 +1,24 @@
 #include "displayallproductcmd.h"
 
 DisplayAllProductCMD::DisplayAllProductCMD(ProductCollection* products){  // default constructor
-	//TODO
+	mColl = products;
 }
  
 DisplayAllProductCMD::~DisplayAllProductCMD(){}           // default destructor
 
-Command* DisplayAllProductCMD::create(){
-	//TODO
-	return NULL;
-	//return new DisplayAllProductCMD();
+Command* DisplayAllProductCMD::create(ProductCollection* products, 
+	CustomerIndex* customers){
+	return new DisplayAllProductCMD(products);
 }
 
 // Returns false if data invalid, for factory use only.
 bool DisplayAllProductCMD::setData(Event* e){
-	//TODO
-	return false;
+	return true;
 } 
 
 Error DisplayAllProductCMD::execute(){	//execute command from the IO 
 	Error empty;
-	//TODO
+	std::cout << "Current inventory of all movies:" << std::endl;
+	mColl -> displayAll();
 	return empty;
 }  

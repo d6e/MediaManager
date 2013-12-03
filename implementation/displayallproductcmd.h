@@ -25,10 +25,10 @@ private:
 public:
     DisplayAllProductCMD(ProductCollection*);  // default constructor
     virtual ~DisplayAllProductCMD();           // default destructor
-    virtual Command* create();
+    virtual Command* create(ProductCollection*,CustomerIndex*);
     // Returns false if data invalid, for factory use only.
 	virtual bool setData(Event*); 
-    Error execute();  //execute command from the IO 
+    virtual Error execute();  //execute command from the IO 
 };
 
 #endif

@@ -1,22 +1,18 @@
 #include "commandfactory.h"
 
 CommandFactory::CommandFactory(CustomerIndex* customers, ProductCollection* products){
-	//TODO: switch to this constructor instead
 	for(int i = 0; i < HASH_TABLE_SIZE; i++){
 		commandTemplates[i] = NULL;
 	}
-
-	cIndex = customers;
-    pCollect = products;
 
     int historyIndex = hash("H");
 	commandTemplates[historyIndex] = new HistoryCMD(customers);
 	
 	int borrowIndex = hash("B");
-	commandTemplates[borrowIndex] = new BorrowCMD(customers, products);
+	commandTemplates[borrowIndex] = new BorrowCMD(products, customers);
 
 	int returnIndex = hash("R");
-	commandTemplates[returnIndex] = new ReturnCMD(customers, products);
+	commandTemplates[returnIndex] = new ReturnCMD(products, customers);
 
 	int displayAllIndex = hash("S");
 	commandTemplates[displayAllIndex] = new DisplayAllProductCMD(products);
@@ -43,10 +39,11 @@ CommandFactory::~CommandFactory(){    // destructor
 }
 
 // Creates and inits cmd obj based on key given, returns null if invalid key
-Command* CommandFactory::create(std::string key){
+Command* CommandFactory::create(std::string key, ProductCollection* products,
+	CustomerIndex* customers){
 	int index = hash(key);
 	if(commandTemplates[index] != NULL){
-		return commandTemplates[index]; //-> create();
+		return commandTemplates[index] -> create(products, customers);
 	}
 	return NULL;
 }

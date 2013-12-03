@@ -7,7 +7,6 @@
 #include "commandfactory.h"
 /*
 #include "customerindex.h"
-#include "error.h"
 */
 
 /*
@@ -36,11 +35,6 @@ public:
     // Inputs commands into system, prints errors in process,
     // returns false if failed.
     bool inputCmd(ifstream&);
-    
-
-    //TEMPORARY
-    void displayAll() const; //displays all products.
-    //TEMPORARY
 };
 
 #endif

@@ -28,13 +28,13 @@ private:
 	int getID(); //Gets the customer ID from the event.
 
 public:
-	BorrowCMD(CustomerIndex*,ProductCollection*); // constructor
-    BorrowCMD(CustomerIndex*,ProductCollection*, Event*); //default constructor
+	BorrowCMD(ProductCollection*,CustomerIndex*); // constructor
+    BorrowCMD(ProductCollection*,CustomerIndex*, Event*); //default constructor
     virtual ~BorrowCMD(); //default destructor 
-    virtual Command* create();
+    virtual Command* create(ProductCollection*,CustomerIndex*);
 	// Returns false if data invalid, for factory use only.
     virtual bool setData(Event*); 
-    Error execute(); //execute command from the IO 
+    virtual Error execute(); //execute command from the IO 
 };
 
 #endif

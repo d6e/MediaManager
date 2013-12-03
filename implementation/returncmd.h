@@ -26,13 +26,13 @@ private:
     Event* event; // pointer to entire command information.
 
 public:
-	ReturnCMD(CustomerIndex*, ProductCollection*); // constructor 
-    ReturnCMD(CustomerIndex*, ProductCollection*, Event*); //default constructor 
+	ReturnCMD(ProductCollection*,CustomerIndex*); // constructor 
+    ReturnCMD(ProductCollection*,CustomerIndex*, Event*); //default constructor 
     virtual ~ReturnCMD(); //default destructor 
-    virtual Command* create();
+    virtual Command* create(ProductCollection*, CustomerIndex*);
     // Returns false if data invalid, for factory use only.
 	virtual bool setData(Event*); 
-    Error execute(); //execute command from the IO 
+    virtual Error execute(); //execute command from the IO 
 };
 
 #endif

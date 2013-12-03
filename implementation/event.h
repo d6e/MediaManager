@@ -2,7 +2,11 @@
 #define EVENT_H
 #include "error.h"
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
 #include <list>
+
 
 /*
 An event object holds the data for a command.
@@ -21,10 +25,11 @@ class Event {
 private:
     std::list<std::string> arguments;
 public:
-    void display() const;  // Display the data from one event object
-    Event();
+	Event();
     virtual ~Event();
-    Error set(std::string); // Parses input a string into the list.
+    void display() const;  // Display the data from one event object
+    Error set(std::ifstream&); // Parses input a string into the list.
+    void makeEmpty();
 };
 
 

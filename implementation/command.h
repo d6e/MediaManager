@@ -1,5 +1,6 @@
 #ifndef COMMAND_H
 #define COMMAND_H
+#include "productcollection.h"
 #include "customerindex.h"
 #include "error.h"
 #include "event.h"
@@ -12,7 +13,7 @@ class Command {
 public:
     Command();          
     virtual ~Command(); 
-    virtual Command* create() = 0;
+    virtual Command* create(ProductCollection*,CustomerIndex*) = 0;
     virtual bool setData(Event*) = 0;
     virtual Error execute() = 0;
 };

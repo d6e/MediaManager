@@ -26,7 +26,6 @@ public:
 private:
 	struct FormatAmount
 	{
-		//~FormatAmount();
 		ProductFormat* format;
 		int count;	//amount in stock
 	    int size;	//total amount owned
