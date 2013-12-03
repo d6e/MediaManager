@@ -7,8 +7,6 @@
 #include "productcollection.h"
 #include <string>
 
-const int A_INDEX = 65; //memory index of capital A (used for dealing with geners)
-
 /* 
 The ProductCollection function will collect information about the product and
 insert the data into a linked list. This class has basic linked list function
