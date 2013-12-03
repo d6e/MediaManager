@@ -32,7 +32,7 @@ it will return the string "drama". This is used as a key for the hashtable.
 
 The display method displays the private data members using cout.
 
-The dataTypeNames() and sortedByNames() are helper methods which quickly 
+The getDataTypes() and getSortedBy() are helper methods which quickly 
 retrieve the corresponding _DATA_TYPES and _SORTED_BY arrays. 
 
 Finally, the comparison operators are used to compare one product object
@@ -48,8 +48,8 @@ public:
     //returns the type ("drama") of product. Used as a key.
     virtual std::string type() const;	
 	
-	virtual const std::vector<std::string> dataTypeNames() const;
-	virtual const std::vector<std::string> sortedByNames() const;
+	virtual const std::vector<std::string> getDataTypes() const;
+	virtual const std::vector<std::string> getSortedBy() const;
     virtual int getDataTypeSize() const; // returns size of DataTypes
     virtual int getSortedBySize() const; // returns size of SortedBy
 	virtual std::string getKey() const;
@@ -67,8 +67,6 @@ public:
 private:
 	std::vector<std::string> DRAMA_DATA_TYPES;
 	std::vector<std::string> DRAMA_SORTED_BY;
-    // const static std::string dataTypeArr[];
-    // const static std::string sortedByArr[];
 };
 
 #endif

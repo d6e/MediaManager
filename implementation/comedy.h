@@ -32,7 +32,7 @@ it will return the string "comedy". This is used as a key for the hashtable.
 
 The display method displays the private data members using cout.
 
-The dataTypeNames() and sortedByNames() are helper methods which quickly 
+The getDataTypes() and getSortedBy() are helper methods which quickly 
 retrieve the corresponding _DATA_TYPES and _SORTED_BY arrays. 
 
 Finally, the comparison operators are used to compare one product object
@@ -47,8 +47,8 @@ public:
     virtual Product* create(); // Creates a new, empty genre movie object
     virtual std::string type() const; //returns type ("comedy"). Used as key
 
-	virtual const std::vector<std::string> dataTypeNames() const;
-	virtual const std::vector<std::string> sortedByNames() const;	
+	virtual const std::vector<std::string> getDataTypes() const;
+	virtual const std::vector<std::string> getSortedBy() const;	
     virtual int getDataTypeSize() const; // returns size of DataTypes
     virtual int getSortedBySize() const; // returns size of SortedBy
     virtual std::string getKey() const; // returns unique identifier

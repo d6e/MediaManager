@@ -58,13 +58,13 @@ std::string Comedy::type() const{
     return "Comedy";
 }
 
-// The dataTypeNames() and sortedByNames() are helper methods which quickly 
+// The getDataTypes() and getSortedBy() are helper methods which quickly 
 // retrieve the corresponding _DATA_TYPES and _SORTED_BY arrays. 
-const std::vector<std::string> Comedy::dataTypeNames() const{
+const std::vector<std::string> Comedy::getDataTypes() const{
     return COMEDY_DATA_TYPES;
 }
 
-const std::vector<std::string> Comedy::sortedByNames() const{
+const std::vector<std::string> Comedy::getSortedBy() const{
     return COMEDY_SORTED_BY;
 }
 
@@ -100,7 +100,7 @@ bool Comedy::operator==(const NodeData &node) const{ //TODO:rewrite
         return false;  
     } 
     const Product& p = static_cast<const Product&>(node);
-    const std::vector<std::string> tempSortedByNames = sortedByNames();
+    const std::vector<std::string> tempSortedByNames = getSortedBy();
     const int sortedBySize = p.getSortedBySize();//sizeof(tempSortedByNames)/sizeof(*tempSortedByNames);
 
     for(int i = 0; i < sortedBySize; i++){
@@ -118,7 +118,7 @@ bool Comedy::operator!=(const NodeData &node) const{
 bool Comedy::operator<(const NodeData &n) const{ //TODO:REWRITE
         if(getKey() != n.getKey()) return false;        //NOTE: should this always return false? should keys be compared for sorting, too?
         const Product& p = static_cast<const Product&>(n);
-        const std::vector<std::string> tempSortedByNames = sortedByNames();
+        const std::vector<std::string> tempSortedByNames = getSortedBy();
         const int sortedBySize = p.getSortedBySize();
         for(int i = 0; i <= sortedBySize; i++){
                 std::string nextSortBy = tempSortedByNames.at(i);
@@ -131,7 +131,7 @@ bool Comedy::operator<(const NodeData &n) const{ //TODO:REWRITE
 bool Comedy::operator>(const NodeData &n) const{ //TODO:REWRITE
         if(getKey() != n.getKey()) return false;
         const Product& p = static_cast<const Product&>(n);
-        const std::vector<std::string> tempSortedByNames = sortedByNames();
+        const std::vector<std::string> tempSortedByNames = getSortedBy();
         const int sortedBySize = p.getSortedBySize();
         for(int i = 0; i <= sortedBySize; i++){
                 std::string nextSortBy = tempSortedByNames.at(i);

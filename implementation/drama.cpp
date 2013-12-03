@@ -1,9 +1,5 @@
 #include "drama.h"
 
-// const std::string Drama::dataTypeArr[] = {"director","title","date"};
-// const std::string Drama::sortedByArr[] = {"director","title"};
-
-
 // The constructor creates a bunch of ProductData objects and initializes their
 // keys.
 Drama::Drama(){
@@ -61,13 +57,13 @@ std::string Drama::type() const{
     return "Drama";
 }
 
-// The dataTypeNames() and sortedByNames() are helper methods which quickly 
+// The getDataTypes() and getSortedBy() are helper methods which quickly 
 // retrieve the corresponding _DATA_TYPES and _SORTED_BY arrays. 
-const std::vector<std::string> Drama::dataTypeNames() const{
+const std::vector<std::string> Drama::getDataTypes() const{
     return DRAMA_DATA_TYPES;
 }
 
-const std::vector<std::string> Drama::sortedByNames() const{
+const std::vector<std::string> Drama::getSortedBy() const{
     return DRAMA_SORTED_BY;
 }
 
@@ -102,7 +98,7 @@ bool Drama::operator==(const NodeData &node) const{ //TODO:rewrite
         return false;  
     } 
     const Product& p = static_cast<const Product&>(node);
-    const std::vector<std::string> tempSortedByNames = sortedByNames();
+    const std::vector<std::string> tempSortedByNames = getSortedBy();
     const int sortedBySize = p.getSortedBySize();//sizeof(tempSortedByNames)/sizeof(*tempSortedByNames);
 
     for(int i = 0; i < sortedBySize; i++){
@@ -120,7 +116,7 @@ bool Drama::operator!=(const NodeData &node) const{
 bool Drama::operator<(const NodeData &n) const{ //TODO:REWRITE
         if(getKey() != n.getKey()) return false;        //NOTE: should this always return false? should keys be compared for sorting, too?
         const Product& p = static_cast<const Product&>(n);
-        const std::vector<std::string> tempSortedByNames = sortedByNames();
+        const std::vector<std::string> tempSortedByNames = getSortedBy();
         const int sortedBySize = p.getSortedBySize();
         for(int i = 0; i <= sortedBySize; i++){
                 std::string nextSortBy = tempSortedByNames.at(i);
@@ -133,7 +129,7 @@ bool Drama::operator<(const NodeData &n) const{ //TODO:REWRITE
 bool Drama::operator>(const NodeData &n) const{ //TODO:REWRITE
         if(getKey() != n.getKey()) return false;
         const Product& p = static_cast<const Product&>(n);
-        const std::vector<std::string> tempSortedByNames = sortedByNames();
+        const std::vector<std::string> tempSortedByNames = getSortedBy();
         const int sortedBySize = p.getSortedBySize();
         for(int i = 0; i <= sortedBySize; i++){
                 std::string nextSortBy = tempSortedByNames.at(i);

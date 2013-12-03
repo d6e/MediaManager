@@ -27,7 +27,7 @@ int Product::getRemainingItems(ProductFormat) const{
 } 			
 
 void Product::display(std::ostream& output) const{  //TODO: REWRITE
-    std::vector<std::string> tempTypeNames = dataTypeNames();
+    std::vector<std::string> tempTypeNames = getDataTypes();
     int dataTypeSize = getDataTypeSize();
     for(int i = 0; i < dataTypeSize; i++){
                 std::string nextData = getData(tempTypeNames.at(i));

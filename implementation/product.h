@@ -39,11 +39,11 @@ types like ComedyMovie (which would return "comedy"). dataType() concatenates
 these two strings to create a unique idenifier for an instantiable product type,
 aiding in sorting.
 
-dataTypeNames() and sortedByNames() are helper methods which quickly retrieve 
+getDataTypes() and getSortedBy() are helper methods which quickly retrieve 
 the corresponding _DATA_TYPES and _SORTED_BY arrays. 
 
 dataString() outputs the Product object's format, along with all of its data in 
-order of its dataTypeNames(). The dataString() method is called as part of a 
+order of its getDataTypes(). The dataString() method is called as part of a 
 product BinTree's display method. This is the only method called by the <<
 operator.
 
@@ -82,9 +82,9 @@ public:
 	virtual void duplicate(NodeData*);
 	
 	// Returns all data, inorder of input, deliminated by commas
-	virtual const std::vector<std::string> dataTypeNames() const = 0; 
+	virtual const std::vector<std::string> getDataTypes() const = 0; 
 	// Returns the sorting data, delineated by commas
-	virtual const std::vector<std::string> sortedByNames() const = 0; 
+	virtual const std::vector<std::string> getSortedBy() const = 0; 
     virtual int getDataTypeSize() const = 0; // returns size of DataTypes
     virtual int getSortedBySize() const = 0; // returns size of SortedBy
 	
