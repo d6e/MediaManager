@@ -1,7 +1,8 @@
 #include "displayallproductcmd.h"
 
  // default constructor
-DisplayAllProductCMD::DisplayAllProductCMD(ProductCollection* pc){
+DisplayAllProductCMD::DisplayAllProductCMD(CustomerIndex* ci, ProductCollection* pc){
+    cIndex = ci;
     pColl = pc;
 }
 
@@ -14,8 +15,8 @@ DisplayAllProductCMD::~DisplayAllProductCMD(){
 bool DisplayAllProductCMD::setData(Event* e){
 	event = e;
 	// ADD EVENT TO HISTORY
-	 //    std::string custID = event->get(1); // The second word is customer ID
-		// cIndex->addTransaction(custID, e);
+    std::string custID = event->get(1); // The second word is customer ID
+	cIndex->addTransaction(custID, e);
     return true; //TODO: Not sure if need. Might want to add event to history
 }
 

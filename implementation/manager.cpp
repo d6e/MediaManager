@@ -55,6 +55,9 @@ bool Manager::inputCustomer(std::string custDetails){
 bool Manager::inputCmd(std::string cmdString){
     Error e;
     Command* cmd = cFactory->create(cmdString);
+    if(cmd == NULL){
+        return false;
+    }
     e = cmd->execute();
     if(e.getErrorMessage() != ""){
         std::cout << e << std::endl;

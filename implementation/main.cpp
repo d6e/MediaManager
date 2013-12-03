@@ -40,14 +40,12 @@ int main(){
 
     //commands
     std::vector<std::string> cmdData = M.getInputData("data4commands.txt");
-    for(int i = 0; i < 5; ++i){
+    for(int i = 0; i < cmdData.size(); ++i){
         M.inputCmd(cmdData[i]);
     }
 
     M.displayAllProducts();
     M.inputCmd("H 1373");
-
-
 
 /*
     Product* movie = new Comedy();

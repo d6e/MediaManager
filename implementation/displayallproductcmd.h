@@ -23,9 +23,10 @@ message if the command is not found.
 class DisplayAllProductCMD : public Command {
 private:
     ProductCollection* pColl;
+    CustomerIndex* cIndex;
     Event* event;
 public:
-    DisplayAllProductCMD(ProductCollection*);  // default constructor
+    DisplayAllProductCMD(CustomerIndex*,ProductCollection*);  // default constructor
     virtual ~DisplayAllProductCMD();           // default destructor
     // Returns false if data invalid, for factory use only.
 	virtual bool setData(Event*); 

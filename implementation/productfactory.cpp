@@ -19,20 +19,34 @@ ProductFactory::~ProductFactory(){
 } 
 
 //parses input to create Product objects, returns null if invalid hash key
-Product* ProductFactory::create(std::string key){
+Product* ProductFactory::create(std::string data){
+    Product* pdtPtr = NULL;
+    if(data == ""){
+        return pdtPtr;
+    }
     std::string pdtString;
     std::string restOfString;
     std::stringstream ss;
-    ss << key;
+    ss << data;
     ss >> pdtString;
     restOfString = ss.str();
     char pdtChar = pdtString.at(0); //Convert string to a char
 
-    Product* pdtPtr = NULL;
-    if(products[pdtChar] != NULL){
-        pdtPtr = products[pdtChar]->create(); //get product pointer from hashtable 
-        pdtPtr->setData(new Event(restOfString));    
+    if(!keyExists(pdtChar)){
+        return pdtPtr;
     }
+
+    pdtPtr = products[pdtChar]->create(); //get product pointer from hashtable 
+    pdtPtr->setData(new Event(restOfString));    
     return pdtPtr;
 }
 
+bool ProductFactory::keyExists(char key){
+    it = products.find(key);
+    if (it == products.end()){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
