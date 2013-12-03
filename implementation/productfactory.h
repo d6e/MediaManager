@@ -24,7 +24,6 @@ private:
     // Product* hashTable; 
     std::map<char, Product*> products;
     std::map<char, Product*>::iterator it;
-    int hash(std::string key); //find the given key in the hash table 
 
 public:
     //fills producttemplates with instances of each instantiatable 

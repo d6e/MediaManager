@@ -37,6 +37,3 @@ Product* ProductFactory::create(std::string key){
     return pdtPtr;
 }
 
-int ProductFactory::hash(std::string key){
-    return 0; //TODO: finish this
-}

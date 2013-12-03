@@ -24,7 +24,7 @@ int ProductFormatCollection::getFormatAmount(ProductFormat* pfPtr)const{
     return -1; // get amount failed
 }
 
-int ProductFormatCollection::getFormatMaxAmount(const ProductFormat* pfPtr) {
+int ProductFormatCollection::getFormatMaxAmount(ProductFormat* pfPtr) {
     for(std::list<FormatAmount*>::const_iterator it = formatDataList.begin(); it != formatDataList.end(); ++it){
         if((*it)->format->getName() == pfPtr->getName()){//find corresponding pf
             return (*it)->size;
@@ -58,20 +58,19 @@ std::string ProductFormatCollection::getFormatNames(){
     return retVal;
 }
 
-void ProductFormatCollection::duplicate(std::string searchName){ //TODO:REWRITE
-        std::list<FormatAmount*>::iterator it=formatDataList.begin();
-        while(it != formatDataList.end()){
-                if((*it) -> format -> getName() == searchName){
-                        FormatAmount& fa = **it;
-                        int amount = DEFAULT_PRODUCT_QUANTITY;
-                        addAmount(fa, amount);
-                        return;
-                }
-                ++it;
-        } 
+void ProductFormatCollection::duplicate(std::string formatName){
+    std::list<FormatAmount*>::iterator it;
+    for(it = formatDataList.begin(); it != formatDataList.end(); ++it){
+        if((*it)->format->getName() == formatName){
+            FormatAmount* fa = *it;
+            //increase by default quantity
+            int quantity = DEFAULT_PRODUCT_QUANTITY; 
+            addQuantity(fa, quantity);
+        }
+    } 
 }
 
-void ProductFormatCollection::addAmount(FormatAmount& format, int amount){ //TODO: rewrite
-    format.size += amount;
-    format.count += amount;
+void ProductFormatCollection::addQuantity(FormatAmount* format, int quantity){
+    format->size += quantity;
+    format->count += quantity;
 }

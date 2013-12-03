@@ -41,7 +41,6 @@ bool Manager::inputCustomer(std::string custDetails){
 
     Customer* cust = new Customer(custID, first, last);
     cIndex->insertCustomer(cust);
-    cust = NULL;
     return true; //TODO
 }
 

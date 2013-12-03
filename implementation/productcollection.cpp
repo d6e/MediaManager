@@ -13,6 +13,9 @@ ProductCollection::~ProductCollection(){}
 //(this means product type and genre must match.) if no match is found, a new
 //ListNode is created and the Product is inserted into its tree.
 Error ProductCollection::insert(Product* pdtPtr){ 
+    if(pdtPtr == NULL){
+        return Error("Error: Product inserted is null.");
+    }
     collectionSize++;
     std::string genre = pdtPtr->getKey(); //TODO: change genre to a char
     int genreIndex = (int) genre[0] - A_INDEX;

@@ -40,14 +40,33 @@ int main(){
         M.inputCustomer(custData[i]);
     }
 
-    for(int i = 0; i < prodData.size(); ++i){
-        // M.inputProduct(prodData[i]);
+    for(int i = 0; i < 5; ++i){
+        M.inputProduct(prodData[i]);
     }
     // M.inputProduct("F Todd Phillips, The Hangover, 2009");
     M.displayAllProducts();
     M.inputCmd("H 1373");
 
-    BinTree tree;
 
+
+/*
+    Product* movie = new Comedy();
+    Event* e = new Event("F Todd Phillips, The Hangover, 2009");
+    movie->setData(e);
+
+    ProductFormat* pf = new ProductFormat("DVD");
+    std::cout << pf->getName() << std::endl;
+
+
+    ProductFormatCollection inventory;
+    inventory.addProductFormat(*pf);
+    std::cout << inventory.getFormatNames() << std::endl;
+    std::cout << inventory.getFormatAmount(pf) << std::endl;
+    inventory.duplicate("DVD");
+    std::cout << inventory.getFormatAmount(pf) << std::endl;
+    delete movie;
+    delete pf;
+    // delete e;
+*/
     return 0;
 }
