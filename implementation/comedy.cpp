@@ -52,8 +52,7 @@ Product* Comedy::create(){
 }
 
 char Comedy::getKey() const{
-    std::string name = getName();
-    return name[0];
+    return 'F';  // The key is different since classic exists. ('F' for funny)
 }
 
 // The getDataTypes() and getSortedBy() are helper methods which quickly 
