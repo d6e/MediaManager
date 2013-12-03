@@ -64,7 +64,7 @@ public:
     void makeEmpty();      //makes the tree empty
     bool insert( NodeData*); // insert new object
     bool retrieve(const NodeData*) const; //searches the Tree for a NodeData object
-    int getSize() const;        //returns the number of nodes in the tree
+    // int getSize() const;        //returns the number of nodes in the tree //TODO: not sure if need
 
     const std::string getKey() const;
     const std::string* dataTypeNames() const;

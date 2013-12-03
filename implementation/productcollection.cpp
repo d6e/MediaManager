@@ -54,8 +54,13 @@ Error ProductCollection::displayAll() const{ //TODO: REWRITE
 
  //check if the list is empty 
 bool ProductCollection::isEmpty() const{
-    //TODO
-    return true;
+    bool ret = false;
+    for(int i = 0; i < 26; ++i){
+        if(!collection[i].isEmpty()){
+            ret = true;
+        }
+    }
+    return ret;
 }
 
 

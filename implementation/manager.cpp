@@ -14,13 +14,17 @@ Manager::~Manager(){
     delete pCollect;
     delete cFactory;
     delete pFactory;
+
+    cIndex = NULL;
+    pCollect = NULL;
+    cFactory = NULL;
+    pFactory = NULL;
 }
 
 bool Manager::inputProduct(std::string movieDetails){
     Product* pdtPtr = pFactory->create(movieDetails);
     pCollect->insert(pdtPtr);
     pCollect->displayAll();
-    // pdtPtr->display();
     return true; //TODO
 } 
 
