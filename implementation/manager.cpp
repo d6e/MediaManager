@@ -22,8 +22,12 @@ Manager::~Manager(){
 
 bool Manager::inputProduct(std::string movieDetails){
     Product* pdtPtr = pFactory->create(movieDetails);
-    pCollect->insert(pdtPtr);
-    return true; //TODO
+    Error e = pCollect->insert(pdtPtr);
+    if(e.getErrorMessage() != ""){
+        std::cout << e << std::endl;
+        return false;
+    }
+    return true;
 } 
 
 void Manager::displayAllProducts(){
@@ -40,14 +44,27 @@ bool Manager::inputCustomer(std::string custDetails){
     ss >> last; 
 
     Customer* cust = new Customer(custID, first, last);
-    cIndex->insertCustomer(cust);
-    return true; //TODO
+    Error e = cIndex->insertCustomer(cust);
+    if(e.getErrorMessage() != ""){
+        std::cout << e << std::endl;
+        return false;
+    }
+    return true;
 }
 
 bool Manager::inputCmd(std::string cmdString){
     Error e;
     Command* cmd = cFactory->create(cmdString);
     e = cmd->execute();
-    std::cout << e << std::endl;
-    return true; //TODO
+    if(e.getErrorMessage() != ""){
+        std::cout << e << std::endl;
+        return false;
+    }
+    return true;
+}
+
+std::vector<std::string> Manager::getInputData(const char* file){
+    Input in;
+    in.read(file);
+    return in.get();
 }

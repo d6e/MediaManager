@@ -31,8 +31,12 @@ Error CustomerIndex::displayHistory(std::string custID){
 }
 
 // adds customer ptr to hashtable
-void CustomerIndex::insertCustomer(Customer* cust){
+Error CustomerIndex::insertCustomer(Customer* cust){
+    if(cust->getID() == ""){
+        return Error("Error: That ID does not exist.");
+    }
     customers[cust->getID()] = cust;
+    return Error("");
 }
 
 

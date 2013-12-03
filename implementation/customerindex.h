@@ -51,7 +51,7 @@ public:
     bool customerExists(std::string);  
     //displays a customer's history from customer ID
     Error displayHistory(std::string); 
-    void insertCustomer(Customer*); // adds customer ptr to hashtable
+    Error insertCustomer(Customer*); // adds customer ptr to hashtable
 };
 
 #endif

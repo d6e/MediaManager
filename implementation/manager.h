@@ -7,6 +7,7 @@
 #include "commandfactory.h"
 #include "productfactory.h"
 #include "error.h"
+#include "input.h"
 #include <string>
 
 /*
@@ -37,6 +38,8 @@ public:
     // Inputs commands into system, prints errors in process, 
     // returns false if failed.
     bool inputCmd(std::string);
+
+    std::vector<std::string> getInputData(const char*);
 
     //TODO: Make a function called ProcessCommands in manager that can take in multiple commands.
 

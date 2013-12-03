@@ -26,24 +26,24 @@ int main(){
 
     Manager M;
 
-    std::vector<std::string> custData;
-    Input custInput;
-    custInput.read("data4customers.txt");
-    custData = custInput.get();
-
-    std::vector<std::string> prodData;
-    Input prodInput;
-    prodInput.read("data4movies.txt");
-    prodData = prodInput.get();
-
+    //customers
+    std::vector<std::string> custData = M.getInputData("data4customers.txt");
     for(int i = 0; i < custData.size(); ++i){
         M.inputCustomer(custData[i]);
     }
 
+    //products
+    std::vector<std::string> prodData = M.getInputData("data4movies.txt");
     for(int i = 0; i < 5; ++i){
         M.inputProduct(prodData[i]);
     }
-    // M.inputProduct("F Todd Phillips, The Hangover, 2009");
+
+    //commands
+    std::vector<std::string> cmdData = M.getInputData("data4commands.txt");
+    for(int i = 0; i < 5; ++i){
+        M.inputCmd(cmdData[i]);
+    }
+
     M.displayAllProducts();
     M.inputCmd("H 1373");
 

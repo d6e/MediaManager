@@ -28,5 +28,9 @@ bool HistoryCMD::setData(Event* e){
 // message if the command is not found.
 Error HistoryCMD::execute(){
     std::string custID = event->get(1); // The second word is customer ID
-    return cIndex->displayHistory(custID);  
+    if(custID == ""){
+        return Error("Error: Customer ID is blank");
+    }
+    cIndex->displayHistory(custID);  
+    return Error("");
 }
