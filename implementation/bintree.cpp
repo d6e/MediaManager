@@ -20,13 +20,17 @@ BinTree::BinTree(){
 }
 
 BinTree::~BinTree(){
+    makeEmpty();
+}    
+
+void BinTree::makeEmpty(){
     if(root != NULL){
         makeEmpty(root->left);
         makeEmpty(root->right);
         delete root;
         root = NULL;    
     }
-}    
+}
 
 // --------------------------------------------------------------------------
 // helper for makeEmpty
@@ -118,14 +122,14 @@ void BinTree::displayHelper(std::ostream& out, Node* cNode) const{
     displayHelper(out,cNode->right);
 }
 
-const std::string BinTree::getName() const{
+std::string BinTree::getName() const{
     if(root != NULL){
         return root->data->getName();
     }
     return NULL;
 }
 
-std::vector<std::string> BinTree::getDataTypes() const{ //TODO: REMOVE CONST FROM ALL THESE
+std::vector<std::string> BinTree::getDataTypes() const{ 
     std::vector<std::string> ret;
     if(root != NULL){
         ret = root->data->getDataTypes();
@@ -133,7 +137,7 @@ std::vector<std::string> BinTree::getDataTypes() const{ //TODO: REMOVE CONST FRO
     return ret;
 }
 
-const int BinTree::getDataTypeSize() const{ 
+int BinTree::getDataTypeSize() const{ 
     if(root != NULL){
         return root->data->getDataTypeSize();
     }
