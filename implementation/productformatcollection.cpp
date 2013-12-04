@@ -1,8 +1,6 @@
 #include "productformatcollection.h"
 
-ProductFormatCollection::ProductFormatCollection(){
-
-}
+ProductFormatCollection::ProductFormatCollection(){}
 
 ProductFormatCollection::~ProductFormatCollection(){
     for(std::list<FormatAmount*>::const_iterator it = formatDataList.begin(); it != formatDataList.end(); ++it){

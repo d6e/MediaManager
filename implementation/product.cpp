@@ -3,7 +3,9 @@
 
 Product::Product(){}
 
-Product::~Product(){}
+Product::~Product(){
+    std::cout << "Destroyed: " << productData["TITLE"] << std::endl;
+}
 
 // Returns false if input invalid.
 bool Product::setData(Event* e){

@@ -21,8 +21,9 @@ Error ProductCollection::insert(Product* pdtPtr){
     int genreIndex = genre - 65; // convert char to 1-26 int
     if(collection[genreIndex].insert(pdtPtr)){
         return Error();  
-    } 
-    return Error("Error: Could not insert product.");
+    }
+    delete pdtPtr;
+    return Error("Error: Could not insert product.");        
 }  
 
 //retrieve product from a linked list 
