@@ -3,7 +3,7 @@
 #define PRODUCTCOLLECTION_H
 #include "error.h"
 #include "product.h"
-#include "collectiontree.h"
+#include "bintree.h"
 #include "productcollection.h"
 #include <string>
 
