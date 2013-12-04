@@ -24,8 +24,8 @@ bool Manager::inputProduct(std::string movieDetails){
     Product* pdtPtr = pFactory->create(movieDetails);
     Error e = pCollect->insert(pdtPtr);
     if(e.getErrorMessage() != ""){
-        // delete pdtPtr;
-        // pdtPtr = NULL;
+        delete pdtPtr;
+        pdtPtr = NULL;
         std::cout << e << std::endl;
         return false;
     }

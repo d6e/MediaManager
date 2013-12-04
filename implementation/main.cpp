@@ -44,24 +44,5 @@ int main(){
         // M.inputCmd(cmdData[i]);
     }
     M.inputCmd("S");
-/*
-    Product* movie = new Comedy();
-    Event* e = new Event("F Todd Phillips, The Hangover, 2009");
-    movie->setData(e);
-
-    ProductFormat* pf = new ProductFormat("DVD");
-    std::cout << pf->getName() << std::endl;
-
-
-    ProductFormatCollection pfc;
-    pfc.addProductFormat(*pf);
-    std::cout << pfc.getFormatNames() << std::endl;
-    std::cout << pfc.getFormatAmount(pf) << std::endl;
-    pfc.incrProductQuantity("DVD");
-    std::cout << pfc.getFormatAmount(pf) << std::endl;
-    delete movie;
-    delete pf;
-    // delete e;
-*/
     return 0;
 }

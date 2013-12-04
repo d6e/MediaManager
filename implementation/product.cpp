@@ -1,7 +1,10 @@
 #include "product.h"
 #include <iostream>
 
-Product::Product(){}
+Product::Product(){
+    std::cout << "Created: " << std::endl;
+
+}
 
 Product::~Product(){
     std::cout << "Destroyed: " << productData["TITLE"] << std::endl;
