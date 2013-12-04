@@ -2,12 +2,11 @@
 #include <iostream>
 
 Product::Product(){
-    std::cout << "Created: " << std::endl;
-
+    // std::cout << "Created: " << std::endl;
 }
 
 Product::~Product(){
-    std::cout << "Destroyed: " << productData["TITLE"] << std::endl;
+    // std::cout << "Destroyed: " << productData["TITLE"] << std::endl;
 }
 
 // Returns false if input invalid.
