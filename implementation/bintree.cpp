@@ -11,16 +11,6 @@ BinTree::Node::~Node(){
     data = NULL;
 }
 
-
-/*
-// --------------------------------------------------------------------------
-// Equality Operator
-// Compares the data members of two node objects for equality. Returns true
-// if they are equal
-bool Node::operator==(const Node& rhs) const{
-  	return data == rhs.data;
-}
-*/
 // --------------------------------------------------------------------------
 // BinTree Constructor
 // Creates a tree object and sets its root data member to NULL
@@ -113,60 +103,6 @@ bool BinTree::insert(NodeData *ptr, Node *cNode, Node *nNode, bool right){
 		return insert(ptr, nNode, nNode->right, true); // recurse right
 	}
 }
-/*
-// --------------------------------------------------------------------------
-// getDepth
-// Recursively finds the depth of the tree by calling the helper method
-// getDepth(). At the end it uses maximum() to determine the final depth.
-int BinTree::getDepth(const NodeData& data) const{ 
-	if(root == NULL){ //an empty tree returns 0 for any depth
-		return 0;
-	}
-	if(*(root -> data) == data){  
-		return 1;  					//depth at the root is 1
-	}
-	int leftDepth = 0;
-	if(root -> left != NULL){
-		leftDepth = getDepth(*(root -> left),data,2);   // search left
-	}
-	int rightDepth = 0;
-	if(root -> right != NULL){
-		rightDepth = getDepth(*(root -> right),data,2); // search right
-	}
-	return max(leftDepth, rightDepth);
-}
-
-// --------------------------------------------------------------------------
-//helper for one-arg depth method
-// cNode represents the current node,"d" represents depth
-// Recursively traverses down the tree, when reaching a null node it returns
-// the depth. Then uses maximum() to determine the final depth.
-int BinTree::getDepth(const Node& cNode,const NodeData& data, int d) const{
-	if(*cNode.data == data){  
-		return d;  //depth at the root is 1
-	}
-	int leftDepth = 0;
-	if(cNode.left != NULL){
-		leftDepth = getDepth(*cNode.left,data,d+1);
-	}
-	int rightDepth = 0;
-	if(cNode.right != NULL){
-		rightDepth = getDepth(*cNode.right,data,d+1);
-	}
-	return max(leftDepth,rightDepth);
-}
-
-// --------------------------------------------------------------------------
-//a helper max function which returns the largest of two integers
-int BinTree::maximum(const int num1, const int num2){   
-	if(num1 > num2){
-		return num1;
-	}
-	else{
-		return num2;
-	}
-}
-*/
 // --------------------------------------------------------------------------
 // Prints a Tree to the standard output in alphabetical order
 ostream& operator<<(ostream& output, const BinTree& tree) {
@@ -212,21 +148,6 @@ bool BinTree::retrieve(const NodeData* data) const{
         return true;
     }
     return retrieve(root -> left, data) || retrieve (root -> left, data);
-    /*
-    if(root -> left != NULL){
-        bool status = retrieve(root -> left, data,);   // go left
-        if(status){		//if it returned true, return true
-        	return true;
-        }
-    }
-    if(root->right != NULL){
-        bool status = retrieve(root -> right, data, ret);   // go right
-	    if(status){		//if it returned true, return true
-        	return true;
-        }
-    }
-    return false;    // node wasn't found
-    */
 } 
 
 // --------------------------------------------------------------------------
@@ -241,24 +162,48 @@ bool BinTree::retrieve(Node* curr, const NodeData* data) const{
     }
     return retrieve(curr -> left, data) || retrieve (curr -> left, data);
 }
-	/*
-    if(*(curr->data) == data){      // if we found the datas we're looking for
-        ret = curr->data; // assign the address of the nodedata object to ret
-        return true;
-    }
-    if(curr->left != NULL){
-        bool status = retrieve(curr -> left, data, ret);   // go left
-        if(status){						//if it returned true, return true
-        	return true;
-        }
-    }
-    if(curr->right != NULL){
-        bool status = retrieve(curr -> right, data, ret);   // go right
-        if(status){						//if it returned true, return true
-        	return true;
-        }
-    }
-    return false;    // node wasn't found
 
+NodeData* BinTree::pullData(NodeData* n, std::string transactionType){
+	if(root == NULL){
+        return NULL;  // node wasn't found
+    }
+    bool returning = false;
+	if(transactionType == "R"){
+		returning = true;
+	}
+	else if(transactionType != "B"){
+		return NULL;
+	}
+    if(*(root -> data) == *n){  // if we found the datas we're looking for
+    	NodeData* found = root -> data;
+    	if(returning == false && !found -> available()){
+    		return NULL;
+    	}
+    	found -> adjustCount(returning);
+        return found;
+    }
+    NodeData* left = pullData(root -> left, n, returning);
+    if(left != NULL){
+    	return left;
+    }
+    return pullData(root -> right, n, returning);
 }
-*/
+
+NodeData* BinTree::pullData(Node* curr, const NodeData* data, bool returning){
+	if(curr == NULL){
+        return NULL;  // node wasn't found
+    }
+    if(*(curr -> data) == *data){  // if we found the datas we're looking for
+    	NodeData* found = curr -> data;
+    	if(returning == false && !found -> available()){
+    		return NULL;
+    	}
+    	found -> adjustCount(returning);
+        return found;
+    }
+    NodeData* left = pullData(curr -> left, data, returning);
+    if(left != NULL){
+    	return left;
+    }
+    return pullData(curr -> right, data,returning);
+}

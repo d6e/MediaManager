@@ -43,7 +43,7 @@ class Comedy : public Movie {
 public:
     //Comedy(); //Inits productData keys.
     virtual ~Comedy(); // cleans up any productdata objects it created
-    bool setData(Event*); // Returns false if input invalid.
+    //bool setData(Event*); // Returns false if input invalid.
     virtual Product* create(); // Creates a new, empty genre movie object
     virtual std::string type() const; //returns type ("comedy"). Used as key
 

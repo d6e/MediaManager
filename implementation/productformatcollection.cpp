@@ -8,6 +8,7 @@ ProductFormatCollection::~ProductFormatCollection(){
 		delete fa.format;
 		fa.format = NULL;
 	}
+	//should "clear" be called here, too?
 }
 
 int ProductFormatCollection::getFormatAmount(const ProductFormat& pf) const{
@@ -71,10 +72,32 @@ void ProductFormatCollection::addAmount(FormatAmount& format, int amount){
 	format.count += amount;
 }
 
+void ProductFormatCollection::adjustCount(unsigned int index,bool up){
+	if(index > formatDataList.size()){
+		return;
+	}
+	std::list<FormatAmount>::iterator it = formatDataList.begin();
+	std::advance(it, index);
+	if(up){
+		it -> count++;
+		return;
+	}
+	it -> count--;
+}
+
+bool ProductFormatCollection::available(unsigned int index) const{
+	if(index > formatDataList.size()){
+		return false;
+	}
+	std::list<FormatAmount>::const_iterator it = formatDataList.begin();
+	std::advance(it, index);
+	return it -> count > 0;
+}
+
 const void ProductFormatCollection::display(std::ostream& output) const{	//display the amount of each format. NOTE: might be wrong way to do this
 	for (std::list<FormatAmount>::const_iterator 
-		it=formatDataList.begin(); 
-		it != formatDataList.end(); ++it){
+	it=formatDataList.begin(); 
+	it != formatDataList.end(); ++it){
 		if(it -> size != 0){
 			ProductFormat* nextFormat = (it -> format);
 			output << nextFormat -> getName() << ": " << it -> count << " ";

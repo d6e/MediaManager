@@ -64,6 +64,7 @@ public:
 
     bool insert( NodeData*); // insert new object
     bool retrieve(const NodeData*) const; //searches the Tree for a NodeData object
+    NodeData* pullData(NodeData*,std::string);
 
     int getSize() const;        //returns the number of nodes in the tree
 
@@ -84,6 +85,7 @@ private:
     void displayHelper(ostream&,Node*) const;
     void makeEmpty(Node*); 				 // helper for destructor
     bool retrieve(Node*,const NodeData*) const;
+    NodeData* pullData(Node*, const NodeData*,bool);
 };
 /*
 #ifndef BINTREE_H

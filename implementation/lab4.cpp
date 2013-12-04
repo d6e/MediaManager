@@ -16,7 +16,7 @@ int main(){
   Manager productManager;
   productManager.inputProduct(movieInput); 
   productManager.inputCustomer(customerInput);
-  //productManager.inputCmd(cmdInput);
+  productManager.inputCmd(cmdInput);
    	
 	return 1;
 }

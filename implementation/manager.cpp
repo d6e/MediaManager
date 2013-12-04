@@ -13,14 +13,14 @@ Manager::Manager(){
 }
 
 Manager::~Manager(){
-	delete productDB;
-	productDB = NULL;
 	delete customerDB;
 	customerDB = NULL;
-	delete mFactory;
-	mFactory = NULL;
+	delete productDB;
+	productDB = NULL;
 	delete cFactory;
 	cFactory = NULL;
+	delete mFactory;
+	mFactory = NULL;
 }
 
 bool Manager::inputProduct(ifstream& productInput){
@@ -67,39 +67,39 @@ bool Manager::inputCustomer(ifstream& customerInput){
 		customerInput.get();
 		Customer* c = new Customer();
 		c -> setData(custId,lastName,firstName);
-		customerDB -> insertCustomer(c);	//TODO: implement this in customerindex
-		cout << *c << endl;
-		//TODO
+		customerDB -> insertCustomer(c);
 	}
 	return true;
 }
 
 bool Manager::inputCmd(ifstream& cmdInput){	
 	std::string command;
-	Event* e = new Event();
 	for(;;){
 		if(cmdInput.eof()) break;
-		cmdInput >> command;
+		Event* e = new Event();
+		e -> set(cmdInput);	//TODO: keep in mind this is of type error
+		command = e -> getToken(0);
 		Command* c = cFactory -> create(command,productDB,customerDB);
 		if(c == NULL){	//case for invalid command
 			std::string temp;
 			getline(cmdInput, temp);
+			delete e;
 			continue;
 		}
 		if(command == "S"){
 			c -> execute();
 			delete c;
+			delete e;
 			continue;
 		}
-		cmdInput.get();
-		e -> makeEmpty();
-		e -> set(cmdInput);	//TODO: keep in mind this is of type error
 		c -> setData(e);
 		c -> execute();
 		delete c;
 		c = NULL;
+		if(command == "H"){
+			delete e;
+			e = NULL;
+		}
 	}
-	delete e;
-	e = NULL;
 	return true;
 }

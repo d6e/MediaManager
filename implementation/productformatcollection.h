@@ -23,6 +23,8 @@ public:
 	bool addProductFormat(ProductFormat*);
 	const void display(std::ostream&) const;
 	void duplicate(std::string);
+	void adjustCount(unsigned int,bool);
+	bool available(unsigned int) const;
 private:
 	struct FormatAmount
 	{

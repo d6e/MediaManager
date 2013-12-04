@@ -1,13 +1,9 @@
 #include "productcollection.h"
+#include "productfactory.h"
 
-ProductCollection::ProductCollection(){
-	//int collectionSize = sizeof(collectTree)/sizeof(*collectTree);
-	//for(int i = 0; i < collectionSize; i++){
+ProductCollection::ProductCollection(){} 
 
-	//}
-} //TODO
-
-ProductCollection::~ProductCollection(){} //TODO
+ProductCollection::~ProductCollection(){} 
 
 Error ProductCollection::insert(Product* p, std::string genre){
 	Error empty;
@@ -45,6 +41,8 @@ Error ProductCollection::displayAll() const{
 	return empty;	
 }
 
+
+
 Error ProductCollection::displayDataTypes(const BinTree& dataTree) const{
 	Error empty;
 	const std::string* dataTypes = dataTree.dataTypeNames();
@@ -55,4 +53,50 @@ Error ProductCollection::displayDataTypes(const BinTree& dataTree) const{
 		cout << nextType;
 	}
 	return empty;
+}
+
+Error ProductCollection::makeTransaction(Event* event){
+	if(event -> getToken(2) != "D"){	//if there were other format types besides DVD, this would be done differently
+    	return Error("Cannot find movie: invalid format type.");
+    }
+    return productSearch(event);
+}
+
+Error ProductCollection::productSearch(Event* event){
+	std::string data = event -> productData();
+	istringstream ss(data);
+	ProductFactory* mFactory = new ProductFactory();
+	std::string genre;
+	ss >> genre;
+	Product* p = mFactory -> create(genre);
+	if(p == NULL){
+    	return Error("Cannot find movie: no movies of that genre.");
+    }
+    const std::string* sortedByNames = p -> sortedByNames();
+    ss.get();
+	std::string dataToken;
+	int dataIndex = 0;
+	while(std::getline(ss, dataToken, ',')) {
+		ss.get();
+		if(*dataToken.rbegin() == ' '){
+			dataToken = dataToken.substr(0, dataToken.size()-1);
+		}
+		p -> addData(sortedByNames[dataIndex],dataToken);
+		dataIndex++;
+	}
+
+   	Error e = retrieve(p,genre); 
+   	if(e.getErrorMessage() == ""){
+   		int genreIndex = (int) genre[0] - A_INDEX;
+   		std::string transactionType = event -> getToken(0);
+   		NodeData* n = collectTree[genreIndex].pullData(p,transactionType);
+   		Product* product = static_cast<Product*>(n);
+   		event -> setProduct(product);
+	}
+	return e;
+}
+
+bool ProductCollection::validGenre(std::string genre) const{
+	int genreIndex = (int) genre[0] - A_INDEX;
+	return !collectTree[genreIndex].isEmpty();
 }

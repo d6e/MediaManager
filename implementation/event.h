@@ -1,12 +1,13 @@
 #ifndef EVENT_H
 #define EVENT_H
 #include "error.h"
+#include "product.h"
 #include <string>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <list>
-
+const unsigned int MIN_TRANSACTION_LENGTH = 4;
 
 /*
 An event object holds the data for a command.
@@ -24,12 +25,17 @@ error object with an error message if it fails, a blank string if it succeeds.
 class Event {
 private:
     std::list<std::string> arguments;
+    Product* product;
 public:
 	Event();
     virtual ~Event();
     void display() const;  // Display the data from one event object
     Error set(std::ifstream&); // Parses input a string into the list.
     void makeEmpty();
+    std::string getToken(unsigned int) const;
+    std::string productData() const;
+    std::string transactionName() const;
+    void setProduct(Product*);
 };
 
 

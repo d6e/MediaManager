@@ -3,8 +3,9 @@
 #include "customer.h"
 #include "error.h"
 #include "hashtable.h"
+#include <stdlib.h> 
 #include <string>
-
+const int MAX_CUSTOMER_COUNT = 10000;
 /*
 The customerindex class that constains all customer objects for each customer 
 who uses the system.   
@@ -38,13 +39,14 @@ the custHT.
 
 class CustomerIndex{
 private:
-    //HashTable custHT; // A hashtable used to hold the customer objects
+    Customer* customers[MAX_CUSTOMER_COUNT]; // A hashtable used to hold the customer objects
+    int convertID(std::string) const;
 public:
     CustomerIndex();     //constructor
     virtual ~CustomerIndex();    //destructor
     Error addTransaction(Event*); // calls customer's addTransaction
     // checks whether customer obj exists from an customer id
-    bool customerExists(std::string);  
+    bool customerExists(std::string) const;  
     //displays a customer's history from customer ID
     Error displayHistory(std::string) const; 
     void insertCustomer(Customer*); // adds customer ptr to hashtable

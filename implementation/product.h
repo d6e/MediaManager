@@ -5,7 +5,7 @@
 #include <iostream>
 #include <iomanip>
 #include <map>
-#include "event.h"
+//#include "event.h"
 #include "productformatcollection.h"
 #include "hashtable.h"
 #include "nodedata.h"
@@ -78,9 +78,10 @@ friend std::ostream& operator<<(std::ostream&, const NodeData&);
 public:
 	Product();
 	virtual ~Product();
-	bool setData(Event); // Returns false if input invalid.
+	//bool setData(Event); // Returns false if input invalid.
     virtual Product* create() = 0; // Creates a new, empty Product
     virtual void display(std::ostream&) const;
+    std::string dataDisplay() const;
     virtual const std::string getKey() const; // returns unique identifier
     //returns the type (the class) of product. Used as a key.
     virtual std::string type() const = 0;
@@ -111,6 +112,8 @@ public:
     bool addData(std::string,std::string);
     //bool addFormat
     void initValidFormats();
+    virtual void adjustCount(bool);
+    virtual bool available() const;
 
 private:
 	//Contains the quantities and different formats this product has.	

@@ -25,7 +25,6 @@ private:
     CustomerIndex* cIndex; //customer Index pointer 
     ProductCollection* mColl; //product collection pointer 
 	Event* event;
-	int getID(); //Gets the customer ID from the event.
 
 public:
 	BorrowCMD(ProductCollection*,CustomerIndex*); // constructor

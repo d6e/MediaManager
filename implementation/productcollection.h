@@ -1,10 +1,12 @@
 #ifndef PRODUCTCOLLECTION_H
 #define PRODUCTCOLLECTION_H
 #include "collectiontree.h"
+#include "event.h"
 #include "classic.h"
 #include "comedy.h"	//not sure about this include, but using it temporarily
 #include "drama.h"
 #include "error.h"
+#include <sstream>
 
 const int A_INDEX = 65; //memory index of capital A (used for dealing with geners)
 //#include <string>
@@ -17,8 +19,6 @@ insert, retrieve, and print
 */
 
 class ProductCollection{
-	/* overwrite the << operator */
-	//friend std::ostream & operator<<(std::ostream &, const ProductCollection &);
 public:
 	ProductCollection(); //default constractor
 	virtual ~ProductCollection(); //default destructor 
@@ -31,10 +31,11 @@ public:
 	Error retrieve(Product *,std::string); //retrieve product from a linked list 
 	Error displayAll() const; //display all the products 
 	bool isEmpty() const; //check if the list is empty 
-	
+	Error makeTransaction(Event*);
 private:
 	BinTree collectTree[26];
 	Error displayDataTypes(const BinTree &) const;
-	//CollectionTree* collectTree; //pointer to the collection tree 
+	bool validGenre(std::string) const; //check if a genre is valid
+	Error productSearch(Event*);
 };
 #endif

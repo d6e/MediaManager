@@ -29,7 +29,9 @@ public:
     virtual bool operator>=(const NodeData &) const = 0;
 
     virtual const std::string* dataTypeNames() const = 0;      
-    virtual const int dataTypeCount() const = 0;    
+    virtual const int dataTypeCount() const = 0;
+    virtual bool available() const = 0;  
+    virtual void adjustCount(bool) = 0; 
 
 private:
     //virtual std::string getData(const std::string) const = 0;      

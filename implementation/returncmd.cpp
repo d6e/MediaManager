@@ -1,11 +1,14 @@
 #include "returncmd.h"
 
 ReturnCMD::ReturnCMD(ProductCollection* products, CustomerIndex* customers){ // constructor
-	//TODO
+	mColl = products;
+	cIndex = customers;
 }
 
 ReturnCMD::ReturnCMD(ProductCollection* products, CustomerIndex* customers, Event* e){ //default constructor
-	//TODO
+	mColl = products;
+	cIndex = customers;
+	event = e;
 }
 
 ReturnCMD::~ReturnCMD(){} //default destructor 
@@ -16,12 +19,16 @@ Command* ReturnCMD::create(ProductCollection* products
 }
 
 bool ReturnCMD::setData(Event* e){
-	//TODO
-	return false;
+	event = e;
+	return true;
 }
 
-Error ReturnCMD::execute(){ 
-	Error empty;
-	//TODO
-	return empty;
+Error ReturnCMD::execute(){ //TODO: maybe check for invalid custID?
+	Error e = mColl -> makeTransaction(event);
+	if(e.getErrorMessage() != ""){
+		return e;
+	}
+    cIndex -> addTransaction(event);	//TODO: add an arg showing that the event is a borrow event
+	//TODO: reduce the count of the borrowed movie by 1
+	return Error("");
 }

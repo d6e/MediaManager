@@ -1,8 +1,12 @@
 #include "customer.h"
 
+Customer::~Customer(){
+	
+}
+
 void Customer::displayHistory() const{ // Calls history's displayAll method
-	std::cout << "History for: " << firstName << " " << lastName
-			  << "(ID: " + customerID << "):"<< std::endl;
+	std::cout << "  *** Customer ID = " << customerID << "  " << lastName << " " 
+			  << firstName << std::endl;
 	customerHistory.displayAll();
 }
 
@@ -35,3 +39,9 @@ const std::string Customer::getKey() const{return customerID;} //returns unique 
 const std::string* Customer::dataTypeNames() const{return NULL;}	//TODO   
    
 const int Customer::dataTypeCount() const{return 0;} //TODO 
+
+bool Customer::available() const{
+	return true;	//not meaningful, but necessary for compilation
+}
+
+void Customer::adjustCount(bool up){}

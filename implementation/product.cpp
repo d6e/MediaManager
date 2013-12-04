@@ -2,10 +2,7 @@
 
 Product::Product(){}
 
-Product::~Product(){
-	//cout << "DELETING " << getData("title") << endl;
-	//TODO
-}
+Product::~Product(){}
 
 void Product::initValidFormats(){	
 	int formatCount = validFormatCount(); 
@@ -23,15 +20,22 @@ void Product::initValidFormats(){
 }
 
 void Product::display(std::ostream& output) const{
+	output << endl;
+	output << dataDisplay();
+	output << endl;
+	displayFormatCollection(output);
+}
+
+std::string Product::dataDisplay() const{
+	std::string dataString = "";
 	const std::string* tempTypeNames = dataTypeNames();
 	const int tempTypeCount = dataTypeCount();
 	for(int i = 0; i < tempTypeCount; i++){
    	 	std::string nextData = getData(tempTypeNames[i]);
    	 	normalizeLength(nextData);
-   	 	output << nextData;
+   	 	dataString += nextData;
 	}
-	output << endl;
-	displayFormatCollection(output);
+	return dataString;
 }
 
 void Product::displayFormatCollection(std::ostream& output) const{	//TODO: add to header
@@ -72,14 +76,10 @@ void Product::truncate(std::string& longString) const{
 }
 
 void Product::duplicate(NodeData* n){	//upon receiving a duplicate product, add 10 to the quantity of the existing product's default format.
-	
 	const Product* p = static_cast<const Product*>(n);
 	const std::string* formatNames = p -> validFormatNames();
 	const std::string defaultFormat = formatNames[0];
-	//ProductFormat* pf = new ProductFormat(defaultFormat);
 	inventory.duplicate(defaultFormat);
-	//addFormat(pf);
-	//delete pf;
 }  
 
 //operator overrides
@@ -153,4 +153,16 @@ bool Product::addFormat(ProductFormat* pf){
 bool Product::addValidFormat(ProductFormat pf){
 	validFormats.insert(pair<string,ProductFormat>(pf.getName(),pf));
 	return true; //TODO: make it possible to return false
+}
+
+void Product::adjustCount(bool up){
+	const std::string* formatNames = validFormatNames();
+	const std::string defaultFormat = formatNames[0];
+	inventory.adjustCount(0,up);
+	
+}
+
+bool Product::available() const{	//checks inventory's stock of default format
+	return inventory.available(0);
+	//return true;
 }

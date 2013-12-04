@@ -31,6 +31,7 @@ private:
     std::string customerID;       // four digit int stored as a string
 
 public:
+    virtual ~Customer();
     void displayHistory() const; // Calls history's displayAll method
     void setData(std::string,std::string,std::string);
     void addEvent(Event*); // Calls history's addTransaction method
@@ -48,6 +49,9 @@ public:
     virtual const std::string getKey() const; // returns unique identifier
 	virtual const std::string* dataTypeNames() const;  
     virtual const int dataTypeCount() const;
+
+    virtual bool available() const;
+    virtual void adjustCount(bool);
 
 };
 
