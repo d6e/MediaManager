@@ -38,18 +38,30 @@ bool Classic::setData(Event* e){
             eventToken.push_back(eventDetails.at(i)); //copy character to string      
         }
     }
+    std::string subtoken = "";
+    std::string numToken = "";
+    bool subTokenInserted = false;
     for(int i = 0; i < eventToken.size(); ++i){
-        if(dataTypeCounter > CLASSIC_DATA_TYPES.size()){            
+        if(dataTypeCounter >= CLASSIC_DATA_TYPES.size()){            
             break;            
         }
-        else if(eventToken.at(i) >= 0 && eventToken.at(i) <= 9){
-            //load into product's ht
-            productData[CLASSIC_DATA_TYPES.at(dataTypeCounter)] = eventToken;
+        else if(subTokenInserted){
+            numToken.push_back(eventToken.at(i));
+        }
+        //if the eventtoken character is an int
+        else if((int)eventToken.at(i) >= 48 && (int)eventToken.at(i) <= 57){
+            productData[CLASSIC_DATA_TYPES.at(dataTypeCounter)] = subtoken;
+            subTokenInserted = true;
+            numToken.push_back(eventToken.at(i));
             dataTypeCounter++;
         }
+        subtoken.push_back(eventToken.at(i));
+
     }
+    productData[CLASSIC_DATA_TYPES.at(dataTypeCounter)] = numToken;
+
     // Need to get the last token after the comma
-    productData[CLASSIC_DATA_TYPES.at(dataTypeCounter)] = eventToken; 
+    // productData[CLASSIC_DATA_TYPES.at(dataTypeCounter)] = eventToken; 
 
     delete e;
     return true; //TODO
