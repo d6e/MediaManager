@@ -2,10 +2,7 @@
 
 Movie::Movie(){
 	formatList.push_back("DVD"); //load the name for each format here
-
 	initValidFormats();
-    // pfc.addProductFormat(pf); //populate the productformatcollection
-	
 }
 
 Movie::~Movie(){}
@@ -16,6 +13,7 @@ void Movie::initValidFormats(){ //add all valid formats to the validformat map
 		std::string format = formatList.at(i);
 	    ProductFormat pf(format);
 	    validFormats[format] = &pf;		
+	    // pfc.addProductFormat(pf); //populate the productformatcollection
 	}
 }
 

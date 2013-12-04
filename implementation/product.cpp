@@ -84,7 +84,7 @@ void Product::addData(std::string key,std::string value){
 }
 
  //adds product to productformatcollection
-void Product::addFormat(ProductFormat pf){
+void Product::addFormat(ProductFormat* pf){
     pfc.addProductFormat(pf);
 }
 

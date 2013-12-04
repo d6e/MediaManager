@@ -31,21 +31,37 @@ int ProductFormatCollection::getFormatMaxAmount(ProductFormat* pfPtr) {
     return -1; // get amount failed
 }
 
-void ProductFormatCollection::addProductFormat(ProductFormat pf){
-    FormatAmount* fa = new FormatAmount();
-    fa->format = &pf;
-    fa->count = DEFAULT_PRODUCT_QUANTITY;
-    fa->size = DEFAULT_PRODUCT_SIZE;
-    formatDataList.push_back(fa);
+void ProductFormatCollection::addProductFormat(ProductFormat* pf){ //TODO:rewrite
+    // FormatAmount* fa;
+    // fa->format = &pf;
+    // fa->count = DEFAULT_PRODUCT_QUANTITY;
+    // fa->size = DEFAULT_PRODUCT_SIZE;
+    // formatDataList.push_back(fa);
+    std::string searchName = pf -> getName();
+    std::list<FormatAmount*>::iterator it = formatDataList.begin();
+    while(it != formatDataList.end()){
+        if((*it) -> format -> getName() == searchName){
+            FormatAmount* fa;
+            fa = *it;
+            int quantity = DEFAULT_PRODUCT_QUANTITY;
+            addQuantity(fa,quantity);
+        }
+        ++it;
+    } 
+    FormatAmount inserted;
+    inserted.size = inserted.count = DEFAULT_PRODUCT_QUANTITY;
+    inserted.format = pf;
+    FormatAmount* insrtPtr = &inserted;
+    formatDataList.push_back(insrtPtr);
 }
-
+/*
 void ProductFormatCollection::addProductFormat(ProductFormat pf, int c, int s){
-    FormatAmount* fa = new FormatAmount();
+    FormatAmount* fa();
     fa->format = &pf;
     fa->count = c;
     fa->size = s;
     formatDataList.push_back(fa);
-}
+}*/
 
 //iterate, display productformats
 std::string ProductFormatCollection::getFormatNames(){

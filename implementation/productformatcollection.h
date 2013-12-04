@@ -30,8 +30,8 @@ public:
 	int getFormatAmount(ProductFormat*)const; 
 	int getFormatMaxAmount(ProductFormat*);
     std::string getFormatNames();  //accessor for productformat names //TODO: possibly use this instead of product::validFormatNames()
-	void addProductFormat(ProductFormat);
-	void addProductFormat(ProductFormat, int, int);
+	void addProductFormat(ProductFormat*);
+	// void addProductFormat(ProductFormat, int, int);
 	void incrProductQuantity(std::string);
 
 };
