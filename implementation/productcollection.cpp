@@ -1,6 +1,6 @@
 #include "productcollection.h"
 
- //default constructor
+//default constructor
 ProductCollection::ProductCollection(){
     collectionSize = 0;
 }

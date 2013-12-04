@@ -26,10 +26,10 @@ private:
 public:
     ProductFormatCollection();
     virtual ~ProductFormatCollection();
-    //Returns the amount of items that particular ProductFormat has.
+    //Returns the number of items a productformat may have
 	int getFormatAmount(ProductFormat*)const; 
 	int getFormatMaxAmount(ProductFormat*);
-    std::string getFormatNames();  //iterate, display productformats //TODO: possibly use this instead of product::validFormatNames()
+    std::string getFormatNames();  //accessor for productformat names //TODO: possibly use this instead of product::validFormatNames()
 	void addProductFormat(ProductFormat);
 	void addProductFormat(ProductFormat, int, int);
 	void incrProductQuantity(std::string);

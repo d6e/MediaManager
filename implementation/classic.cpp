@@ -38,6 +38,16 @@ bool Classic::setData(Event* e){
             eventToken.push_back(eventDetails.at(i)); //copy character to string      
         }
     }
+    for(int i = 0; i < eventToken.size(); ++i){
+        if(dataTypeCounter > CLASSIC_DATA_TYPES.size()){            
+            break;            
+        }
+        else if(eventToken.at(i) >= 0 && eventToken.at(i) <= 9){
+            //load into product's ht
+            productData[CLASSIC_DATA_TYPES.at(dataTypeCounter)] = eventToken;
+            dataTypeCounter++;
+        }
+    }
     // Need to get the last token after the comma
     productData[CLASSIC_DATA_TYPES.at(dataTypeCounter)] = eventToken; 
 
