@@ -68,8 +68,9 @@ public:
     virtual bool operator>=(const NodeData&) const;
 	
 private:
-	std::vector<std::string> CLASSIC_DATA_TYPES;
-	std::vector<std::string> CLASSIC_SORTED_BY;
+	std::vector<std::string> CLASSIC_DATA_TYPES; //order of output datatypes
+	std::vector<std::string> dataTypeReadOrder; //order datatypes are read in
+	std::vector<std::string> CLASSIC_SORTED_BY; //how data types are sorted
 };
 
 #endif

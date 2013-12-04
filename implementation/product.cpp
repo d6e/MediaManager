@@ -57,7 +57,8 @@ void Product::format(std::string& data, int maxLength) const{
 
 //truncates strings so they don't take up too much space
 void Product::truncateData(std::string& data) const{
-    data.resize(maxDataLength);
+    data.resize(maxDataLength - 1);
+    data.resize(maxDataLength, ' ');
 }
 
 void Product::displayProductFormatColl(std::ostream& out) const{ 

@@ -43,6 +43,7 @@ int main(){
     for(int i = 0; i < cmdData.size(); ++i){
         // M.inputCmd(cmdData[i]);
     }
+
     M.inputCmd("S");
     return 0;
 }

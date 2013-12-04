@@ -4,13 +4,16 @@
 // The constructor creates a bunch of ProductData objects and initializes their
 // keys.
 Comedy::Comedy(){
-//TODO: find out if productdata objects should even be created.
     COMEDY_DATA_TYPES.push_back("DIRECTOR");
     COMEDY_DATA_TYPES.push_back("TITLE");
-    COMEDY_DATA_TYPES.push_back("DATE");
+    COMEDY_DATA_TYPES.push_back("YEAR");
+
+    dataTypeReadOrder.push_back("DIRECTOR");
+    dataTypeReadOrder.push_back("TITLE");
+    dataTypeReadOrder.push_back("YEAR");
 
     COMEDY_SORTED_BY.push_back("TITLE");
-    COMEDY_SORTED_BY.push_back("DATE");
+    COMEDY_SORTED_BY.push_back("YEAR");
 }
 
 // cleans up any productdata objects it created
@@ -24,13 +27,14 @@ bool Comedy::setData(Event* e){
     std::string eventDetails = e->getEventDetails();
     int dataTypeCounter = 0;
     //deliminating eventDetails string by comma
-    for(int i = 1; i < eventDetails.size(); ++i){
-        if(dataTypeCounter > COMEDY_DATA_TYPES.size()){            
+    for(int i = 2; i < eventDetails.size(); ++i){
+        if(dataTypeCounter > dataTypeReadOrder.size()){            
             break;            
         }
         else if(eventDetails.at(i) == ','){
+            i++; //skip space after comma
             //load into product's ht
-            productData[COMEDY_DATA_TYPES.at(dataTypeCounter)] = eventToken;
+            productData[dataTypeReadOrder.at(dataTypeCounter)] = eventToken;
             dataTypeCounter++;
             eventToken = "";
         }
@@ -39,7 +43,7 @@ bool Comedy::setData(Event* e){
         }
     }
     // Need to get the last token after the comma
-    productData[COMEDY_DATA_TYPES.at(dataTypeCounter)] = eventToken; 
+    productData[dataTypeReadOrder.at(dataTypeCounter)] = eventToken; 
 
     delete e;
     return true; //TODO

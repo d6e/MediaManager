@@ -67,6 +67,7 @@ public:
 	
 private:
 	std::vector<std::string> DRAMA_DATA_TYPES;
+	std::vector<std::string> dataTypeReadOrder; //order datatypes are read in
 	std::vector<std::string> DRAMA_SORTED_BY;
 };
 

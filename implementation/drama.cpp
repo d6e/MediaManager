@@ -3,10 +3,13 @@
 // The constructor creates a bunch of ProductData objects and initializes their
 // keys.
 Drama::Drama(){
-//TODO: find out if productdata objects should even be created.
     DRAMA_DATA_TYPES.push_back("DIRECTOR");
     DRAMA_DATA_TYPES.push_back("TITLE");
-    DRAMA_DATA_TYPES.push_back("DATE");
+    DRAMA_DATA_TYPES.push_back("YEAR");
+
+    dataTypeReadOrder.push_back("DIRECTOR");
+    dataTypeReadOrder.push_back("TITLE");
+    dataTypeReadOrder.push_back("YEAR");
 
     DRAMA_SORTED_BY.push_back("DIRECTOR");
     DRAMA_SORTED_BY.push_back("TITLE");
@@ -23,13 +26,14 @@ bool Drama::setData(Event* e){
     std::string eventDetails = e->getEventDetails();
     int dataTypeCounter = 0;
     //deliminating eventDetails string by comma
-    for(int i = 1; i < eventDetails.size(); ++i){
-        if(dataTypeCounter > DRAMA_DATA_TYPES.size()){            
+    for(int i = 2; i < eventDetails.size(); ++i){
+        if(dataTypeCounter > dataTypeReadOrder.size()){            
             break;            
         }
         else if(eventDetails.at(i) == ','){
+            i++; //skip space after comma
              //load into product's ht
-            productData[DRAMA_DATA_TYPES.at(dataTypeCounter)] = eventToken;
+            productData[dataTypeReadOrder.at(dataTypeCounter)] = eventToken;
             dataTypeCounter++;
             eventToken = "";
         }
@@ -38,7 +42,7 @@ bool Drama::setData(Event* e){
         }
     }
     // Need to get the last token after the comma
-    productData[DRAMA_DATA_TYPES.at(dataTypeCounter)] = eventToken; 
+    productData[dataTypeReadOrder.at(dataTypeCounter)] = eventToken; 
 
     delete e;
     return true; //TODO

@@ -1,15 +1,22 @@
 #include "classic.h"
+#include <sstream>
 
 // The constructor creates a bunch of ProductData objects and initializes their
 // keys.
 Classic::Classic(){
-//TODO: find out if productdata objects should even be created.
     CLASSIC_DATA_TYPES.push_back("DIRECTOR");
     CLASSIC_DATA_TYPES.push_back("TITLE");
+    CLASSIC_DATA_TYPES.push_back("YEAR");
+    CLASSIC_DATA_TYPES.push_back("MO");
     CLASSIC_DATA_TYPES.push_back("FAMOUS ACTOR");
-    CLASSIC_DATA_TYPES.push_back("DATE");
 
-    CLASSIC_SORTED_BY.push_back("DATE");
+    dataTypeReadOrder.push_back("DIRECTOR");
+    dataTypeReadOrder.push_back("TITLE");
+    dataTypeReadOrder.push_back("FAMOUS ACTOR");
+    dataTypeReadOrder.push_back("MO");
+    dataTypeReadOrder.push_back("YEAR");
+
+    CLASSIC_SORTED_BY.push_back("YEAR");
     CLASSIC_SORTED_BY.push_back("FAMOUS ACTOR");
 }
 
@@ -19,18 +26,19 @@ Classic::~Classic(){}
 // The setData method takes in a pointer to an event object and the data it 
 // contains to the event object's data. If the event object input is invalid,
 // it returns false, otherwise true.
-bool Classic::setData(Event* e){
+bool Classic::setData(Event* e){ //parses data 
     std::string eventToken;
     std::string eventDetails = e->getEventDetails();
     int dataTypeCounter = 0;
     //deliminating eventDetails string by comma
-    for(int i = 1; i < eventDetails.size(); ++i){
-        if(dataTypeCounter > CLASSIC_DATA_TYPES.size()){            
+    for(int i = 2; i < eventDetails.size(); ++i){
+        if(dataTypeCounter > dataTypeReadOrder.size()){            
             break;            
         }
         else if(eventDetails.at(i) == ','){
+            i++; //skip space after comma
              //load into product's ht
-            productData[CLASSIC_DATA_TYPES.at(dataTypeCounter)] = eventToken;
+            productData[dataTypeReadOrder.at(dataTypeCounter)] = eventToken;
             dataTypeCounter++;
             eventToken = "";
         }
@@ -38,30 +46,19 @@ bool Classic::setData(Event* e){
             eventToken.push_back(eventDetails.at(i)); //copy character to string      
         }
     }
-    std::string subtoken = "";
-    std::string numToken = "";
-    bool subTokenInserted = false;
-    for(int i = 0; i < eventToken.size(); ++i){
-        if(dataTypeCounter >= CLASSIC_DATA_TYPES.size()){            
-            break;            
-        }
-        else if(subTokenInserted){
-            numToken.push_back(eventToken.at(i));
-        }
-        //if the eventtoken character is an int
-        else if((int)eventToken.at(i) >= 48 && (int)eventToken.at(i) <= 57){
-            productData[CLASSIC_DATA_TYPES.at(dataTypeCounter)] = subtoken;
-            subTokenInserted = true;
-            numToken.push_back(eventToken.at(i));
-            dataTypeCounter++;
-        }
-        subtoken.push_back(eventToken.at(i));
+    //only the actor names and dates are left
+    std::string actorFN, actorLN, month, year;
+    std::stringstream ss;
+    ss << eventToken;
+    ss >> actorFN;    
+    ss >> actorLN;    
+    ss >> month;
+    ss >> year;
 
-    }
-    productData[CLASSIC_DATA_TYPES.at(dataTypeCounter)] = numToken;
-
-    // Need to get the last token after the comma
-    // productData[CLASSIC_DATA_TYPES.at(dataTypeCounter)] = eventToken; 
+    std::string actorName = actorFN + " " + actorLN;
+    productData[dataTypeReadOrder.at(dataTypeCounter++)] = actorName;
+    productData[dataTypeReadOrder.at(dataTypeCounter++)] = month;
+    productData[dataTypeReadOrder.at(dataTypeCounter++)] = year;
 
     delete e;
     return true; //TODO

@@ -66,6 +66,7 @@ public:
 	
 private:
     std::vector<std::string> COMEDY_DATA_TYPES;
+    std::vector<std::string> dataTypeReadOrder; //order datatypes are read in
     std::vector<std::string> COMEDY_SORTED_BY;
 };
 
