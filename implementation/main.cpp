@@ -41,9 +41,9 @@ int main(){
     //commands
     std::vector<std::string> cmdData = M.getInputData("data4commands.txt");
     for(int i = 0; i < cmdData.size(); ++i){
-        // M.inputCmd(cmdData[i]);
+        M.inputCmd(cmdData[i]);
     }
 
-    M.inputCmd("S");
+    // M.inputCmd("S");
     return 0;
 }

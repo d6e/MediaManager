@@ -10,6 +10,8 @@
 #include <map>
 #include <iostream>
 
+class Event; //Need to forward declare to prevent #include loop
+
 /*
 Product class
 

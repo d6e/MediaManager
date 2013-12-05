@@ -2,6 +2,7 @@
 #ifndef EVENT_H
 #define EVENT_H
 #include "error.h"
+#include "product.h"
 #include <string>
 #include <vector>
 
@@ -16,14 +17,16 @@ The display method iterates through the list displaying the data.
 
 The set method parses the string and inserts it into the list.
 */
+class Product; //Need to forward declare to prevent #include loop
 
 class Event {
 private:
     std::vector<std::string> argList; //like eventDetails but space deliminated
     std::string eventDetails;  //like argList but a string
+    Product* pdtPtr;
 public:
-    Event();
     Event(std::string);
+    Event(std::string, Product*);
     virtual ~Event();
     void set(std::string); // Parses input a string into the list.
     std::string get(unsigned int) const;
