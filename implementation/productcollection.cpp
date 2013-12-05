@@ -14,7 +14,6 @@ Error ProductCollection::insert(Product* p, std::string genre){
 }
 
 Error ProductCollection::retrieve(Product* p, std::string genre){
-	
 	Error empty;
 	int genreIndex = (int) genre[0] - A_INDEX;
 	if(collectTree[genreIndex].retrieve(p)) return empty;
@@ -28,14 +27,13 @@ Error ProductCollection::displayAll() const{
 
 	for(int i = 0; i < collectionSize; i++){
 		if(!collectTree[i].isEmpty()){
-			//TODO: show genre and type here
-			cout << collectTree[i].getKey() << endl;
-			empty = displayDataTypes(collectTree[i]);	//should this be an error?
-			cout << endl << 
-"------------------------------------------------------------------------------" 
-			<< endl;
+			std::cout << collectTree[i].getKey() << " movies:" << std::endl;
+			std::cout << std::endl <<  "*IN* *OUT*" << std::endl
+				 << "DVD  DVD ";
+			empty = displayDataTypes(collectTree[i]); //should this be an error?
+			std::cout << std::endl;
 			if(empty.getErrorMessage() != "") return empty;
-			cout << collectTree[i] << endl;
+			std::cout << collectTree[i] << std::endl;
 		} 
 	}
 	return empty;	
@@ -49,8 +47,11 @@ Error ProductCollection::displayDataTypes(const BinTree& dataTree) const{
 	int dataTypeCount = dataTree.dataTypeCount();
 	for(int i = 0; i < dataTypeCount; i++){
 		std::string nextType = dataTypes[i];
+		if(nextType == DATE){
+			nextType = "year mo";
+		}
 		nextType.resize(MAX_DATA_LENGTH,' ');
-		cout << nextType;
+		std::cout << nextType;
 	}
 	return empty;
 }
@@ -73,6 +74,7 @@ Error ProductCollection::productSearch(Event* event){
     	return Error("Cannot find movie: no movies of that genre.");
     }
     const std::string* sortedByNames = p -> sortedByNames();
+    //IDEA: use sorted by count instead of  this method
     ss.get();
 	std::string dataToken;
 	int dataIndex = 0;

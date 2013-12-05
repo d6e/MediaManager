@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 
-const int MAX_DATA_LENGTH = 20;
+const int MAX_DATA_LENGTH = 16;
 
 using namespace std;
 

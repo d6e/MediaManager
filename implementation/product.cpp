@@ -20,10 +20,7 @@ void Product::initValidFormats(){
 }
 
 void Product::display(std::ostream& output) const{
-	output << endl;
-	output << dataDisplay();
-	output << endl;
-	displayFormatCollection(output);
+	output << DVDInventory() << dataDisplay() << endl;
 }
 
 std::string Product::dataDisplay() const{
@@ -38,7 +35,25 @@ std::string Product::dataDisplay() const{
 	return dataString;
 }
 
-void Product::displayFormatCollection(std::ostream& output) const{	//TODO: add to header
+std::string Product::DVDInventory() const{
+	std::string DVDString = "";
+	ProductFormat DVD = getProductFormat("DVD");
+	int countIn = inventory.getFormatAmount(DVD);
+	stringstream inSs;
+	inSs << countIn;
+	std::string in = inSs.str();
+	in.resize(2,' ');
+	int countOut = inventory.getFormatMaxAmount(DVD) 
+				 - inventory.getFormatAmount(DVD);
+	stringstream outSs;
+	outSs << countOut;
+	std::string out = outSs.str();
+	out.resize(2,' ');
+	DVDString += in + "   " + out + "  ";
+	return DVDString;
+}
+
+void Product::displayFormatCollection(std::ostream& output) const{	
 	int formatCount = validFormatCount(); 
 	const std::string* formatNames = validFormatNames();
 	for(int i = 0; i < formatCount; i++){

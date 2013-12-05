@@ -4,12 +4,13 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 #include <map>
-//#include "event.h"
 #include "productformatcollection.h"
 #include "hashtable.h"
 #include "nodedata.h"
 
+const std::string DATE = "date";
 /*
 Product class
 
@@ -123,6 +124,7 @@ private:
 	//Contains valid formats of the product. The identifier code is the key. 
 	std::map<std::string,ProductFormat> validFormats; 
 	ProductFormat getProductFormat(std::string) const;
+	std::string DVDInventory() const;
 	std::string getData(const std::string) const;
     // All products must have possible format(s).        
 	void displayFormatCollection(std::ostream&) const;
