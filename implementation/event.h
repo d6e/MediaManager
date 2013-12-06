@@ -7,14 +7,6 @@
 
 /*
 An event object holds the data for a command.
-
-In parsing the intial string, it divides up the string into parts deliminated
-by whitespace and inputs them into the list . Commas are always seperated out
-into its own node as a special marker.
-
-The display method iterates through the list displaying the data.
-
-The set method parses the string and inserts it into the list.
 */
 
 class Event {

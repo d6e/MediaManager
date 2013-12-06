@@ -3,7 +3,6 @@
 // --------------------------------------------------------------------------
 // Node destructor
 // Deletes a DataNode object and sets all the other members to NULL
-
 BinTree::Node::~Node(){
     left = NULL;
     right = NULL;
@@ -14,7 +13,6 @@ BinTree::Node::~Node(){
 // --------------------------------------------------------------------------
 // BinTree Constructor
 // Creates a tree object and sets its root data member to NULL
-
 BinTree::BinTree(){
     root = NULL;
 }

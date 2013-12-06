@@ -10,9 +10,10 @@ bool Product::setData(Event* e){
     return true;
 }
 
+//Displays the contents of the product object
 void Product::display(std::ostream& out) const{
-    std::string inStatus = "09";
-    std::string outStatus = "08";
+    std::string inStatus = "09";  //place holders, need to show actual status
+    std::string outStatus = "08"; //place holders, need to show actual status
     format(inStatus, maxQuantityLength);
     format(outStatus, maxQuantityLength);
     std::cout << inStatus << " " << outStatus;

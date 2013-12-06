@@ -1,90 +1,82 @@
 #include "productformatcollection.h"
 
-ProductFormatCollection::ProductFormatCollection(){}
+ProductFormatCollection::ProductFormatCollection(): 
+        productQuantity(10), productSize(100){} //init lists are more efficient
 
 ProductFormatCollection::~ProductFormatCollection(){
-    for(std::list<FormatAmount*>::const_iterator it = formatDataList.begin(); it != formatDataList.end(); ++it){
-        // delete (*it)->format;
+    std::vector<FormatAmount*>::const_iterator it;
+    for(it = formatDataList.begin(); it != formatDataList.end(); ++it){
         delete *it;
     }
     formatDataList.clear();
 }
 
+//returns the quantity from a formatAmount objects
 int ProductFormatCollection::getFormatAmount(ProductFormat* pfPtr)const{
-    if(pfPtr != NULL){ //TODO: pfPtr is always NULL
-        for(std::list<FormatAmount*>::const_iterator it = formatDataList.begin(); it != formatDataList.end(); ++it){
+    std::vector<FormatAmount*>::const_iterator it;
+    if(pfPtr != NULL){ 
+        for(it = formatDataList.begin(); it != formatDataList.end(); ++it){
             std::string fname = (*it)->format->getName();
-            if(fname == pfPtr->getName()){//find corresponding pf
-                return (*it)->count;
+            if(fname == pfPtr->getName()){//find corresponding pfPtr
+                return (*it)->quantity;
             }
         }    
     }
-    return -1; // get amount failed
+    return -1; // getFormatAmount failed
 }
 
+//returns the max stock from a formatAmount objects
 int ProductFormatCollection::getFormatMaxAmount(ProductFormat* pfPtr) {
-    for(std::list<FormatAmount*>::const_iterator it = formatDataList.begin(); it != formatDataList.end(); ++it){
-        if((*it)->format->getName() == pfPtr->getName()){//find corresponding pf
+    std::vector<FormatAmount*>::const_iterator it;
+    for(it = formatDataList.begin(); it != formatDataList.end(); ++it){
+        if((*it)->format->getName() == pfPtr->getName()){//find matching pfPtr
             return (*it)->size;
         }
     }   
-    return -1; // get amount failed
+    return -1; // getFormatAmount  failed
 }
 
-void ProductFormatCollection::addProductFormat(ProductFormat* pf){ //TODO:rewrite
-    // FormatAmount* fa;
-    // fa->format = &pf;
-    // fa->count = DEFAULT_PRODUCT_QUANTITY;
-    // fa->size = DEFAULT_PRODUCT_SIZE;
-    // formatDataList.push_back(fa);
-    std::string searchName = pf -> getName();
-    std::list<FormatAmount*>::iterator it = formatDataList.begin();
-    while(it != formatDataList.end()){
-        if((*it) -> format -> getName() == searchName){
-            FormatAmount* fa;
-            fa = *it;
-            int quantity = DEFAULT_PRODUCT_QUANTITY;
-            addQuantity(fa,quantity);
+//Inserts a productFormat object into the productformatcollection
+void ProductFormatCollection::addProductFormat(ProductFormat* pfPtr){ //TODO:rewrite
+    std::vector<FormatAmount*>::iterator it;
+    for(it = formatDataList.begin(); it != formatDataList.end();++it){
+        if((*it)->format->getName() == pfPtr->getName()){
+            FormatAmount* format;
+            format = *it;
+            int quantity = productQuantity;
+            format->size += quantity;
+            format->quantity += quantity;
         }
-        ++it;
     } 
-    FormatAmount inserted;
-    inserted.size = inserted.count = DEFAULT_PRODUCT_QUANTITY;
-    inserted.format = pf;
-    FormatAmount* insrtPtr = &inserted;
+    FormatAmount insrtFA;
+    insrtFA.size = productQuantity;
+    insrtFA.quantity = productQuantity;
+    insrtFA.format = pfPtr;
+    FormatAmount* insrtPtr = &insrtFA;
     formatDataList.push_back(insrtPtr);
 }
-/*
-void ProductFormatCollection::addProductFormat(ProductFormat pf, int c, int s){
-    FormatAmount* fa();
-    fa->format = &pf;
-    fa->count = c;
-    fa->size = s;
-    formatDataList.push_back(fa);
-}*/
 
-//iterate, display productformats
+//iterates through the productformatcollection, returning the name of format
 std::string ProductFormatCollection::getFormatNames(){
     std::string retVal = "";
-    for(std::list<FormatAmount*>::const_iterator it = formatDataList.begin(); it != formatDataList.end(); ++it){
+    std::vector<FormatAmount*>::const_iterator it;
+    for(it = formatDataList.begin(); it != formatDataList.end(); ++it){
         retVal += " " + (*it)->format->getName();
     }
     return retVal;
 }
 
+//increases the quantity of the product
 void ProductFormatCollection::incrProductQuantity(std::string formatName){
-    std::list<FormatAmount*>::iterator it;
+    std::vector<FormatAmount*>::iterator it;
     for(it = formatDataList.begin(); it != formatDataList.end(); ++it){
         if((*it)->format->getName() == formatName){
-            FormatAmount* fa = *it;
+            FormatAmount* format = *it;
             //increase by default quantity
-            int quantity = DEFAULT_PRODUCT_QUANTITY; 
-            addQuantity(fa, quantity);
+            int quantity = productQuantity; 
+            format->size += quantity;
+            format->quantity += quantity;
         }
     } 
 }
 
-void ProductFormatCollection::addQuantity(FormatAmount* format, int quantity){
-    format->size += quantity;
-    format->count += quantity;
-}

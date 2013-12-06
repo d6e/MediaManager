@@ -41,7 +41,8 @@ public:
 
     std::vector<std::string> getInputData(const char*);
 
-    //TODO: Make a function called ProcessCommands in manager that can take in multiple commands.
+    //Needed to have made a function called ProcessCommands in manager that 
+    //can take in multiple commands.
 
 };
 

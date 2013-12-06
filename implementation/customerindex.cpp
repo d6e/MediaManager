@@ -9,6 +9,7 @@ CustomerIndex::~CustomerIndex(){
     }
 }
 
+//Adds a transaction to the customer history
 Error CustomerIndex::addTransaction(std::string custID, Event* event){
     if(customerExists(custID)){
         customers[custID]->addEvent(event);

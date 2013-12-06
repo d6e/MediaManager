@@ -45,7 +45,7 @@ bool Drama::setData(Event* e){
     productData[dataTypeReadOrder.at(dataTypeCounter)] = eventToken; 
 
     delete e;
-    return true; //TODO
+    return true; 
 }
 
 // create() is merely an instatiation method called by the ProductFactory that 
@@ -79,13 +79,16 @@ std::string Drama::getName() const{
     return "Drama";
 }
 
+// Returns the char that corresponds to the drama. Used as a key in maps
 char Drama::getKey() const{
     std::string name = getName();
     return name[0];
 }
 
+// accessor for productData map
 std::string Drama::getData(std::string key) const{
-    std::map<std::string, std::string>::const_iterator it = productData.find(key);
+    std::map<std::string, std::string>::const_iterator it;
+    it = productData.find(key);
     std::string retVal = "";
     if (it != productData.end()) {
         retVal = it->second;
@@ -93,18 +96,20 @@ std::string Drama::getData(std::string key) const{
     return retVal;
 }
 
-//TODO: comparison operators
-// //comparison operators compare product by their sorting criteria
-bool Drama::operator==(const NodeData &node) const{ //TODO:rewrite
+
+//comparison operators compare product by their sorting criteria
+bool Drama::operator==(const NodeData &node) const{
     if(getName() != node.getName()){
         return false;  
     } 
-    const Product& p = static_cast<const Product&>(node);
-    std::vector<std::string> tempSortedByNames = getSortedBy();
-    const int sortedBySize = p.getSortedBySize();//sizeof(tempSortedByNames)/sizeof(*tempSortedByNames);
+    
+    //convert node to a product
+    const Product& pdt = static_cast<const Product&>(node);
+    std::vector<std::string> sortByVect = getSortedBy();
+    const int sortedBySize = pdt.getSortedBy().size();
 
     for(int i = 0; i < sortedBySize; i++){
-        if(getData(tempSortedByNames.at(i)) != p.getData(tempSortedByNames.at(i))){
+        if(getData(sortByVect.at(i)) != pdt.getData(sortByVect.at(i))){
             return false;  
         } 
     }
@@ -112,39 +117,67 @@ bool Drama::operator==(const NodeData &node) const{ //TODO:rewrite
 }
 
 bool Drama::operator!=(const NodeData &node) const{
-    return !(*this == node);
+    if(*this == node){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
-bool Drama::operator<(const NodeData &n) const{ //TODO:REWRITE
-        if(getName() != n.getName()) return false;        //NOTE: should this always return false? should keys be compared for sorting, too?
-        const Product& p = static_cast<const Product&>(n);
-        std::vector<std::string> tempSortedByNames = getSortedBy();
-        const int sortedBySize = p.getSortedBySize();
-        for(int i = 0; i <= sortedBySize; i++){
-                std::string nextSortBy = tempSortedByNames.at(i);
-                if(getData(nextSortBy) < p.getData(nextSortBy)) return true;
-                if(getData(nextSortBy) > p.getData(nextSortBy)) return false;
+bool Drama::operator<(const NodeData &node) const{ 
+    if(getName() != node.getName()){
+        return false;
+    } 
+    
+    //convert node to a product
+    const Product& pdt = static_cast<const Product&>(node);
+    std::vector<std::string> sortByVect = getSortedBy();
+    const int sortedBySize = pdt.getSortedBy().size();
+    for(int i = 0; i <= sortedBySize; i++){
+        std::string sortByStr = sortByVect.at(i);
+        if(getData(sortByStr) < pdt.getData(sortByStr)){
+            return true;
         }
+        if(getData(sortByStr) > pdt.getData(sortByStr)){
+            return false;
+        }
+    }
     return false;
 }
 
-bool Drama::operator>(const NodeData &n) const{ //TODO:REWRITE
-        if(getName() != n.getName()) return false;
-        const Product& p = static_cast<const Product&>(n);
-        std::vector<std::string> tempSortedByNames = getSortedBy();
-        const int sortedBySize = p.getSortedBySize();
-        for(int i = 0; i <= sortedBySize; i++){
-                std::string nextSortBy = tempSortedByNames.at(i);
-                if(getData(nextSortBy) > p.getData(nextSortBy)) return true;
-                if(getData(nextSortBy) < p.getData(nextSortBy)) return false;
+bool Drama::operator>(const NodeData &node) const{
+    if(getName() != node.getName()){
+        return false;
+    }
+
+    //convert node to a product
+    const Product& pdt = static_cast<const Product&>(node);
+    std::vector<std::string> sortByVect = getSortedBy();
+    const int sortedBySize = pdt.getSortedBy().size();
+    for(int i = 0; i <= sortedBySize; i++){
+        std::string sortByStr = sortByVect.at(i);
+        if(getData(sortByStr) > pdt.getData(sortByStr)){
+            return true;
         }
+        if(getData(sortByStr) < pdt.getData(sortByStr)){
+            return false;
+        }
+    }
     return false;
 }
 
 bool Drama::operator<=(const NodeData &node) const{
-    return (*this < node) || (*this == node);//TODO: probably should be &&
+    bool ret = false;
+    ret = (*this < node); 
+    ret = (*this == node);
+    return ret;
 }
 
 bool Drama::operator>=(const NodeData &node) const{
-    return (*this > node) || (*this == node); //TODO: probably should be &&
+    bool ret = false;
+    ret = (*this < node); 
+    ret = (*this == node);
+    return ret;
 }
+

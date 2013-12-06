@@ -4,6 +4,7 @@ NodeData::NodeData(){}
 
 NodeData::~NodeData(){}
 
+//Overloaded << operator
 std::ostream& operator<<(std::ostream& out, const NodeData& node){
    node.display(out);
    return out;

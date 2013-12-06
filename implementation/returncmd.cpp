@@ -12,7 +12,6 @@ ReturnCMD::ReturnCMD(CustomerIndex* ci, ProductCollection* pc){
     pColl = pc;
 }
 
-
 //default destructor 
 ReturnCMD::~ReturnCMD(){} 
 
@@ -21,10 +20,10 @@ bool ReturnCMD::setData(Event* e){
 	event = e;
     std::string custID = event->get(1); // The second word is customer ID
 	cIndex->addTransaction(custID, e);
-    return true; //TODO
+    return true; 
 }
 
 //execute command from the IO 
 Error ReturnCMD::execute(){
-    return Error(""); //TODO
+    return Error(""); 
 }

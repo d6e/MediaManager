@@ -21,7 +21,7 @@ Comedy::~Comedy(){}
 
 // The setData method takes in a pointer to an event object and the data it 
 // contains to the event object's data. If the event object input is invalid,
-// it returns false, otherwise true.  //TODO: rewrite description
+// it returns false, otherwise true.  
 bool Comedy::setData(Event* e){
     std::string eventToken;
     std::string eventDetails = e->getEventDetails();
@@ -45,8 +45,8 @@ bool Comedy::setData(Event* e){
     // Need to get the last token after the comma
     productData[dataTypeReadOrder.at(dataTypeCounter)] = eventToken; 
 
-    delete e;
-    return true; //TODO
+    delete e; //we're done with the event object
+    return true;
 }
 
 // create() is merely an instatiation method called by the ProductFactory that 
@@ -85,8 +85,10 @@ std::string Comedy::getName() const{
     return "Comedy";
 }
 
+//Accessor for the product's data.
 std::string Comedy::getData(std::string key) const{
-    std::map<std::string, std::string>::const_iterator it = productData.find(key);
+    std::map<std::string, std::string>::const_iterator it;
+    it = productData.find(key);
     std::string retVal = "";
     if (it != productData.end()) {
         retVal = it->second;
@@ -94,18 +96,19 @@ std::string Comedy::getData(std::string key) const{
     return retVal;
 }
 
-//TODO: comparison operators
-// //comparison operators compare product by their sorting criteria
-bool Comedy::operator==(const NodeData &node) const{ //TODO:rewrite
+//comparison operators compare product by their sorting criteria
+bool Comedy::operator==(const NodeData &node) const{
     if(getName() != node.getName()){
         return false;  
     } 
-    const Product& p = static_cast<const Product&>(node);
-    std::vector<std::string> tempSortedByNames = getSortedBy();
-    const int sortedBySize = p.getSortedBySize();//sizeof(tempSortedByNames)/sizeof(*tempSortedByNames);
+    
+    //convert node to a product
+    const Product& pdt = static_cast<const Product&>(node);
+    std::vector<std::string> sortByVect = getSortedBy();
+    const int sortedBySize = pdt.getSortedBy().size();
 
     for(int i = 0; i < sortedBySize; i++){
-        if(getData(tempSortedByNames.at(i)) != p.getData(tempSortedByNames.at(i))){
+        if(getData(sortByVect.at(i)) != pdt.getData(sortByVect.at(i))){
             return false;  
         } 
     }
@@ -113,32 +116,53 @@ bool Comedy::operator==(const NodeData &node) const{ //TODO:rewrite
 }
 
 bool Comedy::operator!=(const NodeData &node) const{
-    return !(*this == node);
+    if(*this == node){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
-bool Comedy::operator<(const NodeData &n) const{ //TODO:REWRITE
-        if(getName() != n.getName()) return false;        //NOTE: should this always return false? should keys be compared for sorting, too?
-        const Product& p = static_cast<const Product&>(n);
-        std::vector<std::string> tempSortedByNames = getSortedBy();
-        const int sortedBySize = p.getSortedBySize();
-        for(int i = 0; i <= sortedBySize; i++){
-                std::string nextSortBy = tempSortedByNames.at(i);
-                if(getData(nextSortBy) < p.getData(nextSortBy)) return true;
-                if(getData(nextSortBy) > p.getData(nextSortBy)) return false;
+bool Comedy::operator<(const NodeData &node) const{ 
+    if(getName() != node.getName()){
+        return false;
+    } 
+    
+    //convert node to a product
+    const Product& pdt = static_cast<const Product&>(node);
+    std::vector<std::string> sortByVect = getSortedBy();
+    const int sortedBySize = pdt.getSortedBy().size();
+    for(int i = 0; i <= sortedBySize; i++){
+        std::string sortByStr = sortByVect.at(i);
+        if(getData(sortByStr) < pdt.getData(sortByStr)){
+            return true;
         }
+        if(getData(sortByStr) > pdt.getData(sortByStr)){
+            return false;
+        }
+    }
     return false;
 }
 
-bool Comedy::operator>(const NodeData &n) const{ //TODO:REWRITE
-        if(getName() != n.getName()) return false;
-        const Product& p = static_cast<const Product&>(n);
-        std::vector<std::string> tempSortedByNames = getSortedBy();
-        const int sortedBySize = p.getSortedBySize();
-        for(int i = 0; i <= sortedBySize; i++){
-                std::string nextSortBy = tempSortedByNames.at(i);
-                if(getData(nextSortBy) > p.getData(nextSortBy)) return true;
-                if(getData(nextSortBy) < p.getData(nextSortBy)) return false;
+bool Comedy::operator>(const NodeData &node) const{
+    if(getName() != node.getName()){
+        return false;
+    }
+
+    //convert node to a product
+    const Product& pdt = static_cast<const Product&>(node);
+    std::vector<std::string> sortByVect = getSortedBy();
+    const int sortedBySize = pdt.getSortedBy().size();
+    for(int i = 0; i <= sortedBySize; i++){
+        std::string sortByStr = sortByVect.at(i);
+        if(getData(sortByStr) > pdt.getData(sortByStr)){
+            return true;
         }
+        if(getData(sortByStr) < pdt.getData(sortByStr)){
+            return false;
+        }
+    }
     return false;
 }
 

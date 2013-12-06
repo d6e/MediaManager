@@ -1,11 +1,9 @@
 #pragma once
 #ifndef PRODUCTFORMATCOLLECTION_H
 #define PRODUCTFORMATCOLLECTION_H
-#define DEFAULT_PRODUCT_QUANTITY 10;
-#define DEFAULT_PRODUCT_SIZE 100;
 #include "productformat.h"
 #include <string>
-#include <list>
+#include <vector>
 
 /*
 Contains quantites and max quantites of various ProductFormats in a collection.
@@ -15,13 +13,13 @@ private:
 	struct FormatAmount
 	{
 		ProductFormat* format;
-		int count; // Number in stock
-	    int size;  // Number of products in total
-        // size - count = number of products being rented
+		int quantity; // quantity of products
+	    int size;  // total available products
+        // size - quantity = number of products being rented
 	};
-	std::list<FormatAmount*> formatDataList;
-	void addQuantity(FormatAmount*, int);
-
+	std::vector<FormatAmount*> formatDataList;
+	int productQuantity; //initialized in constructor init list
+	int productSize; //initialized in constructor init list
 		
 public:
     ProductFormatCollection();

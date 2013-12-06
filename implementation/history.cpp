@@ -1,12 +1,11 @@
 #include "history.h"
 #include <iostream>
 
-History::History(){
-
-}
+History::History(){}
 
 // deletes each node in the list. 
 History::~History(){
+    std::list<Event*>::iterator it;  //iterator for list of event objects
 	for(it = eventList.begin(); it != eventList.end(); ++it){
 		delete *it;
 	}
@@ -14,7 +13,8 @@ History::~History(){
 
 // Iterates through displays all event objects
 void History::displayAll() const{
-    for (std::list<Event*>::const_iterator it = eventList.begin(); it != eventList.end(); ++it){
+	std::list<Event*>::const_iterator it;
+    for(it = eventList.begin(); it != eventList.end(); ++it){
         (*it)->display();
     }
 }

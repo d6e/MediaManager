@@ -28,6 +28,7 @@ void Event::set(std::string msg){
     }
 }
 
+//accessor for an element of argLists
 std::string Event::get(unsigned int index) const{
     if (argList.size() > index){
         return argList.at(index);
@@ -35,7 +36,7 @@ std::string Event::get(unsigned int index) const{
     return "";
 }
 
-
+//returns the original string that was passed into the Event obj
 std::string Event::getEventDetails() const{
     return eventDetails;
 }

@@ -24,11 +24,8 @@ private:
     // For commands that need to access the products
     ProductCollection* pCollect; 
     ProductFactory* pFactory; // For commands that need to create products.
-     // A pointer to an array of Commands implemented as a hash table
-    // Command* hashTable;
-    std::map<char, Command*> cmds;
-    std::map<char, Command*>::iterator it;
-    int hash(std::string key);
+    std::map<char, Command*> cmds; //stores possible commands
+    std::map<char, Command*>::iterator it; //an iterator for cmds
 
 public:
     // constructor, inits hash table

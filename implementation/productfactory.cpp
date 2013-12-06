@@ -41,6 +41,7 @@ Product* ProductFactory::create(std::string data){
     return pdtPtr;
 }
 
+//Searches products for if a char corresponding to a command exists
 bool ProductFactory::keyExists(char key){
     it = products.find(key);
     if (it == products.end()){

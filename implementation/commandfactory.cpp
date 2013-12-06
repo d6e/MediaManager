@@ -46,6 +46,7 @@ Command* CommandFactory::create(std::string data){
     return cmd;    
 }
 
+//finds key and returns true if key exists
 bool CommandFactory::keyExists(char key){
     it = cmds.find(key);
     if (it == cmds.end()){
@@ -56,6 +57,3 @@ bool CommandFactory::keyExists(char key){
     }
 }
 
-int CommandFactory::hash(std::string key){
-    return 0; //TODO: finish this
-}

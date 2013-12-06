@@ -17,11 +17,11 @@ bool DisplayAllProductCMD::setData(Event* e){
 	// ADD EVENT TO HISTORY
     std::string custID = event->get(1); // The second word is customer ID
 	cIndex->addTransaction(custID, e);
-    return true; //TODO: Not sure if need. Might want to add event to history
+    return true; 
 }
 
 //execute command from the IO 
 Error DisplayAllProductCMD::execute(){
 	pColl->displayAll();
-    return Error(""); //TODO
+    return Error(""); 
 }

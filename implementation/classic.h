@@ -10,34 +10,6 @@
 The classic class is a child of movie and represents a movie genre. Because
 different attributes matter between movies, classic movies hold different
 attributes than drama. 
-
-It's data members consist of two arrays, one array being the data types like
-"DIRECTOR", "TITLE", "FAMOUS ACTOR", and "DATE" and another being the data 
-types it's sorted
-by, which in this case are "DATE" and "FAMOUS ACTOR".
-
-The constructor creates a bunch of ProductData objects and initializes their
-keys.
-
-The destructor deletes any productdata objects it initiated.
-
-The setData method takes in a pointer to an event object and the data it 
-contains to the event object's data. If the event object input is invalid,
-it returns false, otherwise true.
-
-create() is merely an instatiation method called by the ProductFactory that 
-creates a product object.
-
-The type method returns the type of the genre product object. For this one,
-it will return the string "classic". This is used as a key for the hashtable.
-
-The display method displays the private data members using cout.
-
-The getDataTypes() and getSortedBy() are helper methods which quickly 
-retrieve the corresponding _DATA_TYPES and _SORTED_BY arrays. 
-
-Finally, the comparison operators are used to compare one product object
-with another.
 */
 
 class Classic : public Movie{
