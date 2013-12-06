@@ -119,7 +119,7 @@ bool Classic::operator==(const NodeData &node) const{
         return false;  
     } 
     
-    //convert node to a product
+    //cast to convert node to a product
     const Product& pdt = static_cast<const Product&>(node);
     std::vector<std::string> sortByVect = getSortedBy();
     const int sortedBySize = pdt.getSortedBy().size();
@@ -146,7 +146,7 @@ bool Classic::operator<(const NodeData &node) const{
         return false;
     } 
     
-    //convert node to a product
+    //cast to convert node to a product
     const Product& pdt = static_cast<const Product&>(node);
     std::vector<std::string> sortByVect = getSortedBy();
     const int sortedBySize = pdt.getSortedBy().size();
@@ -167,7 +167,7 @@ bool Classic::operator>(const NodeData &node) const{
         return false;
     }
 
-    //convert node to a product
+    //cast to convert node to a product
     const Product& pdt = static_cast<const Product&>(node);
     std::vector<std::string> sortByVect = getSortedBy();
     const int sortedBySize = pdt.getSortedBy().size();

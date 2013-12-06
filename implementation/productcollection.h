@@ -17,7 +17,7 @@ class ProductCollection{
 	friend std::ostream & operator<<(std::ostream &, const ProductCollection &);    
 private:
     BinTree collection[26];
-    Error displayDataTypes(const BinTree &) const; //TODO: REWRITE
+    Error displayDataTypes(const BinTree&) const;
     int collectionSize; //number of nodes in the collection
 public:
 	ProductCollection(); //default constractor

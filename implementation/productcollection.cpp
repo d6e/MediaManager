@@ -28,19 +28,17 @@ Error ProductCollection::insert(Product* pdtPtr){
 
 //retrieve product from a linked list 
 Error ProductCollection::retrieve(Product* pdtPtr){
-    char genre = pdtPtr->getKey();
-    int genreIndex = genre - 65; // convert char to 1-26 int
-    if(collection[genreIndex].retrieve(pdtPtr)){ //TODO rename retrieve() to productExists()
+    int genreIndex = pdtPtr->getKey() - 65; // convert char to 1-26 int
+    if(collection[genreIndex].retrieve(pdtPtr)){ 
         return Error();  
     } 
     return Error("Error: Unable to find product.");
 } 
 
 //display all the products 
-Error ProductCollection::displayAll() const{ //TODO: REWRITE
-    for(int i = 0; i < 26; ++i){
-        if(!collection[i].isEmpty()){
-            //TODO: show genre and type here
+Error ProductCollection::displayAll() const{
+    for(int i = 0; i < 26; ++i){ //collection is an array of 26
+        if(!collection[i].isEmpty()){ 
             std::cout << collection[i].getName() << std::endl;
             std::cout << "*IN* *OUT*" << std::endl;
             Error e = displayDataTypes(collection[i]);
@@ -65,16 +63,13 @@ bool ProductCollection::isEmpty() const{
 }
 
 //displays the data types
-Error ProductCollection::displayDataTypes(const BinTree& dataTree) const{ //TODO: REWRITE
-    Error empty;
-    std::vector<std::string> dataTypes = dataTree.getDataTypes();
-    int getDataTypeSize = dataTree.getDataTypeSize();
+Error ProductCollection::displayDataTypes(const BinTree& tree) const{
+    std::vector<std::string> typesList = tree.getDataTypes();
     std::cout << "DVD  DVD ";
-    for(int i = 0; i < getDataTypeSize; i++){
-        std::string tmpType = dataTypes.at(i);
-        tmpType.resize(Product::maxDataLength,' '); //TODO: NOT SURE IF NECESSARY
-        std::cout << tmpType;
+    for(int i = 0; i < tree.getDataTypes().size(); i++){
+        typesList.at(i).resize(Product::maxDataLength,' '); 
+        std::cout << typesList.at(i);
     }
     std::cout << std::endl;
-    return empty;
+    return Error();
 }

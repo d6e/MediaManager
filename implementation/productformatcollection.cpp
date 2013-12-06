@@ -37,7 +37,8 @@ int ProductFormatCollection::getFormatMaxAmount(ProductFormat* pfPtr) {
 }
 
 //Inserts a productFormat object into the productformatcollection
-void ProductFormatCollection::addProductFormat(ProductFormat* pfPtr){ //TODO:rewrite
+void ProductFormatCollection::addProductFormat(ProductFormat* pfPtr){ 
+    FormatAmount insrtFA;
     std::vector<FormatAmount*>::iterator it;
     for(it = formatDataList.begin(); it != formatDataList.end();++it){
         if((*it)->format->getName() == pfPtr->getName()){
@@ -48,7 +49,7 @@ void ProductFormatCollection::addProductFormat(ProductFormat* pfPtr){ //TODO:rew
             format->quantity += quantity;
         }
     } 
-    FormatAmount insrtFA;
+    //set formatAmount's attributes
     insrtFA.size = productQuantity;
     insrtFA.quantity = productQuantity;
     insrtFA.format = pfPtr;
