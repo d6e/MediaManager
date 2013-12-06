@@ -3,7 +3,9 @@
 #define HISTORYCMD_H
 #include <string>
 #include <sstream>
+#include <vector>
 #include "customerindex.h"
+#include "productcollection.h"
 #include "command.h"
 
 /*
@@ -21,13 +23,15 @@ message if the command is not found.
 class HistoryCMD : public Command {    
 private:
     CustomerIndex* cIndex;
-	Event* event;
+	std::vector<std::string> argList;
 public:
-	HistoryCMD(CustomerIndex*); // event is intialized with setdata
-    HistoryCMD(CustomerIndex*, Event*);          // default constructor
+	HistoryCMD(CustomerIndex*, ProductCollection*); // event is intialized with setdata
+    // HistoryCMD(CustomerIndex*, Event*);          // default constructor
     virtual ~HistoryCMD();                       // default destructor
     // Returns false if data invalid, for factory use only.
-	virtual bool setData(Event*); 
+	virtual bool setData(std::string); 
+	virtual bool initArgList(std::string);
+
     Error execute(); //execute command from the IO 
 };
 

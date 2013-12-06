@@ -16,6 +16,7 @@ Classic::Classic(){
     dataTypeReadOrder.push_back("MO");
     dataTypeReadOrder.push_back("YEAR");
 
+    CLASSIC_SORTED_BY.push_back("MO");
     CLASSIC_SORTED_BY.push_back("YEAR");
     CLASSIC_SORTED_BY.push_back("FAMOUS ACTOR");
 }
@@ -26,16 +27,15 @@ Classic::~Classic(){}
 // The setData method takes in a pointer to an event object and the data it 
 // contains to the event object's data. If the event object input is invalid,
 // it returns false, otherwise true.
-bool Classic::setData(Event* e){ //parses data 
+bool Classic::setData(std::string eventDetails){ //parses data 
     std::string eventToken;
-    std::string eventDetails = e->getEventDetails();
     int dataTypeCounter = 0;
     //deliminating eventDetails string by comma
     for(int i = 2; i < eventDetails.size(); ++i){
         if(dataTypeCounter > dataTypeReadOrder.size()){            
             break;            
         }
-        else if(eventDetails.at(i) == ','){
+        else if(eventDetails.at(i) == ','){ // should have used stringstream
             i++; //skip space after comma
              //load into product's ht
             productData[dataTypeReadOrder.at(dataTypeCounter)] = eventToken;
@@ -60,7 +60,6 @@ bool Classic::setData(Event* e){ //parses data
     productData[dataTypeReadOrder.at(dataTypeCounter++)] = month;
     productData[dataTypeReadOrder.at(dataTypeCounter++)] = year;
 
-    delete e;
     return true; //TODO
 }
 
@@ -79,6 +78,30 @@ std::vector<std::string> Classic::getDataTypes() const{
 
 std::vector<std::string> Classic::getSortedBy() const{
     return CLASSIC_SORTED_BY;
+}
+
+//parses command data and returns a vector
+std::vector<std::string> Classic::parseCommand(std::string target) const{
+    std::vector<std::string> targetStringVector;
+    std::string token, cmdChar, custID, format, genre, month, year, actor;
+    std::istringstream ss(target);
+
+    ss >> cmdChar;
+    ss >> custID;
+    ss >> format;
+    ss >> genre;
+  
+    //output vector in the order that they're read in
+    while(std::getline(ss, token, ',')) {    //parse comma deliminated string
+        month = token;
+        year = token;
+        actor = token;
+    }
+    targetStringVector.push_back(month); //place in vector
+    targetStringVector.push_back(year); //place in vector
+    targetStringVector.push_back(actor); //place in vector
+
+    return targetStringVector;
 }
 
 // returns size of DataTypes

@@ -2,6 +2,8 @@
 #ifndef BORROWCMD_H
 #define BORROWCMD_H
 #include <string>
+#include <vector>
+#include <sstream>
 #include "customerindex.h"
 #include "productcollection.h"
 #include "command.h"
@@ -25,7 +27,7 @@ class BorrowCMD : public Command {
 private:
     CustomerIndex* cIndex; //customer Index pointer 
     ProductCollection* pColl; //product collection pointer 
-	Event* event;
+	std::vector<std::string> argList;
 	int getID(); //Gets the customer ID from the event.
 
 public:
@@ -33,7 +35,9 @@ public:
     BorrowCMD(CustomerIndex*,ProductCollection*);
     virtual ~BorrowCMD(); //default destructor 
 	// Returns false if data invalid, for factory use only.
-    virtual bool setData(Event*); 
+    virtual bool setData(std::string); 
+    virtual bool initArgList(std::string);
+
     Error execute(); //execute command from the IO 
 };
 

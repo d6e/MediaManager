@@ -21,9 +21,8 @@ Drama::~Drama(){}
 // The setData method takes in a pointer to an event object and the data it 
 // contains to the event object's data. If the event object input is invalid,
 // it returns false, otherwise true.
-bool Drama::setData(Event* e){
+bool Drama::setData(std::string eventDetails){
     std::string eventToken;
-    std::string eventDetails = e->getEventDetails();
     int dataTypeCounter = 0;
     //deliminating eventDetails string by comma
     for(int i = 2; i < eventDetails.size(); ++i){
@@ -44,8 +43,29 @@ bool Drama::setData(Event* e){
     // Need to get the last token after the comma
     productData[dataTypeReadOrder.at(dataTypeCounter)] = eventToken; 
 
-    delete e;
     return true; //TODO
+}
+
+//parses command data and returns a vector
+std::vector<std::string> Drama::parseCommand(std::string target) const{
+    std::vector<std::string> targetStringVector;
+    std::string token, cmdChar, custID, format, genre, director, year;
+    std::istringstream ss(target);
+
+    ss >> cmdChar;
+    ss >> custID;
+    ss >> format;
+    ss >> genre;
+  
+    //output vector in the order that they're read in
+    while(std::getline(ss, token, ',')) {    //parse comma deliminated string
+        director = token;
+        year = token;
+    }
+    targetStringVector.push_back(director); //place in vector
+    targetStringVector.push_back(year); //place in vector
+
+    return targetStringVector;
 }
 
 // create() is merely an instatiation method called by the ProductFactory that 

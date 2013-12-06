@@ -68,7 +68,12 @@ public:
 
     std::string getName() const; // returns full name of product
     std::vector<std::string> getDataTypes() const;
+    std::vector<std::string> getSortedBy() const;
     int getDataTypeSize() const; // accessor for product datatypes
+
+    //returns product data corresponding to key from hashmap
+    virtual std::string getProductData(std::string);
+
 private:
     struct Node {
         ~Node();

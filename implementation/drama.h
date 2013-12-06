@@ -4,6 +4,7 @@
 #include "product.h"
 #include "movie.h"
 #include <string>
+#include <sstream>
 #include <vector>
 
 /*
@@ -43,13 +44,15 @@ class Drama : public Movie{
 public:
 	Drama();
 	virtual ~Drama(void);
-	bool setData(Event*); // Returns false if input invalid.
+	bool setData(std::string); // Returns false if input invalid.
     virtual Product* create(); // Creates a new, empty Drama object
 	
 	virtual std::vector<std::string> getDataTypes() const;
 	virtual std::vector<std::string> getSortedBy() const;
     virtual int getDataTypeSize() const; // returns size of DataTypes
     virtual int getSortedBySize() const; // returns size of SortedBy
+	virtual std::vector<std::string> parseCommand(std::string) const;
+
     
     //returns the type ("drama") of product. Used as a key.
 	virtual std::string getName() const;

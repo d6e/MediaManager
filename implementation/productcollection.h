@@ -5,6 +5,9 @@
 #include "product.h"
 #include "bintree.h"
 #include "productcollection.h"
+#include "comedy.h"
+#include "drama.h"
+#include "classic.h"
 #include <string>
 
 /* 
@@ -30,6 +33,7 @@ public:
 	//ListNode is created and the Product is inserted into its tree.
 	Error insert(Product *); //inset product into a linked list 
 	Error retrieve(Product *); //retrieve product from a linked list 
+	std::string search(std::string); //searches for product
 	Error displayAll() const; //display all the products 
 	bool isEmpty() const; //check if the list is empty 
 };

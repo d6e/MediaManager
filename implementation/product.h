@@ -3,7 +3,6 @@
 #define PRODUCT_H
 #include "hashtable.h"
 #include <string>
-#include "event.h"
 #include "productformat.h"
 #include "nodedata.h"
 #include "productformatcollection.h"
@@ -75,7 +74,7 @@ class Product : public NodeData {
 public:
 	Product();
 	virtual ~Product();
-	virtual bool setData(Event*); // Returns false if input invalid.
+	virtual bool setData(std::string) = 0; // Returns false if input invalid.
     virtual Product* create() = 0; // Creates a new, empty Product 
 	virtual void incrProductQuantity(NodeData*);
 	
@@ -85,6 +84,7 @@ public:
 	virtual std::vector<std::string> getSortedBy() const = 0; 
     virtual int getDataTypeSize() const = 0; // returns size of DataTypes
     virtual int getSortedBySize() const = 0; // returns size of SortedBy
+	virtual std::vector<std::string> parseCommand(std::string) const = 0;
 	
 	//comparison operators compare product by their sorting criteria
 	virtual bool operator==(const NodeData&) const = 0;
@@ -106,6 +106,9 @@ public:
 	virtual std::string getName() const = 0;
 	virtual char getKey() const = 0;
 	virtual std::string getData(std::string key) const = 0;
+	virtual std::string getProductData();
+	//returns product data corresponding to key from hashmap
+	virtual std::string getProductData(std::string);
 
 	const static int maxDataLength = 20;
 	const static int maxQuantityLength = 4;
@@ -122,8 +125,6 @@ private:
 	void displayProductFormatColl(std::ostream&) const; 
 	void format(std::string&, int) const;
 
-	//makes sure display doesn't take up too much space
-	void truncateData(std::string&) const;  
 	ProductFormat* getProductFormat(std::string) const;
 
 	// Returns false if key doesn't exist  in productData;

@@ -2,14 +2,13 @@
 #include <sstream>
 #include <iostream>
 
-Event::Event(std::string msg) : eventDetails(msg){
-    std::string token;
-    std::stringstream ss;
-    ss << msg;
-    while (ss >> token)
-    {
-        argList.push_back(token);
-    }
+Event::Event(std::string msg){
+    set(msg);
+}
+
+Event::Event(std::string msg, Product* ptr){
+    set(msg);
+    pdtPtr = ptr;
 }
 
 Event::~Event(){
@@ -42,8 +41,9 @@ std::string Event::getEventDetails() const{
 
 // The display method iterates through the list displaying the data.
 void Event::display() const{    
-    for(int i = 0; i < argList.size(); ++i){
-        std::cout << argList.at(i) << " ";
-    }
-    std::cout << std::endl;
+    std::cout << eventDetails << std::endl;
+    // for(int i = 0; i < argList.size(); ++i){
+    //     std::cout << argList.at(i) << " ";
+    // }
+    // std::cout << std::endl;
 }

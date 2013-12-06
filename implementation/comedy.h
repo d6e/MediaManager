@@ -4,6 +4,7 @@
 #include "product.h"
 #include "movie.h"
 #include <string>
+#include <sstream>
 #include <vector>
 
 /*
@@ -43,7 +44,7 @@ class Comedy : public Movie {
 public:
 	Comedy(); //Inits productData keys.
 	virtual ~Comedy(); // cleans up any productdata objects it created
-	bool setData(Event*); // Returns false if input invalid.
+	bool setData(std::string); // Returns false if input invalid.
     virtual Product* create(); // Creates a new, empty genre movie object
 
 	virtual std::vector<std::string> getDataTypes() const;
@@ -55,6 +56,8 @@ public:
     virtual std::string getName() const; // returns unique identifier
     virtual char getKey() const; // returns unique identifier
     std::string getData(std::string key) const;
+    virtual std::vector<std::string> parseCommand(std::string) const;
+
 
 	//comparison operators compare product by their sorting criteria
 	virtual bool operator==(const NodeData&) const;

@@ -9,10 +9,6 @@ Product::~Product(){
     // std::cout << "Destroyed: " << productData["TITLE"] << std::endl;
 }
 
-// Returns false if input invalid.
-bool Product::setData(Event* e){
-    return true;
-}
 
 //increments the quantity of a particular product format.
 void Product::incrementQuantity(ProductFormat){
@@ -43,22 +39,33 @@ void Product::display(std::ostream& out) const{
         format(data, maxDataLength);
         out << data;
     }
-    displayProductFormatColl(out);
+    displayProductFormatColl(out); //TODO: expand
 }
 
 void Product::format(std::string& data, int maxLength) const{
     if(data.length() > maxLength){
-        truncateData(data);
+        data.resize(maxDataLength - 1);
+        data.resize(maxDataLength, ' ');
     }
     else{
         data.resize(maxLength, ' ');  //creates buffer for display
     } 
 }
 
-//truncates strings so they don't take up too much space
-void Product::truncateData(std::string& data) const{
-    data.resize(maxDataLength - 1);
-    data.resize(maxDataLength, ' ');
+std::string Product::getProductData(){
+    std::string ret;
+    std::vector<std::string> dataTypes = getDataTypes();
+    for(int i = 0; i < getDataTypeSize(); ++i){
+        std::string data = getData(dataTypes.at(i));
+        format(data, maxDataLength);
+        ret.append(data);
+    }
+    return ret;
+}
+
+//returns product data corresponding to key from hashmap
+std::string Product::getProductData(std::string key){
+    return getData(key);
 }
 
 void Product::displayProductFormatColl(std::ostream& out) const{ 

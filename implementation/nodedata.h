@@ -30,6 +30,8 @@ public:
     virtual void incrProductQuantity(NodeData*) = 0;  
     virtual std::string getName() const = 0; // returns unique identifier
     virtual char getKey() const = 0; // returns unique identifier
+    //returns product data corresponding to key from hashmap
+    virtual std::string getProductData(std::string) = 0;
 
     // comparison operators
     virtual bool operator==(const NodeData &) const = 0;
@@ -40,6 +42,8 @@ public:
     virtual bool operator>=(const NodeData &) const = 0;                
 
     virtual std::vector<std::string> getDataTypes() const = 0;      
+    // Returns the sorting data, delineated by commas
+    virtual std::vector<std::string> getSortedBy() const = 0; 
     virtual int getDataTypeSize() const = 0; // returns size of DataTypes
 };
 

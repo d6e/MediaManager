@@ -37,7 +37,10 @@ Product* ProductFactory::create(std::string data){
     }
 
     pdtPtr = products[pdtChar]->create(); //get product pointer from hashtable 
-    pdtPtr->setData(new Event(restOfString));    
+    pdtPtr->setData(restOfString);    
+    std::string eventPrintString = pdtPtr->getProductData();
+    Event* e = new Event(eventPrintString, pdtPtr); //insert new data
+
     return pdtPtr;
 }
 

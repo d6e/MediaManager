@@ -45,7 +45,7 @@ public:
 	Classic();
 	virtual ~Classic();
 	
-	bool setData(Event*); // Returns false if input invalid.
+	bool setData(std::string); // Returns false if input invalid.
     virtual Product* create(); // Creates a new, empty Classic object
 	
 	virtual std::vector<std::string> getDataTypes() const;
@@ -57,6 +57,7 @@ public:
 	virtual std::string getName() const;
     std::string getData(std::string key) const;
     virtual char getKey() const; // returns unique identifier
+	virtual std::vector<std::string> parseCommand(std::string) const;
 
 	
 	//comparison operators compare product by their sorting criteria
@@ -71,6 +72,7 @@ private:
 	std::vector<std::string> CLASSIC_DATA_TYPES; //order of output datatypes
 	std::vector<std::string> dataTypeReadOrder; //order datatypes are read in
 	std::vector<std::string> CLASSIC_SORTED_BY; //how data types are sorted
+	std::vector<std::string> cmdData; //for parsing command data
 };
 
 #endif

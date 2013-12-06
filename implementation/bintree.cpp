@@ -137,6 +137,14 @@ std::vector<std::string> BinTree::getDataTypes() const{
     return ret;
 }
 
+std::vector<std::string> BinTree::getSortedBy() const{ 
+    std::vector<std::string> ret;
+    if(root != NULL){
+        ret = root->data->getSortedBy();
+    }
+    return ret;
+}
+
 int BinTree::getDataTypeSize() const{ 
     if(root != NULL){
         return root->data->getDataTypeSize();
@@ -165,5 +173,14 @@ bool BinTree::retrieve(Node* currNode, const NodeData* data) const{
         return true;
     }
     bool ret = retrieve(currNode->left, data) || retrieve (currNode->left, data);
+    return ret;
+}
+
+//returns product data corresponding to key from hashmap
+std::string BinTree::getProductData(std::string key){
+    std::string ret;
+    if(root != NULL){
+        ret = root->data->getProductData(key);
+    }
     return ret;
 }

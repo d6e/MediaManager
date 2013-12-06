@@ -24,7 +24,7 @@ public:
     Command();          // constructor
     virtual ~Command(); // destructor
      // Returns false if data invalid, for factory use only.
-	virtual bool setData(Event*) =0;
+	virtual bool setData(std::string) =0;
     virtual Error execute() =0; // Returns NULL if no error occured.
 };
 

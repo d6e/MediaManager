@@ -3,6 +3,7 @@
 #define PRODUCTFACTORY_H
 #include "product.h"
 #include "comedy.h"
+#include "event.h"
 #include "drama.h"
 #include "classic.h"
 #include "productcollection.h"

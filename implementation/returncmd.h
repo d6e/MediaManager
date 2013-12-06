@@ -2,6 +2,8 @@
 #ifndef RETURNCMD_H
 #define RETURNCMD_H
 #include <string>
+#include <sstream>
+#include <vector>
 #include "customerindex.h"
 #include "command.h"
 #include "productcollection.h"
@@ -24,14 +26,16 @@ class ReturnCMD : public Command {
 private:
     CustomerIndex* cIndex; //pointer to the customer index
     ProductCollection* pColl; //pointer to the product collection 
-    Event* event; // pointer to entire command information.
+    std::vector<std::string> argList;
 
 public:
     ReturnCMD(CustomerIndex*, ProductCollection*, Event*); //default constructor 
     ReturnCMD(CustomerIndex*, ProductCollection*);
     virtual ~ReturnCMD(); //default destructor 
     // Returns false if data invalid, for factory use only.
-	virtual bool setData(Event*); 
+	virtual bool setData(std::string); 
+	virtual bool initArgList(std::string);
+
     Error execute(); //execute command from the IO 
 };
 

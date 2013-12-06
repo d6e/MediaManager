@@ -22,9 +22,8 @@ Comedy::~Comedy(){}
 // The setData method takes in a pointer to an event object and the data it 
 // contains to the event object's data. If the event object input is invalid,
 // it returns false, otherwise true.  //TODO: rewrite description
-bool Comedy::setData(Event* e){
+bool Comedy::setData(std::string eventDetails){
     std::string eventToken;
-    std::string eventDetails = e->getEventDetails();
     int dataTypeCounter = 0;
     //deliminating eventDetails string by comma
     for(int i = 2; i < eventDetails.size(); ++i){
@@ -45,7 +44,6 @@ bool Comedy::setData(Event* e){
     // Need to get the last token after the comma
     productData[dataTypeReadOrder.at(dataTypeCounter)] = eventToken; 
 
-    delete e;
     return true; //TODO
 }
 
@@ -57,6 +55,28 @@ Product* Comedy::create(){
 
 char Comedy::getKey() const{
     return 'F';  // The key is different since classic exists. ('F' for funny)
+}
+
+//parses command data and returns a vector
+std::vector<std::string> Comedy::parseCommand(std::string target) const{
+    std::vector<std::string> targetStringVector;
+    std::string token, cmdChar, custID, format, genre, title, year;
+    std::istringstream ss(target);
+
+    ss >> cmdChar;
+    ss >> custID;
+    ss >> format;
+    ss >> genre;
+  
+    //output vector in the order that they're read in
+    while(std::getline(ss, token, ',')) {    //parse comma deliminated string
+        title = token;
+        year = token;
+    }
+    targetStringVector.push_back(title); //place in vector
+    targetStringVector.push_back(year); //place in vector
+
+    return targetStringVector;
 }
 
 // The getDataTypes() and getSortedBy() are helper methods which quickly 

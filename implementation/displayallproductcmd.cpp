@@ -12,12 +12,22 @@ DisplayAllProductCMD::~DisplayAllProductCMD(){
 }
 
 // Returns false if data invalid, for factory use only.
-bool DisplayAllProductCMD::setData(Event* e){
-	event = e;
-	// ADD EVENT TO HISTORY
-    std::string custID = event->get(1); // The second word is customer ID
-	cIndex->addTransaction(custID, e);
-    return true; //TODO: Not sure if need. Might want to add event to history
+bool DisplayAllProductCMD::setData(std::string eventDetails){
+    return initArgList(eventDetails);
+} 
+
+bool DisplayAllProductCMD::initArgList(std::string data){
+    if(data == ""){
+        return false;
+    }
+    std::string token;
+    std::stringstream ss;
+    ss << data;
+    while (ss >> token)
+    {
+        argList.push_back(token);
+    }
+    return true;
 }
 
 //execute command from the IO 

@@ -45,6 +45,8 @@ public:
     // Creates and inits cmd obj based on key given, returns null if invalid key
     Command* create(std::string key);   
     bool keyExists(char);
+    char getCommandChar(std::string);
+
 };
 
 #endif

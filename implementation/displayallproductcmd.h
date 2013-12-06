@@ -2,6 +2,8 @@
 #ifndef DISPLAYALLPRODUCTCMD_H
 #define DISPLAYALLPRODUCTCMD_H
 #include <string>
+#include <sstream>
+#include <vector>
 #include "customerindex.h"
 #include "productcollection.h"
 #include "command.h"
@@ -24,12 +26,13 @@ class DisplayAllProductCMD : public Command {
 private:
     ProductCollection* pColl;
     CustomerIndex* cIndex;
-    Event* event;
+    std::vector<std::string> argList;
 public:
     DisplayAllProductCMD(CustomerIndex*,ProductCollection*);  // default constructor
     virtual ~DisplayAllProductCMD();           // default destructor
     // Returns false if data invalid, for factory use only.
-	virtual bool setData(Event*); 
+	virtual bool setData(std::string); 
+	virtual bool initArgList(std::string);
     Error execute();  //execute command from the IO 
 };
 
