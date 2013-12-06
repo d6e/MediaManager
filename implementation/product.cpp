@@ -1,34 +1,14 @@
 #include "product.h"
 #include <iostream>
 
-Product::Product(){
-    // std::cout << "Created: " << std::endl;
-}
+Product::Product(){}
 
-Product::~Product(){
-    // std::cout << "Destroyed: " << productData["TITLE"] << std::endl;
-}
+Product::~Product(){}
 
 // Returns false if input invalid.
 bool Product::setData(Event* e){
     return true;
 }
-
-//increments the quantity of a particular product format.
-void Product::incrementQuantity(ProductFormat){
-//TODO
-}		
-
-//number of copies borrowed by customers of a particular product format
-int Product::getBorrowedItems(ProductFormat) const{
-	return 0; //TODO
-} 			
-
-//number of copies borrowed by customers of a particular product format
-int Product::getRemainingItems(ProductFormat) const{
-	return 0; //TODO
-
-} 			
 
 void Product::display(std::ostream& out) const{
     std::string inStatus = "09";
@@ -43,33 +23,25 @@ void Product::display(std::ostream& out) const{
         format(data, maxDataLength);
         out << data;
     }
-    displayProductFormatColl(out);
+    std::vector<std::string> formatNames = getFormatNames();
+    for(int i = 0; i < formatNames.size(); i++){
+        ProductFormat* pf = getProductFormat(formatNames.at(i));
+    }
+    out << std::endl;
 }
 
+//formats the data properly for output
 void Product::format(std::string& data, int maxLength) const{
     if(data.length() > maxLength){
-        truncateData(data);
+        data.resize(maxDataLength - 1);
+        data.resize(maxDataLength, ' ');
     }
     else{
         data.resize(maxLength, ' ');  //creates buffer for display
     } 
 }
 
-//truncates strings so they don't take up too much space
-void Product::truncateData(std::string& data) const{
-    data.resize(maxDataLength - 1);
-    data.resize(maxDataLength, ' ');
-}
-
-void Product::displayProductFormatColl(std::ostream& out) const{ 
-    std::vector<std::string> formatNames = getFormatNames();
-    for(int i = 0; i < formatNames.size(); i++){
-        ProductFormat* pf = getProductFormat(formatNames.at(i));
-        out << formatNames.at(i) << ": " << pfc.getFormatAmount(pf) << " ";
-    }
-    out << std::endl;
-}
-
+//accessor for product formats
 ProductFormat* Product::getProductFormat(std::string key) const{ 
     std::map<std::string,ProductFormat*>::const_iterator index = validFormats.find(key);
     ProductFormat* data = index->second;

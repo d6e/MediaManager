@@ -94,12 +94,6 @@ public:
     virtual bool operator<=(const NodeData&) const = 0;
     virtual bool operator>=(const NodeData&) const = 0;
 
-	//increments the quantity of a particular product format.
-    void incrementQuantity(ProductFormat);		
-    //number of copies borrowed by customers of a particular product format
-    int getBorrowedItems(ProductFormat) const; 			
-    //number of copies borrowed by customers of a particular product format
-	int getRemainingItems(ProductFormat) const; 			
 	virtual void display(std::ostream&) const; // Displays contents via cout
 
     //returns the type (the class) of product. Used as a key.
@@ -107,8 +101,8 @@ public:
 	virtual char getKey() const = 0;
 	virtual std::string getData(std::string key) const = 0;
 
-	const static int maxDataLength = 20;
-	const static int maxQuantityLength = 4;
+	const static int maxDataLength = 20;    //special length for data
+	const static int maxQuantityLength = 4; //special length for quantities
 protected:
     //Contains valid formats of the product. The identifier code is the key. 
     std::map<std::string,ProductFormat*> validFormats; 
@@ -119,11 +113,10 @@ protected:
 	//Contains the quantities and different formats this product has.	
 	ProductFormatCollection pfc; 
 private:
-	void displayProductFormatColl(std::ostream&) const; 
+	//Formats data for output
 	void format(std::string&, int) const;
 
-	//makes sure display doesn't take up too much space
-	void truncateData(std::string&) const;  
+	//accessor for productformats
 	ProductFormat* getProductFormat(std::string) const;
 
 	// Returns false if key doesn't exist  in productData;

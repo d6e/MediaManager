@@ -15,14 +15,6 @@
 /*
 A factory that produces Commands based on a key to a hashtable containing 
 the different types of Command objects.
-
-The CommandFactory constructor that takes a CustomerIndex and a
-ProductCollection is used to pass along the two data structures 
-to it's products.
-
-The create method takes in a string and parses out the command portion of the
-string. It then creates an instance of a child command object based on the 
-command it parsed. Finally, it returns a pointer to that command.
 */
 
 

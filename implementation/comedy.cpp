@@ -143,10 +143,16 @@ bool Comedy::operator>(const NodeData &n) const{ //TODO:REWRITE
 }
 
 bool Comedy::operator<=(const NodeData &node) const{
-    return (*this < node) || (*this == node);//TODO: probably should be &&
+    bool ret = false;
+    ret = (*this < node); 
+    ret = (*this == node);
+    return ret;
 }
 
 bool Comedy::operator>=(const NodeData &node) const{
-    return (*this > node) || (*this == node); //TODO: probably should be &&
+    bool ret = false;
+    ret = (*this < node); 
+    ret = (*this == node);
+    return ret;
 }
 

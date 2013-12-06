@@ -1,0 +1,122 @@
+make: Nothing to be done for `all'.
+----------------------------------------------------------------------
+Error: That ID does not exist.
+Error: Product inserted is null.
+Error: Product inserted is null.
+Error: Product inserted is null.
+Classic
+*IN* *OUT*
+DVD  DVD DIRECTOR            TITLE               YEAR                MO                  FAMOUS ACTOR        
+09   08  George Cukor        Holiday             1938                9                   Cary Grant          
+09   08  George Cukor        Holiday             1938                9                   Katherine Hepburn   
+09   08  Victor Fleming      Gone With the Wind  1939                2                   Clark Gable         
+09   08  Victor Fleming      The Wizard of Oz    1939                7                   Judy Garland        
+09   08  Victor Fleming      Gone With the Wind  1939                2                   Vivien Leigh        
+09   08  George Cukor        The Philadelphia St 1940                5                   Cary Grant          
+09   08  George Cukor        The Philadelphia St 1940                5                   Katherine Hepburn   
+09   08  John Huston         The Maltese Falcon  1941                10                  Humphrey Bogart     
+09   08  Michael Curtiz      Casablanca          1942                8                   Humphrey Bogart     
+09   08  Frank Capra         It's a Wonderful Li 1946                11                  Donna Reed          
+09   08  Frank Capra         It's a Wonderful Li 1946                11                  James Steward       
+09   08  Stanley Kubrick     A Clockwork Orange  1971                2                   Malcolm McDowell    
+09   08  Hal Ashby           Harold and Maude    1971                3                   Ruth Gordon         
+09   08  Michael Curtiz      Casablanca          1942                8                   Ingrid Bergman      
+
+Drama
+*IN* *OUT*
+DVD  DVD DIRECTOR            TITLE               YEAR                
+09   08  Andrew Stanton      Wall-E              2008                
+09   08  Clint Eastwood      Unforgiven          1992                
+09   08  Nancy Savoca        Dogfight            1991                
+09   08  Barry Levinson      Good Morning Vietnam1988                
+09   08  Steven Spielberg    Schindler's List    1993                
+
+Comedy
+*IN* *OUT*
+DVD  DVD DIRECTOR            TITLE               YEAR                
+09   08  Woody Allen         Annie Hall          1977                
+09   08  Joel Coen           Fargo               1996                
+09   08  John Landis         National Lampoon's  1978                
+09   08  Gore Verbinski      Pirates of the Cari 2003                
+09   08  Nora Ephron         Sleepless in Seattle1993                
+09   08  Rob Reiner          When Harry Met Sally1989                
+09   08  Nora Ephron         You've Got Mail     1998                
+09   08  Todd Phillips       The Hangover        2009                
+
+  *** Customer ID = 1000  Mouse Minnie
+  *** Customer ID = 5000  Frog Freddie
+  *** Customer ID = 8000  Wacky Wally
+Classic
+*IN* *OUT*
+DVD  DVD DIRECTOR            TITLE               YEAR                MO                  FAMOUS ACTOR        
+09   08  George Cukor        Holiday             1938                9                   Cary Grant          
+09   08  George Cukor        Holiday             1938                9                   Katherine Hepburn   
+09   08  Victor Fleming      Gone With the Wind  1939                2                   Clark Gable         
+09   08  Victor Fleming      The Wizard of Oz    1939                7                   Judy Garland        
+09   08  Victor Fleming      Gone With the Wind  1939                2                   Vivien Leigh        
+09   08  George Cukor        The Philadelphia St 1940                5                   Cary Grant          
+09   08  George Cukor        The Philadelphia St 1940                5                   Katherine Hepburn   
+09   08  John Huston         The Maltese Falcon  1941                10                  Humphrey Bogart     
+09   08  Michael Curtiz      Casablanca          1942                8                   Humphrey Bogart     
+09   08  Frank Capra         It's a Wonderful Li 1946                11                  Donna Reed          
+09   08  Frank Capra         It's a Wonderful Li 1946                11                  James Steward       
+09   08  Stanley Kubrick     A Clockwork Orange  1971                2                   Malcolm McDowell    
+09   08  Hal Ashby           Harold and Maude    1971                3                   Ruth Gordon         
+09   08  Michael Curtiz      Casablanca          1942                8                   Ingrid Bergman      
+
+Drama
+*IN* *OUT*
+DVD  DVD DIRECTOR            TITLE               YEAR                
+09   08  Andrew Stanton      Wall-E              2008                
+09   08  Clint Eastwood      Unforgiven          1992                
+09   08  Nancy Savoca        Dogfight            1991                
+09   08  Barry Levinson      Good Morning Vietnam1988                
+09   08  Steven Spielberg    Schindler's List    1993                
+
+Comedy
+*IN* *OUT*
+DVD  DVD DIRECTOR            TITLE               YEAR                
+09   08  Woody Allen         Annie Hall          1977                
+09   08  Joel Coen           Fargo               1996                
+09   08  John Landis         National Lampoon's  1978                
+09   08  Gore Verbinski      Pirates of the Cari 2003                
+09   08  Nora Ephron         Sleepless in Seattle1993                
+09   08  Rob Reiner          When Harry Met Sally1989                
+09   08  Nora Ephron         You've Got Mail     1998                
+09   08  Todd Phillips       The Hangover        2009                
+
+  *** Customer ID = 1000  Mouse Minnie
+B 1000 D D Barry Levinson, Good Morning Vietnam, 
+B 1000 D C 5 1940 Katherine Hepburn 
+B 1000 D D Gus Van Sant, Good Will Hunting, 
+B 1000 D C 5 1940 Cary Grant 
+B 1000 D C 3 1971 Ruth Gordon 
+B 1000 D F Bogus Title, 2001 
+B 1000 Z F Fargo, 1996 
+B 1000 D D Steven Spielberg, Bogus Title, 
+  *** Customer ID = 1111  Mouse Mickey
+B 1111 D C 2 1971 Malcolm McDowell 
+B 1111 D Z 2 1971 Malcolm McDowell 
+B 1111 D C 3 1971 Ruth Gordon 
+B 1111 D C 10 1941 Humphrey Bogart 
+B 1111 D C 9 1938 Cary Grant 
+  *** Customer ID = 5000  Frog Freddie
+B 5000 D C 3 1971 Ruth Gordon 
+R 5000 D C 3 1971 Ruth Gordon 
+B 5000 D C 3 1971 Ruth Gordon 
+R 5000 D C 3 1971 Ruth Gordon 
+B 5000 D C 3 1971 Ruth Gordon 
+R 5000 D C 3 1971 Ruth Gordon 
+B 5000 D C 3 1971 Ruth Gordon 
+  *** Customer ID = 8000  Wacky Wally
+B 8000 D F You've Got Mail, 1998 
+R 8000 D F You've Got Mail, 1998 
+B 8000 D C 3 1971 Ruth Gordon 
+B 8000 D C 3 1971 Ruth Gordon 
+B 8000 D F National Lampoon's Animal House, 1978 
+  *** Customer ID = 8888  Pig Porky
+B 8888 D F Annie Hall, 1977 
+B 8888 D F When Harry Met Sally, 1989 
+B 8888 D D Andrew Stanton, Wall-E, 
+B 8888 D D Nancy Savoca, Dogfight, 
+B 8888 D C 3 1971 Ruth Gordon 

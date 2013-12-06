@@ -64,7 +64,7 @@ bool ProductCollection::isEmpty() const{
     return ret;
 }
 
-
+//displays the data types
 Error ProductCollection::displayDataTypes(const BinTree& dataTree) const{ //TODO: REWRITE
     Error empty;
     std::vector<std::string> dataTypes = dataTree.getDataTypes();
