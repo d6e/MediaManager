@@ -1,3 +1,4 @@
+#pragma once
 #ifndef PRODUCTFORMAT_H
 #define PRODUCTFORMAT_H
 #include <string>
@@ -16,7 +17,7 @@ are, false if they're not.
 class ProductFormat {
 public:
 	ProductFormat(std::string); // constructor
-	std::string getName(); // returns the private formatname string
+	std::string getName() const; // returns the private formatname string
     //Checks if two ProductFormats are equivilent
 	bool equals(const ProductFormat); 
 private:

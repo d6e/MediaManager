@@ -1,9 +1,11 @@
+#pragma once
 #ifndef PRODUCT_H
 #define PRODUCT_H
 #include "hashtable.h"
 #include <string>
 #include "event.h"
 #include "productformat.h"
+#include "nodedata.h"
 #include "productformatcollection.h"
 #include <map>
 #include <iostream>
@@ -37,11 +39,11 @@ types like ComedyMovie (which would return "comedy"). dataType() concatenates
 these two strings to create a unique idenifier for an instantiable product type,
 aiding in sorting.
 
-dataTypeNames() and sortedByNames() are helper methods which quickly retrieve 
+getDataTypes() and getSortedBy() are helper methods which quickly retrieve 
 the corresponding _DATA_TYPES and _SORTED_BY arrays. 
 
 dataString() outputs the Product object's format, along with all of its data in 
-order of its dataTypeNames(). The dataString() method is called as part of a 
+order of its getDataTypes(). The dataString() method is called as part of a 
 product BinTree's display method. This is the only method called by the <<
 operator.
 
@@ -49,7 +51,7 @@ create() is merely an instatiation method called by the ProductFactory that
 creates a product object.
 
 The addData() method inserts data into the Product's hashtable, with the form
-<dataType,data> (Example: <"title","Titanic">). This data is retrieved in a
+<dataType,data> (Example: <"TITLE","Titanic">). This data is retrieved in a
 similar way by dataString().
 
 All of any Product object's comparison operators work under the same principles:
@@ -69,47 +71,62 @@ determine how many copies of a product.have been borrowed.
 */
 
 //most generic Product type
-class Product {
+class Product : public NodeData {
 public:
 	Product();
 	virtual ~Product();
-	bool setData(Event); // Returns false if input invalid.
+	virtual bool setData(Event*); // Returns false if input invalid.
     virtual Product* create() = 0; // Creates a new, empty Product 
-    //returns the type (the class) of product. Used as a key.
-    virtual std::string type() const = 0;	
-	virtual void display(); // Displays contents via cout
+	virtual void incrProductQuantity(NodeData*);
 	
 	// Returns all data, inorder of input, deliminated by commas
-	virtual const std::string* dataTypeNames() const = 0; 
+	virtual std::vector<std::string> getDataTypes() const = 0; 
 	// Returns the sorting data, delineated by commas
-	virtual const std::string* sortedByNames() const = 0; 
+	virtual std::vector<std::string> getSortedBy() const = 0; 
+    virtual int getDataTypeSize() const = 0; // returns size of DataTypes
+    virtual int getSortedBySize() const = 0; // returns size of SortedBy
 	
 	//comparison operators compare product by their sorting criteria
-	virtual bool operator==(const Product &) const;
-    virtual bool operator!=(const Product &) const;
-    virtual bool operator<(const Product &) const;
-    virtual bool operator>(const Product &) const;
-    virtual bool operator<=(const Product &) const;
-    virtual bool operator>=(const Product &) const;
-	
-	//increments the quantity of a particular product format.
-    void incrementQuantity(ProductFormat);		
-    //number of copies borrowed by customers of a particular product format
-    int getBorrowedItems(ProductFormat) const; 			
-    //number of copies borrowed by customers of a particular product format
-	int getRemainingItems(ProductFormat) const; 			
-private:
-	//Contains the quantities and different formats this product has.	
-	ProductFormatCollection inventory; 
+	virtual bool operator==(const NodeData&) const = 0;
+    virtual bool operator!=(const NodeData&) const = 0;
+    virtual bool operator<(const NodeData&) const = 0;
+    virtual bool operator>(const NodeData&) const = 0;
+    virtual bool operator<=(const NodeData&) const = 0;
+    virtual bool operator>=(const NodeData&) const = 0;
+
+	virtual void display(std::ostream&) const; // Displays contents via cout
+
+    //returns the type (the class) of product. Used as a key.
+	virtual std::string getName() const = 0;
+	virtual char getKey() const = 0;
+	virtual std::string getData(std::string key) const = 0;
+
+	const static int maxDataLength = 20;    //special length for data
+	const static int maxQuantityLength = 4; //special length for quantities
+protected:
+    //Contains valid formats of the product. The identifier code is the key. 
+    std::map<std::string,ProductFormat*> validFormats; 
+
 	//Contains the attributes of this product.
-	std::map<std::string,std::string> productData;    
-	//Contains valid formats of the product. The identifier code is the key. 
-	std::map<std::string,ProductFormat> validFormats; 
+	std::map<std::string,std::string> productData;  
+
+	//Contains the quantities and different formats this product has.	
+	ProductFormatCollection pfc; 
+private:
+	//Formats data for output
+	void format(std::string&, int) const;
+
+	//accessor for productformats
+	ProductFormat* getProductFormat(std::string) const;
+
 	// Returns false if key doesn't exist  in productData;
-    bool addData(std::string key,std::string value); 
+    void addData(std::string key,std::string value); 
+	void addFormat(ProductFormat*); //adds product to productformatcollection
+
     // All products must have possible format(s).        
 	virtual void initValidFormats() = 0; 
-	bool addFormat(ProductFormat); //Returns false if data invalid.
+  	virtual std::vector<std::string> getFormatNames() const = 0;
+
 };
 
 #endif

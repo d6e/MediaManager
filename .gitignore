@@ -1,1 +1,5 @@
 *.gch
+a.out
+*.o
+*.d
+main

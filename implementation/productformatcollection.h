@@ -1,29 +1,37 @@
+#pragma once
 #ifndef PRODUCTFORMATCOLLECTION_H
 #define PRODUCTFORMATCOLLECTION_H
-#define DEFAULT_PRODUCT_QUANTITY 10;
+#include "productformat.h"
 #include <string>
-#include <list>
+#include <vector>
 
 /*
 Contains quantites and max quantites of various ProductFormats in a collection.
 */
 class ProductFormatCollection{
-public:
-	ProductFormatCollection();
-    //Returns the amount of items that particular ProductFormat has.
-	int getFormatAmount(const ProductFormat*) const; 
-	int getFormatMaxAmount(const ProductFormat*) const;
-	
-	bool addProductFormat(ProductFormat);
 private:
 	struct FormatAmount
 	{
 		ProductFormat* format;
-		int count;
-	    int size;
+		int quantity; // quantity of products
+	    int size;  // total available products
+        // size - quantity = number of products being rented
 	};
+	std::vector<FormatAmount*> formatDataList;
+	int productQuantity; //initialized in constructor init list
+	int productSize; //initialized in constructor init list
 		
-	std::list<FormatAmount> formatDataList;
+public:
+    ProductFormatCollection();
+    virtual ~ProductFormatCollection();
+    //Returns the number of items a productformat may have
+	int getFormatAmount(ProductFormat*)const; 
+	int getFormatMaxAmount(ProductFormat*);
+    std::string getFormatNames();  //accessor for productformat names //TODO: possibly use this instead of product::validFormatNames()
+	void addProductFormat(ProductFormat*);
+	// void addProductFormat(ProductFormat, int, int);
+	void incrProductQuantity(std::string);
+
 };
 
 #endif

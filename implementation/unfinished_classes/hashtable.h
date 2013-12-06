@@ -1,3 +1,4 @@
+#pragma once
 #ifndef HASHTABLE_H
 #define HASHTABLE_H
 #include "nodedata.h"
@@ -46,7 +47,7 @@ protected:
 	int hashIndex(std::string searchKey) const; //hash function 
 	int resize(int size);
 private:
-	static const int DEFAULT_HASH_TABLE_SIZE = 2001;
+	static const int DEFAULT_HASH_TABLE_SIZE = 20011;
 	int hashTableSize; //size of the hash table 
 	NodeData* tablePtr; //Points to first element of dynamic array.
 }; //end HashTable

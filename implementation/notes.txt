@@ -1,8 +1,20 @@
+if there's two copies of the same movie increment the amount by 10
+you can pretend there is no customer 00000
+
+TURN IN UML OF JUST THE CLASSES YOU IMPLEMENTED (just the names)
+print out hardcopy of only the classes you implement
+
+
+"Store dates as ints, not strings, with ints month and year.
+While it may make sense to store them as strings, you will
+store then as ints to represent data of different types
+that could be stored."
+
 remove productData and customerData, instead have customer and product inherit directly from pure virtual nodedata
 make customer and product inherit from nodedata
 nodedata would be pure virtual
 
-For the productCollection list of trees you can just use an array of 26 (each element being a char and pointing to a tree)
+For the productCollection list of trees you can just use an array of 26 (each element representing a char and pointing to a tree)
 
 
 Things we got marked down on:
