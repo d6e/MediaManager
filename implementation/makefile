@@ -61,7 +61,7 @@ MY_CFLAGS = #`pkg-config --cflags opencv boost` -I$(SRCROOT)
 MY_LIBS   = #`pkg-config --libs opencv boost`
 
 # The pre-processor options used by the cpp (man cpp for more).
-CPPFLAGS  = -Wall
+#CPPFLAGS  = -Wall
 CFLAGS  = -g
 CXXFLAGS= -g
 
@@ -85,7 +85,7 @@ SRCEXTS = .c .C .cc .cpp .CPP .c++ .cxx .cp
 HDREXTS = .h .H .hh .hpp .HPP .h++ .hxx .hp
 
 # The C++ program compiler. g++ by default
-CXX    = clang++ 
+CXX    = g++ 
 
 # The C program compiler.
 CC     = gcc
