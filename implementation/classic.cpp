@@ -192,7 +192,7 @@ bool Classic::operator<=(const NodeData &node) const{
 
 bool Classic::operator>=(const NodeData &node) const{
     bool ret = false;
-    ret = (*this < node); 
+    ret = (*this > node); 
     ret = (*this == node);
     return ret;
 }
